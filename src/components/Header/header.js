@@ -30,31 +30,19 @@ class Header extends Component  {
         // this.bgImage = {
         //     backgroundImage: `url(${this.imageOptimizer.optimizeImage()})`
         // };
-
     }
 
     render(){
-        switch(this.props.headerTemplate){
-            case "static"  :
-                return(
-                    <header className="static-header col-12">
-                        <NavigationBar navbarTemplate="black"/>
-                    </header>
-                );
-            case "landing" :   
-                return(
-                    <header style={this.bgImage} className="header col-12">
-                        <NavigationBar navbarTemplate="Main"/>
-                    </header>
-                );
-            default:
-        }
+        return(
+            <header className="static-header col-12">
+                <NavigationBar navbarTemplate="black"/>
+            </header>
+        );
     }
 }
 
 Header.propTypes = {
-    viewport:PropTypes.object,
-    headerTemplate:PropTypes.string.isRequired
+    viewport:PropTypes.object
 };
 
 const mapStateToProps = ( state ) => {

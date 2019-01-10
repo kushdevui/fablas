@@ -7,6 +7,8 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import axios from "axios";
+
 import { 
     Collapse,
     NavbarBrand,
@@ -37,7 +39,11 @@ class  NavigationBar extends Component {
     }
 
     componentDidMount(){
-       
+       axios.get("http://localhost:8080/bone/api/products").then(
+           res=>{
+               console.log(res);
+           }
+       )
     }
 
     toggle(){
@@ -48,64 +54,43 @@ class  NavigationBar extends Component {
     }
 
     render(){
-        switch(this.props.navbarTemplate){
-            case "black":
-                return ( 
-                    <div className="navbar-section">
-                        <Navbar className="p-0" color="transparent" dark expand="md">
-                            <NavbarBrand href="/">
-                                <Logo logoTemplate="black"/>
-                            </NavbarBrand>
-                            <Collapse className={this.state.isOpen ? "show-collapse" : ""} navbar>
-                                <Nav className="ml-auto" navbar>
-                                    <NavItem>
-                                        <NavLink href="#">Become a Sitter</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#">Help</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="/signup">SignUp</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#">login</NavLink>
-                                    </NavItem>
-                                </Nav>
-                            </Collapse>
-                        </Navbar>
-                    </div>);
-            case "Main":
-                return(
-                    <div className="navbar-section">
-                        <Navbar className="p-0" color="transparent" light expand="md">
-                            <NavbarBrand href="/">
-                                <Logo logoTemplate="basic"/>
-                            </NavbarBrand>
-                            <FontAwesomeIcon className={"d-sm-none " + (this.state.isActive ? "toggle-animate": "toggle-animate-inactive")} onClick={this.toggle} icon={faAngleDown} color="white" size="2x"/>
-                            <Collapse className={this.state.isOpen ? "show-collapse" : ""} navbar>
-                            <FontAwesomeIcon  onClick={this.toggle}  className="close d-sm-none" icon={faTimes} color="black" size="1x"/>
-                                <Nav className="ml-auto" navbar>
-                                    <NavItem>
-                                        <NavLink href="#">Become a Sitter</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#">Help</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="/signup">SignUp</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="#">login</NavLink>
-                                    </NavItem>
-                                </Nav>
-                            </Collapse>
-                        </Navbar>
-                    </div>
-                );
-            default:
-        }
-
-       
+        return(
+            <div className="navbar-section">
+                <Navbar className="p-0"  dark expand="md">
+                <NavbarBrand href="/">
+                    <Logo/>
+                </NavbarBrand>
+                <Collapse className={this.state.isOpen ? "show-collapse" : ""} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink href="#">Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">About us</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/signup">Services</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Products</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Shop</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">News</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Careers</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Contact us</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+            </div>
+        );
     }
 }
 

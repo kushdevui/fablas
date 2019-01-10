@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // API end points
-app.use( '/bone' , Routes);
+app.use( '' , Routes);
 // use JWT auth to secure the api
 //app.use(jwt());
 

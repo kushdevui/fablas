@@ -6,6 +6,8 @@
 // Dependencies
 import React from "react";
 import Header from "../Header/header";
+import Hero from "../Hero/hero";
+
 // import SignUpForm from "../SignUpForm/signupform";
 import {Row} from "reactstrap";
 import Search from "../Search/search";
@@ -18,7 +20,8 @@ import "./home.scss";
 const Home = () =>{
     return(
         <Row>
-            <Header headerTemplate="landing"/>
+            <Header/>
+            <Hero/>
             {/* <Search/>
             <SignUpForm/> */}
         </Row>     
