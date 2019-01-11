@@ -6,6 +6,7 @@
 import mongoose from 'mongoose';
 import config from './bone.config';
 import User from '../users/users.model';
+import Product from '../product/product.models'
 
 
 // Database Connection
@@ -17,5 +18,6 @@ mongoose.connect(config.connectionString , { useNewUrlParser: true })
 mongoose.Promise = global.Promise;
 
 export default {
-    User: User
+    User: User,
+    Product:Product
 };

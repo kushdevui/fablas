@@ -12,6 +12,7 @@ const router = express.Router();
 
 // Home Request
 router.get('/' , ( req , res , next ) => {
+    res.send("All Users");
     console.log("Users Home");
 });
 
@@ -28,6 +29,8 @@ router.get('/extract/:id' , (req , res , next) => {
     userServices.getSingleUser( user_id )
     .then( (userData) => {
         res.json(userData);
+    },(err) => {
+        res.send("Unable to process");
     })
     .catch( (err) => {
         res.sendStatus(404);
