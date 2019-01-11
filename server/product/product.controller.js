@@ -11,4 +11,14 @@ router.get("/getProducts",(req,res,next) => {
     
 });
 });
+router.post("/getProductsById",(req,res,next) => {
+	const id=req.body.id;
+	productServices.getProductById(id).then((result) => {
+		res.json(result);
+	}).catch((err) => {
+		res.sendStatus(404);
+	});
+
+	
+});
 export default router;

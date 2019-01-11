@@ -18,8 +18,18 @@ const getProduct=() => {
 			});
 	});
 };
+const getProductById=(id) => {
+	return new Promise((resolve,reject) => {
+		Product.find({"id":id}).then((success) => {
+			resolve(success);
+		}).catch((err) => {
+			reject(err);
+		});
+	});
+	
+};
 export default{
     
-getProduct
+getProduct,getProductById
 };
 
