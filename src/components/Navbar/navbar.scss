@@ -60,7 +60,7 @@
 }
 .icon-palat{
     span{
-        margin-right:1rem;
+        margin-right:0.75rem;
     }
     .navbar-search{
         input[type=text]{
@@ -68,8 +68,8 @@
             background-color:$error-red;
             border-radius:$form-raidus;
             color:$white;
-            padding:0.125rem 0.25rem;
-            font-size:1rem;
+            padding:0.0625rem 0.25rem;
+            font-size:0.75rem;
         }
     }
 

@@ -62,7 +62,7 @@ class  NavigationBar extends Component {
     render(){
         return(
             <div className="row">
-                <div className="navbar-section col-8">
+                <div className="navbar-section col-9">
                     <Navbar className="p-0"  dark expand="md">
                     <NavbarBrand href="/">
                         <Logo/>
@@ -99,15 +99,15 @@ class  NavigationBar extends Component {
                
                 </Navbar>
                 </div>
-                <div className="col-4 pt-4 icon-palat">
-                    <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} /></span>
+                <div className="col-3 pt-4 icon-palat">
+                    <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="sm" /></span>
                     <span className="navbar-search">
                         <input type="text" name="search-box" value="search"/>
                     </span>
-                    <span><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }}/></span>
-                    <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }}/></span>
-                    <span><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }}/></span>
-                    <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }}/></span>
+                    <span><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></span>
+                    <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
+                    <span><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></span>
+                    <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
                 </div>
             </div>
         );
