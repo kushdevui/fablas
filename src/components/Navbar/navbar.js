@@ -99,7 +99,7 @@ class  NavigationBar extends Component {
                
                 </Navbar>
                 </div>
-                <div className="col-3 pt-4 icon-palat text-right">
+                <div className="col-3 pt-2 icon-palat text-right">
                     <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} /></span>
                     <span className="navbar-search">
                         <input type="text" name="search-box" value="search"/>

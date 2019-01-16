@@ -4,11 +4,27 @@
 
 // Dependencies
 import React from "react";
-import {base_image_url} from '../../../config';
+import { Picture } from 'react-responsive-picture';
+
 
 const Logo = (props) =>{
     return(
-        <img width="210" height="66" src="../../assets/images/Logo.png" alt="Fetch Logo"/>
+        <Picture
+        sources = {[
+            {
+                srcSet: "../../assets/images/Logo.png 2x",
+                media: "(max-width: 1024px)",
+            },
+            {
+                srcSet: "../../assets/images/Logo-l.png",
+                  media: "(max-width: 1440px)",
+            },
+            {
+                srcSet: "../../assets/images/Logo.png",
+                type: "image/webp"
+            }
+        ]}
+    />
     )
 };
 
