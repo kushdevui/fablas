@@ -16,7 +16,7 @@ const Logo = (props) =>{
                 media: "(max-width: 1024px)",
             },
             {
-                srcSet: "../../assets/images/Logo-l.png",
+                srcSet: "../../assets/images/Logo.png",
                   media: "(max-width: 1440px)",
             },
             {

@@ -62,7 +62,7 @@ class  NavigationBar extends Component {
     render(){
         return(
             <div className="row">
-                <div className="navbar-section col-9">
+                <div className="navbar-section col-8">
                     <Navbar className="p-0"  dark expand="md">
                     <NavbarBrand href="/">
                         <Logo/>
@@ -99,7 +99,7 @@ class  NavigationBar extends Component {
                
                 </Navbar>
                 </div>
-                <div className="col-3 pt-2 icon-palat text-right">
+                <div className="col-4 pt-4 icon-palat">
                     <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} /></span>
                     <span className="navbar-search">
                         <input type="text" name="search-box" value="search"/>
