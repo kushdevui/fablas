@@ -4,10 +4,11 @@
 
 // Dependencies
 import React from "react";
+import {base_image_url} from '../../../config';
 
 const Logo = (props) =>{
     return(
-        <img width="50" height="50" src="../../assets/images/logo-black.svg" alt="Fetch Logo"/>
+        <img width="210" height="66" src="../../assets/images/Logo.png" alt="Fetch Logo"/>
     )
 };
 

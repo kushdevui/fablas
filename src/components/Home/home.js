@@ -9,7 +9,6 @@ import Header from "../Header/header";
 import Hero from "../Hero/hero";
 
 // import SignUpForm from "../SignUpForm/signupform";
-import {Row} from "reactstrap";
 import Search from "../Search/search";
 
 // Styles & Images
@@ -19,12 +18,12 @@ import "./home.scss";
 
 const Home = () =>{
     return(
-        <Row>
+        <div className="row">
             <Header/>
             <Hero/>
             {/* <Search/>
             <SignUpForm/> */}
-        </Row>     
+        </div>     
     );
 };
 
