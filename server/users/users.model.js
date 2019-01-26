@@ -11,6 +11,7 @@
 import mongoose from 'mongoose';
 import userConfig from './user.config';
 import uniqueValidator from 'mongoose-unique-validator';
+import bcrypt from 'bcryptjs'
 
 
 
@@ -47,7 +48,7 @@ const users_schema = mongoose.Schema({
             required : true,
             validate : {
                 validator : (phone) => {
-                    return userConfig.phone_regex.test(phone)
+                    return userConfig.phone_regex.test(phone);
                 }
             },
             index : true
@@ -56,12 +57,6 @@ const users_schema = mongoose.Schema({
     user_password : {
         type : String, 
         required : true
-    },
-    user_type : {
-        type : String,
-        required : true,
-        default : "USER",
-        match : [userConfig.user_type , "Invalid Type"]
     },
     user_status : {
         isActive : Boolean
@@ -82,7 +77,16 @@ const users_schema = mongoose.Schema({
         type : Date,
         required : false
     },
-    optedForNewsletter : Boolean
+    tokens:[{
+        access:{
+            type:String,
+            required:true
+        },
+        token:{
+            type:String,
+            required:true
+        }
+    }]
 });
 
 users_schema.path("user_email").validate( (email) => {
@@ -92,6 +96,22 @@ users_schema.path("user_email").validate( (email) => {
 
 // Validating Unique User
 users_schema.plugin(uniqueValidator , { message : "User Already Exists"} );
+
+users_schema.pre("save",function(next){
+    let user=this;
+    if(user.isModified('user_password')){
+        bcrypt.genSalt(10,(err,salt) => {
+            bcrypt.hash(user.user_password,salt,(err,hash)=>{
+                user.user_password=hash;
+                next();
+            })
+        })
+    }
+    else{
+        next();
+    }
+
+})
 
 // Exporting the Users Model
 export default mongoose.model('users' , users_schema);

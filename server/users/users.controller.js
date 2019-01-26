@@ -12,6 +12,7 @@ const router = express.Router();
 
 // Home Request
 router.get('/' , ( req , res , next ) => {
+    res.send("All Users");
     console.log("Users Home");
 });
 
@@ -23,11 +24,14 @@ router.get('/' , ( req , res , next ) => {
  * @todo Extraction should only be possible only if User is Authenticated
  */
 router.get('/extract/:id' , (req , res , next) => {
+    
     const user_id = req.params.id;  
 
     userServices.getSingleUser( user_id )
     .then( (userData) => {
         res.json(userData);
+    },(err) => {
+        res.send("Unable to process");
     })
     .catch( (err) => {
         res.sendStatus(404);
@@ -48,9 +52,7 @@ router.post( '/newUser' , (req , res , next) => {
             user_middle_name,
             user_last_name,
             user_phone,
-            user_password,
-            user_type,
-            optedForNewsletter
+            user_password
         } = req.body;
 
         userServices.saveNewUser({
@@ -61,12 +63,11 @@ router.post( '/newUser' , (req , res , next) => {
                 user_middle_name,
                 user_last_name
             },
-            user_type,
             user_phone_numbers : [user_phone],
-            user_password,
-            optedForNewsletter
+            user_password
         })
         .then( (data) => {
+            res.setHeader("x-auth",data.tokens[0].token);
             res.json(data);
         })
         .catch( (err) => {
@@ -75,7 +76,7 @@ router.post( '/newUser' , (req , res , next) => {
     } else {
         res.send("Header not Set");
     }
-})
+});
 
 // Exporting the module
 export default router;

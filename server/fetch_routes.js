@@ -5,6 +5,7 @@
 //  Dependencies
 import express from 'express';
 import usersController from './users/users.controller';
+import productController from './product/product.controller'
 import router from './users/users.controller';
 
 
