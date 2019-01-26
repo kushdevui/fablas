@@ -21,6 +21,11 @@ const product_schema=mongoose.Schema({
 	image_path:{
 		type:String,
 		required:[true, "Product should have a price!"]
+	},
+	isFeatured:{
+		type:Boolean,
+		required:true,
+		default:false
 	}
     
 });
