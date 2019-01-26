@@ -4,11 +4,9 @@
 
 // Dependencies
 import React, { Component } from "react";
-import { Container, Modal, ModalHeader, ModalBody, ModalFooter , Row, Col , TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Form , FormGroup , Input , Label } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody , Row, Col , TabContent, TabPane, Nav, NavItem, Button , FormGroup  , Label } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { RenderField } from "../FormFields/formfields";
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./search.scss";
@@ -20,7 +18,7 @@ class Search extends Component {
             activeTab : "1",
             startDateDate:new Date(),
             modal: false
-        }
+        };
         this.toggleTab = this.toggleTab.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleModal = this.handleModal.bind(this);
@@ -29,14 +27,14 @@ class Search extends Component {
     handleChange(date){
         this.setState({
             startDate:date
-        })
+        });
     }
 
     toggleTab(tab){
         if(this.state.activeTab !== tab){
             this.setState({
                 activeTab:tab
-            })
+            });
         }
     }
     handleModal(){
@@ -46,8 +44,8 @@ class Search extends Component {
     }
     render(){
         const crossStyle ={
-            position: 'absolute', top: '15px', right: '15px' 
-        }
+            position: "absolute", top: "15px", right: "15px" 
+        };
         return(
                 <div className="search-component">
                     <Modal isOpen={this.state.modal} toggle={this.handleModal} className={this.props.className}>
@@ -120,9 +118,9 @@ class Search extends Component {
                                             value="Small"
                                             component = { RenderField }
                                         />
-                                        <Label className="w-100" check for = "dog_size_small">
+                                        {/* <Label className="w-100" check for = "dog_size_small">
                                             Small
-                                        </Label>
+                                        </Label> */}
                                     </FormGroup>
                                 </Col>
                                 <Col xs={6}>
@@ -180,14 +178,14 @@ class Search extends Component {
                                 <h2 className="d-none d-md-block">Love & care, when you’re not there</h2>
                                 <Nav tabs className="col-xs-12">
                                     <NavItem className="col-xs-6">
-                                        <NavLink onClick={()=>{this.toggleTab('1');}}>
+                                        {/* <NavLink onClick={()=>{this.toggleTab("1");}}>
                                             When You're Away
-                                        </NavLink>
+                                        </NavLink> */}
                                     </NavItem>
                                     <NavItem className="col-xs-6">
-                                        <NavLink onClick={()=>{this.toggleTab('2')}}>
+                                        {/* <NavLink onClick={()=>{this.toggleTab('2')}}>
                                             When You're At Work
-                                        </NavLink>
+                                        </NavLink> */}
                                     </NavItem>
                                 </Nav>
                                 <TabContent activeTab={this.state.activeTab}>
