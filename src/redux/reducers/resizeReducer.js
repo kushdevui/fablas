@@ -18,7 +18,6 @@ const initialState = {
                 ...state,
                 viewport : action.payload
             };
-
         default : 
             return state;
     }

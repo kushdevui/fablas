@@ -1,0 +1,27 @@
+
+@import "../../../global/styles/fonts.scss";
+@import "../../../global/styles/base_colors.scss";
+@import "../../../global/styles/base_variables.scss";
+
+.featured-products-section{
+    margin-top:31rem;
+   
+    .row{
+        background-color:$min-grey;
+        padding-bottom:4rem;
+    }
+    .l-item{
+        background-color:$lighter-grey;
+        p{
+            font-size:0.8125rem;
+            color:$mid-grey;
+            font-weight: normal;
+        }
+        span{
+            font-size: 0.71875rem;
+            font-weight: 500;
+            color:$light-grey;
+        }
+    }
+   
+}

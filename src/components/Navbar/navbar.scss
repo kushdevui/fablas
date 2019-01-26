@@ -8,7 +8,8 @@
 .navbar-section{
     .navbar-nav{
         .nav-link{
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
             &:hover{
                 color:$grey-light;
             }
@@ -57,13 +58,35 @@
         transition-timing-function:ease-in-out;
     }
 }
+.icon-palat{
+    span{
+        margin-right:1rem;
+    }
+    .navbar-search{
+        input[type=text]{
+            border:none;
+            background-color:$error-red;
+            border-radius:$form-raidus;
+            color:$white;
+            padding:0.0625rem 0.25rem;
+            font-size:0.75rem;
+        }
+    }
+
+}
+
 
 @include media-breakpoint-up(lg){
     .navbar-section{
         .navbar-dark{
             .navbar-nav{
+                .nav-item{
+                    margin-right:0.5rem;
+                    cursor: pointer;
+                }
+                font-size:0.8125rem;
                 .nav-link{
-                    font-weight: 500;
+                    font-weight: 600;
                     &:hover{
                         color:$grey-darker;
                     }
@@ -73,14 +96,15 @@
                     &:focus {
                         color:$grey-darker;
                     }
-                    color:$grey-darker;
+                    color:$mid-grey;
                 }
             }
         }
     .navbar-light{
         .navbar-nav{
             .nav-link{
-                font-weight: 500;
+                font-weight: 600;
+               
                 &:hover{
                     color:white;
                 }

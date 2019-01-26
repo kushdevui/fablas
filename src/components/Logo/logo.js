@@ -4,19 +4,28 @@
 
 // Dependencies
 import React from "react";
+import { Picture } from 'react-responsive-picture';
+
 
 const Logo = (props) =>{
-    switch(props.logoTemplate){
-        case "black" :
-        return(
-            <img width="50" height="50" src="../../assets/images/logo-black.svg" alt="Fetch Logo"/>
-        );
-        case "basic" :
-        return(
-            <img width="50" height="50" src="../../assets/images/logo-320.svg" alt="Fetch Logo"/>
-        );
-        default:
-    }
+    return(
+        <Picture
+        sources = {[
+            {
+                srcSet: "../../assets/images/Logo.png 2x",
+                media: "(max-width: 1024px)",
+            },
+            {
+                srcSet: "../../assets/images/Logo.png",
+                  media: "(max-width: 1440px)",
+            },
+            {
+                srcSet: "../../assets/images/Logo.png",
+                type: "image/webp"
+            }
+        ]}
+    />
+    )
 };
 
 export default Logo;

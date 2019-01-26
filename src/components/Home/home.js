@@ -6,8 +6,11 @@
 // Dependencies
 import React from "react";
 import Header from "../Header/header";
+import Hero from "../Hero/hero";
+import FeaturedProducts from "../Products/FeaturedProducts/featuredProducts";
+import CenterMode from "../Retail/retail";
+
 // import SignUpForm from "../SignUpForm/signupform";
-import {Row} from "reactstrap";
 import Search from "../Search/search";
 
 // Styles & Images
@@ -17,11 +20,16 @@ import "./home.scss";
 
 const Home = () =>{
     return(
-        <Row>
-            <Header headerTemplate="landing"/>
-            {/* <Search/>
-            <SignUpForm/> */}
-        </Row>     
+        <div>
+            <div className="row">
+                <Header/>
+            </div>
+            <div className="row">
+                <Hero/>
+            </div>
+            <FeaturedProducts/>
+            <CenterMode/>
+        </div>     
     );
 };
 

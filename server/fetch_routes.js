@@ -16,6 +16,13 @@ fetch_router.get( '/' , ( req , res , next ) => {
     res.send('Hello');
 });
 
+fetch_router.get( '/api/products' , ( req , res , next ) => {
+    console.log('get Products');
+    res.send('Products List');
+});
+
+
+
 // Users Endpoint
 fetch_router.use( '/users' , usersController);
 

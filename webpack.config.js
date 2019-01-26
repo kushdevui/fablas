@@ -49,6 +49,10 @@ var _module = {
             use: 'babel-loader'
         },
         {
+            test: /\.md$/,
+            loader: "html!markdown"
+        },
+        {
             test : /\.scss$/,
             use: isDev ? ['style-loader' , 'css-loader' , 'postcss-loader' , 'sass-loader'] : extractTextPlugin.extract({
                 fallback : 'style-loader',

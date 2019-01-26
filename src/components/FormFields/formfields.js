@@ -1,5 +1,5 @@
 import React from "react";
-import {FormGroup , Input , Label, Button } from "reactstrap";
+import {FormGroup , Input , Label } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DatePicker from "react-datepicker";
 
@@ -49,7 +49,7 @@ export const RenderField = ({
             selected={this.state.startDate}
                 dateFormat="MMMM d, yyyy h:mm aa"
             />
-        )
+        );
         default: return (
             <div></div>
             // <FormGroup>
