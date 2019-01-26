@@ -1,12 +1,10 @@
-/**
- * Fetch Routes for APIs
- */
 
 //  Dependencies
 import express from 'express';
 import usersController from './users/users.controller';
 import productController from './product/product.controller'
 import router from './users/users.controller';
+
 
 
 const fetch_router = express.Router();
@@ -16,14 +14,8 @@ fetch_router.get( '/' , ( req , res , next ) => {
     console.log('Hello Fetch');
     res.send('Hello');
 });
-
-fetch_router.get( '/api/products' , ( req , res , next ) => {
-    console.log('get Products');
-    res.send('Products List');
-});
-
-
-
+// Product Endpoint
+fetch_router.use('/products',productController);
 // Users Endpoint
 fetch_router.use( '/users' , usersController);
 
