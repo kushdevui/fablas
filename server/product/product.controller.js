@@ -3,7 +3,7 @@ import productServices from "./product.services";
 const router = express.Router();
 
 //get all products
-router.get("/getProducts",(req,res,next) => {
+router.post("/getProducts",(req,res,next) => {
 	productServices.getProduct().then((result) => {
 		res.json(result);
 }).catch((err) => {
