@@ -11,7 +11,10 @@ import { createLogger } from "redux-logger";
 // Thunk is for receiving Async Actions
 import thunk from "redux-thunk";
 import resizeReducer from "./reducers/resizeReducer";
+import productReducer from "./reducers/productReducer";
 import { reducer as formReducer } from "redux-form";
+
+
 
 // Initial State of Store
 const initialStoreState = () => {
@@ -30,7 +33,8 @@ const initialStoreState = () => {
 export default createStore(
     combineReducers({
         resizeReducer  : resizeReducer,
-        form : formReducer
+        form : formReducer,
+        productReducer : productReducer
     }),
     initialStoreState(),
     applyMiddleware(createLogger() , thunk)

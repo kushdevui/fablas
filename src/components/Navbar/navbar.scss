@@ -6,6 +6,18 @@
 @import "../../global/styles/base_variables.scss";
 
 .navbar-section{
+    .navbar-expand-md{
+        justify-content: space-between;
+        .navbar-nav {
+            .show>.nav-link{
+                color:#333333;
+            }
+            .dropdown-menu{
+                left:10px;
+            }
+        }
+    }
+   
     .navbar-nav{
         .nav-link{
             font-weight: 600;

@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const FeaturedProducts = (props) =>{
-    console.log(props);
+    //console.log(props);
     return(
         <section className="featured-products-section">
             <div className="row">
@@ -71,4 +71,4 @@ const FeaturedProducts = (props) =>{
     )
 }
 
-export default Products(FeaturedProducts);
+export default FeaturedProducts;

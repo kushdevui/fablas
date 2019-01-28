@@ -7,8 +7,11 @@
 import React from "react";
 import Header from "../Header/header";
 import Hero from "../Hero/hero";
-import FeaturedProducts from "../Products/FeaturedProducts/featuredProducts";
+import Products from "../Products/products";
 import CenterMode from "../Retail/retail";
+import DirectorMessage from "./DirectorMessage/directorMessage";
+import ServiceSection from "./Services/services";
+
 
 // import SignUpForm from "../SignUpForm/signupform";
 import Search from "../Search/search";
@@ -27,8 +30,11 @@ const Home = () =>{
             <div className="row">
                 <Hero/>
             </div>
-            <FeaturedProducts/>
+            <Products/>
             <CenterMode/>
+            <DirectorMessage/>
+            <ServiceSection/>
+
         </div>     
     );
 };

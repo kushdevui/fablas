@@ -7,7 +7,11 @@ import React, { Component } from "react";
 import { faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { connect } from 'react-redux';
+import {addToDo} from '../../redux/actions/globalActions';
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { Button } from 'react-bootstrap';
+
 library.add(fab)
 
 
@@ -21,6 +25,10 @@ import {
     Navbar,
     Nav,
     NavItem,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
     NavLink
     } from "reactstrap";
     
@@ -45,11 +53,7 @@ class  NavigationBar extends Component {
     }
 
     componentDidMount(){
-       axios.get("http://localhost:8080/bone/api/products").then(
-           res=>{
-               console.log(res);
-           }
-       )
+        this.props.onAddTodo();
     }
 
     toggle(){
@@ -60,6 +64,9 @@ class  NavigationBar extends Component {
     }
 
     render(){
+        console.log(this.props.productList);
+        const CagegoryList = this.props.productList.map(item=><DropdownItem>{item.categoryName}</DropdownItem>);
+        //console.log(CagegoryList);
         return(
             <div className="row">
                 <div className="navbar-section col-9">
@@ -67,7 +74,7 @@ class  NavigationBar extends Component {
                     <NavbarBrand href="/">
                         <Logo/>
                     </NavbarBrand>
-                    <Collapse className={this.state.isOpen ? "show-collapse" : ""} navbar>
+                    <Collapse className={this.state.isOpen ? "show-collapse" : ""}>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink href="#">Home</NavLink>
@@ -76,11 +83,16 @@ class  NavigationBar extends Component {
                             <NavLink href="#">About us</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/signup">Services</NavLink>
+                        <NavLink href="/signup">Services</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Products</NavLink>
-                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Products
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                {CagegoryList}
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
                         <NavItem>
                             <NavLink href="#">Shop</NavLink>
                         </NavItem>
@@ -120,5 +132,19 @@ NavigationBar.propTypes = {
     navbarTemplate:PropTypes.string
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+      onAddTodo: () => {
+        dispatch(addToDo());
+      }
+    };
+};   
+
+const mapStateToProps = state =>{
+    return {
+        productList : state.productReducer.productList
+    }
+}
+
 //exporting the module
-export default NavigationBar;
+export default connect(mapStateToProps,mapDispatchToProps)(NavigationBar);

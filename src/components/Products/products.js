@@ -1,29 +1,47 @@
-/* Product Parent Component */
+/**
+ *  Header Component
+ */
 
+// Dependencies
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import {addToDo} from '../../redux/actions/globalActions';
 import FeaturedProducts from './FeaturedProducts/featuredProducts';
 //styles 
+
+// Styles & Images
 import "./products.scss";
 
-const Products = (WrappedComponents) =>{
-    class HOC extends Component{
-        constructor(){
-            super();
-        }
-        render(){
-            return(
-                <div>
-                    <WrappedComponents
-                        {...this.props}
-                        secretToLife={42}
-                    />
-                </div>
-            )
-        }
+
+class Products extends Component  {
+    constructor(){
+        super();
     }
-    return  HOC;;
+
+    componentDidMount() {
+        this.props.onAddTodo();
+    }
+
+    render(){
+        return(
+            
+            <FeaturedProducts {...this.props.productList}/>
+        );
+    }
 }
 
+ const mapDispatchToProps = dispatch => {
+        return {
+          onAddTodo: () => {
+            dispatch(addToDo());
+          }
+        };
+};   
+    
+const mapStateToProps = state =>{
+    return {
+        productList : state.productReducer.productList
+    }
+}
 
-export default Products;
-
+export default connect(mapStateToProps,mapDispatchToProps)(Products);

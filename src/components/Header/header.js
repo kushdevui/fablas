@@ -10,6 +10,7 @@ import ImageOptimize from "../../components/Widgets/ImageOptimize/imageOptimize"
 import NavigationBar from "../Navbar/navbar";
 import {Col} from "reactstrap";
 import { connect } from "react-redux";
+import axios from 'axios';
 
 // Styles & Images
 import "./header.scss";
@@ -20,6 +21,8 @@ class Header extends Component  {
         this.responsiveUtils = new ResponsiveUtils();
     }
     componentDidMount(){
+        
+
         // //Optimizing Image as per the viewPort.
         // this.imageOptimizer = new ImageOptimize({
         //     mobile_image : "../../assets/images/walking-dog-bg-320.png", 
