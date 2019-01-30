@@ -29,4 +29,13 @@ router.post("/getProductById",(req,res,next) => {
     
 });
 });
+router.post("/getProductBySubcategory",(req,res,next) => {
+	const id = req.body.id;	
+	productServices.getProductBySubCategory(id).then((result) => {
+		res.json(result);
+}).catch((err) => {
+		res.sendStatus(404);
+    
+});
+});
 export default router;

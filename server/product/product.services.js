@@ -39,8 +39,22 @@ const getProductById=(id) => {
 			});
 	});
 };
+const getProductBySubCategory=(id) => {
+	return new Promise((resolve,reject) => {
+		// getting all Users
+		Product.find({"subCategory.id":id})
+			.then( (success) => {
+				const x=success[0].subCategory[0].productsList;
+				resolve(x);
+			})
+			.catch( (err) => {
+				reject(err);
+			});
+	});
+};
+
 export default{
     
-	getProduct,getCategories,getProductById
+	getProduct,getCategories,getProductById,getProductBySubCategory
 };
 
