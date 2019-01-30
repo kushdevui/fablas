@@ -3,7 +3,7 @@ import productServices from "./product.services";
 const router = express.Router();
 
 //get all products
-router.post("/getProducts",(req,res,next) => {
+router.get("/getProducts",(req,res,next) => {
 	productServices.getProduct().then((result) => {
 		res.json(result);
 }).catch((err) => {
@@ -19,5 +19,14 @@ router.post("/getCategories",(req,res,next) => {
 	});
 
 	
+});
+router.post("/getProductById",(req,res,next) => {
+	const id = req.body.id;	
+	productServices.getProductById(id).then((result) => {
+		res.json(result);
+}).catch((err) => {
+		res.sendStatus(404);
+    
+});
 });
 export default router;

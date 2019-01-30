@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import config from './bone.config';
 import User from '../users/users.model';
 import Product from '../product/product.models'
+import Service from '../service/service.models'
 
 
 // Database Connection
@@ -19,5 +20,6 @@ mongoose.Promise = global.Promise;
 
 export default {
     User: User,
-    Product:Product
+    Product:Product,
+    Service:Service
 };

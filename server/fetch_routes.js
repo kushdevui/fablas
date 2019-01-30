@@ -6,6 +6,7 @@
 import express from 'express';
 import usersController from './users/users.controller';
 import productController from './product/product.controller'
+import serviceController from './service/service.controller'
 import router from './users/users.controller';
 
 
@@ -21,6 +22,8 @@ fetch_router.get( '/' , ( req , res , next ) => {
 fetch_router.use('/products',productController);
 // Users Endpoint
 fetch_router.use( '/users' , usersController);
+// Service Endpoint
+fetch_router.use('/services',serviceController);
 
 
 

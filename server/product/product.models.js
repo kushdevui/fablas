@@ -8,6 +8,10 @@ const product_schema=mongoose.Schema({
 		type:String,
 		required:true
 	},
+	categoryDescription:{
+		type:String,
+		required:true
+	},
 	subCategory:[{
 		name:{
 			type:String,
@@ -19,6 +23,10 @@ const product_schema=mongoose.Schema({
 		},
 		productsList:[
 			{
+				id:{
+					type:String,
+					required:true
+				},
 				name:{
 					type:String,
 					required:true
