@@ -1,0 +1,160 @@
+
+@mixin on-circle($item-count, $circle-size, $item-size) {
+    position: relative;
+    width:  $circle-size;
+    height: $circle-size;
+    padding: 0;
+    border-radius: 50%; 
+    ul{
+      list-style: none;  
+    }
+   
+       > *{
+        > * {
+          display: block;
+          position: absolute;
+          top:  50%; 
+          left: 50%;
+          width:  $item-size;
+          height: $item-size;
+          margin: -($item-size / 2);
+        
+          $angle: (230 / $item-count);
+          $rot:170;
+      
+          @for $i from 1 through $item-count {
+            &:nth-of-type(#{$i}) {
+              transform: 
+                rotate($rot * 1deg) 
+                translate($circle-size / 2) 
+                rotate($rot * -1deg);
+            }
+      
+            $rot: $rot + $angle;
+          }
+        }
+       }  
+   
+  }
+
+.tile-choose-us{
+  .hover-content + .tooltip > .tooltip-inner {background-color: #f00;}
+  .hover-content{
+    .tooltip > .tooltip-inner {background-color: #f00;}
+    p{
+      font-size:20px;
+      color:#3333;
+    }
+    span{
+      font-size: 13px;
+      color:#6666;
+      font-weight: 600;
+    }
+  }
+  h1{
+    margin-top:4rem;
+    font-size:30px;
+    font-weight: 300;
+    color:#333333;
+    span{
+      font-weight: bold;
+    }
+  }
+  p{
+    margin-bottom:3rem;
+    font-size:14px; 
+    font-weight: 600;
+    color:#4c4c4c;
+  }
+    @keyframes rotate {
+        0% {background-position: 0 0;}
+        100% {background-position: 630px 0;}
+    }
+  .features-section{
+
+    #earth {
+      -ms-transform: scale(1, 1); /* IE 9 */
+      -webkit-transform: scale(1, 1); /* Safari */
+      transform: scale(1, 1);
+      /* [1] Allow it to contain the absolutely positions pseudo-elements (later-on) */
+      position: absolute;
+      /* [2] Set-up the dimensions and spacing */
+      width: 300px;
+      height: 300px;
+      top: 7rem;
+      left: 12rem;
+     
+      /* [3] Prepare the animation effects */
+      transition: transform 200ms linear;
+      animation: rotate 4s linear infinite; /* This is going to be defined in the next step */
+    
+      /* [4] Tweak the appearance, and give it a nice background i.e. the world map */
+      color: #000;
+      border-radius: 50%;
+      background: url(https://lh5.googleusercontent.com/-kkxEx-SkRaY/VBLF4BV2lZI/AAAAAAAAKao/FnKsv7402_c/s0/earthmap.jpg) 0 0 repeat / 630px;
+    
+      /* [5] Position things in a 3d space */
+      transform-style: preserve-3d;
+      &:after{
+        
+              /* [1] Break the flow to show this as an overlay */
+              position: absolute;
+              top: 0;
+              left: 0;
+            
+              /* [2] Make it take all the space available in the box (ahem... globe!) */
+              width: 100%;
+              height: 100%;
+            
+              /* [3] Make sure this has no generated content, as we want this just for fancy purposes */
+              content: '';
+            
+              /* [4] Give it some shape and shadow */
+              border-radius: 50%;
+              
+            }
+       &:before{
+           /* [1] Again, break the flow to show this as an overlay */
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          /* [2] Again, give it all the available space */
+          width: 100%;
+          height: 100%;
+
+          /* [3] Duh. */
+          content: '';
+
+          /* [4] Add some shape and overlay effect to it */
+          opacity: .2;
+          border-radius: 50%;
+       }     
+    }
+  .circle-container {
+    @include on-circle($item-count: 10, $circle-size: 26em, $item-size: 3em); 
+    margin: 3em auto 0;
+    border: solid 2px #ccc;
+  img { 
+      display: block; 
+      max-width: 100%; 
+      border-radius: 50%;
+      filter: grayscale(100%);
+      border: solid 1px #bbbbbb;
+      background-color:#f3f4f7;
+      transition: .15s;
+      
+      &:hover,
+      &:active {
+      filter: grayscale(0);
+      }
+  }
+  }   
+  .goods{
+    position: absolute;
+    left: 5rem;
+    top: 20rem;
+  }
+  }
+   
+}

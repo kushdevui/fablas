@@ -11,6 +11,7 @@ import Products from "../Products/products";
 import CenterMode from "../Retail/retail";
 import DirectorMessage from "./DirectorMessage/directorMessage";
 import ServiceSection from "./Services/services";
+import WhyChooseUs from "./WhyChooseUs/whyChooseUs";
 
 
 // import SignUpForm from "../SignUpForm/signupform";
@@ -34,6 +35,7 @@ const Home = () =>{
             <CenterMode/>
             <DirectorMessage/>
             <ServiceSection/>
+            <WhyChooseUs/>
 
         </div>     
     );
