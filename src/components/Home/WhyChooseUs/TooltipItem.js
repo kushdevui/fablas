@@ -25,8 +25,8 @@ class TooltipItem extends React.Component {
         <li  className="mr-1" color="secondary" id={'Tooltip-' + this.props.id}>
             <img src="../../../assets/images/Icon-0.png"/>
         </li>
-        <Tooltip className="hover-content" placement={this.props.item.placement} isOpen={this.state.tooltipOpen} target={'Tooltip-' + this.props.id} toggle={this.toggle}>
-          <p>Largest Wherehouse .01</p>
+        <Tooltip  html="true" className="hover-content" html='true' placement={this.props.item.placement} isOpen={this.state.tooltipOpen} target={'Tooltip-' + this.props.id} toggle={this.toggle}>
+          <p>Largest <span>Wherehouse .01</span></p>
           <div>The best contact you will get here lorem ipsum dolor sit amet</div>
         </Tooltip>
       </div>

@@ -82,9 +82,89 @@ class WhyChooseUs extends Component{
                     <div id="earth"></div>
                         <div className='circle-container'>
                             <ul>
-                                { this.state.tooltips.map((tooltip, i) => {
-                                    return <TooltipItem key={i} item={tooltip} id={i} />;
-                                })}
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-0.png"/>
+                                <div className="content">
+                                  <p>Largest <span> Destinations .05</span></p>
+                                  <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-0.png"/>
+                                <div className="content1">
+                                    <p>Costumer  <span>Support .04</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-0.png"/>
+                                <div className="content2">
+                                    <p>Costumer <span> Support .03</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-0.png"/>
+                                <div className="content3">
+                                    <p>Largest <span>Wherehouse .02</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                           
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-1.png"/>
+                                <div className="content4">
+                                    <p>Largest <span>Wherehouse .01</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-2.png"/>
+                                <div className="content5">
+                                    <p>Contract  <span>Logistic</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-3.png"/>
+                                <div className="content6">
+                                    <p>Contract <span>Logistic</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-4.png"/>
+                                <div className="content7">
+                                    <p>08. Logistic  <span>Services</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-4.png"/>
+                                <div className="content8">
+                                    <p>Largest <span>Wherehouse .01</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            <li  className="mr-1" color="secondary">
+                                <img src="../../../assets/images/Icon-4.png"/>
+                                <div className="content9">
+                                    <p>10. Goods <span>Whe Tracking Support</span></p>
+                                    <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                </div>
+                            </li>
+                            
+                                {/* { this.state.tooltips.map((tooltip, i) => {
+                                  return  <li  className="mr-1" color="secondary">
+                                            <img src="../../../assets/images/Icon-0.png"/>
+                                            <div className="content">
+                                              <p>Largest <span>Wherehouse .01</span></p>
+                                              <div>The best contact you will get here lorem ipsum dolor sit amet</div>
+                                            </div>
+                                          </li>
+                                    // return <TooltipItem key={i} item={tooltip} id={i} />;
+                                })} */}
                             </ul>
                         </div>
                        
