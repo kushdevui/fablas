@@ -12,6 +12,10 @@ const product_schema=mongoose.Schema({
 		type:String,
 		required:true
 	},
+	categoryImage:{
+		type:String,
+		required:true
+	},
 	subCategory:[{
 		name:{
 			type:String,
