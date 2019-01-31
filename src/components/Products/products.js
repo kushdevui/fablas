@@ -24,8 +24,7 @@ class Products extends Component  {
 
     render(){
         return(
-            
-            <FeaturedProducts {...this.props.productList}/>
+            <FeaturedProducts {...this.props}/>
         );
     }
 }

@@ -73,7 +73,7 @@ class WhyChooseUs extends Component{
     }
     render(){
         return(
-            <div className="tile-choose-us text-center">
+            <div className="tile-choose-us text-center m-0">
                 <h1 className="col-lg-12">Why <span>Choose Us</span></h1>
                 <p>Search our databases of the Top 100 providers in key segments of the supply chain industry.
                 </p>

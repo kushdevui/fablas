@@ -4,8 +4,168 @@
 @import "../../global/styles/_fonts.scss";
 @import "../../global/styles/base_colors.scss";
 @import "../../global/styles/base_variables.scss";
+.dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
 
 .navbar-section{
+    .site-nav{
+        
+    }
+    ul{
+        margin-left:1.5em;
+    }
+    a{
+        text-decoration:none;
+    }
+    .nav{
+        list-style:none;
+        margin-left:0;
+        z-index: 2000;
+    }
+        .nav > li,
+            .nav > li > a{
+                display:inline-block;
+               *display:inline;
+                zoom:1;
+            }
+        
+        .stacked > li{
+            display:list-item;
+        }
+            .stacked > li > a{
+                display:block;
+        }
+    
+    
+    
+    
+    
+    /*------------------------------------*\
+        $FLYOUT
+    \*------------------------------------*/
+    /**
+     * Flyouts are pieces of content that fly out of a parent when said parent is hovered.
+     * They typically appear bottom-left of the parent.
+       <div class=flyout>
+           Foo
+           <div class=flyout-content>
+               <h1>Lorem</h1>
+               <p>Ipsum</p>
+           </div>
+       </div>
+     */
+    .flyout,
+    .flyout-alt{
+        position:relative;
+    }
+        .flyout-content{
+            /* Position the flyouts off-screen. This is typically better than `display:none;`. */
+            position:absolute;
+            top:100%;
+            left:-99999px;
+            /**
+             * Even though they are out of document flow, lots of nested flyouts can
+             * eventually force scroll bars to appear as they become taller than the viewport.
+             * We can undo this effect by giving them zero height.
+             */
+            height:0;
+            overflow:hidden;
+        }
+        
+        /**
+         * Bring the flyouts into view when you hover their parents.
+         * Two different types of flyout; ‘regular’ (`.flyout`) and ‘alternative’ (`.flyout-alt`).
+         */
+        /* Regular flyouts sit all the way from the top, flush left. */
+        .flyout:hover > .flyout-content{
+            left:0;
+        }
+        /* Alternative flyouts sit all the way from the left, flush top. */
+        .flyout-alt:hover > .flyout-content{
+            top:0;
+            left:100%;
+        }
+        .flyout:hover > .flyout-content,
+        .flyout-alt:hover > .flyout-content{
+            /* Give the flyouts their height back once they come into view. */
+            height:auto;
+            overflow:visible;
+        }
+    
+    
+    
+    
+    
+    /*------------------------------------*\
+        $SITE-NAV
+    \*------------------------------------*/
+    /**
+     * Site nav specific styling.
+     * Extends `.nav{}`
+     */
+    .site-nav{
+        padding-top:0.80rem;
+        font-size:0.80em;
+        float:right;
+    }
+            .site-nav a {
+                line-height:1;
+                padding:1em;
+                color:#fff;
+                white-space:nowrap;
+            }
+    .site-nav .flyout:hover > a /* [1] */,
+    .site-nav .flyout-alt:hover > a /* [1] */,
+    .site-nav a:hover{
+        color:#ffffff;
+        background-color:#dc3545;
+    }
+    
+    /**
+     * Add an indicator to any flyout parents in the site nav to show there’s a flyout.
+     */
+    .site-nav .flyout-alt > a:after{
+        content:" »";
+    }
+    
+    .site-nav a,
+    .site-nav .flyout-content{
+       background-color: #ffffff;
+       
+    }
+    .site-nav > li > a{
+       
+    }
+    /* The first link in the site-nav doesn’t require a border at all. */
+    .site-nav > li:first-child > a{
+        border:none;    
+    }
+    .site-nav .flyout-content{
+       
+    }
+    .site-nav .flyout-content a{
+       
+    }
+    .site-nav .flyout-alt:hover > .flyout-content{
+
+        top:-1px;
+    }​
+
+
+
+
+    .dropdown-item{
+        padding:0.50rem 1.5rem;
+        font-weight: 100;
+        font-size:1rem;
+    }
     .navbar-expand-md{
         justify-content: space-between;
         .navbar-nav {
