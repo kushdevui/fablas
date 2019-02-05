@@ -1,13 +1,16 @@
 {
-  "name": "fetch",
+  "name": "fablas",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --history-api-fallback",
-    "prod": "node_modules/.bin/webpack --watch  --mode production",
+    "prod": "node_modules/.bin/webpack --watch  --mode development --mode production",
     "start": "nodemon --ignore src/ --exec babel-node server/index.js",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "develop":"webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+
   },
   "repository": {
     "type": "git",

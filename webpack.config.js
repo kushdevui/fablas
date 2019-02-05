@@ -27,7 +27,7 @@ _entry['bundle'].push("webpack-hot-middleware/client");
 // Output files
 var _output = {
     path: BUILD_DIR,
-    filename : 'fetch.[name].[hash].js',
+    filename : 'fablasDeploy.[name].[hash].js',
     publicPath : '/'
 };
 
