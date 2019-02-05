@@ -8,7 +8,12 @@
     "prod": "node_modules/.bin/webpack --watch  --mode production",
     "start": "nodemon --ignore src/ --exec babel-node server/index.js",
     "clean": "rimraf dist",
-    "build":"node scripts/build.js"
+    "develop":"webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "engines": {
+    "node":"10.13.0",
+    "npm":"6.4.1"
   },
   "repository": {
     "type": "git",
