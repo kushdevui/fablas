@@ -5,12 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --history-api-fallback",
-    "prod": "node_modules/.bin/webpack --watch  --mode development --mode production",
+    "prod": "node_modules/.bin/webpack --watch  --mode production",
     "start": "nodemon --ignore src/ --exec babel-node server/index.js",
     "clean": "rimraf dist",
-    "develop":"webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
-
+    "build":"node scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -95,10 +93,10 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3"
   }
 }
