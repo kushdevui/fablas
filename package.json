@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --history-api-fallback",
     "prod": "node_modules/.bin/webpack --watch  --mode production",
-    "start": "node server/index.js",
+    "start": "nodemon --ignore src/ --exec babel-node server/index.js",
     "clean": "rimraf dist",
     "develop":"webpack --mode development",
     "build": "webpack --mode production"
