@@ -21,7 +21,7 @@ import Footer from "../Footer/footer";
 import Search from "../Search/search";
 
 // Styles & Images
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./home.scss";
 
 

@@ -8,7 +8,7 @@ import { Modal, ModalHeader, ModalBody , Row, Col , TabContent, TabPane, Nav, Na
 import { Field, reduxForm } from "redux-form";
 import { RenderField } from "../FormFields/formfields";
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import "./search.scss";
 
 class Search extends Component {

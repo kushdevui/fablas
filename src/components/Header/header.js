@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import axios from 'axios';
 
 // Styles & Images
-import "./header.scss";
+import './header.scss';
 
 class Header extends Component  {
     constructor(){
@@ -37,7 +37,7 @@ class Header extends Component  {
 
     render(){
         return(
-            <header className="static-header col-12">
+            <header className={"static-header col-12"}>
                 <NavigationBar navbarTemplate="black"/>
             </header>
         );

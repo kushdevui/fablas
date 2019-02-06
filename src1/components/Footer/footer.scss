@@ -1,0 +1,29 @@
+.footer{
+    background-color: #333333;
+    padding-top:5rem;
+    padding-bottom:5rem;
+    color:#cccccc;
+    p{
+        font-size:0.75rem;
+    }
+    span{
+        font-size:14px;
+        padding-top:10px;
+    }
+    h3{
+        color:#ffffff;
+        font-size:15px;
+    }
+    ul{
+        list-style: none;
+        margin-top:3rem;
+        padding-left:0rem;
+        display:inline-block;
+        margin-right:5rem;
+        li{
+            font-size:13px;
+            margin-top:1.2rem;
+
+        }
+    }
+}

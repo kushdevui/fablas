@@ -4,9 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import ResponsiveUtils from "../../components/Widgets/ResponsiveUtils/responsiveUtils";
 import { connect } from "react-redux";
 import { onResizeAction } from "../../redux/actions/globalActions";
-
-//importing Components 
 import Home from "../../components/Home/home";
+//importing Components 
+// import Home from "../../components/Home/home";
 import SignUp from "../../components/Signup/signup";
 
 class Layout extends Component {
@@ -30,11 +30,9 @@ class Layout extends Component {
 
     render() {
         return (
-            <div className="container-fluid ">
-                <Switch>
-                    <Route path="/" exact  component={Home}/>
-                    <Route path="/signup" exact component={SignUp}/>
-                </Switch>
+            <div className="container-fluid">
+                <Route path="/" exact  component={Home}/>
+                <Route path="/signup" exact component={SignUp}/>
             </div>
         );
     }

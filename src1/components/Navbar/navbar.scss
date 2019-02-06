@@ -1,0 +1,256 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+@import "../../global/styles/_fonts.scss";
+@import "../../global/styles/base_colors.scss";
+@import "../../global/styles/base_variables.scss";
+.dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+
+.navbar-section{
+    .site-nav{
+        
+    }
+    ul{
+        margin-left:1.5em;
+    }
+    a{
+        text-decoration:none;
+    }
+    .nav{
+        list-style:none;
+        margin-left:0;
+        z-index: 2000;
+    }
+        .nav > li,
+            .nav > li > a{
+                display:inline-block;
+               *display:inline;
+                zoom:1;
+            }
+        
+        .stacked > li{
+            display:list-item;
+        }
+            .stacked > li > a{
+                display:block;
+        }
+    
+    
+    .flyout,
+    .flyout-alt{
+        position:relative;
+    }
+        .flyout-content{
+            /* Position the flyouts off-screen. This is typically better than `display:none;`. */
+            position:absolute;
+            top:100%;
+            left:-99999px;
+            height:0;
+            overflow:hidden;
+        }
+        
+        .flyout:hover > .flyout-content{
+            left:0;
+        }
+        /* Alternative flyouts sit all the way from the left, flush top. */
+        .flyout-alt:hover > .flyout-content{
+            top:0;
+            left:100%;
+        }
+        .flyout:hover > .flyout-content,
+        .flyout-alt:hover > .flyout-content{
+            /* Give the flyouts their height back once they come into view. */
+            height:auto;
+            overflow:visible;
+        }
+    
+    .site-nav{
+        padding-top:0.80rem;
+        font-size:0.80em;
+        float:right;
+    }
+            .site-nav a {
+                line-height:1;
+                padding:1em;
+                color:#fff;
+                white-space:nowrap;
+            }
+    .site-nav .flyout:hover > a /* [1] */,
+    .site-nav .flyout-alt:hover > a /* [1] */,
+    .site-nav a:hover{
+        color:#ffffff;
+        background-color:#dc3545;
+    }
+    
+    /**
+     * Add an indicator to any flyout parents in the site nav to show there’s a flyout.
+     */
+    .site-nav .flyout-alt > a:after{
+        content:" »";
+    }
+    
+    .site-nav a,
+    .site-nav .flyout-content{
+       background-color: #ffffff;
+       
+    }
+  
+    /* The first link in the site-nav doesn’t require a border at all. */
+    .site-nav > li:first-child > a{
+        border:none;    
+    }
+    .site-nav .flyout-alt:hover > .flyout-content{
+        top:-1px;
+    }​
+
+
+
+    .dropdown-item{
+        padding:0.50rem 1.5rem;
+        font-weight: 100;
+        font-size:1rem;
+    }
+    .navbar-expand-md{
+        justify-content: space-between;
+        .navbar-nav {
+            .show>.nav-link{
+                color:#333333;
+            }
+            .dropdown-menu{
+                left:10px;
+            }
+        }
+    }
+   
+    .navbar-nav{
+        .nav-link{
+            font-weight: 600;
+            text-transform: uppercase;
+            &:hover{
+                color:$grey-light;
+            }
+            &:active {
+                color :$grey-light;
+            }
+            &:focus {
+                color: $grey-light;
+            }
+            color:$grey-light;
+        }
+    }
+    .collapse:not(.show){
+        display: block;
+    }
+    .navbar-collapse{
+        height: 100vh;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color:white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 4rem;
+        text-align:center;
+        .close{
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+            font-size: 1.2rem;
+        }
+    }
+    .show-collapse{
+        width:100%;
+    }
+    .toggle-animate{
+        transform: rotate(180deg);
+        transition-duration: 250ms;
+        transition-timing-function:ease-in-out;
+    }
+    .toggle-animate-inactive{
+        transform: rotate(0deg);
+        transition-duration: 250ms;
+        transition-timing-function:ease-in-out;
+    }
+}
+.icon-palat{
+    span{
+        margin-right:1rem;
+    }
+    .navbar-search{
+        input[type=text]{
+            border:none;
+            background-color:$error-red;
+            border-radius:$form-raidus;
+            color:$white;
+            padding:0.0625rem 0.25rem;
+            font-size:0.75rem;
+        }
+    }
+
+}
+
+
+@include media-breakpoint-up(lg){
+    .navbar-section{
+        .navbar-dark{
+            .navbar-nav{
+                .nav-item{
+                    margin-right:0.5rem;
+                    cursor: pointer;
+                }
+                font-size:0.8125rem;
+                .nav-link{
+                    font-weight: 600;
+                    &:hover{
+                        color:$grey-darker;
+                    }
+                    &:active {
+                        color:$grey-darker;
+                    }
+                    &:focus {
+                        color:$grey-darker;
+                    }
+                    color:$mid-grey;
+                }
+            }
+        }
+    .navbar-light{
+        .navbar-nav{
+            .nav-link{
+                font-weight: 600;
+               
+                &:hover{
+                    color:white;
+                }
+                &:active {
+                    color : white;
+                }
+                &:focus {
+                    color: white;
+                }
+                color: white;
+            }
+        }
+    }
+        .navbar-collapse{
+            padding-top:0;
+            width:auto;
+            position: relative;
+            background-color: transparent;
+            height: auto;
+            transition: 0s;
+        }
+    } 
+}
+
+

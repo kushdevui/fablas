@@ -13,22 +13,22 @@ const Associaton = () =>{
                 </div>
                 <div className="row text-center">
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                         <div className="col-lg-2">
-                            <img src="../../../assets/images/association-1.png"/>
+                            <img src="./assets/images/association-1.png"/>
                         </div>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 import React from 'React';
-
+import { faStar} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Carousel from "../../Widgets/Carousel/carousel";
 import "./fun-facts.scss";
 
 const FunFacts = () =>{
@@ -12,7 +14,7 @@ const FunFacts = () =>{
                         <p>WHAT HAVE WE ACHIEVED SO FAR</p>
                     </div>
                     <div className="subhead pt-4 pb-4">
-                        <img src="../../../assets/images/facts-plane.png"/>
+                        <img src="./assets/images/facts-plane.png"/>
                         <div className="row">
                             <div className="col-lg-4">
                                 <span className="d-block number">26<span className="ml-1 red">+</span></span>
@@ -36,11 +38,7 @@ const FunFacts = () =>{
                         <h3>OUR <span>TESTIMONIAL</span></h3>
                         <p>WHAT HAVE WE ACHIEVED SO FAR</p>
                     </div>
-                    <div className="caraousel">
-                        <span>LUIS GARCIA GAUCO</span>
-                        <div>“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.”</div>
-                        <span className="time">5 Mins ago, Tweeter</span>
-                    </div>
+                    <Carousel/>
                 </div>
                 <div className="col-4">
                     <div className="heading">
@@ -50,7 +48,7 @@ const FunFacts = () =>{
                     <div className="news-list mt-5">
                         <div className="row">
                             <div className="col-lg-4">
-                                <img src="../../../assets/images/news1.png" className="img-fluid"/>
+                                <img src="./assets/images/news1.png" className="img-fluid"/>
                             </div>
                             <div className="col-lg-8 item">
                                 <p>Preparing Costumers Package on The Board.</p>
@@ -61,7 +59,7 @@ const FunFacts = () =>{
                     <div className="news-list">
                         <div className="row">
                             <div className="col-lg-4">
-                                <img src="../../../assets/images/news1.png" className="img-fluid"/>
+                                <img src="./assets/images/news1.png" className="img-fluid"/>
                             </div>
                             <div className="col-lg-8 item">
                                 <p>Preparing Costumers Package on The Board.</p>
@@ -72,7 +70,7 @@ const FunFacts = () =>{
                     <div className="news-list">
                         <div className="row">
                             <div className="col-lg-4">
-                                <img src="../../../assets/images/news1.png" className="img-fluid"/>
+                                <img src="./assets/images/news1.png" className="img-fluid"/>
                             </div>
                             <div className="col-lg-8 item">
                                 <p>Preparing Costumers Package on The Board.</p>

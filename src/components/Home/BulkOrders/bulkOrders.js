@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import "./BulkOrders.scss";
+import Bounce from 'react-reveal/Bounce';
+
 class BulkOrders extends Component{
     constructor(){
         super();
@@ -7,6 +9,10 @@ class BulkOrders extends Component{
     render(){
         return(
             <div className="tile-bulk-orders p-0">
+                <Bounce top  duration={2000}>
+                    <img src="./assets/images/box1.png" className="left-box"/>
+                </Bounce>
+               
                 <div className="row text-center">
                     <div className="col-lg-12 heading">
                         <h1>GET <span>BULK ORDER</span></h1>
@@ -64,6 +70,12 @@ class BulkOrders extends Component{
                         </div>
                     </div>
                 </div>
+                <Bounce top duration={2000}>
+                    <img src="./assets/images/box1-right.png" className="right-box1"/>
+                </Bounce>
+                <Bounce top duration={3000}>
+                    <img src="./assets/images/box-right2.png" className="right-box2"/>
+                </Bounce>
             </div>
         )
     }

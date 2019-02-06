@@ -1,0 +1,24 @@
+.featured-products-section {
+  margin-top: 31rem;
+}
+
+.featured-products-section .row {
+  padding-bottom: 4rem;
+}
+
+.featured-products-section .l-item {
+  background-color: #f8f8f8;
+}
+
+.featured-products-section .l-item p {
+  font-size: 0.8125rem;
+  color: #333333;
+  font-weight: normal;
+}
+
+.featured-products-section .l-item span {
+  font-size: 0.71875rem;
+  font-weight: 500;
+  color: #4c4c4c;
+}
+/*# sourceMappingURL=featuredProducts.css.map */

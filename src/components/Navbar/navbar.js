@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 library.add(fab)
 
@@ -30,7 +30,8 @@ import {
     DropdownMenu,
     DropdownItem,
     NavLink,
-    Dropdown
+    Dropdown,
+    
     } from "reactstrap";
     
 import Logo  from "../Logo/logo" ;
@@ -74,7 +75,16 @@ class  NavigationBar extends Component {
                     <ul class="flyout-content nav stacked">
                         {item.subCategory.map(subcat=>{
                             return(
-                                <li><a>{subcat.name}</a></li>
+                                <li class="flyout-alt">
+                                    <a>{subcat.name}</a>
+                                    <ul class="flyout-content nav stacked">
+                                        {subcat.productsList.map(productItem=>{
+                                               return( <li>
+                                                    <a>{productItem.name}</a>
+                                               </li> ) 
+                                        })}
+                                    </ul>
+                                </li>
                             )        
                         })}
                     </ul>
@@ -89,10 +99,19 @@ class  NavigationBar extends Component {
                             <Logo/>
                     </NavbarBrand>
                 </div>
+           
                  <div className="navbar-section col-7">
                     <ul class="nav  site-nav">
                         <li><a>Home</a></li>
-                        <li><a>About Us</a></li>
+                        <li className="flyout">
+                            <a>About Us</a>
+                            <ul className="flyout-content nav stacked">
+                               <li><a>Director's Message</a></li>
+                               <li><a>Our Values</a></li>
+                               <li><a>Strengths</a></li>
+                               <li><a>Our Network</a></li>
+                            </ul>
+                        </li>
                         <li><a>Services</a></li>
                         <li className="flyout">
                             <a>Products</a>
@@ -114,7 +133,9 @@ class  NavigationBar extends Component {
                     <span><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></span>
+                    <span><FontAwesomeIcon icon={['fab', 'instagram']}   style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
+
                 </div>
             </div>
         );

@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,0BAA0B,CAAA;EACtB,UAAU,EAAC,KAAK;CAmBnB;;AApBD,AAGI,0BAHsB,CAGtB,IAAI,CAAA;EACA,cAAc,EAAC,IAAI;CACtB;;AALL,AAMI,0BANsB,CAMtB,OAAO,CAAA;EACH,gBAAgB,EERV,OAAO;CFmBhB;;AAlBL,AAQQ,0BARkB,CAMtB,OAAO,CAEH,CAAC,CAAA;EACG,SAAS,EAAC,SAAS;EACnB,KAAK,EEdP,OAAO;EFeL,WAAW,EAAE,MAAM;CACtB;;AAZT,AAaQ,0BAbkB,CAMtB,OAAO,CAOH,IAAI,CAAA;EACA,SAAS,EAAE,UAAU;EACrB,WAAW,EAAE,GAAG;EAChB,KAAK,EElBL,OAAO;CFmBV",
+    "sources": [
+        "featuredProducts.scss",
+        "../../../global/styles/_fonts.scss",
+        "../../../global/styles/base_colors.scss",
+        "../../../global/styles/base_variables.scss",
+        "../../../global/styles/base_colors.scss"
+    ],
+    "names": [],
+    "file": "featuredProducts.css"
+}

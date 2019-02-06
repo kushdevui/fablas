@@ -7,7 +7,7 @@ const Footer = () =>{
             <div className="container">
                 <div className="row">
                     <div className="col-lg-4 pr-5">
-                        <img src="../assets/images/logo-footer.png"/>
+                        <img src="./assets/images/logo-footer.png"/>
                         <p className="pt-5">
                         We are lorem ipsum dolor sit amet consectuerer adipiscing dolorado set diam benteha utaran gauri sidoarjo jepara dolorado we are lorem ipsum dolor sit amet consectuerer adipiscing dolorado set diam benteha utaran gauri sidoarjo jepara dolorado.
                         </p>

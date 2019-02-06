@@ -1,16 +1,26 @@
 import React, {Component} from "react";
 import RetailsSlider from "../Widgets/SlickCenterMode/centermode";
-
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faShoppingCart,faArrowCircleRight ,faArrowCircleLeft,faArrowRight ,faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./retail.scss";
 
 class Retail extends Component {
     render(){
+        const playSlider = (event) =>{
+            
+        }
         return(
             <section>
             <div className="container retail-section">
                 <div className="row">
                     <div className="col-6 pl-5 pr-5">
-                        <RetailsSlider/>
+                        <div id="cf4" className="hover">
+                            <img className="top shadow" src="./assets/images/products/RetailSlider2.png"/>
+                            <img className="bottom shadow" src="./assets/images/products/RetailSlider1.png"/>
+                            <FontAwesomeIcon className="next swap-animation-top" icon={faArrowRight } style={{color:'#999999'}} size="lg" />
+                            <FontAwesomeIcon className="prev swap-animation-bottom"  icon={faArrowLeft } style={{color:'#999999'}} size="lg" />
+                        </div>
                     </div>
                     <div className="col-6 pl-5 pr-5">
                         <h1>WE HOLD A prominent place IN THE <br/><strong>Indian Traditional Retail, Modern Trade Export Markets</strong></h1>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC,EAAE,CAAC;EACP,OAAO,EAAE,GAAG;EACZ,UAAU,EAAE,cAAc;CAC7B;;AACD,AAAA,OAAO,CAAC,aAAa,CAAC,EAAE,CAAA;EACpB,SAAS,EAAE,WAAW;CACzB",
+    "sources": [
+        "center-mode.scss"
+    ],
+    "names": [],
+    "file": "center-mode.css"
+}

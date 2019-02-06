@@ -1,0 +1,31 @@
+.signup-landing-section {
+  padding-top: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.signup-landing-section p {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.signup-landing-section h3 {
+  font-size: 1rem;
+}
+
+.signup-landing-section .facbook-login-btn {
+  background: #263a63 !important;
+  color: #fff !important;
+}
+
+.signup-landing-section .email-login {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.signup-landing-section .btn-group, .signup-landing-section .btn-group-vertical {
+  margin: 0.5rem 0;
+  display: block !important;
+}
+/*# sourceMappingURL=signup.css.map */

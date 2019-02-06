@@ -1,0 +1,17 @@
+.static-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.header {
+  padding: 1rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header h2 {
+  color: #fff;
+  padding: 0.5rem 0;
+}
+/*# sourceMappingURL=header.css.map */

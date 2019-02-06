@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "base_variables.scss",
+        "base_colors.scss"
+    ],
+    "names": [],
+    "file": "base_variables.css"
+}

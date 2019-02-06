@@ -1,0 +1,17 @@
+.tile-association {
+  background-color: #f6f6f6;
+  padding-bottom: 4rem;
+}
+
+.tile-association h1 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-size: 1.563rem;
+  color: #333333;
+  font-weight: 300;
+}
+
+.tile-association h1 span {
+  font-weight: bold;
+}
+/*# sourceMappingURL=association.css.map */

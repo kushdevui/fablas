@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,gBAAgB,CAAA;EACZ,gBAAgB,ECCV,OAAO;CDAhB",
+    "sources": [
+        "products.scss",
+        "../../global/styles/base_colors.scss",
+        "../../global/styles/base_variables.scss",
+        "../../global/styles/base_colors.scss"
+    ],
+    "names": [],
+    "file": "products.css"
+}

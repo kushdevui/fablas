@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+@import "./global/styles/_fonts.scss";
+@import "./global/styles/base_colors.scss";
+@import "./global/styles/base_variables.scss";
+
+
+
+body{
+    font-family: $font-stack;
+    color:$mid-grey;
+}
+.tooltip {
+    left:3rem;
+    .tooltip-inner{
+        background-color: white;
+        text-align: left;
+            p{
+            font-size:1rem;
+            color:#4e4e4e;
+            span{
+                font-weight: bold;
+            }
+          }
+          div{
+            font-size: 13px;
+            color:#6666;
+            font-weight: 600;
+          }
+          .arrow{
+            &:before{
+                border-color:#6666;
+                border-left-color:#6666;
+            }
+          }
+    }
+}
+.inputtext{
+        box-shadow:$box-shadow !important;
+        .form-icons {
+            position: absolute;
+            right: 0.5rem;
+        }
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: rgb(72, 72, 72) !important;
+            opacity: 1; /* Firefox */
+        }
+       
+    input[type=text]{
+            border-radius: $form-raidus;
+            font-weight: 600 !important;
+            font-size: 0.875rem !important;
+            line-height: 1.125rem !important;
+            font-family: $font-stack;
+            margin: 0px !important;
+    }
+}
+input[type=radio] {
+    appearance: none;
+    &:focus ~ label{
+       border: $border-rgb-grey;
+        color:$white;
+    }
+    &:checked ~ label {
+        background-color:$yellow;
+        color:$white;
+    }
+}
+.radio{
+    display: inline-block !important;
+    font-family: $font-stack;
+    label{
+        cursor: pointer;
+        border-width: 1px !important;
+        border-style: solid !important;
+        border-color: rgba(0, 0, 0, 0.16) !important;
+        border-radius: 0.1875rem !important;
+        padding: 0.75rem 1rem !important;
+        font-weight: 600 !important;
+        font-size: 0.875rem !important;
+        line-height: 1.125rem !important;
+    }
+}
+.react-datepicker-popper{
+    .react-datepicker{
+       font-family: $font-stack !important;
+        font-size: 0.75rem;
+       border:$border-rgb-grey;
+        button{
+            margin-top:1rem;
+        }
+    }
+    .react-datepicker__header{
+        background: transparent;
+        .react-datepicker__current-month{
+            font-weight: 300;
+            padding:1rem 0;
+        }
+    }
+
+}
+.modal-content{
+    .modal-header{
+        border:0 !important;
+    }
+}

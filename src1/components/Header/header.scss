@@ -1,0 +1,32 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+@import "../../global/styles/_fonts.scss";
+@import "../../global/styles/base_colors.scss";
+@import "../../global/styles/base_variables.scss";
+
+.static-header {
+    padding:1rem;
+    border-bottom: $border-rgb-grey;
+}
+.header{
+    padding:1rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    h2{
+        color:$white;
+        padding:0.5rem 0;
+    }
+}
+
+@include media-breakpoint-up(lg) { 
+    .header{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        min-width: 100%;
+        min-height: 100%;
+        height:100vh;
+    }
+}
