@@ -12,7 +12,7 @@ import path from 'path';
 import Routes from './fetch_routes';
 import errorHandler from './bone_helpers/bone.error_handler';
 import jwt from './bone_helpers/bone.jwt';
-const DEV_LOCALHOST_PORT = 8080;
+const DEV_LOCALHOST_PORT = process.env.PORT || 8080;
 
 
 // Express app
