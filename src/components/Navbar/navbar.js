@@ -104,7 +104,7 @@ class  NavigationBar extends Component {
                     <ul class="nav  site-nav">
                         <li><a>Home</a></li>
                         <li className="flyout">
-                            <a>About Us</a>
+                            <a href="#/About">About Us</a>
                             <ul className="flyout-content nav stacked">
                                <li><a>Director's Message</a></li>
                                <li><a>Our Values</a></li>
@@ -125,7 +125,7 @@ class  NavigationBar extends Component {
                         <li><a>Contact Us</a></li>
                     </ul>​
                 </div>
-                <div className="col-3 pt-3 icon-palat text-right">
+                <div className="col-3 pt-3 icon-palat">
                     <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="sm" /></span>
                     <span className="navbar-search">
                         <input type="text" name="search-box" value="search"/>

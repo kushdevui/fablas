@@ -5,6 +5,7 @@ import ResponsiveUtils from "../../components/Widgets/ResponsiveUtils/responsive
 import { connect } from "react-redux";
 import { onResizeAction } from "../../redux/actions/globalActions";
 import Home from "../../components/Home/home";
+import About from "../../components/AboutUs/Aboutus"
 //importing Components 
 // import Home from "../../components/Home/home";
 import SignUp from "../../components/Signup/signup";
@@ -32,7 +33,7 @@ class Layout extends Component {
         return (
             <div className="container-fluid">
                 <Route path="/" exact  component={Home}/>
-                <Route path="/signup" exact component={SignUp}/>
+                <Route path="/About" exact component={About}/>
             </div>
         );
     }

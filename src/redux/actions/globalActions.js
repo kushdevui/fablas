@@ -11,7 +11,7 @@ import axios from 'axios';
 export const addToDo  = () =>{
     return dispatch => {
         axios
-        .get("http://localhost:8080/products/getProducts", {
+        .get("https://fablasnode.herokuapp.com/products/getProducts", {
         })
         .then(res => {
            //console.log(res.data);

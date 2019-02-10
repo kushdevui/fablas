@@ -4,7 +4,7 @@ import './association.scss';
 
 const Associaton = () =>{
     return(
-        <div className="tile-association ">
+        <div className="tile-association row">
             <div className="container">
                 <div className="row text-center">
                     <div className="col-lg-12">

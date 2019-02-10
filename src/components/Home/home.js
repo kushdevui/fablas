@@ -28,12 +28,8 @@ import "./home.scss";
 const Home = () =>{
     return(
         <div>
-            
                 <Header/>
-            
-            <div className="row">
                 <Hero/>
-            </div>
             <Products/>
             <CenterMode/>
             <DirectorMessage/>

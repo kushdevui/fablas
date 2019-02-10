@@ -1,0 +1,27 @@
+.service-item-tile{
+    border:1px solid #f4f4f4;
+    svg{
+        width:80px;
+        height: 80px;
+    }
+    div{
+        font-weight: bold;
+        color:#000000;
+        margin-top:3rem;
+    }
+    p{
+        color:#7a7c82;
+        margin-top:0.25rem;
+        font-size: 13px;
+    }
+    &:hover{
+       background-color: #282676;
+       div{
+        color:#ffffff;
+       }
+       .icon{
+           fill:#ffffff;
+       }
+       
+    }
+}

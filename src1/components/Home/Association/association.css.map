@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACb,gBAAgB,EAAC,OAAO;EACxB,cAAc,EAAC,IAAI;CAWtB;;AAbD,AAGI,iBAHa,CAGb,EAAE,CAAA;EACE,WAAW,EAAC,IAAI;EAChB,cAAc,EAAC,IAAI;EACnB,SAAS,EAAC,QAAQ;EAClB,KAAK,EAAC,OAAO;EACb,WAAW,EAAE,GAAG;CAInB;;AAZL,AASQ,iBATS,CAGb,EAAE,CAME,IAAI,CAAA;EACA,WAAW,EAAE,IAAI;CACpB",
-    "sources": [
-        "association.scss"
-    ],
-    "names": [],
-    "file": "association.css"
-}

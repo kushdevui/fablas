@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,sBAAsB,CAAC;EACnB,IAAI,EAAE,KAAK;CACd;;AACD,AAAA,sBAAsB,CAAC;EACnB,KAAK,EAAE,KAAK;CACf;;AAED,AAAA,oBAAoB,CAAA;EAChB,MAAM,EAAC,KAAK;CACf;;AACD,AAAA,oBAAoB,CAAC,EAAE,CAAA;EACnB,gBAAgB,EAAC,OAAO;CAE3B;;AACD,AACI,oBADgB,CAChB,OAAO,CAAA;EACH,gBAAgB,EAAC,OAAO;CAC3B",
-    "sources": [
-        "carousel.scss"
-    ],
-    "names": [],
-    "file": "carousel.css"
-}

@@ -85,7 +85,7 @@
 .navbar-section .site-nav a {
   line-height: 1;
   padding: 1em;
-  color: #fff;
+  color: #000000;
   white-space: nowrap;
 }
 
@@ -201,7 +201,7 @@
 }
 
 .icon-palat span {
-  margin-right: 1rem;
+  margin-right: 0.6rem;
 }
 
 .icon-palat .navbar-search input[type=text] {

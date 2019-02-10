@@ -8,10 +8,9 @@ class BulkOrders extends Component{
     }
     render(){
         return(
-            <div className="tile-bulk-orders p-0">
-                <Bounce top  duration={2000}>
-                    <img src="./assets/images/box1.png" className="left-box"/>
-                </Bounce>
+            <div className="tile-bulk-orders col-lg-12">
+                
+               
                
                 <div className="row text-center">
                     <div className="col-lg-12 heading">
@@ -20,6 +19,11 @@ class BulkOrders extends Component{
                     </div>
                 </div>
                 <div className="row form justify-content-center">
+                    <div className="col-lg-3">
+                        <Bounce top  duration={2000}>
+                            <img src="./assets/images/box1.png" className="img-fluid left-box"/>
+                        </Bounce>
+                    </div>
                     <div className="col-lg-6">
                         <div className="row form-group">
                             <div className=" col-lg-6">
@@ -69,13 +73,16 @@ class BulkOrders extends Component{
                             </div>
                         </div>
                     </div>
+                    <div className="col-lg-3">
+                        <Bounce top duration={2000}>
+                            <img src="./assets/images/box1-right.png" className="right-box1 img-fluid"/>
+                        </Bounce>
+                        <Bounce top duration={3000}>
+                            <img src="./assets/images/box-right2.png" className="right-box2 img-fluid"/>
+                        </Bounce>
+                    </div>
                 </div>
-                <Bounce top duration={2000}>
-                    <img src="./assets/images/box1-right.png" className="right-box1"/>
-                </Bounce>
-                <Bounce top duration={3000}>
-                    <img src="./assets/images/box-right2.png" className="right-box2"/>
-                </Bounce>
+               
             </div>
         )
     }

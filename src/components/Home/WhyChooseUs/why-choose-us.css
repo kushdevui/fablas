@@ -54,8 +54,8 @@
   /* [2] Set-up the dimensions and spacing */
   width: 300px;
   height: 300px;
-  top: 7rem;
-  left: 13.5rem;
+  top: 3rem;
+  left: 3.9rem;
   /* [3] Prepare the animation effects */
   -webkit-transition: -webkit-transform 200ms linear;
   transition: -webkit-transform 200ms linear;
@@ -104,8 +104,8 @@
 
 .tile-choose-us .features-section .circle-container {
   position: relative;
-  width: 26em;
-  height: 26em;
+  width: 416px;
+  height: 416px;
   padding: 0;
   border-radius: 50%;
   margin: 3em auto 0;
@@ -127,53 +127,53 @@
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(1) {
-  -webkit-transform: rotate(170deg) translate(13em) rotate(-170deg);
-          transform: rotate(170deg) translate(13em) rotate(-170deg);
+  -webkit-transform: rotate(170deg) translate(208px) rotate(-170deg);
+          transform: rotate(170deg) translate(208px) rotate(-170deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(2) {
-  -webkit-transform: rotate(193deg) translate(13em) rotate(-193deg);
-          transform: rotate(193deg) translate(13em) rotate(-193deg);
+  -webkit-transform: rotate(193deg) translate(208px) rotate(-193deg);
+          transform: rotate(193deg) translate(208px) rotate(-193deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(3) {
-  -webkit-transform: rotate(216deg) translate(13em) rotate(-216deg);
-          transform: rotate(216deg) translate(13em) rotate(-216deg);
+  -webkit-transform: rotate(216deg) translate(208px) rotate(-216deg);
+          transform: rotate(216deg) translate(208px) rotate(-216deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(4) {
-  -webkit-transform: rotate(239deg) translate(13em) rotate(-239deg);
-          transform: rotate(239deg) translate(13em) rotate(-239deg);
+  -webkit-transform: rotate(239deg) translate(208px) rotate(-239deg);
+          transform: rotate(239deg) translate(208px) rotate(-239deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(5) {
-  -webkit-transform: rotate(262deg) translate(13em) rotate(-262deg);
-          transform: rotate(262deg) translate(13em) rotate(-262deg);
+  -webkit-transform: rotate(262deg) translate(208px) rotate(-262deg);
+          transform: rotate(262deg) translate(208px) rotate(-262deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(6) {
-  -webkit-transform: rotate(285deg) translate(13em) rotate(-285deg);
-          transform: rotate(285deg) translate(13em) rotate(-285deg);
+  -webkit-transform: rotate(285deg) translate(208px) rotate(-285deg);
+          transform: rotate(285deg) translate(208px) rotate(-285deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(7) {
-  -webkit-transform: rotate(308deg) translate(13em) rotate(-308deg);
-          transform: rotate(308deg) translate(13em) rotate(-308deg);
+  -webkit-transform: rotate(308deg) translate(208px) rotate(-308deg);
+          transform: rotate(308deg) translate(208px) rotate(-308deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(8) {
-  -webkit-transform: rotate(331deg) translate(13em) rotate(-331deg);
-          transform: rotate(331deg) translate(13em) rotate(-331deg);
+  -webkit-transform: rotate(331deg) translate(208px) rotate(-331deg);
+          transform: rotate(331deg) translate(208px) rotate(-331deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(9) {
-  -webkit-transform: rotate(354deg) translate(13em) rotate(-354deg);
-          transform: rotate(354deg) translate(13em) rotate(-354deg);
+  -webkit-transform: rotate(354deg) translate(208px) rotate(-354deg);
+          transform: rotate(354deg) translate(208px) rotate(-354deg);
 }
 
 .tile-choose-us .features-section .circle-container > * > *:nth-of-type(10) {
-  -webkit-transform: rotate(377deg) translate(13em) rotate(-377deg);
-          transform: rotate(377deg) translate(13em) rotate(-377deg);
+  -webkit-transform: rotate(377deg) translate(208px) rotate(-377deg);
+          transform: rotate(377deg) translate(208px) rotate(-377deg);
 }
 
 .tile-choose-us .features-section .circle-container .content {
@@ -187,7 +187,7 @@
 
 .tile-choose-us .features-section .circle-container .content p {
   margin-bottom: 0rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #4e4e4e;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .tile-choose-us .features-section .circle-container .content div {
-  font-size: 13px;
+  font-size: 10px;
   color: #6666;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -291,7 +291,7 @@
 
 .tile-choose-us .features-section .circle-container .content4 p {
   margin-bottom: 0rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #4e4e4e;
 }
 

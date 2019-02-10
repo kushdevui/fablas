@@ -73,8 +73,8 @@
       /* [2] Set-up the dimensions and spacing */
       width: 300px;
       height: 300px;
-      top: 7rem;
-      left: 13.5rem;
+      top: 3rem;
+      left: 3.9rem;
      
       /* [3] Prepare the animation effects */
       transition: transform 200ms linear;
@@ -125,7 +125,7 @@
     }
   .circle-container {
     
-    @include on-circle($item-count: 10, $circle-size: 26em, $item-size: 3em); 
+    @include on-circle($item-count: 10, $circle-size: 416px, $item-size: 3em); 
     margin: 3em auto 0;
     border: solid 2px #ccc;
     .content{
@@ -133,18 +133,18 @@
       right: 5rem;
       position: absolute;
       text-align: left;
-      width: 361px;
+      width: 312px;
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -155,18 +155,18 @@
       right: 5rem;
       position: absolute;
       text-align: left;
-      width: 361px;
+      width: 319px;
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -181,14 +181,14 @@
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -203,14 +203,14 @@
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -225,14 +225,14 @@
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -243,18 +243,18 @@
       left: 17rem;
       position: absolute;
       text-align: left;
-      width: 361px;
+      width: 299px;
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -269,14 +269,14 @@
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -291,36 +291,36 @@
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
     }
     }
     .content8{
-      top: 0rem;
-      left: 6rem;
+      top: -1rem;
+      left: 4rem;
       position: absolute;
       text-align: left;
-      width: 361px;
-      border-bottom:1px solid #cccccc;
+      width: 329px;
+      border-bottom: 1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;
@@ -332,18 +332,18 @@
   
       position: absolute;
       text-align: left;
-      width: 361px;
+      width: 343px;
       border-bottom:1px solid #cccccc;
       p{
         margin-bottom:0rem;
-        font-size:1rem;
+        font-size:0.8rem;
         color:#4e4e4e;
         span{
             font-weight: bold;
         }
     }
     div{
-      font-size: 13px;
+      font-size: 12px;
       color:#6666;
       font-weight: 600;
       margin-bottom:1rem;

@@ -1,8 +1,8 @@
 import React from "react";
 import Products from "../../Products/products";
 
-// import "./featuredProducts.scss";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "./featuredProducts.scss";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 const FeaturedProducts = (props) =>{
    const ShowProducts = props.productList.map(item=>{
