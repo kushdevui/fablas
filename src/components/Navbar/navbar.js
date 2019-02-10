@@ -102,7 +102,7 @@ class  NavigationBar extends Component {
            
                  <div className="navbar-section col-7">
                     <ul class="nav  site-nav">
-                        <li><a>Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li className="flyout">
                             <a href="#/About">About Us</a>
                             <ul className="flyout-content nav stacked">
@@ -112,17 +112,62 @@ class  NavigationBar extends Component {
                                <li><a>Our Network</a></li>
                             </ul>
                         </li>
-                        <li><a>Services</a></li>
+                        <li><a href="#/Services">Services</a></li>
                         <li className="flyout">
                             <a>Products</a>
-                            <ul class="flyout-content nav stacked">
+                            <div className="products-dropdown">
+                                <div className="row">
+                                    <div className="col-lg-4">
+                                        <ul>
+                                            <li>Home Care</li>
+                                            <li>Personal Care</li>
+                                            <li>Industrial care</li>
+                                            <li>B2B & Bulk</li>
+                                            <li>Baby care</li>
+                                            <li>Professional Care</li>
+                                        </ul>
+                                    </div>
+                                    <div className="col-lg-8 sub-cat">
+                                        <div className="row mt-3">
+                                            <p>Sub Cat</p>
+                                            <ul>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                            </ul>
+                                        </div>
+                                        <div className="row mt-3">
+                                            <p>Sub Cat</p>
+                                            <ul>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                                <li>Product1</li>
+                                            </ul>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <ul class="flyout-content nav stacked">
                                {CagegoryList}
-                            </ul>
+                            </ul> */}
                         </li>
                         <li><a>Shop</a></li>
                         <li><a>News</a></li>
-                        <li><a>Career</a></li>
-                        <li><a>Contact Us</a></li>
+                        <li><a href="#/Career">Career</a></li>
+                        <li><a href="#/Contact">Contact Us</a></li>
                     </ul>​
                 </div>
                 <div className="col-3 pt-3 icon-palat">

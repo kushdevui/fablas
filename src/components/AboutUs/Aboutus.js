@@ -7,6 +7,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import InnerHeader from "../../container/InnerHeader/innerHeader";
 import SectionHeader from "../../container/SectionHeading/sectionHeading"
 import Footer from "../Footer/footer";
+import EnquiryForm from "../../container/EnquiryForm/enquiryForm";
+import ContactInformation from "../../container/ContactInformation/contactInformation";
 import "./about-us.scss";
 
 const AboutUs = () =>{
@@ -112,49 +114,10 @@ const AboutUs = () =>{
                         <GoogleMap/>
                     </div>
                     <div className="col-lg-4 pt-4">
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Your Name"/>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Your Email"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="form-group">
-                                    <textarea className="form-control" placeholder="Message"></textarea>
-                                </div>
-                                <button className="btn btn-danger form-control ">Send Your Message</button>
-                            </div>
-                        </div>
+                        <EnquiryForm/>
                     </div>
-                    <div className="col-lg-4 pl-5 pt-4 contact-information">
-                            <h5>
-                                Contact Information :
-                            </h5>
-                            <div className="contact-item d-flex">
-                                <div className="p-2"><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="lg" /></div>
-                                <div className="p-2">
-                                    <span>2151/3D, New Patel Nagar, Delhi- 08</span>
-                                    <span> +91-11-25891350,  25892350 </span>
-                                    <span> info@fablas.com</span>
-                                </div>
-                            </div>
-                            <h5>
-                               Business Hours :
-                            </h5>
-                            <div className="contact-item d-flex">
-                                <div className="p-2"><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="lg" /></div>
-                                <div className="p-2">
-                                    <span>Monday – Saturday</span>
-                                    <span>9:30 am to 6:30 pm</span>
-                                </div>
-                            </div>
+                    <div className="col-lg-4 pl-5 pt-4">
+                        <ContactInformation/>
                     </div>
                 </div>
             </div>

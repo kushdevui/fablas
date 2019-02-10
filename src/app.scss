@@ -3,11 +3,12 @@
 @import "./global/styles/base_colors.scss";
 @import "./global/styles/base_variables.scss";
 
-
-
 body{
     font-family: $font-stack;
     color:$mid-grey;
+}
+.grey-section{
+    
 }
 .tooltip {
     left:3rem;

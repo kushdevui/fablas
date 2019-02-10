@@ -1,0 +1,81 @@
+.career-tile{
+    .career-category{
+        position: relative;
+        margin-top:5rem;
+        background-color:#f4f4f4;
+        &:hover{
+            background-color:#282676;
+            transform: scale(1.1);
+            z-index: 2000;
+            transition: all .2s ease-in-out;
+            h3,p{
+                color:#ffffff;
+            }
+            svg{
+                background-color: #282676;
+                border-color:white;
+                .icon{
+                    fill:#ffffff;
+                }
+            }
+        }
+        svg{
+            background-color:#f4f4f4;
+            position: absolute;
+            left:100px;
+            width: 20%;
+            left:40%;
+            top:-40px;
+            border:2px solid #999999;
+            padding:1rem;
+            border-radius: 100%;
+            
+        }
+        h3{
+            padding-top:2rem;
+            color:#282676;
+            font-size:1.5rem;
+        }
+        p{
+            padding:1rem 2rem 0rem 2rem;
+            font-style: italic;
+            font-size:12px;
+            color:#282676;
+        }
+    }
+    .carrer-item{
+        padding:none;
+        margin-top:3rem;
+        border:1px solid #f4f4f4;
+        p{
+            font-size:14px;
+            color:#000000;
+        }
+        button{
+            border-top:1px solid #f4f4f4;
+        }
+    }
+    .contact-form{
+        background-color:#f4f4f4;
+        .head{
+            padding:2rem 2rem;
+            background-color:#282676;
+            color:white;
+            h4{
+                font-size:1rem;
+                font-weight: bold;
+            }
+        }
+        .form-section{
+            padding:1rem 3rem;
+            .form-group{
+                padding:0.25rem;
+                .form-control{
+                    font-size:0.70rem;
+                    color:#cccccc;
+                    padding:0.5rem 1rem;
+                }
+            }
+        }
+    }
+}
