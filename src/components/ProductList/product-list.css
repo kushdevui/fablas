@@ -8,4 +8,19 @@
   font-size: 0.80rem;
   color: #555555;
 }
+
+.filters .submenu {
+  overflow: hidden;
+  height: 0;
+}
+
+.filters .expand {
+  height: auto;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.filters .category-item {
+  cursor: pointer;
+}
 /*# sourceMappingURL=product-list.css.map */

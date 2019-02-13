@@ -8,4 +8,16 @@
             color:#555555;
         }
     }
+    .submenu {
+        overflow: hidden;
+        height: 0;
+    }
+    .expand{
+        height:auto;
+        transition: all .5s ease-in-out;
+    }
+    .category-item{
+        cursor:pointer;
+    }
+    
 }

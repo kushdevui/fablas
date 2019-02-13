@@ -10,11 +10,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+  } from 'react-router-dom'
 // import { Button } from 'react-bootstrap';
 
 library.add(fab)
-
-
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -46,6 +49,7 @@ class  NavigationBar extends Component {
     constructor(props){
         super(props);
         this.props = props;
+
         this.toggle = this.toggle.bind(this);
         this.getProductByCat = this.getProductByCat.bind(this);
 
@@ -54,6 +58,7 @@ class  NavigationBar extends Component {
             subMenu: []
         };
     }
+    
 
     componentDidMount(){
         this.props.onAddTodo();
@@ -101,7 +106,7 @@ class  NavigationBar extends Component {
         const CagegoryList = this.props.productList.map(item=>{
             return(
                 <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
-                    {item.categoryName}
+                   {item.categoryName}
                     <span class="float-right pr-4">
                         <FontAwesomeIcon icon={faArrowRight } style={{color:'red'}} size="sm" />
                     </span>
@@ -143,7 +148,7 @@ class  NavigationBar extends Component {
                                         {
                                            return( <div className="row mt-3">
                                                 <div className="col-lg-12">
-                                                    <p>{item.name}</p>
+                                               <Link to={`/Products:${item.name}`}>{item.name}</Link>
                                                     <ul>
                                                         {item.productsList.map(productItem=>{
                                                             return(

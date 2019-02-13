@@ -247,9 +247,10 @@
   color: white;
 }
 
-.products-dropdown .sub-cat p {
+.products-dropdown .sub-cat a {
   font-weight: bold;
   padding-bottom: 0rem;
+  padding-left: 0rem;
 }
 
 .products-dropdown .sub-cat ul:last-of-type {
