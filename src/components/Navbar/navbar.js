@@ -148,7 +148,7 @@ class  NavigationBar extends Component {
                                         {
                                            return( <div className="row mt-3">
                                                 <div className="col-lg-12">
-                                               <Link to={`/Products:${item.name}`}>{item.name}</Link>
+                                               <Link to={`/Products:${item.id}`} >{item.name}</Link>
                                                     <ul>
                                                         {item.productsList.map(productItem=>{
                                                             return(
@@ -156,9 +156,7 @@ class  NavigationBar extends Component {
                                                             )
                                                         })}
                                                     </ul>
-
                                                 </div>
-                                                
                                             </div>)
                                         })}
                                         </div>

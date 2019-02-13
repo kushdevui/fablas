@@ -21,7 +21,7 @@ class Routes extends Component {
                 <Route path="/Career" exact component={Career}/>
                 <Route path="/Contact" exact component={ContactUs}/>
                 <Route path="/Shop" exact component={Shop}/>
-                <Route name="products" path="/Products:catName" exact component={ProductsList}/>
+                <Route name="products" path="/Products:catId" exact component={ProductsList}/>
             </div>
         );
     }

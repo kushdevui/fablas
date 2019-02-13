@@ -93,13 +93,6 @@
   white-space: nowrap;
 }
 
-.navbar-section .site-nav .flyout:hover > a,
-.navbar-section .site-nav .flyout-alt:hover > a,
-.navbar-section .site-nav a:hover {
-  color: #ffffff;
-  background-color: #dc3545;
-}
-
 .navbar-section .site-nav .flyout-alt > a:after {
   content: " »";
 }
@@ -239,6 +232,7 @@
   font-size: 0.80rem;
   padding-bottom: 0.50rem;
   padding-top: 0.50rem;
+  padding-left: 0.50rem;
   cursor: pointer;
 }
 

@@ -4,7 +4,6 @@
 }
 
 .filters ul li {
-  margin-bottom: 0.80rem;
   font-size: 0.80rem;
   color: #555555;
 }
@@ -14,10 +13,18 @@
   height: 0;
 }
 
+.filters .submenu .second-menu-item {
+  color: #dc3545;
+  font-size: 0.80rem;
+}
+
 .filters .expand {
-  height: auto;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
+}
+
+.filters .expand .submenu {
+  height: auto;
 }
 
 .filters .category-item {
