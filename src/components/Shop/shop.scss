@@ -1,0 +1,108 @@
+.product-offers{
+    justify-content: center;
+    background-color:#f7f7f7;
+    padding-top:150px;
+    padding-bottom:150px;
+    .sale{
+        display:flex;
+        justify-content: center;
+        
+        .heading{
+            font-weight: bold;
+            font-size:4rem;
+            color:#081778
+        }
+       .offer{
+            color:#000000;
+            padding-left:2rem;
+           .discount{
+               font-size:2.5rem;
+           }
+           .off{
+               font-weight: bold;
+               font-size:3rem;
+           }
+           .shop{
+               font-size:0.80rem;
+               font-weight: bold;
+               text-decoration: underline;
+               text-transform: uppercase;
+           }
+       
+            
+       }
+    }
+    
+}
+.product-offers2{
+    background-color:#dcdadb;
+    padding-top:50px;
+    padding-bottom:120px;
+    padding-left:2rem;
+    h1{
+        font-size:1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color:#000;
+    }
+}
+.product-offers3{
+    background-color:#dcdadb;
+    padding-top:50px;
+    padding-bottom:50px;
+    padding-left:2rem;
+    margin-top:1rem;
+    justify-content: center;
+    span{
+        font-size:12px;
+        font-style: italic;
+        color:white;
+    }
+    h1{
+        font-size:1rem;
+        margin-top: 0.5rem;
+        color:white;
+        font-weight: bold;
+    }
+}
+
+.darker-grey{
+    background-color:#b8b5b8;
+    h1{
+        padding-left:2rem;
+        font-size:2rem;
+        font-weight: bold;
+    }
+    button{
+        background-color:#081878;
+        border:none;
+    }
+}
+.other-grey{
+    background-color:#f5f2f9;
+    h1{
+        padding-left:1rem;
+        font-size:2rem;
+        font-weight: bold;
+    }
+    button{
+        background-color:#081878;
+        border:none;
+    }
+}
+.best-selling-products{
+    ul{
+        display: inline;
+        list-style: none;
+      
+        li{
+            display:inline;
+            padding-right:0.5rem;
+            padding-left:0.50rem;
+            border-right:1px solid #081878;
+            &:last-child{
+                border:none;
+            }
+        }
+    }
+}

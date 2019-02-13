@@ -4,7 +4,7 @@
 
 // Dependencies
 import React, { Component } from "react";
-import { faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart,faArrowRight  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
@@ -47,51 +47,67 @@ class  NavigationBar extends Component {
         super(props);
         this.props = props;
         this.toggle = this.toggle.bind(this);
+        this.getProductByCat = this.getProductByCat.bind(this);
 
         this.state={
             isOpen:false,
-            isActive:false
+            subMenu: []
         };
     }
 
     componentDidMount(){
         this.props.onAddTodo();
-       
+
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        axios.post('https://fablasnode.herokuapp.com/products/getSubcategory',
+        {
+            "cat_name": "Home Care"
+        },
+        {"headers": headers}
+        ).then(res=>{
+            this.setState({
+                subMenu:res.data
+            })
+        })
+
     }
 
-    toggle(){
+    toggle(event){
+        event.preventDefault(); 
         this.setState({
-            isOpen: !this.state.isOpen,
-            isActive: !this.state.isActive
+            isOpen: !this.state.isOpen
         });
+    }
+
+    getProductByCat(event){
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        axios.post('https://fablasnode.herokuapp.com/products/getSubcategory',
+        {
+            "cat_name": event.target.dataset.id
+        },
+        {"headers": headers}
+        ).then(res=>{
+            this.setState({
+                subMenu:res.data
+            })
+        })
     }
 
     render(){
-        //console.log(this.props.productList);
         const CagegoryList = this.props.productList.map(item=>{
             return(
-                <li class="flyout-alt">
-                    <a>{item.categoryName}</a>
-                    <ul class="flyout-content nav stacked">
-                        {item.subCategory.map(subcat=>{
-                            return(
-                                <li class="flyout-alt">
-                                    <a>{subcat.name}</a>
-                                    <ul class="flyout-content nav stacked">
-                                        {subcat.productsList.map(productItem=>{
-                                               return( <li>
-                                                    <a>{productItem.name}</a>
-                                               </li> ) 
-                                        })}
-                                    </ul>
-                                </li>
-                            )        
-                        })}
-                    </ul>
+                <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
+                    {item.categoryName}
+                    <span class="float-right pr-4">
+                        <FontAwesomeIcon icon={faArrowRight } style={{color:'red'}} size="sm" />
+                    </span>
                 </li>
             )
         });
-        //console.log(CagegoryList);
         return(
             <div className="row">
                 <div className="col-2">
@@ -114,55 +130,36 @@ class  NavigationBar extends Component {
                         </li>
                         <li><a href="#/Services">Services</a></li>
                         <li className="flyout">
-                            <a>Products</a>
-                            <div className="products-dropdown">
+                            <a href="#" onClick={this.toggle}>Products</a>
+                            {this.state.isOpen ?   <div className="products-dropdown">
                                 <div className="row">
                                     <div className="col-lg-4">
                                         <ul>
-                                            <li>Home Care</li>
-                                            <li>Personal Care</li>
-                                            <li>Industrial care</li>
-                                            <li>B2B & Bulk</li>
-                                            <li>Baby care</li>
-                                            <li>Professional Care</li>
+                                           {CagegoryList}
                                         </ul>
                                     </div>
                                     <div className="col-lg-8 sub-cat">
-                                        <div className="row mt-3">
-                                            <p>Sub Cat</p>
-                                            <ul>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                            </ul>
+                                        {this.state.subMenu.map(item=>
+                                        {
+                                           return( <div className="row mt-3">
+                                                <div className="col-lg-12">
+                                                    <p>{item.name}</p>
+                                                    <ul>
+                                                        {item.productsList.map(productItem=>{
+                                                            return(
+                                                                <li>{productItem.name}</li>
+                                                            )
+                                                        })}
+                                                    </ul>
+
+                                                </div>
+                                                
+                                            </div>)
+                                        })}
                                         </div>
-                                        <div className="row mt-3">
-                                            <p>Sub Cat</p>
-                                            <ul>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                                <li>Product1</li>
-                                            </ul>
-                                        </div>
-                                       
                                     </div>
                                 </div>
-                            </div>
-                            {/* <ul class="flyout-content nav stacked">
-                               {CagegoryList}
-                            </ul> */}
+                            : ""}
                         </li>
                         <li><a>Shop</a></li>
                         <li><a>News</a></li>

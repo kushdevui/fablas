@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.is-hidden {
+  display: none;
+}
+
 .dropdown-submenu {
   position: relative;
 }
@@ -211,5 +215,62 @@
   color: #fff;
   padding: 0.0625rem 0.25rem;
   font-size: 0.75rem;
+}
+
+.products-dropdown {
+  padding: 1rem;
+  position: absolute;
+  border: 1px solid #f4f4f4;
+  z-index: 1000;
+  left: -100px;
+  background-color: white;
+  width: 700px;
+  margin-top: 1rem;
+}
+
+.products-dropdown ul {
+  list-style: none;
+  margin-left: 0rem;
+  padding-left: 0rem;
+  border-right: 1px solid #f4f4f4;
+}
+
+.products-dropdown ul li {
+  font-size: 0.80rem;
+  padding-bottom: 0.50rem;
+  padding-top: 0.50rem;
+  cursor: pointer;
+}
+
+.products-dropdown ul li:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.products-dropdown .sub-cat p {
+  font-weight: bold;
+  padding-bottom: 0rem;
+}
+
+.products-dropdown .sub-cat ul:last-of-type {
+  border: none;
+}
+
+.products-dropdown .sub-cat ul {
+  border-bottom: 1px solid #f4f4f4;
+  padding-left: 0rem;
+  padding-bottom: 1rem;
+  list-style: none;
+}
+
+.products-dropdown .sub-cat ul li {
+  display: inline-block;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.products-dropdown .sub-cat ul li:hover {
+  background-color: white;
+  color: #000000;
 }
 /*# sourceMappingURL=navbar.css.map */

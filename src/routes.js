@@ -5,6 +5,8 @@ import About from "./components/AboutUs/Aboutus";
 import Services from "./components/Services/services";
 import Career from "./components/Career/career";
 import ContactUs from "./components/ContactUs/contactUs";
+import Shop from "./components/Shop/shop";
+import ProductsList from "./components/ProductList/productList";
 
 // Import Components;
 import Layout from "./container/Layout/layout";
@@ -18,6 +20,9 @@ class Routes extends Component {
                 <Route path="/Services" exact  component={Services}/>
                 <Route path="/Career" exact component={Career}/>
                 <Route path="/Contact" exact component={ContactUs}/>
+                <Route path="/Shop" exact component={Shop}/>
+                <Route path="/Products" exact component={ProductsList}/>
+
             </div>
         );
     }

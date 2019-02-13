@@ -22,12 +22,32 @@
     }
 }
 .res-item{
+    &:hover{
+        div{
+            color:#e30016;
+        }
+    }
     p{
         font-size:14px;
         color:#7a7c82;
         span{
             color:#e30016;
         }
+    }
+    .res-icon{
+        padding:1.5rem 1.2rem;
+        background-color:#282676;
+        border-radius: 43%;
+        &:hover{
+            background-color:#e30016;
+           
+        }
+    }
+
+    svg{
+        
+        width:3rem;
+        height:4rem;       
     }
 }
 .team-list{

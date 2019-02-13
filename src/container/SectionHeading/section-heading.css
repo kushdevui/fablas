@@ -1,0 +1,15 @@
+.section-head-tile {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.section-head-tile h1 {
+  color: #e30016;
+}
+
+.section-head-tile p {
+  color: #7a7c82;
+  padding-top: 1rem;
+  font-size: 0.90rem;
+}
+/*# sourceMappingURL=section-heading.css.map */

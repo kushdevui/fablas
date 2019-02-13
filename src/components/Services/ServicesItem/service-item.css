@@ -1,0 +1,33 @@
+.service-item-tile {
+  border: 1px solid #f4f4f4;
+}
+
+.service-item-tile svg {
+  width: 80px;
+  height: 80px;
+}
+
+.service-item-tile div {
+  font-weight: bold;
+  color: #000000;
+  margin-top: 3rem;
+}
+
+.service-item-tile p {
+  color: #7a7c82;
+  margin-top: 0.25rem;
+  font-size: 13px;
+}
+
+.service-item-tile:hover {
+  background-color: #282676;
+}
+
+.service-item-tile:hover div {
+  color: #ffffff;
+}
+
+.service-item-tile:hover .icon {
+  fill: #ffffff;
+}
+/*# sourceMappingURL=service-item.css.map */

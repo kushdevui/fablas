@@ -1,0 +1,16 @@
+.inner-header-tile {
+  padding: 2rem 0;
+  background-color: #f4f4f4;
+}
+
+.inner-header-tile h1 {
+  font-size: 1.5rem;
+  color: #202830;
+  font-weight: bold;
+}
+
+.inner-header-tile p {
+  font-size: 1rem;
+  color: #afb0b4;
+}
+/*# sourceMappingURL=inner-header.css.map */

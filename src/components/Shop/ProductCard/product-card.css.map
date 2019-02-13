@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAA;EACZ,eAAe,EAAE,aAAa;CACjC",
+    "sources": [
+        "product-card.scss"
+    ],
+    "names": [],
+    "file": "product-card.css"
+}

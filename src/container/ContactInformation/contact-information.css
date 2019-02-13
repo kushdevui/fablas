@@ -1,0 +1,20 @@
+.contact-information {
+  text-align: left;
+}
+
+.contact-information .contact-item {
+  margin-bottom: 1rem;
+}
+
+.contact-information h5 {
+  font-size: 1rem;
+  color: #000000;
+}
+
+.contact-information span {
+  display: block;
+  font-size: 12px;
+  color: #7a7c82;
+  line-height: 1.3rem;
+}
+/*# sourceMappingURL=contact-information.css.map */

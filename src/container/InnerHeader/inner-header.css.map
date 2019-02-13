@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAA;EACd,OAAO,EAAC,MAAM;EACd,gBAAgB,EAAE,OAAO;CAU5B;;AAZD,AAGI,kBAHc,CAGd,EAAE,CAAA;EACE,SAAS,EAAC,MAAM;EAChB,KAAK,EAAC,OAAO;EACb,WAAW,EAAE,IAAI;CACpB;;AAPL,AAQI,kBARc,CAQd,CAAC,CAAA;EACG,SAAS,EAAC,IAAI;EACd,KAAK,EAAC,OAAO;CAChB",
+    "sources": [
+        "inner-header.scss"
+    ],
+    "names": [],
+    "file": "inner-header.css"
+}

@@ -38,7 +38,7 @@ const FunFacts = () =>{
                         <h3>OUR <span>TESTIMONIAL</span></h3>
                         <p>WHAT HAVE WE ACHIEVED SO FAR</p>
                     </div>
-                    <Carousel/>
+                    <Carousel type="text"/>
                 </div>
                 <div className="col-4">
                     <div className="heading">

@@ -5,6 +5,11 @@ body {
   color: #333333;
 }
 
+.grey-section {
+  padding: 3rem 0;
+  background-color: #f4f4f4;
+}
+
 .tooltip {
   left: 3rem;
 }

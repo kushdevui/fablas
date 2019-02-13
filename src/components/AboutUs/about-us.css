@@ -1,0 +1,76 @@
+.introduction-sec {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.introduction-sec h1 {
+  color: #e30016;
+}
+
+.introduction-sec p {
+  color: #7a7c82;
+  padding-top: 1rem;
+  font-size: 0.90rem;
+}
+
+.content-section {
+  padding-bottom: 3rem;
+}
+
+.content-section p {
+  font-size: 15px;
+  color: #7a7c82;
+}
+
+.content-section .video-carousel {
+  background-color: black;
+}
+
+.res-item:hover div {
+  color: #e30016;
+}
+
+.res-item p {
+  font-size: 14px;
+  color: #7a7c82;
+}
+
+.res-item p span {
+  color: #e30016;
+}
+
+.res-item .res-icon {
+  padding: 1.5rem 1.2rem;
+  background-color: #282676;
+  border-radius: 43%;
+}
+
+.res-item .res-icon:hover {
+  background-color: #e30016;
+}
+
+.res-item svg {
+  width: 3rem;
+  height: 4rem;
+}
+
+.team-list {
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.team-list .team-item .heading {
+  padding-top: 0.8rem;
+  padding-bottom: 0.5rem;
+  color: #e30016;
+}
+
+.team-list .team-item span {
+  color: #4d5359;
+}
+
+.team-list .team-item p {
+  margin-top: 0.5rem;
+}
+/*# sourceMappingURL=about-us.css.map */
