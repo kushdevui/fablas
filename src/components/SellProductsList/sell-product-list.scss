@@ -1,0 +1,28 @@
+.filters{
+    ul{
+        list-style:none;
+        padding-left:0rem;
+        li{
+            font-size:0.80rem;
+            color:#555555;
+        }
+    }
+    .submenu {
+        overflow: hidden;
+        height: 0;
+        .second-menu-item{
+            color:#dc3545;
+            font-size:0.80rem;
+        }
+    }
+    .expand{
+        transition: all .5s ease-in-out;
+        .submenu{
+            height: auto;
+        }
+    }
+    .category-item{
+        cursor:pointer;
+    }
+    
+}

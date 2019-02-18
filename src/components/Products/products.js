@@ -23,6 +23,8 @@ class Products extends Component  {
     }
 
     render(){
+      
+
         return(
             <div className="product-section">
                  <div className="container">
