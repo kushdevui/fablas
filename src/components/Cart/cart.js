@@ -18,20 +18,18 @@ class Cart extends Component{
                 <InnerHeader title="Product Cart" subTitle=""/>
                 <div className="container cart-tile mt-5">
                     <div className="row heading">
-                      
-                                <div className="col-lg-5 item">
-                                    Product
-                                </div>
-                                <div className="col-lg-2 item">
-                                    Price
-                                </div>
-                                <div className="col-lg-3 item">
-                                    Quantity
-                                </div>
-                                <div className="col-lg-2 item">
-                                    Total
-                                </div>
-                           
+                        <div className="col-lg-5 item">
+                            Product
+                        </div>
+                        <div className="col-lg-2 item">
+                            Price
+                        </div>
+                        <div className="col-lg-3 item">
+                            Quantity
+                        </div>
+                        <div className="col-lg-2 item">
+                            Total
+                        </div>
                     </div>
                     <div className="row item-list pt-2 pb-2 text-center">
                         <div className="col-lg-5 item">

@@ -21,6 +21,7 @@ const App = ()=> {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact  component={Home}/>
+                    
                     <Route path="/About" exact component={About}/>
                     <Route path="/Services" exact  component={Services}/>
                     <Route path="/Career" exact component={Career}/>
