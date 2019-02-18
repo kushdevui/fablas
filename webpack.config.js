@@ -11,7 +11,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         chunkFilename: '[id][hash].js',
-        publicPath: ''
+        publicPath: '/'
+    },
+    devServer: {
+        historyApiFallback: true,
+        open: true,
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -52,6 +56,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: './src/assets/', to: './assets/' }
-        ])
+        ]),
+
     ]
 };

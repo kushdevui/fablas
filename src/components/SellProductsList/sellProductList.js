@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import { Link } from 'react-router-dom'
 import Header from "../Header/header";
 import InnerHeader from "../../container/InnerHeader/innerHeader";
 import ProductItem from "../../container/ProductItem/productItem";
@@ -14,20 +14,31 @@ import "./sell-product-list.scss"
 class SellProductList extends Component{
     constructor(props){
         super(props);
-       
         this.state = {
             isFilterOpen:false,
             productListByCat :[],
             term: "",
             cart: [],
             cartBounce: false,
-            quantity: 1
+            quantity: 1,
+            products: [],
+            totalItems: 0,
+            totalAmount: 0,
+            category: "",
+            cartBounce: false,
+            quantity: 1,
+            quickViewProduct: {},
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
         this.handleAddToCart = this.handleAddToCart.bind(this);
         this.checkProduct = this.checkProduct.bind(this);
         this.sumTotalItems = this.sumTotalItems.bind(this);
         this.sumTotalAmount = this.sumTotalAmount.bind(this);
+        this.checkProduct = this.checkProduct.bind(this);
+        this.gotoCart = this.gotoCart.bind(this);
+        this.updateQuantity = this.updateQuantity.bind(this);
+        this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
+        
     }
 
     componentDidMount(){
@@ -44,7 +55,24 @@ class SellProductList extends Component{
            })
        })
     }
-
+    handleRemoveProduct(id, e) {
+        let cart = this.state.cart;
+        let index = cart.findIndex(x => x.id == id);
+        cart.splice(index, 1);
+        this.setState({
+          cart: cart
+        });
+        this.sumTotalItems(this.state.cart);
+        this.sumTotalAmount(this.state.cart);
+        e.preventDefault();
+    }
+    //Reset Quantity
+    updateQuantity(qty) {
+        console.log("quantity added...");
+        this.setState({
+        quantity: qty
+        });
+    }
     toggleAnimation(event){
         event.target.classList.toggle('expand');
         this.setState({
@@ -83,6 +111,15 @@ class SellProductList extends Component{
         this.sumTotalAmount(this.state.cart);
     }
 
+    checkProduct(){
+        this.props.history.push({
+            pathname: '/Cart',
+            state:{
+                "id":"id"
+            }
+        })
+    }
+
     sumTotalItems() {
         let total = 0;
         let cart = this.state.cart;
@@ -109,6 +146,19 @@ class SellProductList extends Component{
             return item.id === productID;
         });
     }  
+
+    gotoCart(){
+        this.props.history.push({
+            pathname: '/Cart',
+            cartBounce:this.state.cartBounce,
+            total:this.state.totalAmount,
+            totalItems:this.state.totalItems,
+            cartItems:this.state.cart,
+            removeProduct:this.handleRemoveProduct,
+            updateQuantity:this.updateQuantity,
+            productQuantity:this.state.moq
+        })
+    }
 
     render(){
         console.log(this.state.cart);
@@ -148,7 +198,17 @@ class SellProductList extends Component{
         return(
             <div>
                 <Header/>
-                <InnerHeader title="Product" subTitle="A wide variety of product showcase"/>
+                <InnerHeader  title="Product" subTitle="A wide variety of product showcase"/>
+                <div className="container mt-5 mb-5">
+                    <div className="row cart-tile">
+                        <div className="col-lg-12 text-right">
+                      
+
+                            <span onClick={this.gotoCart}><FontAwesomeIcon icon={faShoppingCart} style={{color:"#999"}} size="sm" /> Cart</span>
+                            <span className="count">{this.state.cart.length}</span>
+                        </div>
+                    </div>
+                </div>
                 <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-3 filters">

@@ -10,6 +10,7 @@ import Footer from "../Footer/footer";
 import EnquiryForm from "../../container/EnquiryForm/enquiryForm";
 import ContactInformation from "../../container/ContactInformation/contactInformation";
 import Carousel from "../../components/Widgets/Carousel/carousel";
+import { withRouter } from "react-router-dom";
 import "./about-us.scss";
 
 const AboutUs = () =>{
@@ -148,4 +149,4 @@ const AboutUs = () =>{
     )
 }
 
-export default AboutUs;
+export default withRouter(AboutUs);

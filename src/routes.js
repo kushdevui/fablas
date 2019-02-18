@@ -8,6 +8,7 @@ import ContactUs from "./components/ContactUs/contactUs";
 import Shop from "./components/Shop/shop";
 import ProductsList from "./components/ProductList/productList";
 import SellProductsList from "./components/SellProductsList/sellProductList"
+import Cart from "./components/Cart/cart";
 
 // Import Components;
 import Layout from "./container/Layout/layout";
@@ -23,6 +24,7 @@ class Routes extends Component {
                 <Route path="/Contact" exact component={ContactUs}/>
                 <Route path="/Shop" exact component={Shop}/>
                 <Route path="/Products/:catId" exact  component={ProductsList}/>
+                <Route path="/Cart" exact  component={Cart}/>
                 <Route path='/ProductList/Product/:product_id' exact component={SellProductsList}/>
             </div>
         );

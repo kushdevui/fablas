@@ -1,0 +1,22 @@
+.cart-tile{
+    border:1px solid #f4f4f4;
+    .heading{
+        background-color: #ccc;
+        font-size:0.80rem;
+        text-align: center;
+        color:#000;
+        .item{
+            border-right:1px solid #999;
+        }
+    }
+    .item-list{
+        border-bottom:1px solid #f4f4f4;
+        .item{
+            font-size:0.80rem;
+            color:#000;
+            font-weight: 300;
+            border-right:1px solid #999;
+        }
+    }
+   
+}

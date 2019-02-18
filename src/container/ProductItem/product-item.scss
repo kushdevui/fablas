@@ -1,6 +1,23 @@
 .sub-cat-card-section{
-    p{
-        font-size:1rem;
-        color:#e30016;
+    .btn{
+        background-color:#000;
+        color:white;
+        font-size: 12px;
+        border:none;
+        border-radius: 4px;
+        padding:0.3rem 0.8rem;
+        left:10px;
+        bottom:50px;
     }
+    p{
+        font-size:0.80rem;
+        font-weight: bold;
+        color:#e30016;
+        span{
+            color:#000;
+            float:right;
+            font-size:1rem;
+        }
+    }
+  
 }

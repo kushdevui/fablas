@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./product-item.scss";
 
 class ProductItem extends Component{
@@ -32,23 +33,23 @@ class ProductItem extends Component{
             isAdded: true
           },
           function() {
-            // setTimeout(() => {
-            //   this.setState({
-            //     isAdded: false,
-            //     selectedProduct: {}
-            //   });
-            // }, 3500);
+            setTimeout(() => {
+              this.setState({
+                isAdded: false,
+                selectedProduct: {}
+              });
+            }, 3500);
           }
         );
     }
-
+    
     render(){
         return(
-            <div className="sub-cat-card-section mb-5">
+            <div className="sub-cat-card-section mb-5 position-relative">
                 <img src="./assets/images/sub-cat.png" className="img-fluid"/>
-                <p className="pt-2 pb-1 mb-0">{this.props.name}</p>
-                <button
-                    className={!this.state.isAdded ? "" : "Added In Cart"}
+                <div
+                    // className={!this.state.isAdded ? "" : "added"}
+                    className="btn position-absolute"
                     type="button"
                     onClick={this.addToCart.bind(
                     this,
@@ -58,8 +59,10 @@ class ProductItem extends Component{
                     this.props.id,
                     )}
                 >
-                    {!this.state.isAdded ? "ADD TO CART" : "✔ ADDED"}
-            </button>
+                    <FontAwesomeIcon className="mr-1" icon={faShoppingCart } style={{color:'white'}} size="sm" />
+                    {!this.state.isAdded ? "Add to Cart" : "Added in Cart"}
+                </div>
+                <p className="pt-2 pb-1 mb-0">{this.props.name}<span>&#8377;{this.props.price}</span></p>
             </div>
         )
     }
