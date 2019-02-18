@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from 'react-redux'
+import { addToCart } from '../../redux/actions/cartActions';
+
+
 import "./product-item.scss";
 
 class ProductItem extends Component{
@@ -14,35 +18,37 @@ class ProductItem extends Component{
         };
     }
 
-    addToCart(image, name, price, id) {
-        this.setState(
-          {
-            selectedProduct: {
-              image: image,
-              name: name,
-              price: price,
-              id: id
-            }
-          },
-          function() {
-            this.props.addToCart(this.state.selectedProduct);
-          }
-        );
-        this.setState(
-          {
-            isAdded: true
-          },
-          function() {
-            setTimeout(() => {
-              this.setState({
-                isAdded: false,
-                selectedProduct: {}
-              });
-            }, 3500);
-          }
-        );
+    // addToCart(id) {
+    //     this.setState(
+    //       {
+    //         selectedProduct: {
+    //           id: id
+    //         }
+    //       },
+    //       function() {
+    //         this.props.addToCart(this.state.selectedProduct);
+    //       }
+    //     );
+    //     this.setState(
+    //       {
+    //         isAdded: true
+    //       },
+    //       function() {
+    //         setTimeout(() => {
+    //           this.setState({
+    //             isAdded: false,
+    //             selectedProduct: {}
+    //           });
+    //         }, 3500);
+    //       }
+    //     );
+    // }
+
+   
+    handleClick = (id)=>{
+      this.props.addToCart(id); 
     }
-    
+
     render(){
         return(
             <div className="sub-cat-card-section mb-5 position-relative">
@@ -51,13 +57,7 @@ class ProductItem extends Component{
                     // className={!this.state.isAdded ? "" : "added"}
                     className="btn position-absolute"
                     type="button"
-                    onClick={this.addToCart.bind(
-                    this,
-                    this.props.image,
-                    this.props.name,
-                    this.props.price,
-                    this.props.id,
-                    )}
+                    onClick={()=>{this.handleClick(this.props)}}
                 >
                     <FontAwesomeIcon className="mr-1" icon={faShoppingCart } style={{color:'white'}} size="sm" />
                     {!this.state.isAdded ? "Add to Cart" : "Added in Cart"}
@@ -69,4 +69,15 @@ class ProductItem extends Component{
    
 }
 
-export default ProductItem;
+const mapStateToProps = (state)=>{
+  return {
+    items: state.items
+  }
+}
+const mapDispatchToProps= (dispatch)=>{
+  return{
+      addToCart: (id)=>{dispatch(addToCart(id))}
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProductItem)

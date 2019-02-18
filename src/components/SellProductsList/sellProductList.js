@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./sell-product-list.scss"
 
 class SellProductList extends Component{
@@ -30,19 +31,11 @@ class SellProductList extends Component{
             quickViewProduct: {},
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
-        this.handleAddToCart = this.handleAddToCart.bind(this);
-        this.checkProduct = this.checkProduct.bind(this);
-        this.sumTotalItems = this.sumTotalItems.bind(this);
-        this.sumTotalAmount = this.sumTotalAmount.bind(this);
-        this.checkProduct = this.checkProduct.bind(this);
         this.gotoCart = this.gotoCart.bind(this);
-        this.updateQuantity = this.updateQuantity.bind(this);
-        this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
-        
     }
+    
 
     componentDidMount(){
-
         this.props.onAddToDo();
         const headers = {
             'Content-Type': 'application/json'
@@ -55,24 +48,8 @@ class SellProductList extends Component{
            })
        })
     }
-    handleRemoveProduct(id, e) {
-        let cart = this.state.cart;
-        let index = cart.findIndex(x => x.id == id);
-        cart.splice(index, 1);
-        this.setState({
-          cart: cart
-        });
-        this.sumTotalItems(this.state.cart);
-        this.sumTotalAmount(this.state.cart);
-        e.preventDefault();
-    }
-    //Reset Quantity
-    updateQuantity(qty) {
-        console.log("quantity added...");
-        this.setState({
-        quantity: qty
-        });
-    }
+
+    
     toggleAnimation(event){
         event.target.classList.toggle('expand');
         this.setState({
@@ -80,95 +57,13 @@ class SellProductList extends Component{
         })
     }
 
-    handleAddToCart(selectedProducts) {
-        let cartItem = this.state.cart;
-        let productID = selectedProducts.id;
-        let productQty = selectedProducts.quantity;
-        if (this.checkProduct(productID)) {
-          let index = cartItem.findIndex(x => x.id == productID);
-          cartItem[index].quantity =
-            Number(cartItem[index].quantity) + Number(productQty);
-          this.setState({
-            cart: cartItem
-          });
-        } else {
-          cartItem.push(selectedProducts);
-        }
-        this.setState({
-          cart: cartItem,
-          cartBounce: true
-        });
-        setTimeout(
-          function() {
-            this.setState({
-              cartBounce: false,
-              quantity: 1
-            });
-          }.bind(this),
-          1000
-        );
-        this.sumTotalItems(this.state.cart);
-        this.sumTotalAmount(this.state.cart);
-    }
-
-    checkProduct(){
-        this.props.history.push({
-            pathname: '/Cart',
-            state:{
-                "id":"id"
-            }
-        })
-    }
-
-    sumTotalItems() {
-        let total = 0;
-        let cart = this.state.cart;
-        total = cart.length;
-        this.setState({
-          totalItems: total
-        });
-    }
-
-    sumTotalAmount() {
-        let total = 0;
-        let cart = this.state.cart;
-        for (var i = 0; i < cart.length; i++) {
-          total += cart[i].price * parseInt(cart[i].quantity);
-        }
-        this.setState({
-          totalAmount: total
-        });
-      }
-    
-    checkProduct(productID) {
-        let cart = this.state.cart;
-        return cart.some(function(item) {
-            return item.id === productID;
-        });
-    }  
-
     gotoCart(){
         this.props.history.push({
             pathname: '/Cart',
-            cartBounce:this.state.cartBounce,
-            total:this.state.totalAmount,
-            totalItems:this.state.totalItems,
-            cartItems:this.state.cart,
-            removeProduct:this.handleRemoveProduct,
-            updateQuantity:this.updateQuantity,
-            productQuantity:this.state.moq
         })
     }
 
     render(){
-        console.log(this.state.cart);
-        let term = this.state.term;
-        let x;
-        function searchingFor(term) {
-            return function(x) {
-              return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
-            };
-        }
         const productsData = this.state.productListByCat.map(product => {
             return (
                  <div className="col-lg-4">
@@ -178,23 +73,11 @@ class SellProductList extends Component{
                      name={product.name}
                      image={product.imagepath}
                      id={product.id}
-                     addToCart={this.handleAddToCart}
                      />
                  </div>
                );
         });
         
-        // Empty and Loading States
-        // let view;
-        //     if (productsData.length <= 0 && !term) {
-        //         view = <div>loading Products</div>;
-        //     } else if (productsData.length <= 0 && term) {
-        //     view = <div>No Products found</div>;
-        //     } else {
-        //         view = (
-                    
-        //         );
-        //     }
         return(
             <div>
                 <Header/>
@@ -202,10 +85,8 @@ class SellProductList extends Component{
                 <div className="container mt-5 mb-5">
                     <div className="row cart-tile">
                         <div className="col-lg-12 text-right">
-                      
-
                             <span onClick={this.gotoCart}><FontAwesomeIcon icon={faShoppingCart} style={{color:"#999"}} size="sm" /> Cart</span>
-                            <span className="count">{this.state.cart.length}</span>
+                            <span className="count">{this.props.cartLength}</span>
                         </div>
                     </div>
                 </div>
@@ -248,17 +129,20 @@ const mapDispatchToProps = dispatch =>{
     return{
         onAddToDo:()=>{
             dispatch(addToDo());
+        },
+        addToCart: (id)=>{
+            dispatch(addToCart(id))
         }
     }
 }
 
 const mapStateToProps = state =>{
     return {
-        productList : state.productReducer.productList
+        productList : state.productReducer.productList,
+        cartLength:state.cartReducer.addedItems.length,
+        items: state.items
     }
 }
-
-
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(SellProductList);

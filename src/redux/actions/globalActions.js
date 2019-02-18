@@ -5,7 +5,7 @@
  * 
  */
 //  Dependencies
-import { RESIZE_VIEWPORT,ADD_TODO_SUCCESS } from "./constants";
+import { RESIZE_VIEWPORT,ADD_TODO_SUCCESS,ADD_TO_CART } from "./constants";
 import axios from 'axios';
 
 export const addToDo  = () =>{
@@ -23,14 +23,12 @@ export const addToDo  = () =>{
     }    
 }
 
-
-
-const addToSucces = (todo) =>{
-    return{
-        type : ADD_TODO_SUCCESS,
-        payload :  [...todo]
-    }
-}
+// const addToSucces = (todo) =>{
+//     return{
+//         type : ADD_TODO_SUCCESS,
+//         payload :  [...todo]
+//     }
+// }
 
 
 
@@ -48,6 +46,8 @@ export const getProductList = (response) =>{
         payload:response
     }
 }
+
+
 
 
 
