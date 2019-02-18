@@ -52,7 +52,7 @@ class ProductItem extends Component{
     render(){
         return(
             <div className="sub-cat-card-section mb-5 position-relative">
-                <img src="./assets/images/sub-cat.png" className="img-fluid"/>
+                <img src="/assets/images/sub-cat.png" className="img-fluid"/>
                 <div
                     // className={!this.state.isAdded ? "" : "added"}
                     className="btn position-absolute"

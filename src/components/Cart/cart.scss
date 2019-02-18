@@ -1,21 +1,24 @@
-.cart-tile{
-    border:1px solid #f4f4f4;
+.cart-tiles{
+    border:1px solid #ccc;
     .heading{
         background-color: #ccc;
         font-size:0.80rem;
         text-align: center;
         color:#000;
-        .item{
-            border-right:1px solid #999;
-        }
+       font-weight: 300;
     }
     .item-list{
-        border-bottom:1px solid #f4f4f4;
+        border-bottom:1px solid #ccc;
         .item{
+            .red{
+                color:#dc3545;
+            }
             font-size:0.80rem;
             color:#000;
             font-weight: 300;
-            border-right:1px solid #999;
+            .remove{
+                cursor: pointer;
+            }
         }
     }
    
