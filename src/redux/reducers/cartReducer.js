@@ -8,6 +8,7 @@ const initState = {
 
 }
 const cartReducer= (state = initState,action)=>{
+
     //INSIDE HOME COMPONENT
     if(action.type === ADD_TO_CART){
          let addedItem = action.id
@@ -58,7 +59,8 @@ const cartReducer= (state = initState,action)=>{
           }
     }
     if(action.type=== SUB_QUANTITY){  
-        let addedItem = state.items.find(item=> item.id === action.id) 
+        console.log(action.id);
+        let addedItem = action.id
         //if the qt == 0 then it should be removed
         if(addedItem.quantity === 1){
             let new_items = state.addedItems.filter(item=>item.id !== action.id)

@@ -18,33 +18,6 @@ class ProductItem extends Component{
         };
     }
 
-    // addToCart(id) {
-    //     this.setState(
-    //       {
-    //         selectedProduct: {
-    //           id: id
-    //         }
-    //       },
-    //       function() {
-    //         this.props.addToCart(this.state.selectedProduct);
-    //       }
-    //     );
-    //     this.setState(
-    //       {
-    //         isAdded: true
-    //       },
-    //       function() {
-    //         setTimeout(() => {
-    //           this.setState({
-    //             isAdded: false,
-    //             selectedProduct: {}
-    //           });
-    //         }, 3500);
-    //       }
-    //     );
-    // }
-
-   
     handleClick = (id)=>{
       this.props.addToCart(id); 
     }
@@ -54,7 +27,7 @@ class ProductItem extends Component{
             <div className="sub-cat-card-section mb-5 position-relative">
                 <img src="/assets/images/sub-cat.png" className="img-fluid"/>
                 <div
-                    // className={!this.state.isAdded ? "" : "added"}
+                     //className={!this.state.isAdded ? "" : "added"}
                     className="btn position-absolute"
                     type="button"
                     onClick={()=>{this.handleClick(this.props)}}

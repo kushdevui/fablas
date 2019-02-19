@@ -39,9 +39,9 @@ class Cart extends Component{
                     </div>
                     <div className="col-lg-3 item">
                     <div className="add-remove">
-                    <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item.id)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
+                    <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
                     {item.quantity}
-                    <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item.id)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
+                    <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
                     </div>
                         
                     </div>
@@ -81,7 +81,6 @@ class Cart extends Component{
 const mapStateToProps = (state)=>{
     return{
         items: state.cartReducer.addedItems,
-        //addedItems: state.addedItems
     }
 }
 const mapDispatchToProps = (dispatch)=>{

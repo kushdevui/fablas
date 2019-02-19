@@ -17,22 +17,24 @@ import Cart from "./components/Cart/cart";
 import store from "./redux/store";
 const App = ()=> {
     return(
-        <Provider store={store}>
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact  component={Home}/>
-                    
-                    <Route path="/About" exact component={About}/>
-                    <Route path="/Services" exact  component={Services}/>
-                    <Route path="/Career" exact component={Career}/>
-                    <Route path="/Contact" exact component={ContactUs}/>
-                    <Route path="/Shop" exact component={Shop}/>
-                    <Route path="/Products/:catId" exact  component={ProductsList}/>
-                    <Route path="/Cart" exact  component={Cart}/>
-                    <Route path='/ProductList/Product/:product_id' exact component={SellProductsList}/>
-                </Switch>
-            </BrowserRouter>
-        </Provider>
+        <div className="container-fluid">
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" exact  component={Home}/>
+                        <Route path="/About" exact component={About}/>
+                        <Route path="/Services" exact  component={Services}/>
+                        <Route path="/Career" exact component={Career}/>
+                        <Route path="/Contact" exact component={ContactUs}/>
+                        <Route path="/Shop" exact component={Shop}/>
+                        <Route path="/Products/:catId" exact  component={ProductsList}/>
+                        <Route path="/Cart" exact  component={Cart}/>
+                        <Route path='/ProductList/Product/:product_id' exact component={SellProductsList}/>
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
+        </div>
+        
     );
 };
 
