@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import "./product-details.scss";
 import Footer from "../../components/Footer/footer";
 import { addToCart } from '../../redux/actions/cartActions';
+import Slider from "react-slick";
 
 class Product extends Component{
     constructor(props){
@@ -84,7 +85,15 @@ class Product extends Component{
         if(this.state.ProductData.images){
             var image1 = this.state.ProductData.images[0]['largeImages'][0];
         }
-        
+        var settings = {
+            className: "slick-cente",
+            variableWidth: true,
+            centerMode: true,
+            infinite: true,
+            centerPadding: "30",
+            slidesToShow: 2,
+            speed: 600
+          };
         return(
             <div>
                 <Header/>
@@ -112,6 +121,27 @@ class Product extends Component{
                                 height: 1800
                             }
                             }} />
+                           
+                                <Slider  className="d-flex product-thumb" {...settings}>
+                                    <div>
+                                        <img src={image1} />
+                                    </div>
+                                    <div >
+                                        <img src={image1}/>
+                                    </div>
+                                    <div >
+                                        <img src={image1} />
+                                    </div>
+                                    <div >
+                                        <img src={image1} />
+                                    </div>
+                                    <div >
+                                        <img src={image1} />
+                                    </div>
+                                </Slider>
+                            
+                            
+                            
                         </div>
                         <div className="col-lg-7 reduce-zindex">
                             <h3>{this.state.ProductData.name}</h3>
