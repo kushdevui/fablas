@@ -27,7 +27,7 @@ class ProductItem extends Component{
 
     RenderItem =(type) =>{
         if(this.props.images){
-            var showImg = this.props.images[0]
+            var showImg = this.props.images[0]['thumbnails'][0]
         }
        
         switch(this.state.type){

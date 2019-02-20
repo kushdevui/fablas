@@ -82,7 +82,7 @@ class Product extends Component{
 
     render(){
         if(this.state.ProductData.images){
-            var image1 = this.state.ProductData.images[0];
+            var image1 = this.state.ProductData.images[0]['largeImages'][0];
         }
         
         return(
