@@ -13,6 +13,11 @@ class Cart extends Component{
     constructor(props){
         super(props);
     }
+    componentWillMount(){
+        if(this.props.items.length){
+            localStorage.setItem('cartItems',JSON.stringify(this.props.items))
+        }
+    }
 
     handleRemove = (id)=>{
         this.props.removeItem(id);
@@ -26,7 +31,7 @@ class Cart extends Component{
         this.props.subtractQuantity(id);
     }
     render(){
-       const cartItem = this.props.items.map(item=>{
+       const cartItem = JSON.parse(localStorage.getItem('cartItems')).map(item=>{
            return(
                 <div className="row item-list pt-3 pb-3 text-center">
                     <div className="col-lg-4 item">
@@ -71,9 +76,23 @@ class Cart extends Component{
                             Total
                         </div>
                     </div>
-                   {cartItem}
+                    
+                    {cartItem}
+                   
+                </div>  
+                <div className="container  mt-3">
+                    <div className="row text-center proceed">
+                        <div className="col-lg-3 btnGoToCart  ml-3"
+                        type="button"
+                    >
+                 Proceed to checkout
                 </div>
+                    </div>
+                  
+                </div>
+                            
             </div>
+            
         )
     }
 }
