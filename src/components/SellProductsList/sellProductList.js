@@ -20,16 +20,8 @@ class SellProductList extends Component{
             productListByCat :[],
             term: "",
             cart: [],
-            cartBounce: false,
-            quantity: 1,
-            products: [],
-            totalItems: 0,
-            totalAmount: 0,
-            category: "",
-            cartBounce: false,
-            quantity: 1,
-            quickViewProduct: {},
         }
+        //console.log(this.props.match.params.ProductSubCategory);
         this.toggleAnimation = this.toggleAnimation.bind(this);
         this.gotoCart = this.gotoCart.bind(this);
     }
@@ -41,7 +33,7 @@ class SellProductList extends Component{
             'Content-Type': 'application/json'
         }
        axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
-        "id":this.props.match.params.product_id
+        "id":this.props.match.params.ProductSubCategory
        }, {"headers": headers}).then(list=>{
            this.setState({
                 productListByCat : list.data
@@ -64,16 +56,19 @@ class SellProductList extends Component{
     }
 
     render(){
+
         const productsData = this.state.productListByCat.map(product => {
             return (
-                 <div className="col-lg-4">
-                     <ProductItem
-                     key={product.id}
-                     price={product.price}
-                     name={product.name}
-                     image={product.imagepath}
-                     id={product.id}
-                     />
+                 <div className="col-lg-4 ">
+                        <ProductItem type="sell"
+                        key={product.id}
+                        price={product.price}
+                        name={product.name}
+                        image={product.imagepath}
+                        id={product.id}
+                        images={product.images}
+                        />
+                     
                  </div>
                );
         });

@@ -14,7 +14,6 @@ export const addToDo  = () =>{
         .get("https://fablasnode.herokuapp.com/products/getProducts", {
         })
         .then(res => {
-           //console.log(res.data);
           dispatch(addToSucces(res.data));
         })
         .catch(err => {
@@ -23,12 +22,12 @@ export const addToDo  = () =>{
     }    
 }
 
-// const addToSucces = (todo) =>{
-//     return{
-//         type : ADD_TODO_SUCCESS,
-//         payload :  [...todo]
-//     }
-// }
+const addToSucces = (todo) =>{
+    return{
+        type : ADD_TODO_SUCCESS,
+        payload :  [...todo]
+    }
+}
 
 
 

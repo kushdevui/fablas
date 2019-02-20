@@ -1,4 +1,13 @@
 .product-details{
+    .increase-zindex{
+        z-index: 5000;
+    }
+    .bgWhite{
+        background-color: white;
+        div{
+            background-color: white;
+        }
+    }
     .tabs{
         border:1px solid #f4f4f4;
         .tab-content{
@@ -9,6 +18,20 @@
                 font-size:14px; 
                 color:#7a7c82;
                 border-bottom:none;
+            }
+            ul{
+                list-style: none;    
+                li{
+                    .heading{
+                        font-weight: bold;
+                        padding-right:1rem;
+                        padding-bottom:0.30rem;
+                    }
+                    margin-top:1rem;
+                    font-size:14px; 
+                    color:#7a7c82;
+                    border-bottom:none;
+                }
             }
         }
     }
@@ -22,11 +45,22 @@
                 font-weight: bold;
             }
         }
-       
         
+    }
+    .btnGoToCart{
+        background: #000a71;
+        cursor: pointer;
+        color: white;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        padding: 0.3rem 0.8rem;
+        left: 10px;
+        bottom: 50px;
     }
     .btnaddtoCart{
         background: #e30016;
+        cursor: pointer;
         color: white;
         font-size: 12px;
         border: none;

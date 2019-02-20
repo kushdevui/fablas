@@ -1,16 +1,90 @@
 import React,{Component} from "react";
 import Header from "../../components/Header/header";
+import axios from "Axios";
 import InnerHeader from "../InnerHeader/innerHeader";
 import { faShoppingCart,faArrowCircleUp,faTimes, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Tabs, Tab} from 'react-bootstrap-tabs';
 import ProductItem from "../../container/ProductItem/productItem";
-
+import ReactImageMagnify from 'react-image-magnify';
+import { connect } from 'react-redux'
 import "./product-details.scss";
 import Footer from "../../components/Footer/footer";
+import { addToCart } from '../../redux/actions/cartActions';
 
 class Product extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            ProductData : [],
+            type:this.props.location.state.type
+        }
+        this.gotoCart = this.gotoCart.bind(this);
+        this.renderProduct = this.renderProduct.bind(this);
+    }
+
+    handleClick = (id)=>{
+        this.props.addToCart(id); 
+    }
+
+    gotoCart(){
+        this.props.history.push({
+            pathname: '/Cart',
+        })
+    }
+
+    renderProduct = (type) =>{
+        switch(this.state.type){
+            case "sell":
+            return(
+                <div className="product-controls d-flex">
+                     <div>
+                        <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
+                            1
+                        <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
+                        </div>
+                     <div 
+                className="btnaddtoCart  ml-3"
+                    type="button"
+                onClick={()=>{this.handleClick(this.state.ProductData)}}
+                >
+                <FontAwesomeIcon className="mr-1" icon={faShoppingCart }    style={{color:'white'}} size="sm" />
+                 Add To Cart
+                </div>
+                <div 
+                className="btnGoToCart  ml-3"
+                    type="button"
+                onClick={this.gotoCart}    
+                >
+                    {this.props.cartLength} Go to Cart
+                </div>
+                </div>
+               
+            )
+            default:
+            ""
+        }
+
+    }
+
+    componentDidMount(){
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+       axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
+        "id":this.props.match.params.product_id
+       }, {"headers": headers}).then(product=>{
+           this.setState({
+            ProductData : product.data
+           })
+       })
+    }
+
     render(){
+        if(this.state.ProductData.images){
+            var image1 = this.state.ProductData.images[0];
+        }
+        
         return(
             <div>
                 <Header/>
@@ -18,12 +92,31 @@ class Product extends Component{
                 <div className="container mt-5 mb-5 product-details">
                     <div className="row mt-5">
                         <div className="col-lg-5">
-                            <img src="/assets/images/ProductDetails.png" className="img-fluid"/>
+                        <ReactImageMagnify className="bgWhite border increase-zindex"  {...{
+                            smallImage: {
+                                alt: '',
+                                isFluidWidth: true,
+                                src: {image1},
+                                srcSet: [
+                                    `${image1} 687w`,
+                                    `${image1} 770w`,
+                                    `${image1} 861w`,
+                                    `${image1} 955w`
+                                ].join(', '),
+                                sizes: '(min-width: 480px) 30vw, 80vw'
+                            },
+                            largeImage: {
+                                alt: '',
+                                src: image1,
+                                width: 1200,
+                                height: 1800
+                            }
+                            }} />
                         </div>
-                        <div className="col-lg-7">
-                            <h3>SCRUB N BRIGHT</h3>
-                            <span>&#8377;109</span>
-                            <p className="pt-2 pb-4">Lorem ipsum dolor sit amet, mauris suspendisse viverra eleifend tortor tellus suscipit, tortor aliquet at nulla mus, dignissim neque, nulla neque. Ultrices proin mi urna nibh ut, aenean sollicitudin etiam libero nisl, ultrices ridiculus in magna purus consequuntur, ipsum donec orci ad vitae pede, id odio. Turpis venenatis at laoreet. Etiam commodo fusce in diam feugiat, nullam suscipit tortor per velit viverra minim sed metus egestas sapien consectetuer.</p>
+                        <div className="col-lg-7 reduce-zindex">
+                            <h3>{this.state.ProductData.name}</h3>
+                            <span>&#8377;{this.state.ProductData.price}</span>
+                            <p className="pt-2 pb-4">{this.state.ProductData.fullDesc}</p>
                             <div className="other-details">
                                 <span>Other Details :</span>
                                 <ul className="mt-2">
@@ -32,28 +125,22 @@ class Product extends Component{
                                     <li>Availabiltity : In Stock</li>
                                 </ul>
                             </div>
-                            <div className="product-controls d-flex">
-                                <div>
-                                    <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
-                                        1
-                                    <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
-                                </div>
-                                <div
-                                    //className={!this.state.isAdded ? "" : "added"}
-                                    className="btnaddtoCart ml-3"
-                                        type="button"
-                                    >
-                                    <FontAwesomeIcon className="mr-1" icon={faShoppingCart } style={{color:'white'}} size="sm" />
-                                    Add To Cart
-                                    </div>
-                            </div>
-                            
+                            {this.renderProduct(this.state.type)}
                         </div>
                     </div>
                     <div className="row mt-5">
                         <div className="col-lg-12 mt-5">
                         <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
-                            <Tab label="Description"><p>Lorem ipsum dolor sit amet, mauris suspendisse viverra eleifend tortor tellus suscipit, tortor aliquet at nulla mus, dignissim neque, nulla neque. Ultrices proin mi urna nibh ut, aenean sollicitudin etiam libero nisl, ultrices ridiculus in magna purus consequuntur, ipsum donec orci ad vitae pede, id odio. Turpis venenatis at laoreet. Etiam commodo fusce in diam feugiat, nullam suscipit tortor per velit viverra minim sed metus egestas sapien consectetuer, ac etiam bibendum cras posuere pede placerat, velit neque felis. Turpis ut mollis, elit et vestibulum mattis integer aenean nulla, in vitae id augue vitae.</p></Tab>
+                            <Tab label="Description">
+                                <ul>
+                                    {this.state.ProductData.description?this.state.ProductData.description.map(item=>{
+                                        return <li>
+                                            <div className="heading">{item.title}</div>
+                                            <div>{item.desc}</div>
+                                        </li>
+                                    }):""}
+                                </ul>
+                            </Tab>
                             <Tab label="Details">Tab 2 content</Tab>
                             <Tab label="Reviews">Tab 3 content</Tab>
                         </Tabs>
@@ -88,5 +175,16 @@ class Product extends Component{
         )
     }
 }
+const mapStateToProps = state =>{
+    return {
+        cartLength:state.cartReducer.addedItems.length,
+        items: state.items
+    }
+}
+const mapDispatchToProps= (dispatch)=>{
+    return{
+        addToCart: (id)=>{dispatch(addToCart(id))}
+    }
+}
 
-export default Product;
+export default connect(mapStateToProps,mapDispatchToProps)(Product)

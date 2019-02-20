@@ -3,7 +3,9 @@ import React,{Component} from 'react';
 import Header from "../Header/header";
 import InnerHeader from "../../container/InnerHeader/innerHeader";
 import SubCatCard from "./SubCatCard/subCatCard";
+import ProductItem from "../../container/ProductItem/productItem";
 import Footer from "../Footer/footer";
+import axios from "Axios";
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
@@ -14,13 +16,24 @@ class ProductsList extends Component{
     constructor(props){
         super(props);
         this.state = {
-            isFilterOpen:false
+            isFilterOpen:false,
+            productListByCat :[],
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
     }
 
     componentDidMount(){
         this.props.onAddToDo();
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+       axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
+        "id":this.props.match.params.ProductSubCategory
+       }, {"headers": headers}).then(list=>{
+           this.setState({
+                productListBySubCat : list.data
+           })
+       })
     }
 
     toggleAnimation(event){
@@ -29,7 +42,27 @@ class ProductsList extends Component{
             isFilterOpen : !this.state.isFilterOpen
         })
     }
+
+
     render(){
+        if( this.state.productListBySubCat){
+            var productsData = this.state.productListBySubCat.map(product => {
+                return (
+                     <div className="col-lg-4 ">
+                            <ProductItem type="show"
+                                key={product.id}
+                                price={product.price}
+                                name={product.name}
+                                image={product.imagepath}
+                                id={product.id}
+                                images={product.images}
+                            />
+                         
+                     </div>
+                   );
+            });
+        }
+       
         return(
             <div>
                 <Header/>
@@ -58,21 +91,7 @@ class ProductsList extends Component{
                     </div>
                     <div className="col-lg-9">
                         <div className="row">
-                            <div className="col-lg-3">
-                                <SubCatCard/>
-                            </div>
-                            <div className="col-lg-3">
-                                <SubCatCard/>
-                            </div>
-                            <div className="col-lg-3">
-                                <SubCatCard/>
-                            </div>
-                            <div className="col-lg-3">
-                                <SubCatCard/>
-                            </div>
-                            <div className="col-lg-3">
-                                <SubCatCard/>
-                            </div>
+                            {productsData}
                         </div>
                     </div>
                 </div>

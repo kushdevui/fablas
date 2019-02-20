@@ -28,9 +28,9 @@ const App = ()=> {
                         <Route path="/Career" exact component={Career}/>
                         <Route path="/Contact" exact component={ContactUs}/>
                         <Route path="/Shop" exact component={Shop}/>
-                        <Route path="/Products/:catId" exact  component={ProductsList}/>
+                        <Route path="/Products/:ProductSubCategory" exact  component={ProductsList}/>
                         <Route path="/Cart" exact  component={Cart}/>
-                        <Route path='/ProductList/Product/:product_id' exact component={SellProductsList}/>
+                        <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
                     </Switch>
                 </BrowserRouter>

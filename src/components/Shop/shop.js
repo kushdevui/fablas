@@ -6,11 +6,21 @@ import InnerHeader from "../../container/InnerHeader/innerHeader";
 import ProductCard from "./ProductCard/productCard";
 import Footer from "../Footer/footer";
 import "./shop.scss";
+import { Link } from 'react-router-dom'
 
 class Shop extends Component{
     constructor(props){
         super();
+       // this.redirectToProduct = this.redirectToProduct.bind(this);
     }
+
+    // redirectToProduct(){
+    //    this.props.history.push({
+    //        pathname: "/ProductList/Products/" ,
+    //        search:"HK"
+    //    })
+    // }
+
     render(){
         return(
             <div>
@@ -26,7 +36,7 @@ class Shop extends Component{
                                 {/* <span className="d-block shop">Shop Now</span> */}
                             </div>
                         </div>
-                        <button className="btn btn-danger mt-2">Shop Now</button>
+                        <Link className="btn btn-danger mt-2" to={`/ProductList/${'Home Care'}/${"KC"}`} params={{ testvalue: "hello" }}>Shop Now</Link>
                         <button className="btn btn-default ml-2 mt-2">From $15</button>
                     </div>
                     <div className="col-lg-4">
