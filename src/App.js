@@ -20,20 +20,20 @@ const App = ()=> {
     return(
         <div className="container-fluid">
             <Provider store={store}>
-                <BrowserRouter>
+                <HashRouter>
                     <Switch>
                         <Route path="/" exact  component={Home}/>
                         <Route path="/About" exact component={About}/>
                         <Route path="/Services" exact  component={Services}/>
                         <Route path="/Career" exact component={Career}/>
                         <Route path="/Contact" exact component={ContactUs}/>
-                        <Route path="/Shop" exact component={Shop}/>
+                        <Route path="/shop/" exact component={Shop}/>
                         <Route path="/Products/:ProductSubCategory" exact  component={ProductsList}/>
-                        <Route path="/Cart" exact  component={Cart}/>
+                        <Route path="/Cart/" exact  component={Cart}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
                     </Switch>
-                </BrowserRouter>
+                </HashRouter>
             </Provider>
         </div>
         

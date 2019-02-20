@@ -116,16 +116,15 @@ class  NavigationBar extends Component {
         return(
             <div className="row">
                 <div className="col-2">
-                    <NavbarBrand href="/">
+                    <NavbarBrand href="#/">
                             <Logo/>
                     </NavbarBrand>
                 </div>
-           
                  <div className="navbar-section col-7">
                     <ul class="nav  site-nav">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="#/">Home</a></li>
                         <li className="flyout">
-                            <a href="/About">About Us</a>
+                            <a href="#/About">About Us</a>
                             <ul className="flyout-content nav stacked">
                                <li><a>Director's Message</a></li>
                                <li><a>Our Values</a></li>
@@ -133,7 +132,7 @@ class  NavigationBar extends Component {
                                <li><a>Our Network</a></li>
                             </ul>
                         </li>
-                        <li><a href="/Services">Services</a></li>
+                        <li><a href="#/Services">Services</a></li>
                         <li className="flyout">
                             <a href="#" onClick={this.toggle}>Products</a>
                             {this.state.isOpen ?   <div className="products-dropdown">
@@ -164,10 +163,10 @@ class  NavigationBar extends Component {
                                 </div>
                             : ""}
                         </li>
-                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="#/shop">Shop</a></li>
                         <li><a>News</a></li>
-                        <li><a href="/Career">Career</a></li>
-                        <li><a href="/Contact">Contact Us</a></li>
+                        <li><a href="#/Career">Career</a></li>
+                        <li><a href="#/Contact">Contact Us</a></li>
                     </ul>​
                 </div>
                 <div className="col-3 pt-3 icon-palat">
