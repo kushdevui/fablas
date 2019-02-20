@@ -1,5 +1,6 @@
 .cart-tiles{
     border:1px solid #ccc;
+    
     .heading{
         background-color: #ccc;
         font-size:0.80rem;
@@ -8,8 +9,12 @@
        font-weight: 300;
     }
     .item-list{
+        align-items: center;
         border-bottom:1px solid #ccc;
         .item{
+            .remove{
+                margin-top:20px;
+            }
             .red{
                 color:#dc3545;
             }

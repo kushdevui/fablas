@@ -18,6 +18,7 @@ class Product extends Component{
         super(props)
         this.state={
             ProductData : [],
+            mainImage:"",
             type:this.props.location.state.type
         }
         this.gotoCart = this.gotoCart.bind(this);
@@ -31,6 +32,12 @@ class Product extends Component{
     gotoCart(){
         this.props.history.push({
             pathname: '/Cart',
+        })
+    }
+
+    handleMainImage = (item) => {
+        this.setState({
+            mainImage:item
         })
     }
 
@@ -68,7 +75,7 @@ class Product extends Component{
 
     }
 
-    componentDidMount(){
+    componentWillMount(){
         const headers = {
             'Content-Type': 'application/json'
         }
@@ -76,15 +83,15 @@ class Product extends Component{
         "id":this.props.match.params.product_id
        }, {"headers": headers}).then(product=>{
            this.setState({
-            ProductData : product.data
+            ProductData : product.data,
+            mainImage:product.data.images[0]['largeImages'][0]
            })
        })
     }
 
     render(){
-        if(this.state.ProductData.images){
-            var image1 = this.state.ProductData.images[0]['largeImages'][0];
-        }
+        var MainImage = this.state.mainImage;
+       
         var settings = {
             className: "slick-cente",
             variableWidth: true,
@@ -93,7 +100,7 @@ class Product extends Component{
             centerPadding: "30",
             slidesToShow: 2,
             speed: 600
-          };
+        };
         return(
             <div>
                 <Header/>
@@ -105,43 +112,33 @@ class Product extends Component{
                             smallImage: {
                                 alt: '',
                                 isFluidWidth: true,
-                                src: {image1},
+                                src: {MainImage},
                                 srcSet: [
-                                    `${image1} 687w`,
-                                    `${image1} 770w`,
-                                    `${image1} 861w`,
-                                    `${image1} 955w`
+                                    `${MainImage} 687w`,
+                                    `${MainImage} 770w`,
+                                    `${MainImage} 861w`,
+                                    `${MainImage} 955w`
                                 ].join(', '),
                                 sizes: '(min-width: 480px) 30vw, 80vw'
                             },
                             largeImage: {
                                 alt: '',
-                                src: image1,
+                                src: MainImage,
                                 width: 1200,
                                 height: 1800
                             }
                             }} />
-                           
-                                <Slider  className="d-flex product-thumb" {...settings}>
-                                    <div>
-                                        <img src={image1} />
-                                    </div>
-                                    <div >
-                                        <img src={image1}/>
-                                    </div>
-                                    <div >
-                                        <img src={image1} />
-                                    </div>
-                                    <div >
-                                        <img src={image1} />
-                                    </div>
-                                    <div >
-                                        <img src={image1} />
-                                    </div>
-                                </Slider>
-                            
-                            
-                            
+                            <Slider  className="d-flex product-thumb" {...settings}>
+                                {
+                                    this.state.ProductData.images? this.state.ProductData.images[0]['thumbnails'].map(item=>{
+                                        return (
+                                            <div key={item} onClick={()=>this.handleMainImage(item)}>
+                                                <img src={item} />
+                                            </div>
+                                            )
+                                    }):""
+                            }
+                            </Slider>
                         </div>
                         <div className="col-lg-7 reduce-zindex">
                             <h3>{this.state.ProductData.name}</h3>

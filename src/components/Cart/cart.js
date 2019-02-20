@@ -30,8 +30,8 @@ class Cart extends Component{
            return(
                 <div className="row item-list pt-3 pb-3 text-center">
                     <div className="col-lg-4 item">
-                        <img src="./xyz.png" alt="product image" width="50" height="50"></img>
-                        <span className="red">{item.name}</span>
+                        <img src={item.images[0]['thumbnails'][0]} alt="Product image" width="50" height="50"/>
+                        <span className="red pl-2">{item.name}</span>
                         <FontAwesomeIcon className="mr-1 float-right remove"  onClick={()=>{this.handleRemove(item.id)}} icon={faTimes} style={{color:'#000'}} size="md" />
                     </div>
                     <div className="col-lg-2 item  pl-1">
