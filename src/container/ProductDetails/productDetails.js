@@ -19,6 +19,7 @@ class Product extends Component{
         this.state={
             ProductData : [],
             mainImage:"",
+            showDetail:false,
             type:this.props.location.state.type
         }
         this.gotoCart = this.gotoCart.bind(this);
@@ -34,6 +35,9 @@ class Product extends Component{
             pathname: '/Cart',
         })
     }
+    toggleDescription = (event) =>{
+        event.target.classList.toggle('expand');
+    }
 
     handleMainImage = (item) => {
         this.setState({
@@ -45,34 +49,56 @@ class Product extends Component{
         switch(this.state.type){
             case "sell":
             return(
-                <div className="product-controls d-flex">
-                     <div>
+                <div>
+                     <div className="other-details">
+                        <span>Other Details :</span>
+                        <ul className="mt-2">
+                            <li>Category : Homecare</li>
+                            <li>Code : #21457</li>
+                            <li>Availabiltity : In Stock</li>
+                        </ul>
+                    </div>
+                    <div className="product-controls d-flex">
+                        <div>
                         <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
                             1
                         <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
                         </div>
-                     <div 
-                className="btnaddtoCart  ml-3"
-                    type="button"
-                onClick={()=>{this.handleClick(this.state.ProductData)}}
-                >
-                <FontAwesomeIcon className="mr-1" icon={faShoppingCart }    style={{color:'white'}} size="sm" />
-                 Add To Cart
+                            <div 
+                            className="btnaddtoCart  ml-3"
+                                type="button"
+                            onClick={()=>{this.handleClick(this.state.ProductData)}}
+                            >
+                            <FontAwesomeIcon className="mr-1" icon={faShoppingCart }    style={{color:'white'}} size="sm" />
+                            Add To Cart
+                            </div>
+                            <div 
+                            className="btnGoToCart  ml-3"
+                                type="button"
+                            onClick={this.gotoCart}    
+                            >
+                            {this.props.cartLength} Go to Cart
+                        </div>
+                    </div>
                 </div>
-                <div 
-                className="btnGoToCart  ml-3"
-                    type="button"
-                onClick={this.gotoCart}    
-                >
-                    {this.props.cartLength} Go to Cart
-                </div>
-                </div>
-               
             )
             default:
-            ""
+            return(
+                <div className="other-details">
+                    <ul className="mt-1">
+                        {this.state.ProductData.description?this.state.ProductData.description.map((item,index)=>{
+                             return(<li className="mb-4">
+                                <h4 onClick={(e)=>this.toggleDescription(e)}>
+                                    {item.title} >>
+                                    <span className="inner">{item.desc}</span>
+                                </h4>
+                                
+                            </li>)
+                        }):""}
+                    </ul>
+                </div>
+            )
         }
-
     }
 
     componentWillMount(){
@@ -90,8 +116,8 @@ class Product extends Component{
     }
 
     render(){
+        //console.log(this.state.ProductData);
         var MainImage = this.state.mainImage;
-       
         var settings = {
             className: "slick-cente",
             variableWidth: true,
@@ -144,18 +170,11 @@ class Product extends Component{
                             <h3>{this.state.ProductData.name}</h3>
                             <span>&#8377;{this.state.ProductData.price}</span>
                             <p className="pt-2 pb-4">{this.state.ProductData.fullDesc}</p>
-                            <div className="other-details">
-                                <span>Other Details :</span>
-                                <ul className="mt-2">
-                                    <li>Category : Homecare</li>
-                                    <li>Code : #21457</li>
-                                    <li>Availabiltity : In Stock</li>
-                                </ul>
-                            </div>
                             {this.renderProduct(this.state.type)}
                         </div>
                     </div>
-                    <div className="row mt-5">
+                    {
+                        this.state.type=="sell"?<div className="row mt-5">
                         <div className="col-lg-12 mt-5">
                         <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
                             <Tab label="Description">
@@ -172,7 +191,9 @@ class Product extends Component{
                             <Tab label="Reviews">Tab 3 content</Tab>
                         </Tabs>
                         </div>
-                    </div>
+                    </div>:""
+                    }
+                   
                 </div>
                 <div className="container related-products mb-5">
                     <div className="row mb-5 text-center">
