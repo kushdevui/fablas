@@ -96,9 +96,10 @@
         left: 10px;
         bottom: 50px;
     }
-    h3{
+    h4{
         color:#000a71;
         font-weight: bold;
+        
     }
     p{
         font-weight: 300;
@@ -114,11 +115,14 @@
             list-style: none;
             li{
                 h4{
-                    font-size:1rem;
+                    font-size:0.80rem;
                     font-weight: bold;
                     cursor: pointer;
                     .inner{
                         display: none;
+                    }
+                    .icon-palet{
+                        border-bottom:1px solid #ccc;
                     }
                 }
                 .expand{

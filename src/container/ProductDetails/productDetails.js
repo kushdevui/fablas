@@ -36,7 +36,8 @@ class Product extends Component{
         })
     }
     toggleDescription = (event) =>{
-        event.target.classList.toggle('expand');
+        //console.log(event.currentTarget);
+        event.currentTarget.classList.toggle('expand');
     }
 
     handleMainImage = (item) => {
@@ -77,11 +78,12 @@ class Product extends Component{
             default:
             return(
                 <div className="other-details">
-                    <ul className="mt-1">
+                    <ul className="">
                         {this.state.ProductData.details?this.state.ProductData.details.map((item)=>{
-                             return(<li className="mb-4">
+                             return(<li className="mt-5">
                                 <h4 onClick={(e)=>this.toggleDescription(e)}>
-                                    {item.title} >>
+                                    <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
+                                    {item.title}</span>
                                     <span className="inner">{item.desc}</span>
                                 </h4>
                                 
@@ -159,9 +161,9 @@ class Product extends Component{
                             </Slider>
                         </div>
                         <div className="col-lg-7 reduce-zindex">
-                            <h3>{this.state.ProductData.name}</h3>
+                            <h4>{this.state.ProductData.name}</h4>
                             <span>&#8377;{this.state.ProductData.price}</span>
-                            <p className="pt-2 pb-4">{this.state.ProductData.shortDesc}</p>
+                            <p className="pt-2 pb-2">{this.state.ProductData.shortDesc}</p>
                             {this.renderProduct(this.state.type)}
                         </div>
                     </div>
