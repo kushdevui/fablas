@@ -50,14 +50,6 @@ class Product extends Component{
             case "sell":
             return(
                 <div>
-                     <div className="other-details">
-                        <span>Other Details :</span>
-                        <ul className="mt-2">
-                            <li>Category : Homecare</li>
-                            <li>Code : #21457</li>
-                            <li>Availabiltity : In Stock</li>
-                        </ul>
-                    </div>
                     <div className="product-controls d-flex">
                         <div>
                         <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
@@ -86,7 +78,7 @@ class Product extends Component{
             return(
                 <div className="other-details">
                     <ul className="mt-1">
-                        {this.state.ProductData.description?this.state.ProductData.description.map((item,index)=>{
+                        {this.state.ProductData.details?this.state.ProductData.details.map((item)=>{
                              return(<li className="mb-4">
                                 <h4 onClick={(e)=>this.toggleDescription(e)}>
                                     {item.title} >>
@@ -169,7 +161,7 @@ class Product extends Component{
                         <div className="col-lg-7 reduce-zindex">
                             <h3>{this.state.ProductData.name}</h3>
                             <span>&#8377;{this.state.ProductData.price}</span>
-                            <p className="pt-2 pb-4">{this.state.ProductData.fullDesc}</p>
+                            <p className="pt-2 pb-4">{this.state.ProductData.shortDesc}</p>
                             {this.renderProduct(this.state.type)}
                         </div>
                     </div>
@@ -178,8 +170,11 @@ class Product extends Component{
                         <div className="col-lg-12 mt-5">
                         <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
                             <Tab label="Description">
+                                {this.state.ProductData.fullDesc}
+                            </Tab>
+                            <Tab label="Details">
                                 <ul>
-                                    {this.state.ProductData.description?this.state.ProductData.description.map(item=>{
+                                    {this.state.ProductData.details?this.state.ProductData.details.map(item=>{
                                         return <li>
                                             <div className="heading">{item.title}</div>
                                             <div>{item.desc}</div>
@@ -187,8 +182,7 @@ class Product extends Component{
                                     }):""}
                                 </ul>
                             </Tab>
-                            <Tab label="Details">Tab 2 content</Tab>
-                            <Tab label="Reviews">Tab 3 content</Tab>
+                            <Tab label="Details">Reviews</Tab>
                         </Tabs>
                         </div>
                     </div>:""
