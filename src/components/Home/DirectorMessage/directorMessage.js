@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player'
 
 import "./directorMEssage.scss";
 
@@ -21,8 +22,9 @@ const DirectorMessage = () =>{
                         </div>
                     </div>
                 </div>
-                <div className="col-6">
-                    <img src="./assets/images/sri-raj.png" className="img-fluid"/>
+                <div className="col-6 p-0">
+                    <ReactPlayer width='100%'
+          height='100%' url='https://www.youtube.com/watch?v=wruYR-DmlgY&feature=youtu.be' playing />
                 </div>
             </div>
         </div>

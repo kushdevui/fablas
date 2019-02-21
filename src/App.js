@@ -20,7 +20,7 @@ const App = ()=> {
     return(
         <div className="container-fluid">
             <Provider store={store}>
-                <BrowserRouter>
+                <HashRouter>
                     <Switch>
                         <Route path="/" exact  component={Home}/>
                         <Route path="/About" exact component={About}/>
@@ -33,7 +33,7 @@ const App = ()=> {
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
                     </Switch>
-                </BrowserRouter>
+                </HashRouter>
             </Provider>
         </div>
         
