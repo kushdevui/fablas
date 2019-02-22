@@ -25,7 +25,7 @@ const cartReducer= (state = initState,action)=>{
         //  else{
             addedItem.quantity = 1;
             //calculating the total
-            let newTotal = state.total + addedItem.price 
+            let newTotal = Number(state.total) + Number(addedItem.price) 
             
             return{
                 ...state,
@@ -52,11 +52,13 @@ const cartReducer= (state = initState,action)=>{
     if(action.type=== ADD_QUANTITY){
         let addedItem = action.id
           addedItem.quantity += 1 
-          let newTotal = state.total + addedItem.price
+          let newTotal = Number(state.total) + Number(addedItem.price)
+          console.log(newTotal);
           return{
               ...state,
               total: newTotal
           }
+          console.log(this.initState.total);
     }
     if(action.type=== SUB_QUANTITY){  
         console.log(action.id);

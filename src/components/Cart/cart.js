@@ -5,7 +5,7 @@ import InnerHeader from "../../container/InnerHeader/innerHeader";
 import { connect } from 'react-redux'
 import { faShoppingCart,faArrowCircleUp,faTimes, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Footer from "../Footer/footer";
 import { removeItem,addQuantity,subtractQuantity} from '../../redux/actions/cartActions';
 
 import "./cart.scss";
@@ -30,6 +30,12 @@ class Cart extends Component{
     handleSubtractQuantity = (id)=>{
         this.props.subtractQuantity(id);
     }
+
+    getProductTotal = () =>{
+
+    }
+
+
     render(){
        const cartItem = this.props.items.map(item=>{
            return(
@@ -40,7 +46,7 @@ class Cart extends Component{
                         <FontAwesomeIcon className="mr-1 float-right remove"  onClick={()=>{this.handleRemove(item.id)}} icon={faTimes} style={{color:'#000'}} size="md" />
                     </div>
                     <div className="col-lg-2 item  pl-1">
-                       {item.price}
+                        &#x20B9; {item.price}
                     </div>
                     <div className="col-lg-3 item">
                     <div className="add-remove">
@@ -51,8 +57,7 @@ class Cart extends Component{
                         
                     </div>
                     <div className="col-lg-3 item">
-                        {item.price}
-                       
+                        &#x20B9; {item.price * item.quantity} 
                     </div>
                 </div>
            )
@@ -76,21 +81,30 @@ class Cart extends Component{
                             Total
                         </div>
                     </div>
-                    
                     {cartItem}
-                   
                 </div>  
                 <div className="container  mt-3">
                     <div className="row text-center proceed">
                         <div className="col-lg-3 btnGoToCart  ml-3"
                         type="button"
-                    >
-                 Proceed to checkout
-                </div>
+                        >
+                        Proceed to checkout
+                        </div>
                     </div>
-                  
+                    <div className="row mt-3 d-flex total-summary mb-5">
+                        <div className="col-lg-6 border">
+                            <div className="p-3">
+                                <p>Cart Total</p>
+                                <ul>
+                                    <li>Cart Subtotal : <span> &#x20B9; {this.props.productTotal}</span></li>
+                                    <li>Shipping : <span>Free shipping</span></li>
+                                    <li>Order Total : <span> &#x20B9; {this.props.productTotal}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                            
+                <Footer/>
             </div>
             
         )
@@ -100,6 +114,7 @@ class Cart extends Component{
 const mapStateToProps = (state)=>{
     return{
         items: state.cartReducer.addedItems,
+        productTotal: state.cartReducer.total,
     }
 }
 const mapDispatchToProps = (dispatch)=>{
