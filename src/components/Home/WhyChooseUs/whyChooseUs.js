@@ -169,10 +169,10 @@ class WhyChooseUs extends Component{
                             </ul>
                             <div id="earth"></div>
                         </div>
-                       
+{/*                        
                         <div className="goods">
                             <img src="./assets/images/products.png"/>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
