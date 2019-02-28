@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const FOOTERMAP = () =>{
     const mapStyles = {
@@ -10,7 +10,7 @@ const FOOTERMAP = () =>{
     return(
         <div>
             <Map
-                google=""
+                google={this.props.google}
                 zoom={14}
                 style={mapStyles}
                 initialCenter={{

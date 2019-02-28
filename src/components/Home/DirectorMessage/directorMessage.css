@@ -1,9 +1,14 @@
+.director-tile .message-window {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .director-tile .message {
   background-color: #00296d;
 }
 
 .director-tile .message h4 {
-  padding-top: 4rem;
   font-size: 2.1875rem;
   font-weight: 100;
   color: #fff;

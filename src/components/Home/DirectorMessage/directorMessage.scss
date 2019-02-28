@@ -3,10 +3,12 @@
 @import "../../../global/styles/base_variables.scss";
 
 .director-tile{
+    .message-window{
+        align-items: center;
+    }
     .message{
         background-color: $dark-blue;
         h4{
-            padding-top:2.2rem;
             font-size:2.1875rem;
             font-weight: 100;
             color:$white;

@@ -7,6 +7,8 @@ import ContactInformation from "../../container/ContactInformation/contactInform
 import GoogleMap from '../../container/FooterMap/footerMap';
 import Footer from "../Footer/footer";
 const ContactUs = () =>{
+    const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw'
+    let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.709498,77.184029`
     return(
         <div>
             <Header/>
@@ -21,12 +23,15 @@ const ContactUs = () =>{
                         <ContactInformation/>
                     </div>
                 </div>
-                <div className="row pt-4 pb-4">
+               
+            </div>
+            <div className="row pt-4 pb-4">
                     <div className="col-lg-12">
-                        <GoogleMap/>
+                    <iframe className="frame" frameBorder="0" height="400" style={{ width: "100%"}} 
+                        src={_url}>
+                    </iframe>
                     </div>
                 </div>
-            </div>
             <Footer/>
         </div>
     )
