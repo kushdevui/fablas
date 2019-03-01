@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/header'
-import GoogleMap from '../../container/FooterMap/footerMap';
+// import GoogleMap from '../../container/FooterMap/footerMap';
 import { faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -133,7 +133,7 @@ const AboutUs = () =>{
                     <div className="row text-center">
                         
                         <div className="col-lg-4 pt-4">
-                            <GoogleMap/>
+                            {/* <GoogleMap/> */}
                         </div>
                         <div className="col-lg-4 pt-4">
                             <EnquiryForm/>
