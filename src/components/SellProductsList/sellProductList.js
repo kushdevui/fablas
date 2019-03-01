@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import FilterColors from "../../container/FilterColors/filterColors";
 import "./sell-product-list.scss"
 
 class SellProductList extends Component{
@@ -87,66 +87,53 @@ class SellProductList extends Component{
                 <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-3 filters">
-                        <h6 className="mb-4">CATEGORIES</h6>
-                        <ul className="col-lg-9">
-                            {this.props.productList.map((item)=>{
-                                 return(<li  className="category-item pb-3" onClick={this.toggleAnimation}>
-                                    {item.categoryName}
-                                    <span className="float-right" > 
-                                        <FontAwesomeIcon icon={faArrowDown } style={{color:'black'}} size="sm" />
-                                    </span>
-                                    <ul className="submenu pl-1">
-                                        {item.subCategory.map(subcat=>{
-                                            return(<li class="second-menu-item pt-2">
-                                                - {subcat.name}
-                                            </li>)
-                                        })}
-                                    </ul>
-                                 </li>)
-                            })}
-                        </ul>
-                        <div className="filter-mode price-filter">
-                            <p>FILTER BY PRICE</p>
+                        <div className="row">
+                            <h6 className="mb-4 col-lg-9 ">FILTER BY <span>View All</span> </h6>
+                            <ul className="col-lg-9 p-0">
+                                {this.props.productList.map((item)=>{
+                                    return(<li  className="category-item pb-3" onClick={this.toggleAnimation}>
+                                        {item.categoryName}
+                                        <span className="float-right" > 
+                                            <FontAwesomeIcon icon={faArrowDown } style={{color:'black'}} size="sm" />
+                                        </span>
+                                        <ul className="submenu pl-1">
+                                            {item.subCategory.map(subcat=>{
+                                                return(<li class="second-menu-item pt-2">
+                                                    - {subcat.name}
+                                                </li>)
+                                            })}
+                                        </ul>
+                                    </li>)
+                                })}
+                            </ul>
                         </div>
-                        <div className="filter-mode color-filter">
-                            <p>COLOR</p>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark red"></span>
+                        <div className="filter-mode row border-bottom pb-3 price-filter">
+                            <p className="col-lg-12 p-0">FILTER BY PRICE</p>
+                            <input type="range" defaultValue={30} withBars className="w-100 col-lg-9" />
+                            <div className="price-range">Price From &#8377; 50 - &#8377; 300</div>    
+                        </div>
+                        <div className="filter-mode row color-filter">
+                            <p className="col-lg-12 p-0">COLOR</p>
+                            <div className="row mt-2">
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark blue"></span>
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark orange"></span>
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark brown"></span>
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark green"></span>
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            <span>
-                                <div className="color-container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark pink"></span>
+                                <div className="col-lg-1">
+                                   <FilterColors/>
                                 </div>
-                            </span>
-                            
+                            </div>
                         </div>
                     </div>
                     <div className="col-lg-9">

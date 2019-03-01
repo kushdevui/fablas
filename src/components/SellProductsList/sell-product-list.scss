@@ -1,4 +1,15 @@
 .filters{
+    h6{
+        font-weight: bold;
+        font-size:0.90rem;
+        background-color:#fafafa;
+        padding:1rem 0.5rem;
+        span{
+            font-size:0.80rem;
+            color:#555555;
+            float:right;
+        }
+    }
     ul{
         list-style:none;
         padding-left:0rem;
@@ -27,6 +38,14 @@
     
 }
 .filter-mode{
+    .border-bottom{
+        border-bottom:1px solid #eee;
+        padding-bottom:1rem;
+    }
+    .price-range{
+        font-size:1rem;
+        padding-top:1rem;
+    }
     margin-top:2rem;
     display:flex;
     flex:4;
@@ -38,69 +57,7 @@
         display:inline-block;
         margin-right:0.1rem;
     }
-    input[type=checkbox]{
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-    .color-container {
-        display: block;
-        position: relative;
-        margin-right: 30px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 22px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      
-      /* Create a custom checkbox */
-      .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-      }
-      
-      /* On mouse-over, add a grey background color */
-      .color-container:hover input[type=checkbox] ~ .checkmark {
-        border:1px solid #eee;
-      }
-      
-      /* When the checkbox is checked, add a blue background */
-      .color-container input[type=checkbox]:checked ~ .checkmark {
-        background-color: #2196F3;
-      }
-      
-      /* Create the checkmark/indicator (hidden when not checked) */
-      .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-      }
-      
-      /* Show the checkmark when checked */
-      .color-container input:checked ~ .checkmark:after {
-        display: block;
-      }
-      
-      /* Style the checkmark/indicator */
-      .color-container .checkmark:after {
-        left: 9px;
-        top: 5px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
+   
   
     
 }

@@ -1,5 +1,18 @@
 .product-details{
-    
+    .product-details{
+        h5{
+            font-size:1rem;
+            color:#e30016;
+            font-weight: bold;
+        }
+        .list{
+            span{
+                font-size:0.80rem;
+                color:#000;
+                display: block;
+            }
+        }
+    }
     .slick-slider{
         margin-top: 2rem;
         background-color: #f4f4f4;

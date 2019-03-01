@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from 'react-redux'
 import { addToCart } from '../../redux/actions/cartActions';
 import { Link } from 'react-router-dom';
-
+import FilterColors from "../FilterColors/filterColors";
 
 import "./product-item.scss";
 
@@ -51,6 +51,7 @@ class ProductItem extends Component{
                     type="button"
                     onClick={()=>{this.handleClick(this.props)}}
                 >
+                
                     <FontAwesomeIcon className="mr-1" icon={faShoppingCart } style={{color:'white'}} size="sm" />
                     {!this.state.isAdded ? "Add to Cart" : "Added in Cart"}
                 </div>
@@ -60,7 +61,6 @@ class ProductItem extends Component{
     }
 
     render(){
-       
 
         return(
             

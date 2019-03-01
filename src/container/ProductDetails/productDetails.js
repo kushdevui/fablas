@@ -12,6 +12,7 @@ import "./product-details.scss";
 import Footer from "../../components/Footer/footer";
 import { addToCart } from '../../redux/actions/cartActions';
 import Slider from "react-slick";
+import FilterColors from "../FilterColors/filterColors"
 
 class Product extends Component{
     constructor(props){
@@ -50,28 +51,53 @@ class Product extends Component{
         switch(this.state.type){
             case "sell":
             return(
-                <div>
-                    <div className="product-controls d-flex">
-                        <div>
-                        <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
-                            1
-                        <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
+                <div className="row">
+                    <div className="product-controls d-flex col-lg-12">
+                        <div className="col-lg-2 p-0">
+                            <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
+                                1
+                            <FontAwesomeIcon className="ml-1" onClick={()=>{this.handleSubtractQuantity(item)}}  icon={faArrowCircleDown } style={{color:'#999'}} size="sm" />
+                            
                         </div>
+                        <div className="col-lg-3">
+                            <div className="row">
+                                <div className="col-lg-1">
+                                    <FilterColors/>
+                                </div>
+                                <div className="col-lg-1">
+                                    <FilterColors/>
+                                </div>
+                                <div className="col-lg-1">
+                                    <FilterColors/>
+                                </div>
+                                <div className="col-lg-1">
+                                    <FilterColors/>
+                                </div>
+                                <div className="col-lg-1">
+                                    <FilterColors/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3">
                             <div 
-                            className="btnaddtoCart  ml-3"
+                            className="btnaddtoCart"
                                 type="button"
                             onClick={()=>{this.handleClick(this.state.ProductData)}}
                             >
                             <FontAwesomeIcon className="mr-1" icon={faShoppingCart }    style={{color:'white'}} size="sm" />
                             Add To Cart
                             </div>
+                        </div>
+                        <div className="col-lg-3">
                             <div 
-                            className="btnGoToCart  ml-3"
+                            className="btnGoToCart"
                                 type="button"
                             onClick={this.gotoCart}    
                             >
                             {this.props.cartLength} Go to Cart
+                            </div>
                         </div>
+                       
                     </div>
                 </div>
             )
@@ -86,7 +112,6 @@ class Product extends Component{
                                     {item.title}</span>
                                     <span className="inner">{item.desc}</span>
                                 </h4>
-                                
                             </li>)
                         }):""}
                     </ul>
@@ -160,11 +185,18 @@ class Product extends Component{
                             }
                             </Slider>
                         </div>
-                        <div className="col-lg-7 reduce-zindex">
+                        <div className="col-lg-7 product-details reduce-zindex">
                             <h4>{this.state.ProductData.name}</h4>
                             <span>&#8377;{this.state.ProductData.price}</span>
                             <p className="pt-2 pb-2">{this.state.ProductData.shortDesc}</p>
+                            <h5>Other Details :</h5>
+                            <div className="list pb-5">
+                                <span>Category : Homecare</span>
+                                <span>Code : #21457</span>
+                                <span>Availabiltity : In Stock</span>
+                            </div>
                             {this.renderProduct(this.state.type)}
+                           
                         </div>
                     </div>
                     {
