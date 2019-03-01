@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,UADM,CACN,EAAE,CAAA;EACE,KAAK,EAAC,OAAO;EACb,WAAW,EAAE,IAAI;EACjB,OAAO,EAAC,UAAU;CACrB;;AALL,AAMI,UANM,CAMN,CAAC,CAAA;EACG,SAAS,EAAC,IAAI;EACd,KAAK,EAAC,OAAO;CAChB;;AATL,AAUI,UAVM,CAUN,IAAI,CAAA;EACA,gBAAgB,EAAE,OAAO;EACzB,YAAY,EAAC,OAAO;EACpB,SAAS,EAAC,OAAO;CACpB",
+    "sources": [
+        "news-item.scss"
+    ],
+    "names": [],
+    "file": "news-item.css"
+}

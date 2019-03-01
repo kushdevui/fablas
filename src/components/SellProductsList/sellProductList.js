@@ -68,7 +68,6 @@ class SellProductList extends Component{
                         id={product.id}
                         images={product.images}
                         />
-                     
                  </div>
                );
         });
@@ -106,6 +105,49 @@ class SellProductList extends Component{
                                  </li>)
                             })}
                         </ul>
+                        <div className="filter-mode price-filter">
+                            <p>FILTER BY PRICE</p>
+                        </div>
+                        <div className="filter-mode color-filter">
+                            <p>COLOR</p>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark red"></span>
+                                </div>
+                            </span>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark blue"></span>
+                                </div>
+                            </span>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark orange"></span>
+                                </div>
+                            </span>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark brown"></span>
+                                </div>
+                            </span>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark green"></span>
+                                </div>
+                            </span>
+                            <span>
+                                <div className="color-container">
+                                    <input type="checkbox"/>
+                                    <span className="checkmark pink"></span>
+                                </div>
+                            </span>
+                            
+                        </div>
                     </div>
                     <div className="col-lg-9">
                         <div className="row">

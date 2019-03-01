@@ -1,0 +1,33 @@
+.heading {
+  border-bottom: 2px solid #dddddd;
+}
+
+.heading h3 {
+  font-size: 22px;
+  font-weight: 200;
+  color: #000000;
+}
+
+.heading h3 span {
+  font-weight: bold;
+}
+
+.heading p {
+  font-size: 11px;
+  color: #6666;
+}
+
+.news-list {
+  margin-bottom: 1rem;
+}
+
+.news-list .item p {
+  color: #333333;
+  font-size: 0.75rem;
+}
+
+.news-list .item a {
+  color: #00a3d9;
+  font-size: 12px;
+}
+/*# sourceMappingURL=news.css.map */

@@ -10,6 +10,30 @@ body {
   background-color: #f4f4f4;
 }
 
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.orange {
+  background-color: orangered;
+}
+
+.pink {
+  background-color: pink;
+}
+
 .tooltip {
   left: 3rem;
 }
