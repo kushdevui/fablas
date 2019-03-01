@@ -7,7 +7,7 @@ const DirectorMessage = () =>{
     return(
         <div className="director-tile">
             <div className="row">
-                <div className="col-6 message">
+                <div className="col-6 message ">
                     <div className="d-flex message-window">
                         <div className="image pt-3 pb-3">
                             <img src="./assets/images/men-standing.png" className="img-fluid"/>

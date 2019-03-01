@@ -14,8 +14,8 @@ const FOOTERMAP = () =>{
                 zoom={14}
                 style={mapStyles}
                 initialCenter={{
-                lat: 28.709498,
-                lng: 77.184029
+                lat: -1.2884,
+                lng: 36.8233
             }}
             />
         </div>
@@ -23,5 +23,5 @@ const FOOTERMAP = () =>{
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw'
+  apiKey: 'AIzaSyBf70Lc8_NCSUX6OcUwHvecBbN3qUy_9Lc'
 })(FOOTERMAP);
