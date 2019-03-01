@@ -1,0 +1,29 @@
+.heading{
+    border-bottom:2px solid #dddddd;
+    h3{
+        font-size:22px;
+        font-weight: 200;
+        color:#000000;
+        span{
+            font-weight: bold;
+        }
+    }
+    p{
+        font-size:11px;
+        color:#6666;
+    }
+}
+.news-list{
+    margin-bottom:1rem;
+    .item{
+        p{
+            color:#333333;
+            font-size:0.75rem;
+        }
+        a{
+            color:#00a3d9;
+            font-size:12px;
+        }
+        
+    }
+}

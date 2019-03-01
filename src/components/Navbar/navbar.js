@@ -164,7 +164,7 @@ class  NavigationBar extends Component {
                             : ""}
                         </li>
                         <li><a href="#/shop">Shop</a></li>
-                        <li><a>News</a></li>
+                        <li><a href="#/News">News</a></li>
                         <li><a href="#/Career">Career</a></li>
                         <li><a href="#/Contact">Contact Us</a></li>
                     </ul>​

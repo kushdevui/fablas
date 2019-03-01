@@ -14,6 +14,8 @@ import { withRouter } from "react-router-dom";
 import "./about-us.scss";
 
 const AboutUs = () =>{
+    const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw'
+    let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.709498,77.184029`
     return(
         <div className="about-us-section">
             <Header/>
@@ -133,12 +135,14 @@ const AboutUs = () =>{
                     <div className="row text-center">
                         
                         <div className="col-lg-4 pt-4">
-                            {/* <GoogleMap/> */}
+                        <iframe className="frame" frameBorder="0" height="250" style={{ width: "100%"}} 
+                            src={_url}>
+                         </iframe>
                         </div>
                         <div className="col-lg-4 pt-4">
                             <EnquiryForm/>
                         </div>
-                        <div className="col-lg-4 pl-5 pt-4">
+                        <div className="col-lg-4  pt-4">
                             <ContactInformation/>
                     </div>
                 </div>
