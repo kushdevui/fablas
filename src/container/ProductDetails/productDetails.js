@@ -51,7 +51,7 @@ class Product extends Component{
         switch(this.state.type){
             case "sell":
             return(
-                <div className="row">
+                <div className="row pt-3">
                     <div className="product-controls d-flex col-lg-12">
                         <div className="col-lg-2 p-0">
                             <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
@@ -190,7 +190,7 @@ class Product extends Component{
                             <span>&#8377;{this.state.ProductData.price}</span>
                             <p className="pt-2 pb-2">{this.state.ProductData.shortDesc}</p>
                             <h5>Other Details :</h5>
-                            <div className="list pb-5">
+                            <div className="list pb-2 border-bottom">
                                 <span>Category : Homecare</span>
                                 <span>Code : #21457</span>
                                 <span>Availabiltity : In Stock</span>
