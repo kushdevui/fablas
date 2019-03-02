@@ -41,6 +41,9 @@
 }
 
 .tile-choose-us .features-section {
+  background-image: url("../../../assets/images/hills.png");
+  background-size: cover;
+  background-position: center;
   margin-top: 8rem;
 }
 
@@ -67,7 +70,7 @@
   /* [4] Tweak the appearance, and give it a nice background i.e. the world map */
   color: #000;
   border-radius: 50%;
-  background: url(https://lh5.googleusercontent.com/-kkxEx-SkRaY/VBLF4BV2lZI/AAAAAAAAKao/FnKsv7402_c/s0/earthmap.jpg) 0 0 repeat/630px;
+  background: url("../../../assets/images/globe-home.png") 0 0 repeat/630px;
   /* [5] Position things in a 3d space */
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;

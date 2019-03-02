@@ -10,6 +10,9 @@ import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FilterColors from "../../container/FilterColors/filterColors";
+import Dropdown from 'react-dropdown';
+
+
 import "./sell-product-list.scss"
 
 class SellProductList extends Component{
@@ -56,6 +59,10 @@ class SellProductList extends Component{
     }
 
     render(){
+        const options = [
+            'Newest Arrivals', 'Price- Low to High', 'Price- High to Low'
+        ]
+        const defaultOption = options[0];
 
         const productsData = this.state.productListByCat.map(product => {
             return (
@@ -87,6 +94,12 @@ class SellProductList extends Component{
                 <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-3 filters">
+                        <div className="row drop-down-filter">
+                            <div className="col-lg-9 p-0 mb-5">
+                                <Dropdown options={options} onChange={this._onSelect}  value={defaultOption} placeholder="Select an option" />
+                                <FontAwesomeIcon icon={faArrowDown } style={{color:'#eee'}} size="sm" />
+                            </div>
+                        </div>
                         <div className="row">
                             <h6 className="mb-4 col-lg-9 ">FILTER BY <span>View All</span> </h6>
                             <ul className="col-lg-9 p-0">

@@ -8,7 +8,7 @@ import "./hero.scss";
 const Hero = () =>{
     return(
         <div class="hero-banner">
-            <img className="col-12 p-0 img-fluid" src="./assets/images/Homepage-Banner.jpg"/>
+            <img className="col-12 p-0 img-fluid" src="./assets/images/Home-banner.jpg"/>
         </div>
     )
 }

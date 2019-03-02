@@ -1,7 +1,8 @@
 .tile-bulk-orders {
   position: relative;
-  margin-top: 4.25rem;
-  margin-bottom: 4rem;
+  background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
+  background-size: cover;
+  padding: 1rem 0;
 }
 
 .tile-bulk-orders .form {
@@ -13,12 +14,22 @@
 }
 
 .tile-bulk-orders .form-control {
-  color: #aaaaaa;
-  font-size: 12px;
+  color: #ffffff;
+  border: 1px solid #fff;
+  background: transparent;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tile-bulk-orders .heading {
+  border-bottom: none;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .tile-bulk-orders .heading h1 {
   font-size: 32px;
+  color: #fff;
   font-weight: 100;
 }
 
@@ -28,7 +39,7 @@
 
 .tile-bulk-orders .heading p {
   font-weight: 600;
-  color: #4c4c4c;
+  color: #ccc;
   font-size: 14px;
 }
 

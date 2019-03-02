@@ -221,7 +221,6 @@ class Product extends Component{
                         </div>
                     </div>:""
                     }
-                   
                 </div>
                 <div className="container related-products mb-5">
                     <div className="row mb-5 text-center">

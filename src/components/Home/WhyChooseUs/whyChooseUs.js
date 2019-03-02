@@ -79,7 +79,7 @@ class WhyChooseUs extends Component{
                 <p>Search our databases of the Top 100 providers in key segments of the supply chain industry.
                 </p>
                 <div className="row d-flex justify-content-center">
-                <div className="features-section col-lg-6">
+                <div className="features-section col-lg-12">
                    
                         <div className='circle-container'>
                             <ul>
@@ -167,6 +167,7 @@ class WhyChooseUs extends Component{
                                     // return <TooltipItem key={i} item={tooltip} id={i} />;
                                 })} */}
                             </ul>
+                            
                             <div id="earth"></div>
                         </div>
 {/*                        

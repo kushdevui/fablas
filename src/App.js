@@ -16,11 +16,12 @@ import SellProductsList from "./components/SellProductsList/sellProductList"
 import Cart from "./components/Cart/cart";
 import store from "./redux/store";
 import ProductDetail from "./container/ProductDetails/productDetails";
+import News from "./components/News/News";
 const App = ()=> {
     return(
         <div className="container-fluid">
             <Provider store={store}>
-                <BrowserRouter>
+                <HashRouter>
                     <Switch>
                         <Route path="/" exact  component={Home}/>
                         <Route path="/About" exact component={About}/>
@@ -30,10 +31,11 @@ const App = ()=> {
                         <Route path="/shop/" exact component={Shop}/>
                         <Route path="/Products/:ProductSubCategory" exact  component={ProductsList}/>
                         <Route path="/Cart/" exact  component={Cart}/>
+                        <Route path="/News/" exact  component={News}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
                     </Switch>
-                </BrowserRouter>
+                </HashRouter>
             </Provider>
         </div>
         

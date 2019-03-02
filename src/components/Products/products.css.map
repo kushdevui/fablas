@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAIA,AAAA,gBAAgB,CAAA;EACZ,gBAAgB,ECCV,OAAO;CDAhB",
+    "mappings": "",
     "sources": [
         "products.scss",
         "../../global/styles/base_colors.scss",

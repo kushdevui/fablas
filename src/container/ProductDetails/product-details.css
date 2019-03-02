@@ -1,3 +1,19 @@
+.product-details .border-bottom {
+  border-bottom: 1px solid #eee;
+}
+
+.product-details .product-details h5 {
+  font-size: 1rem;
+  color: #e30016;
+  font-weight: bold;
+}
+
+.product-details .product-details .list span {
+  font-size: 0.80rem;
+  color: #000;
+  display: block;
+}
+
 .product-details .slick-slider {
   margin-top: 2rem;
   background-color: #f4f4f4;

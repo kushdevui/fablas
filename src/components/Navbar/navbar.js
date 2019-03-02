@@ -4,7 +4,7 @@
 
 // Dependencies
 import React, { Component } from "react";
-import { faShoppingCart,faArrowRight  } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart,faArrowRight,faSearch  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
@@ -172,7 +172,8 @@ class  NavigationBar extends Component {
                 <div className="col-3 pt-3 icon-palat">
                     <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="sm" /></span>
                     <span className="navbar-search">
-                        <input type="text" name="search-box" value="search"/>
+                        <input type="text" name="search-box" value=""/>
+                        <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
                     </span>
                     <span><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>

@@ -3,6 +3,13 @@
   display: none;
 }
 
+.search-icon {
+  position: absolute;
+  left: 2.9rem;
+  top: 1.5rem;
+  font-size: 0.80rem;
+}
+
 .dropdown-submenu {
   position: relative;
 }
@@ -82,7 +89,7 @@
 
 .navbar-section .site-nav {
   padding-top: 0.80rem;
-  font-size: 0.80em;
+  font-size: 0.90em;
   float: right;
 }
 

@@ -1,20 +1,29 @@
 .tile-bulk-orders{
     position: relative;
-    margin-top:4.25rem;
-    margin-bottom:4rem;
+    background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
+    background-size: cover;
+    padding:1rem 0;
     .form{
         margin-top:3rem;
         .btn{
             color:white;
         }
+       
     }
     .form-control{
-        color:#aaaaaa;
-        font-size:12px;
+        color:#ffffff;
+        border:1px solid #fff;
+        background: transparent;
+        font-size:14px;
+        font-weight: bold;
     }
     .heading{
+        border-bottom:none;
+        padding-top:2rem;
+        padding-bottom:2rem;
         h1{
             font-size:32px;
+            color:#fff;
             font-weight: 100;
             span{
                 font-weight: bold;
@@ -22,7 +31,7 @@
         }
         p{
             font-weight: 600;
-            color:#4c4c4c;
+            color:#ccc;
             font-size: 14px;
         }
     }

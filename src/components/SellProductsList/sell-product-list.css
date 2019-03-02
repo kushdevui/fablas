@@ -1,3 +1,65 @@
+.filters .drop-down-filter svg {
+  position: absolute;
+  right: 10px;
+  top: 1rem;
+}
+
+.filters .Dropdown-control {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #333;
+  cursor: default;
+  outline: none;
+  padding: 8px 52px 8px 10px;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.filters .Dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filters .Dropdown-option {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.filters h6 {
+  font-weight: bold;
+  font-size: 0.90rem;
+  background-color: #fafafa;
+  padding: 1rem 0.5rem;
+}
+
+.filters h6 span {
+  font-size: 0.80rem;
+  color: #555555;
+  float: right;
+}
+
 .filters ul {
   list-style: none;
   padding-left: 0rem;
@@ -39,12 +101,16 @@
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
-  /* Create a custom checkbox */
-  /* On mouse-over, add a grey background color */
-  /* When the checkbox is checked, add a blue background */
-  /* Create the checkmark/indicator (hidden when not checked) */
-  /* Show the checkmark when checked */
-  /* Style the checkmark/indicator */
+}
+
+.filter-mode .border-bottom {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.filter-mode .price-range {
+  font-size: 1rem;
+  padding-top: 1rem;
 }
 
 .filter-mode p {
@@ -55,64 +121,6 @@
 .filter-mode span {
   display: inline-block;
   margin-right: 0.1rem;
-}
-
-.filter-mode input[type=checkbox] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.filter-mode .color-container {
-  display: block;
-  position: relative;
-  margin-right: 30px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.filter-mode .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-}
-
-.filter-mode .color-container:hover input[type=checkbox] ~ .checkmark {
-  border: 1px solid #eee;
-}
-
-.filter-mode .color-container input[type=checkbox]:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-.filter-mode .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.filter-mode .color-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.filter-mode .color-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
 }
 
 .cart-tile {
