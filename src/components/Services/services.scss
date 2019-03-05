@@ -1,0 +1,40 @@
+.styles_modal__gNwvD{
+    border-radius: 5px;
+}
+.styles_closeIcon__1QwbI{
+    background-color:#e60014;
+    color:#fff;
+    border-radius:50%;
+    .styles_closeIcon__1QwbI{
+        path{
+            fill:#fff;
+        }
+    }
+}
+.modal-body-full{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    .icon{
+        align-self: center;
+        background-color:#081878;
+        border-radius: 100%;
+        padding:20px;
+        width:120px;
+        height:120px;
+        margin-top:-100px;
+        svg{
+            height:80px;
+            width:80px;
+        }
+    }
+    h4{
+        color:#081878;
+        font-weight: bold;
+    }
+    p{
+        font-size:14px;
+    }
+   
+}

@@ -1,4 +1,29 @@
 .career-tile{
+    .vendor-form{
+        .form-control{
+            border-radius: none;
+            padding:1rem 1.5rem;
+            font-size:16px;
+            font-weight: 300;
+            margin-bottom:1rem;
+        }
+    }
+    .active{
+        background-color:#282676 !important;
+        transform: scale(1.1);
+        z-index: 2000;
+        transition: all .2s ease-in-out;
+        h3,p{
+            color:#ffffff !important;
+        }
+        svg{
+            background-color: #282676 !important;
+            border-color:white !important;
+            .icon{
+                fill:#ffffff !important;
+            }
+        }
+    }
     .career-category{
         position: relative;
         margin-top:5rem;
