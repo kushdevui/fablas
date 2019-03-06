@@ -82,7 +82,7 @@ class Services extends Component{
     
     const renderServices = () =>{
         return services.map(item=>{
-            return(<div className="col-lg-3 mb-3" onClick={this.onOpenModal}>
+            return(<div className="col-lg-3 mb-3 services-item" onClick={this.onOpenModal}>
                     <ServiceItem data={item} />
             </div>)
         })
