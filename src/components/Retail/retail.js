@@ -16,8 +16,8 @@ class Retail extends Component {
                 <div className="row">
                     <div className="col-6 pl-5 pr-5">
                         <div id="cf4" className="hover">
-                            <img className="top shadow" src="./assets/images/products/RetailSlider2.png"/>
-                            <img className="bottom shadow" src="./assets/images/products/RetailSlider1.png"/>
+                            <img className="top shadow img-fluid" src="./assets/images/products/featured-1.png"/>
+                            <img className="bottom shadow img-fluid" src="./assets/images/products/featured-2.png"/>
                             <FontAwesomeIcon className="next swap-animation-top" icon={faArrowRight } style={{color:'#999999'}} size="lg" />
                             <FontAwesomeIcon className="prev swap-animation-bottom"  icon={faArrowLeft } style={{color:'#999999'}} size="lg" />
                         </div>

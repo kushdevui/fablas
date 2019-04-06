@@ -17,33 +17,31 @@ const FunFacts = () =>{
                         <img src="./assets/images/facts-plane.png"/>
                         <div className="row">
                             <div className="col-lg-4">
-                                <span className="d-block number">26<span className="ml-1 red">+</span></span>
-                                <span className="min-heading">PROJECTS DONE</span>
+                                <span className="d-block number">200<span className="ml-1">+</span></span>
+                                <span className="min-heading">PRODUCTS</span>
                             </div>
                             <div className="col-lg-4">
-                                <span className="d-block number">11k<span className="ml-1 red">+</span></span>
-                                <span className="min-heading">DESTINATION</span>
+                                <span className="d-block number">500<span className="ml-1">+</span></span>
+                                <span className="min-heading">CLIENTS</span>
                             </div>
                             <div className="col-lg-4">
-                                <span className="d-block number">25k<span className="ml-1 red">+</span></span>
-                                <span className="min-heading">HAPPY CLIENTS</span>
+                                <span className="d-block number">50k<span className="ml-1">+</span></span>
+                                <span className="min-heading">DESTINATIONS</span>
                             </div>
-                            
                         </div>
-                        <p className="pt-3">LOREM IPSUM DOLOR SITAMET CONSECTEUERER ADISPICING ELIT DIAM, SED NONOUMY NIBH EUISMOD TINCIDUNT.</p>
                     </div>
                 </div>
                 <div className="col-4">
                     <div className="heading">
                         <h3>OUR <span>TESTIMONIAL</span></h3>
-                        <p>WHAT HAVE WE ACHIEVED SO FAR</p>
+                        <p>What clients say about us</p>
                     </div>
                     <Carousel type="text"/>
                 </div>
                 <div className="col-4">
                     <div className="heading">
                         <h3>LATEST <span>NEWS & EVENTS</span></h3>
-                        <p>WHAT NEW IS HAPPENING</p>
+                        <p>What new is happening</p>
                     </div>
                     <div className="news-list mt-5">
                         <div className="row">

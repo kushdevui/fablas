@@ -31,11 +31,17 @@ const AboutUs = () =>{
                         </div>
                     </div>
                     <div className="col-lg-6 p-4">
-                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipidng iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque habitant morbi tristue senectus et netus et malesuada fames ac turpis egestas. Duis dapibus aliquam mi, eget euismod sem scelerisque ut. 
-                        </p>
-                        <p>Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis dapibus aliquam mi, eget euismod sem scelerisque ut. 
-    </p>
-                        <p>Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. </p>
+                   <p>
+                   Fablas Impex Pvt. Ltd. is one of India’s largest & most prominent FMCG companies, with a rich history of expertise in manufacturing & packaging. With a legacy of over four decades of providing winning solutions to Traditional as well as Modern Trade Markets, Fablas has been the supplier of choice for HORECA, B2B & Organised retail sectors for Bulk & Raw material supplies with 3rdparty  label arrangements. The major center of manufacturing is a 5 acre+ freehold factory with a hundred plus strong skilled workforce. 
+                   </p> 
+                   <p>
+                   Fablas started its journey as S.S. Industries, before successfully transforming itself from a family run company to an industry leading corporate. The company prides itself on the knowledge & experience brought to the table by an able team, led by a veteran set of directors.
+                   </p>
+                   <p>
+                   Fablas has been at the forefront of industry defining innovations in several categories, including scrubbers, wipes, draining mats, sponges, tissue, floor pads, F&V storage bags, gloves, glass cleaners and industrial pads among others. The company holds the distinction of having the sole Indian license of Spontex, Europe’s leading cleaning tool brand.  It also possesses a country wide marketing & distribution network that caters to a top-of-the-line, hygienic and bio-degradable products to a vast array of clients. 
+                   </p>
+
+
                     </div>
                 </div> 
             </div>
@@ -82,49 +88,9 @@ const AboutUs = () =>{
             <div className="team-section">
                 <div className="container">
                 <SectionHeader title="Meet Our Team" subTitle="Awesome, Great & Creative People
-
 "/>
                 <div className="row pb-5">
-                    <div className="col-lg-3 ">
-                        <div className="team-list">
-                            <div className="team-item">
-                                <img src="./assets/images/Team-Pic1.jpg" className="img-fluid"/>
-                                <div className="pt-2 font-weight-bold heading">Member Name</div>
-                                <span>Co - Founder</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 ">
-                        <div className="team-list">
-                            <div className="team-item">
-                            <img src="./assets/images/Team-Pic1.jpg" className="img-fluid"/>
-                                <div className="pt-2 font-weight-bold heading">Member Name</div>
-                                <span>Co - Founder</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 ">
-                        <div className="team-list">
-                            <div className="team-item">
-                            <img src="./assets/images/Team-Pic1.jpg" className="img-fluid"/>
-                                <div className="pt-2 font-weight-bold heading">Member Name</div>
-                                <span>Co - Founder</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 ">
-                        <div className="team-list">
-                            <div className="team-item">
-                            <img src="./assets/images/Team-Pic1.jpg" className="img-fluid"/>
-                                <div className="pt-2 font-weight-bold heading">Member Name</div>
-                                <span>Co - Founder</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <Carousel type="team"/>
                 </div>
                 </div>
             </div>

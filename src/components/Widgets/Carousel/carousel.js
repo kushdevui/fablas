@@ -10,6 +10,44 @@ import {
 } from 'reactstrap';
 import "./carousel.scss";
 
+const teamItems = [
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:"Amit.jpg"
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    },
+    {
+      name:"Seraj Akhtar Siddiqui",
+      designation:"CEO / Managing Director",
+      image:""
+    }
+]
+
 const items = [
   {
     
@@ -79,6 +117,10 @@ class Example extends Component {
               <span className="time">5 Mins ago, Tweeter</span>
           </div>
          );
+         case "team":
+         return(
+           ""
+         );
         default:   
           return (
             <img src="./assets/images/image-1.jpg"/>
@@ -98,6 +140,26 @@ class Example extends Component {
         </CarouselItem>
         );
       });
+
+      const team = teamItems.map((teamMate)=>{
+        return(<CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={teamMate.image}
+        >
+          <div className="col-lg-3">
+            <div className="team-list">
+                <div className="team-item">
+                    <img src="./assets/images/team/Amit.jpg" className="img-fluid"/>
+                    <div className="pt-2 font-weight-bold heading">{teamMate.name}</div>
+                    <span>{teamMate.designation}</span>
+                </div>
+            </div>
+          </div>
+        </CarouselItem>
+        )
+      })
+
       return (
         <Carousel
           activeIndex={activeIndex}
@@ -105,7 +167,7 @@ class Example extends Component {
           previous={this.previous}
         >
           <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-          {slides}
+            {this.props.type=="team"?team:slides}
           <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
