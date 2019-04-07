@@ -80,7 +80,7 @@ class WhyChooseUs extends Component{
                     </p>
                     <div className="col-lg-12 choose-use-section">
                         <img src="./assets/images/WhyChooseUs.png" className="img-fluid"/>
-                        <img src="./assets/images/Globe.gif" className="globe"/>
+                        <img src="./assets/images/Globe.gif" width="450" className="globe"/>
                     </div>
                     
                 </div>

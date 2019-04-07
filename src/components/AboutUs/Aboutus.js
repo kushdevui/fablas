@@ -54,7 +54,11 @@ const AboutUs = () =>{
           designation:"CEO / Managing Director",
           image:"./assets/images/team/Seraj.jpg"
         },
-       
+        {
+          name:"Zafar Uddin",
+          designation:"Finance head",
+          image:"./assets/images/team/Zafar.jpg"
+        },
         {
           name:"Amit Kumar Sinha ",
           designation:"Supply Chain Head",
