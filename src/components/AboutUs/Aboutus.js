@@ -1,9 +1,6 @@
 import React from 'react';
 import Header from '../Header/header'
 // import GoogleMap from '../../container/FooterMap/footerMap';
-import { faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from '@fortawesome/fontawesome-svg-core'
 import InnerHeader from "../../container/InnerHeader/innerHeader";
 import SectionHeader from "../../container/SectionHeading/sectionHeading"
 import Footer from "../Footer/footer";
@@ -12,8 +9,81 @@ import ContactInformation from "../../container/ContactInformation/contactInform
 import Carousel from "../../components/Widgets/Carousel/carousel";
 import { withRouter } from "react-router-dom";
 import "./about-us.scss";
+import Slider from "react-slick";
+
 
 const AboutUs = () =>{
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
+
+      const teamItems = [
+        {
+          name:"Seraj Akhtar Siddiqui",
+          designation:"CEO / Managing Director",
+          image:"./assets/images/team/Seraj.jpg"
+        },
+       
+        {
+          name:"Amit Kumar Sinha ",
+          designation:"Supply Chain Head",
+          image:"./assets/images/team/Amit.jpg"
+        },
+        {
+          name:"Deepti Bhadodia",
+          designation:"Sales Head",
+          image:"./assets/images/team/Deepti.jpg"
+        },
+        {
+          name:"Vijayamma Mohan",
+          designation:"Accounts Head",
+          image:"./assets/images/team/Vijayamma.jpg"
+        },
+        {
+          name:"Sangeeta Mittal ",
+          designation:"Modern Trade Head",
+          image:"./assets/images/team/Sangeeta.jpg"
+        },
+        {
+          name:"Jyoti Chaddha",
+          designation:"HR / Admin",
+          image:"./assets/images/team/Jyoti.jpg"
+        }
+    ]
+    
+    
+
     const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw'
     let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.709498,77.184029`
     return(
@@ -50,7 +120,6 @@ const AboutUs = () =>{
                 <SectionHeader title="Corporate responsibility" subTitle="Awesome & Great Services Done With Love
 
 "/>
-
                     <div className="row">
                         <div className="col-lg-3 res-item">
                             <div className="res-icon col-lg-4">
@@ -90,7 +159,25 @@ const AboutUs = () =>{
                 <SectionHeader title="Meet Our Team" subTitle="Awesome, Great & Creative People
 "/>
                 <div className="row pb-5">
-                    <Carousel type="team"/>
+                    <div className="col-lg-12">
+                        <Slider {...settings}>
+                        {teamItems.map((teamMate)=>{
+                                return(
+                                    <div>
+                                <div className="col-lg-12">
+                                    <div className="team-list">
+                                        <div className="team-item">
+                                            <img src={teamMate.image} className="img-fluid"/>
+                                            <div className="pt-2 font-weight-bold heading">{teamMate.name}</div>
+                                            <span>{teamMate.designation}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                )
+                                })}
+                        </Slider>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -99,7 +186,6 @@ const AboutUs = () =>{
                     <SectionHeader title="Contact Us" subTitle="We Want To Hear From You 
 "/>
                     <div className="row text-center">
-                        
                         <div className="col-lg-4 pt-4">
                         <iframe className="frame" frameBorder="0" height="250" style={{ width: "100%"}} 
                             src={_url}>

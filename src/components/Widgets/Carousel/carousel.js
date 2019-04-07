@@ -71,7 +71,6 @@ class Example extends Component {
       this.onExiting = this.onExiting.bind(this);
       this.onExited = this.onExited.bind(this);
       this.renderCarousel = this.renderCarousel.bind(this)
-      console.log(props);
     }
   
     onExiting() {
@@ -111,7 +110,6 @@ class Example extends Component {
                   <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
                   <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
               </div>
-              
               <span className="mt-5">LUIS GARCIA GAUCO</span>
               <div className="content">“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.”</div>
               <span className="time">5 Mins ago, Tweeter</span>
@@ -127,20 +125,8 @@ class Example extends Component {
           )
         }
     }
-  
-    render() {
-      const { activeIndex } = this.state;
-      const slides = items.map((item) => {
-        return (<CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        >
-           {this.renderCarousel(this.props.type)}
-        </CarouselItem>
-        );
-      });
 
+    render() {
       const team = teamItems.map((teamMate)=>{
         return(<CarouselItem
           onExiting={this.onExiting}
@@ -159,6 +145,17 @@ class Example extends Component {
         </CarouselItem>
         )
       })
+      const { activeIndex } = this.state;
+      const slides = items.map((item) => {
+        return (<CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={item.src}
+        >
+           {this.renderCarousel(this.props.type)}
+        </CarouselItem>
+        );
+      });
 
       return (
         <Carousel
