@@ -126,10 +126,10 @@ class  NavigationBar extends Component {
                         <li className="flyout">
                             <a href="#/About">About Us</a>
                             <ul className="flyout-content nav stacked">
-                               <li><a>Director's Message</a></li>
+                               {/* <li><a>Director's Message</a></li>
                                <li><a>Our Values</a></li>
                                <li><a>Strengths</a></li>
-                               <li><a>Our Network</a></li>
+                               <li><a>Our Network</a></li> */}
                             </ul>
                         </li>
                         <li><a href="#/Services">Services</a></li>

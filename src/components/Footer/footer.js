@@ -9,7 +9,7 @@ const Footer = () =>{
                     <div className="col-lg-4 pr-5">
                         <img src="./assets/images/logo-footer.png"/>
                         <p className="pt-5">
-                        We are lorem ipsum dolor sit amet consectuerer adipiscing dolorado set diam benteha utaran gauri sidoarjo jepara dolorado we are lorem ipsum dolor sit amet consectuerer adipiscing dolorado set diam benteha utaran gauri sidoarjo jepara dolorado.
+                        Fablas Impex Pvt. Ltd. is one of India’s largest & most prominent FMCG companies, with a rich history of expertise in manufacturing & packaging. With a legacy of over four decades of providing winning solutions to Traditional as well as Modern Trade Markets, Fablas has been the supplier of choice for HORECA, B2B & Organised retail sectors for Bulk & Raw material supplies with 3rdparty  label arrangements.
                         </p>
                         <span className="d-block">2151/3D, New Patel Nagar, Delhi- 08</span>
                         <span className="d-block">+91-11-25891350,  25892350 </span>

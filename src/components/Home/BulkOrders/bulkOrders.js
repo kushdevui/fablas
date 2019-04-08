@@ -9,13 +9,12 @@ class BulkOrders extends Component{
     render(){
         return(
             <div className="tile-bulk-orders col-lg-12">
-                <div className="row text-center">
-                    <div className="col-lg-12 heading">
-                        <h1>GET <span>BULK ORDER</span></h1>
-                        <p>Fill in the details below to get details on bulk order</p>
+                <div className="row text-left">
+                    <div className="col-lg-12 heading ">
+                        <h1>BULK ORDER Inquiry </h1>
                     </div>
                 </div>
-                <div className="row form justify-content-center">
+                <div className="row form">
                     {/* <div className="col-lg-3">
                         <Bounce top  duration={2000}>
                             <img src="./assets/images/box1.png" className="img-fluid left-box"/>
@@ -64,7 +63,7 @@ class BulkOrders extends Component{
                                <textarea className="form-control">Your Comments</textarea>
                             </div>
                         </div>
-                        <div className="row form-group justify-content-center">
+                        <div className="row form-group">
                             <div className="col-lg-3">
                                 <input type="submit" className="w-100 btn btn-danger"/>
                             </div>

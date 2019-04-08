@@ -12,8 +12,8 @@ const FeaturedProducts = (props) =>{
                         <div className="l-item">
                             <img src={item.categoryImage} className="img-fluid"/>     
                             <div className="item-content pl-3 pt-3 pb-4">
-                                <p className="pt-1">{item.categoryName}</p>
-                                <span>{item.categoryDescription}</span>
+                                <p className="pt-1 m-0">{item.categoryName}</p>
+                                <div class="sub">{item.categoryDescription}</div>
                             </div>
                         </div>
                     </Link>

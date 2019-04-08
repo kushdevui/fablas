@@ -16,10 +16,14 @@
             color:$mid-grey;
             font-weight: normal;
         }
-        span{
-            font-size: 0.71875rem;
-            font-weight: 500;
+        .sub{
+            padding-top:0.5rem;
+            font-size: 0.7rem;
+            line-height: 1rem;
+            font-weight: 100;
             color:$light-grey;
+            min-height:120px;
+            max-height:120px;
         }
     }
    

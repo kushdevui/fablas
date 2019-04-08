@@ -35,8 +35,9 @@
 }
 
 .services-section .service-item .heading {
-  font-size: 1.25rem;
+  font-size: 0.80rem;
   color: #3333;
+  border-bottom:none;
 }
 
 .services-section .service-item .subheading {

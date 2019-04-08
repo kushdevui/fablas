@@ -2,29 +2,32 @@
     position: relative;
     background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
     background-size: cover;
-    padding:1rem 0;
+    padding:2rem 2rem;
     .form{
-        margin-top:3rem;
+        margin-top:1rem;
         .btn{
             color:white;
         }
        
     }
     .form-control{
-        color:#ffffff;
-        border:1px solid #fff;
-        background: transparent;
+        color:#aaaaaa;
+        border-radius: 0px;
+        background: #fff;
         font-size:14px;
-        font-weight: bold;
+        padding:0.8rem 0.5rem;
+        font-weight: 100;
+    }
+    .btn-danger{
+        border-radius: 0px;
     }
     .heading{
         border-bottom:none;
         padding-top:2rem;
-        padding-bottom:2rem;
         h1{
             font-size:32px;
             color:#fff;
-            font-weight: 100;
+            font-weight: bold;
             span{
                 font-weight: bold;
             }

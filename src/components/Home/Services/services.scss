@@ -22,6 +22,8 @@
         color:#666666;
     }
     .service-item{
+        max-height:110px;
+        min-height:110px;
         &:hover{
             cursor:pointer;
             svg{
@@ -38,11 +40,13 @@
         padding:1rem;
         background-color: $off-white;
        .heading{
-           font-size:1.25rem;
-           color:#3333;
+           font-size:1rem;
+           color:#000;
+           border-bottom:0px;
        }
        .subheading{
-           font-size:0.8125rem;
+           padding-top:0.5rem;
+           font-size:0.70rem;
            color:#666666;
            max-height: 56px;
            overflow: hidden;
