@@ -11,3 +11,9 @@
         color:#afb0b4;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .inner-header-tile{
+        padding:1rem 0;
+    }
+}

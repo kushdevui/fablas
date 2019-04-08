@@ -53,4 +53,11 @@
   max-height: 56px;
   overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+  .services-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
 /*# sourceMappingURL=services.css.map */

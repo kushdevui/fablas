@@ -1,5 +1,5 @@
 .retail-section-new {
-  padding-top: 2rem;
+  padding-top: 7rem;
   padding-bottom: 2rem;
 }
 
@@ -98,12 +98,12 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .retail-section-new #cf4 {
+  #cf4 {
     height: 448px;
     width: 100%;
   }
-  .retail-section-new .retail-section-new {
-    padding: none;
+  .retail-section-new {
+    padding: 1rem 0;
   }
 }
 /*# sourceMappingURL=retail.css.map */

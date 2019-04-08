@@ -2,10 +2,6 @@
   margin-top: -4rem;
 }
 
-.featured-products-section .row {
-  padding-bottom: 4rem;
-}
-
 .featured-products-section .l-item {
   background-color: #f8f8f8;
 }
@@ -16,9 +12,19 @@
   font-weight: normal;
 }
 
-.featured-products-section .l-item span {
-  font-size: 0.71875rem;
-  font-weight: 500;
+.featured-products-section .l-item .sub {
+  padding-top: 0.5rem;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  font-weight: 100;
   color: #4c4c4c;
+  min-height: 120px;
+  max-height: 120px;
+}
+
+@media only screen and (max-width: 600px) {
+  .featured-products-section {
+    margin-top: 1rem;
+  }
 }
 /*# sourceMappingURL=featuredProducts.css.map */

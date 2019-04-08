@@ -165,4 +165,10 @@ input[type=radio]:checked ~ label {
 .modal-content .modal-header {
   border: 0 !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .grey-section {
+    padding: 1rem 0;
+  }
+}
 /*# sourceMappingURL=app.css.map */
