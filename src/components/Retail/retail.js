@@ -12,9 +12,9 @@ class Retail extends Component {
         }
         return(
             <section>
-            <div className="container retail-section">
+            <div className="retail-section-new">
                 <div className="row">
-                    <div className="col-6 pl-5 pr-5">
+                    <div className="col-lg-6 p-0 p-lg-1 col-sm-12">
                         <div id="cf4" className="hover">
                             <img className="top shadow img-fluid" src="./assets/images/products/featured-1.png"/>
                             <img className="bottom shadow img-fluid" src="./assets/images/products/featured-2.png"/>
@@ -22,7 +22,7 @@ class Retail extends Component {
                             <FontAwesomeIcon className="prev swap-animation-bottom"  icon={faArrowLeft } style={{color:'#999999'}} size="lg" />
                         </div>
                     </div>
-                    <div className="col-6 pl-5 pr-5">
+                    <div className="col-lg-4 col-sm-12">
                         <h2>WE HOLD A prominent place IN THE <strong>Indian Traditional Retail, Modern Trade Export Markets</strong></h2>
                         <p>We are also preferred suppliers to HORECA, Beauty and SPA, Car Care Business and in B2B sector.Nevertheless the knowledge & experience of our management & skilled personnel committed to deliver consistently the best quality products & services to our customers.
 We also have the sole exclusive distribution rights in India for SPONTEX Brand. (A leading Brand in Europe)

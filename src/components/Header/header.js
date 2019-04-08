@@ -21,8 +21,7 @@ class Header extends Component  {
         this.responsiveUtils = new ResponsiveUtils();
     }
     componentDidMount(){
-        
-
+    
         // //Optimizing Image as per the viewPort.
         // this.imageOptimizer = new ImageOptimize({
         //     mobile_image : "../../assets/images/walking-dog-bg-320.png", 
@@ -37,7 +36,7 @@ class Header extends Component  {
 
     render(){
         return(
-            <header className={"static-header col-12"}>
+            <header className="static-header col-lg-12 col-sm-12">
                 <NavigationBar navbarTemplate="black"/>
             </header>
         );

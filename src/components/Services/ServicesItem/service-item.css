@@ -17,6 +17,8 @@
   color: #7a7c82;
   margin-top: 0.25rem;
   font-size: 13px;
+  max-height: 60px;
+  overflow: hidden;
 }
 
 .service-item-tile:hover {

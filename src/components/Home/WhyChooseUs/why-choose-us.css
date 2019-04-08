@@ -1,11 +1,21 @@
 .tile-choose-us {
-  padding-bottom: 10rem;
   padding-top: 2rem;
   background-color: #f3f4f7;
 }
 
+.tile-choose-us .choose-use-section {
+  position: relative;
+}
+
+.tile-choose-us .choose-use-section .globe {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
 .tile-choose-us h1 {
-  margin-top: 4rem;
   font-size: 30px;
   font-weight: 300;
   color: #333333;
@@ -16,9 +26,8 @@
 }
 
 .tile-choose-us p {
-  margin-bottom: 3rem;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 100;
   color: #4c4c4c;
 }
 

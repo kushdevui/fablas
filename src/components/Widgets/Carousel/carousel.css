@@ -17,4 +17,10 @@
 .carousel-indicators .active {
   background-color: #dc3545;
 }
+
+@media only screen and (max-width: 600px) {
+  .carousel-indicators {
+    bottom: 40px;
+  }
+}
 /*# sourceMappingURL=carousel.css.map */

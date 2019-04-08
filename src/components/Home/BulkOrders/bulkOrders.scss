@@ -3,6 +3,7 @@
     background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
     background-size: cover;
     padding:2rem 2rem;
+    
     .form{
         margin-top:1rem;
         .btn{
@@ -52,6 +53,11 @@
         right: 4rem;
         top: 0rem;    
     }
-    
+   
 
+}
+@media only screen and (max-width: 600px) {
+    .tile-bulk-orders{
+        padding:1rem;
+    }
 }

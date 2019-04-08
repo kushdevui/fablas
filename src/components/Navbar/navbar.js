@@ -9,34 +9,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
     BrowserRouter as Router,
     Route,
     Link
-  } from 'react-router-dom'
-// import { Button } from 'react-bootstrap';
+  } from 'react-router-dom';
+
 
 library.add(fab)
 import PropTypes from "prop-types";
 import axios from "axios";
 
 
-import { 
+import {
     Collapse,
-    NavbarBrand,
     Navbar,
+    NavbarToggler,
+    NavbarBrand,
     Nav,
     NavItem,
+    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem,
-    NavLink,
-    Dropdown,
-    
-    } from "reactstrap";
-    
+    DropdownItem } from 'reactstrap';
+
+
 import Logo  from "../Logo/logo" ;
 
 // Styles & Images
@@ -115,61 +114,42 @@ class  NavigationBar extends Component {
         });
         return(
             <div className="row">
-                <div className="col-2">
-                    <NavbarBrand href="#/">
-                            <Logo/>
-                    </NavbarBrand>
+                <div className="col-lg-9 navbar-section">
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="#/"><Logo/></NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/About">About Us</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/Services">Services</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href={`/Products/`}>Products</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/shop">Shop</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/News">News</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/Career">Career</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#/Contact">Contact Us</NavLink>
+              </NavItem>
+              
+            </Nav>
+          </Collapse>
+                </Navbar>
                 </div>
-                 <div className="navbar-section col-7">
-                    <ul class="nav  site-nav">
-                        <li><a href="#/">Home</a></li>
-                        <li className="flyout">
-                            <a href="#/About">About Us</a>
-                            <ul className="flyout-content nav stacked">
-                               {/* <li><a>Director's Message</a></li>
-                               <li><a>Our Values</a></li>
-                               <li><a>Strengths</a></li>
-                               <li><a>Our Network</a></li> */}
-                            </ul>
-                        </li>
-                        <li><a href="#/Services">Services</a></li>
-                        <li className="flyout">
-                            <a href="#" onClick={this.toggle}>Products</a>
-                            {this.state.isOpen ?   <div className="products-dropdown">
-                                <div className="row">
-                                    <div className="col-lg-4">
-                                        <ul>
-                                           {CagegoryList}
-                                        </ul>
-                                    </div>
-                                    <div className="col-lg-8 sub-cat">
-                                        {this.state.subMenu.map(item=>
-                                        {
-                                           return( <div className="row mt-3">
-                                                <div className="col-lg-12">
-                                               <Link to={`/Products/${item.id}`} >{item.name}</Link>
-                                                    <ul>
-                                                        {item.productsList.map(productItem=>{
-                                                            return(
-                                                                <li>{productItem.name}</li>
-                                                            )
-                                                        })}
-                                                    </ul>
-                                                </div>
-                                            </div>)
-                                        })}
-                                        </div>
-                                    </div>
-                                </div>
-                            : ""}
-                        </li>
-                        <li><a href="#/shop">Shop</a></li>
-                        <li><a href="#/News">News</a></li>
-                        <li><a href="#/Career">Career</a></li>
-                        <li><a href="#/Contact">Contact Us</a></li>
-                    </ul>​
-                </div>
-                <div className="col-3 pt-3 icon-palat">
+                <div className="col-lg-3 pt-3 text-center icon-palat">
                     <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="sm" /></span>
                     <span className="navbar-search">
                         <input type="text" name="search-box" value=""/>
@@ -180,9 +160,9 @@ class  NavigationBar extends Component {
                     <span><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'instagram']}   style={{ color: 'red' }} size="sm"/></span>
                     <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
-
                 </div>
-            </div>
+        
+      </div>
         );
     }
 }

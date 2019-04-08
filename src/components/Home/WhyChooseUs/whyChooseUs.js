@@ -74,7 +74,7 @@ class WhyChooseUs extends Component{
     render(){
         return(
             <div>
-                <div className="tile-choose-us text-center m-0 col-12">
+                <div className="tile-choose-us d-none d-lg-block text-center m-0 col-12">
                     <h1 className="col-lg-12">Why <span>Choose Us</span></h1>
                     <p>Compelling reasons to choose to have a business partnership with Fablas Impex Pvt. Ltd.
                     </p>

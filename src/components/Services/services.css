@@ -1,1 +1,58 @@
-/* No CSS *//*# sourceMappingURL=services.css.map */
+.services-item {
+  cursor: pointer;
+}
+
+.styles_modal__gNwvD {
+  border-radius: 5px;
+}
+
+.styles_closeButton__20ID4 {
+  top: -12px;
+  right: -11px;
+  cursor: pointer;
+}
+
+.styles_closeIcon__1QwbI {
+  background-color: #e60014;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.modal-body-full {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.modal-body-full .icon {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  background-color: #081878;
+  border-radius: 100%;
+  padding: 20px;
+  width: 120px;
+  height: 120px;
+  margin-top: -100px;
+}
+
+.modal-body-full .icon svg {
+  height: 80px;
+  width: 80px;
+}
+
+.modal-body-full h4 {
+  color: #081878;
+  font-weight: bold;
+}
+
+.modal-body-full p {
+  font-size: 14px;
+}
+/*# sourceMappingURL=services.css.map */

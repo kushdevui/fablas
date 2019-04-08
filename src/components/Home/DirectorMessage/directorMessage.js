@@ -7,13 +7,13 @@ const DirectorMessage = () =>{
     return(
         <div className="director-tile">
             <div className="row">
-                <div className="col-12 message ">
+                <div className="col-lg-12 message ">
                     <div className="row">
-                        <div className="d-flex col-8 message-window">
+                        <div className="d-flex col-lg-8 message-window">
                             {/* <div className="image pt-3 pb-3">
                                 <img src="./assets/images/men-standing.png" className="img-fluid"/>
                             </div> */}
-                            <div className="pt-5 pb-5 pl-5">
+                            <div className="content">
                                 <h4>Director’s <span className="bold">Message</span></h4>
                                 <span className="sub-head">FABLAS IMPEX PVT. LTD.</span>
                                 <p className="pt-5">Through our expertise in commitment to excellence and continual investment in our products, processes, and people we seek to become the leading brand name within the cleaning industry nationwide.
@@ -21,7 +21,7 @@ const DirectorMessage = () =>{
                                 <div className="l-signature">Seraj Akhtar - Fablas Founder & Managing Director</div>
                             </div>
                         </div>
-                        <div className="col-4 director-person">
+                        <div className="col-lg-4 d-none d-lg-block director-person">
                             <img src="./assets/images/directors-banner.png"/>
                         </div>
                     </div>

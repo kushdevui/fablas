@@ -2,11 +2,11 @@
   position: relative;
   background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
   background-size: cover;
-  padding: 1rem 0;
+  padding: 2rem 2rem;
 }
 
 .tile-bulk-orders .form {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .tile-bulk-orders .form .btn {
@@ -14,23 +14,27 @@
 }
 
 .tile-bulk-orders .form-control {
-  color: #ffffff;
-  border: 1px solid #fff;
-  background: transparent;
-  font-size: 14px;
-  font-weight: bold;
+  color: #aaaaaa;
+  border-radius: 0px;
+  background: #fff;
+  font-size: 12px;
+  padding: 0.5rem 0.3rem;
+  font-weight: 100;
+}
+
+.tile-bulk-orders .btn-danger {
+  border-radius: 0px;
 }
 
 .tile-bulk-orders .heading {
   border-bottom: none;
   padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 .tile-bulk-orders .heading h1 {
   font-size: 32px;
   color: #fff;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 .tile-bulk-orders .heading h1 span {
@@ -58,5 +62,11 @@
   position: absolute;
   right: 4rem;
   top: 0rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .tile-bulk-orders {
+    padding: 1rem;
+  }
 }
 /*# sourceMappingURL=bulkOrders.css.map */

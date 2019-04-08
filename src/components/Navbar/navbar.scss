@@ -6,186 +6,39 @@
 }
 .search-icon{
     position: absolute;
-    left:2.9rem;
+    left:3.9rem;
     top:1.5rem;
     font-size: 0.80rem;
 }
 .dropdown-submenu {
     position: relative;
-  }
-  
-  .dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -1px;
-  }
-
+}
 .navbar-section{
-    
-    ul{
-        margin-left:1.5em;
+    .navbar-toggler-icon{
+        width: 1em;
+        height: 1em;
+        cursor: pointer;
     }
-    a{
-        text-decoration:none;
+    .navbar{
+        padding:0px;
     }
-    .nav{
-        list-style:none;
-        margin-left:0;
-        z-index: 2000;
-    }
-        .nav > li,
-            .nav > li > a{
-                display:inline-block;
-               *display:inline;
-                zoom:1;
-            }
-        
-        .stacked > li{
-            display:list-item;
-        }
-            .stacked > li > a{
-                display:block;
-        }
-    
-    
-    .flyout,
-    .flyout-alt{
-        position:relative;
-    }
-        .flyout-content{
-            /* Position the flyouts off-screen. This is typically better than `display:none;`. */
-            position:absolute;
-            top:100%;
-            left:-99999px;
-            height:0;
-            overflow:hidden;
-        }
-        
-        .flyout:hover > .flyout-content{
-            left:0;
-        }
-        /* Alternative flyouts sit all the way from the left, flush top. */
-        .flyout-alt:hover > .flyout-content{
-            top:0;
-            left:100%;
-        }
-        .flyout:hover > .flyout-content,
-        .flyout-alt:hover > .flyout-content{
-            /* Give the flyouts their height back once they come into view. */
-            height:auto;
-            overflow:visible;
-        }
-    
-    .site-nav{
-        padding-top:0.80rem;
-        font-size:0.90em;
-        float:right;
-    }
-            .site-nav a {
-                line-height:1;
-                padding:1em;
-                color:#000000;
-                white-space:nowrap;
-            }
-    .site-nav .flyout:hover > a /* [1] */,
-    .site-nav .flyout-alt:hover > a /* [1] */,
-    .site-nav a:hover{
-        //color:#ffffff;
-        //background-color:#dc3545;
-    }
-    
-    /**
-     * Add an indicator to any flyout parents in the site nav to show there’s a flyout.
-     */
-    .site-nav .flyout-alt > a:after{
-        content:" »";
-    }
-    
-    .site-nav a,
-    .site-nav .flyout-content{
-       background-color: #ffffff;
-       
-    }
-  
-    /* The first link in the site-nav doesn’t require a border at all. */
-    .site-nav > li:first-child > a{
-        border:none;    
-    }
-    .site-nav .flyout-alt:hover > .flyout-content{
-        top:-1px;
-    }​
-
-
-
-    .dropdown-item{
-        padding:0.50rem 1.5rem;
-        font-weight: 100;
-        font-size:1rem;
-    }
-    .navbar-expand-md{
-        justify-content: space-between;
-        .navbar-nav {
-            .show>.nav-link{
-                color:#333333;
-            }
-            .dropdown-menu{
-                left:10px;
+    .navbar-light {
+        .navbar-nav{
+            .nav-link{
+                font-size:0.90rem;
+                color:#000;
+                padding:1rem;
             }
         }
-    }
-   
-    .navbar-nav{
-        .nav-link{
-            font-weight: 600;
-            text-transform: uppercase;
-            &:hover{
-                color:$grey-light;
-            }
-            &:active {
-                color :$grey-light;
-            }
-            &:focus {
-                color: $grey-light;
-            }
-            color:$grey-light;
-        }
-    }
-    .collapse:not(.show){
-        display: block;
-    }
-    .navbar-collapse{
-        height: 100vh;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color:white;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 4rem;
-        text-align:center;
-        .close{
-            position: absolute;
-            top: 2rem;
-            right: 1.5rem;
-            font-size: 1.2rem;
-        }
-    }
-    .show-collapse{
-        width:100%;
-    }
-    .toggle-animate{
-        transform: rotate(180deg);
-        transition-duration: 250ms;
-        transition-timing-function:ease-in-out;
-    }
-    .toggle-animate-inactive{
-        transform: rotate(0deg);
-        transition-duration: 250ms;
-        transition-timing-function:ease-in-out;
     }
 }
+  
+.dropdown-submenu .dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -1px;
+}
+
 .icon-palat{
     span{
         margin-right:0.4rem;

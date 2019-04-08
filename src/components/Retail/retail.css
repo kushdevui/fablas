@@ -1,40 +1,41 @@
-.retail-section {
-  padding: 5.5rem 0;
+.retail-section-new {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.retail-section .fa-arrow-right {
+.retail-section-new .fa-arrow-right {
   position: absolute;
   right: 15px;
   top: 50%;
 }
 
-.retail-section .fa-arrow-left {
+.retail-section-new .fa-arrow-left {
   position: absolute;
   left: 15px;
   top: 50%;
 }
 
-.retail-section #cf4 {
+.retail-section-new #cf4 {
   position: relative;
   height: 484px;
   width: 433px;
   margin: 0 auto;
 }
 
-.retail-section #cf4 img {
+.retail-section-new #cf4 img {
   position: absolute;
   left: 0;
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
 
-.retail-section #cf4 img.top {
+.retail-section-new #cf4 img.top {
   -webkit-transform: scale(0, 0);
   transform: scale(0, 0);
   opacity: 0;
 }
 
-.retail-section #cf4:hover img.top, .retail-section #cf4.hover_effect img.top {
+.retail-section-new #cf4:hover img.top, .retail-section-new #cf4.hover_effect img.top {
   opacity: 1;
   -webkit-transform: scale(1, 1);
   -webkit-transform-origin: top right;
@@ -46,7 +47,7 @@
   transform-origin: top right;
 }
 
-.retail-section #cf4:hover img.bottom, .retail-section #cf4.hover_effect img.bottom {
+.retail-section-new #cf4:hover img.bottom, .retail-section-new #cf4.hover_effect img.bottom {
   -webkit-transform: scale(0, 0);
   -webkit-transform-origin: bottom left;
   -moz-transform: scale(0, 0);
@@ -57,31 +58,31 @@
   transform-origin: bottom left;
 }
 
-.retail-section .slick-slide.slick-center img {
+.retail-section-new .slick-slide.slick-center img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.retail-section .slick-slide.slick-center img {
+.retail-section-new .slick-slide.slick-center img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.retail-section .slick-next:before, .retail-section .slick-prev:before {
+.retail-section-new .slick-next:before, .retail-section-new .slick-prev:before {
   color: white;
   font-size: 3rem;
 }
 
-.retail-section .slick-next {
+.retail-section-new .slick-next {
   right: 2.5rem;
 }
 
-.retail-section .slick-prev {
+.retail-section-new .slick-prev {
   left: 0.5rem;
   z-index: 2000;
 }
 
-.retail-section h1 {
+.retail-section-new h1 {
   font-size: 2.5rem;
   line-height: 3.2rem;
   color: #333333;
@@ -89,10 +90,20 @@
   text-transform: uppercase;
 }
 
-.retail-section P {
+.retail-section-new P {
   font-size: 1.0625rem;
   font-weight: 500;
   color: #4c4c4c;
   line-height: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .retail-section-new #cf4 {
+    height: 448px;
+    width: 100%;
+  }
+  .retail-section-new .retail-section-new {
+    padding: none;
+  }
 }
 /*# sourceMappingURL=retail.css.map */

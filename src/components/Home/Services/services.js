@@ -7,13 +7,13 @@ import "./services.scss";
 const Services = () =>{
     return(
         <div className="services-section row justify-content-center">
-            <div className="col-4  text-center">
+            <div className="col-lg-12  text-center">
             <h1>OUR <strong>SERVICES</strong></h1>
             <p>We have been at the forefront of industry-defining innovations in several verticals</p>
             </div>
             <div className="container">
-                <div className="row mt-4">
-                    <div className="col-4">
+                <div className="row mt-lg-2">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0 ">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -27,7 +27,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -41,7 +41,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -57,8 +57,8 @@ const Services = () =>{
                     </div>
                     
                 </div>
-                <div className="row mt-4">
-                    <div className="col-4">
+                <div className="row mt-lg-2">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -72,7 +72,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -86,7 +86,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -102,8 +102,8 @@ const Services = () =>{
                     </div>
                     
                 </div>
-                <div className="row mt-4">
-                    <div className="col-4">
+                <div className="row mt-lg-2">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -117,7 +117,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -131,7 +131,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -146,8 +146,8 @@ const Services = () =>{
                         </div>
                     </div>
                 </div>
-                <div className="row mt-4">
-                    <div className="col-4">
+                <div className="row mt-lg-2">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">
@@ -161,7 +161,7 @@ const Services = () =>{
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-lg-4 col-sm-12 mb-1 mb-lg-0">
                         <div className="service-item">
                             <div className="row">
                             <div className="col-3 text-center pt-1 pl-0 pr-0">

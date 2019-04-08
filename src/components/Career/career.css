@@ -1,7 +1,38 @@
+.career-tile .vendor-form .form-control {
+  border-radius: none;
+  padding: 1rem 1.5rem;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.career-tile .active {
+  background-color: #282676 !important;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  z-index: 2000;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.career-tile .active h3, .career-tile .active p {
+  color: #ffffff !important;
+}
+
+.career-tile .active svg {
+  background-color: #282676 !important;
+  border-color: white !important;
+}
+
+.career-tile .active svg .icon {
+  fill: #ffffff !important;
+}
+
 .career-tile .career-category {
   position: relative;
   margin-top: 5rem;
   background-color: #f4f4f4;
+  cursor: pointer;
 }
 
 .career-tile .career-category:hover {
