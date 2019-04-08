@@ -14,16 +14,29 @@ class Services extends Component{
     constructor(props){
         super(props);
         this.state = {
-            open:false
+            open:false,
+            modalTitle:"",
+            modalDesc:"",
+            modalImage:""
         }
     }
     onOpenModal = () => {
         this.setState({ open: true });
-      };
+    };
     
     onCloseModal = () => {
         this.setState({ open: false });
     };
+
+    handleModalContent = (data) =>{
+      this.setState({
+          modalTitle:data.title,
+          modalImage:data.image,
+          modalDesc:data.description
+      })
+    }
+
+
     render(){
         const { open } = this.state;
         const services = [
@@ -83,13 +96,12 @@ class Services extends Component{
     const renderServices = () =>{
         return services.map(item=>{
             return(<div className="col-lg-3 mb-3 services-item" onClick={this.onOpenModal}>
-                    <ServiceItem data={item} />
+                    <ServiceItem handleModalClick={this.handleModalContent} data={item} />
             </div>)
         })
     }
     return(
         <div className="tile-services">
-           
             <Header/>
             <InnerHeader title="Our Services" subTitle="What We Do !"/>
             <SectionHeading title="OUR SERVICES" subTitle="We work across varied verticals and industries "/>
@@ -98,11 +110,10 @@ class Services extends Component{
                 <Modal  open={open} onClose={this.onCloseModal} center>
                     <div className="modal-body-full">
                     <div className="icon">
-                        <svg id="Capa_1" fill="#fff"  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><title>printing</title>
-                        <path className="white" d="M50,32a5,5,0,1,0-5-5A5,5,0,0,0,50,32Zm0-8a3,3,0,1,1-3,3A3,3,0,0,1,50,24Z"/><path className="white" d="M42,43H18a1,1,0,0,0,0,2H42a1,1,0,0,0,0-2Z"/><path className="white" d="M42,48H18a1,1,0,0,0,0,2H42a1,1,0,0,0,0-2Z"/><path className="white" d="M51,17V0H9V17H0V51H6v3H9v6H51V54h3V51h6V17ZM11,2H49V17H11ZM9,19H58V35H2V19ZM8,52V45a1,1,0,0,0-2,0v4H2V37H9V52Zm41,6H11V37H49V58Zm5-9V45a1,1,0,0,0-2,0v7H51V37h7V49Z"/></svg>
+                        {this.state.modalImage}
                     </div>
-                    <h4 className="pt-2 pb-2">FMCG/B2B/ E-commerce</h4>    
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                    <h4 className="pt-2 pb-2">{this.state.modalTitle}</h4>    
+                    <p>{this.state.modalDesc}</p>
                     </div>
                    
             </Modal>

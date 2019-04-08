@@ -20,7 +20,7 @@ class BulkOrders extends Component{
                             <img src="./assets/images/box1.png" className="img-fluid left-box"/>
                         </Bounce>
                     </div> */}
-                    <div className="col-lg-6">
+                    <div className="col-lg-5">
                         <div className="row form-group">
                             <div className=" col-lg-6">
                                 <input type="text" value="Full Name" className="form-control"/>
