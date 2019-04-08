@@ -3,7 +3,7 @@
 
 
 .retail-section-new{
-    padding-top:2rem;
+    padding-top:7rem;
     padding-bottom:2rem;
 .fa-arrow-right{
     position: absolute;
@@ -99,13 +99,14 @@ opacity:0;
         color:$light-grey;
         line-height:2rem;
     }
+
+}
 @media only screen and (max-width: 600px) {
     #cf4{
         height:448px;
         width:100%;
     }
     .retail-section-new{
-        padding:none;
+        padding:1rem 0;
     }
-}
 }

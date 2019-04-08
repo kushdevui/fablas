@@ -7,11 +7,11 @@ import "./featuredProducts.scss";
 const FeaturedProducts = (props) =>{
    const ShowProducts = props.productList.map(item=>{
        return(
-                <div className="col-lg-2 d-none d-lg-block">
+                <div className="col-6 col-md-2 mb-2 mb-lg-0 ">
                     <Link to={`/Products/${item.subCategory[0].id}`} params={{ testvalue: "hello" }}>
                         <div className="l-item">
                             <img src={item.categoryImage} className="img-fluid"/>     
-                            <div className="item-content pl-3 pt-3 pb-4">
+                            <div className="item-content pl-3 pt-3 pb-4 col-md-12">
                                 <p className="pt-1 m-0">{item.categoryName}</p>
                                 <div class="sub">{item.categoryDescription}</div>
                             </div>

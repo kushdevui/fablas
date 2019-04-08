@@ -115,7 +115,7 @@ class  NavigationBar extends Component {
         return(
             <div className="row">
                 <div className="col-lg-9 navbar-section">
-                <Navbar color="light" light expand="md">
+                <Navbar  light expand="md">
                     <NavbarBrand href="#/"><Logo/></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

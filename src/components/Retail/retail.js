@@ -14,7 +14,7 @@ class Retail extends Component {
             <section>
             <div className="retail-section-new">
                 <div className="row">
-                    <div className="col-lg-6 p-0 p-lg-1 col-sm-12">
+                    <div className="col-lg-6 d-none d-lg-block p-0 p-lg-1 col-sm-12">
                         <div id="cf4" className="hover">
                             <img className="top shadow img-fluid" src="./assets/images/products/featured-1.png"/>
                             <img className="bottom shadow img-fluid" src="./assets/images/products/featured-2.png"/>

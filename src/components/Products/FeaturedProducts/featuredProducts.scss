@@ -6,9 +6,6 @@
 .featured-products-section{
     margin-top:-4rem;
    
-    .row{
-        padding-bottom:4rem;
-    }
     .l-item{
         background-color:$lighter-grey;
         p{
@@ -27,4 +24,10 @@
         }
     }
    
+}
+
+@media only screen and (max-width: 600px) {
+    .featured-products-section{
+        margin-top:1rem;
+    }
 }
