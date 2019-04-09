@@ -14,4 +14,16 @@
   border-color: #282676;
   font-size: 0.80rem;
 }
+
+.news-item .desc {
+  max-height: 100px;
+  min-height: 100px;
+  overflow: hidden;
+}
+
+.side-desc {
+  max-height: 50px;
+  min-height: 50px;
+  overflow: hidden;
+}
 /*# sourceMappingURL=news-item.css.map */

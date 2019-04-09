@@ -26,7 +26,7 @@ const Logo = (props) =>{
             }
         ]}
     />
-    <div className="small font-weight-light font-italic">Pioneers in Cleaning Accessory</div>
+    <div className="logo font-weight-light font-italic">Pioneers in Cleaning Accessory</div>
         </div>
 
         

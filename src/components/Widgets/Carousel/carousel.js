@@ -50,15 +50,20 @@ const teamItems = [
 
 const items = [
   {
+    name:"‎Col Pradeep Gupta‎",
+    desc:"Great Company. Very good service, prepared to go the extra mile for customer satisfaction"
     
   },
   {
-    
+    name:"Rekha Rana",
+    desc:"I would recommend Fablas’ products to all my family and friends because of their quality and affordability"
   },
   {
-   
+   name:"Sunil Agrawal",
+   desc:"Fablas’ products work better than I expected, better than the regular name brands. Will surely purchase again."
   }
 ];
+
 
 class Example extends Component {
     constructor(props) {
@@ -102,18 +107,7 @@ class Example extends Component {
         switch(type){
           case 'text':
          return (
-           <div className="caraousel">
-              <div className="mb-2">
-                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
-                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
-                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
-                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
-                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
-              </div>
-              <span className="mt-5">LUIS GARCIA GAUCO</span>
-              <div className="content">“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.”</div>
-              <span className="time">5 Mins ago, Tweeter</span>
-          </div>
+           <div></div>
          );
          case "team":
          return(
@@ -146,16 +140,28 @@ class Example extends Component {
         )
       })
       const { activeIndex } = this.state;
+
       const slides = items.map((item) => {
         return (<CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}
         >
-           {this.renderCarousel(this.props.type)}
+           <div className="caraousel">
+              <div className="mb-2">
+                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
+                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
+                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
+                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
+                  <span><FontAwesomeIcon icon={faStar } style={{color:'#dc3545'}} size="lg" /></span>
+              </div>
+              <span className="mt-5">{item.name}</span>
+              <div className="content">{item.desc}</div>
+          </div>
         </CarouselItem>
         );
       });
+
 
       return (
         <Carousel

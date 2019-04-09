@@ -11,7 +11,7 @@ const FunFacts = () =>{
                 <div className="col-md-4 col-sm-12">
                     <div className="heading">
                         <h3>OUR <span>FUN FACTS</span></h3>
-                        <p>WHAT HAVE WE ACHIEVED SO FAR</p>
+                        <p>What we have achieved so far</p>
                     </div>
                     <div className=" row pt-4 pb-4">
                         <div className="col-md-12">

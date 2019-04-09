@@ -3,9 +3,33 @@ import "./BulkOrders.scss";
 import Bounce from 'react-reveal/Bounce';
 
 class BulkOrders extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        this.state={
+            bulkOrder:{
+
+            },
+            message:""
+        }
     }
+
+    handleChange = (event) =>{
+        var name = event.target.name;
+        var value = event.target.value;
+        this.setState({
+            ...this.state.bulkOrder,
+            [name]:value
+        })
+    }
+
+    handleSubmitForm = (e) =>{
+        e.preventDefault();
+        this.setState({
+            message:"Thank you for submitting your query.We will get back to you in two business days."
+        })
+    }
+
+
     render(){
         return(
             <div className="row">
@@ -16,52 +40,49 @@ class BulkOrders extends Component{
                     </div>
                 </div>
                 <div className="row form">
-                    {/* <div className="col-lg-3">
-                        <Bounce top  duration={2000}>
-                            <img src="./assets/images/box1.png" className="img-fluid left-box"/>
-                        </Bounce>
-                    </div> */}
-                    <div className="col-lg-5">
+                <div className="col-lg-5">
+                   {this.state.message?<p>{this.state.message}</p>:<form onSubmit={this.handleSubmitForm}>
+                       
                         <div className="row">
                             <div className=" col-lg-6 form-group">
-                                <input type="text" value="Full Name" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} name="fullName" placeholder="Full Name" className="form-control"/>
                             </div>
                             <div className="col-lg-6 form-group">
-                                <input type="text" value="Company Name" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Company Name" className="form-control"/>
                             </div>
                         </div>
                         <div className="row">
                             <div className=" col-lg-12 form-group">
-                                <input type="text" value="Company Address" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Company Address" className="form-control"/>
                             </div>
                         </div>
                         <div className="row">
                             <div className=" col-lg-6 form-group">
-                                <input type="text" value="Phone" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Phone" className="form-control"/>
                             </div>
                             <div className="col-lg-6 form-group">
-                                <input type="text" value="Email" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Email" className="form-control"/>
                             </div>
                         </div>
                         <div className="row">
                             <div className=" col-lg-6 form-group">
-                                <input type="text" value="City" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="City" className="form-control"/>
                             </div>
                             <div className="col-lg-6 form-group">
-                                <input type="text" value="Country" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Country" className="form-control"/>
                             </div>
                         </div>
                         <div className="row">
                             <div className=" col-lg-6 form-group">
-                                <input type="text" value="Category" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Category" className="form-control"/>
                             </div>
                             <div className="col-lg-6 form-group">
-                                <input type="text" value="Quantity & Size" className="form-control"/>
+                                <input type="text" onChange={this.handleChange} placeholder="Quanityt" value="Quantity & Size" className="form-control"/>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-12 form-group">
-                               <textarea className="form-control">Your Comments</textarea>
+                               <textarea onChange={this.handleChange} placeholder="Comments" className="form-control"></textarea>
                             </div>
                         </div>
                         <div className="row">
@@ -69,15 +90,9 @@ class BulkOrders extends Component{
                                 <input type="submit" className="w-100 btn btn-danger"/>
                             </div>
                         </div>
+                   
+                    </form>}
                     </div>
-                    {/* <div className="col-lg-3">
-                        <Bounce top duration={2000}>
-                            <img src="./assets/images/box1-right.png" className="right-box1 img-fluid"/>
-                        </Bounce>
-                        <Bounce top duration={3000}>
-                            <img src="./assets/images/box-right2.png" className="right-box2 img-fluid"/>
-                        </Bounce>
-                    </div> */}
                 </div>
                
             </div>

@@ -2,10 +2,14 @@
   display: none;
 }
 
+.logo {
+  font-size: 0.60rem;
+}
+
 .search-icon {
   position: absolute;
-  left: 3.9rem;
-  top: 2rem;
+  left: 5px;
+  top: 8px;
   font-size: 0.80rem;
 }
 
@@ -35,8 +39,19 @@
   margin-top: -1px;
 }
 
+.icon-palat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .icon-palat span {
   margin-right: 0.4rem;
+}
+
+.icon-palat .navbar-search {
+  position: relative;
+  margin-right: 30px;
 }
 
 .icon-palat .navbar-search input[type=text] {

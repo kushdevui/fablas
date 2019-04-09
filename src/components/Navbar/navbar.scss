@@ -4,10 +4,13 @@
 .is-hidden{
     display: none;
 }
+.logo{
+    font-size:0.60rem;
+}
 .search-icon{
     position: absolute;
-    left:3.9rem;
-    top:2rem;
+    left:5px;
+    top:8px;
     font-size: 0.80rem;
 }
 .dropdown-submenu {
@@ -40,10 +43,13 @@ margin-top: -1px;
 }
 
 .icon-palat{
+    display:flex;
     span{
         margin-right:0.4rem;
     }
     .navbar-search{
+        position: relative;
+        margin-right:30px;
         input[type=text]{
             border:none;
             background-color:$error-red;

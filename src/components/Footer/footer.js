@@ -1,9 +1,36 @@
-import React from 'react';
-
+import React,{Component} from 'react';
 import "./footer.scss";
-const Footer = () =>{
-    return(
-        <div className="footer row">
+
+class Footer extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            subscribe:{
+
+            },
+            message:""
+        }
+    }
+
+    handleChange = (event) =>{
+        var name = event.target.name;
+        var value = event.target.value;
+        this.setState({
+            ...this.state.subscribe,
+            [name]:value
+        })
+    }
+
+    handleSubmit = (e) =>{
+        console.log("asdf");
+        e.preventDefault();
+        this.setState({
+            message:"Thanks for subscribing"
+        })
+    }
+    render(){
+        return(
+            <div className="footer row">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-4 pr-5">
@@ -18,34 +45,35 @@ const Footer = () =>{
                     <div className="col-lg-5">
                         <h3>USEFULL LINKS</h3>
                         <ul>
-                            <li>ABOUT US</li>
-                            <li>FEATURES</li>
-                            <li>PRIVATE POLICY </li>
-                            <li>WAREHOUSE</li>
-                            <li>SERVICE </li>
-                            <li>PHOTO GALLERY</li>
+                            <li>About us</li>
+                            <li>Job Seeker</li>
+                            <li>Privacy Policy</li>
+                            <li>Terms and Condition</li>
+                            <li>Contact Us</li>
                         </ul>
                         <ul>
-                            <li>ABOUT US</li>
-                            <li>FEATURES</li>
-                            <li>PRIVATE POLICY </li>
-                            <li>WAREHOUSE</li>
-                            <li>SERVICE </li>
-                            <li>PHOTO GALLERY</li>
+                            <li>Personal Care</li>
+                            <li>Industrial Care</li>
+                            <li>Salon Care</li>
+                            <li>Bulk</li>
+                            <li>Professional</li>
                         </ul>
                     </div>
                     <div className="col-lg-3">
                         <h3>NEWSLETTER</h3>
                         <p className="pt-5">Enter your email address to get the latest news, special offers and product launch updates right to your inbox.</p>
                         <div className="form-group ">
-                            <input type="text" className="form-control mt-2" value="Your Email" />
-                            <input type="submit" className="btn mt-4 btn-danger"/>
+                            {this.state.message?this.state.message:<form onSubmit={this.handleSubmit}>
+                                <input onChange={this.handleChange} placeholder="Email" name="email" type="text" className="form-control mt-2" />
+                                <input type="submit" className="btn mt-4 btn-danger"/>
+                            </form>}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+        )
+    }
 }
 
 export default Footer;
