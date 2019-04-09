@@ -1,3 +1,7 @@
+.career-tile .error {
+  border-color: red;
+}
+
 .career-tile .vendor-form .form-control {
   border-radius: none;
   padding: 1rem 1.5rem;

@@ -4,14 +4,56 @@ import Header from "../Header/header";
 import InnerHeader from "../../container/InnerHeader/innerHeader";
 import Footer from "../Footer/footer";
 import './career.scss';
+import Axios from 'axios';
 
 class Career extends Component{
     constructor(props){
         super(props)
         this.state = {
-            showTab: "vendor"
+            showTab: "vendor",
+            vendor:{
+                "fullName":"",
+                "businessName":"",
+                "businessAddress":"",
+                "city":"",
+                "country":"",
+                "permanentBusinessType":"",
+                "website":"",
+                "errors":{},
+                "msg":""
+            },
+            distributor:{
+                "fullName":"",
+                "companyName" :"",
+                "companyAddress":"",
+                "mobile":"",
+                "email": "",
+                "city": "",
+                "country":"",
+                "investmentRange" : "",
+                "website":"",
+                "aboutYou" : "",
+                "errors":{},
+                "msg":""
+            },
+            jobSeeker:{
+                "fullName":"",
+                "email":"",
+                "mobile":"",
+                "applyingFor":"",
+                "message":"",
+                "errors":{},
+                "msg":""
+            },
+            vendorMsg:"",
+            jobSeekerMsg:"",
+            distributorMsg:""
         }
+        this.handleVendorChange = this.handleVendorChange.bind(this);
+        this.handleDistributorChange = this.handleDistributorChange.bind(this);
+        this.handlejobSeekerChange = this.handlejobSeekerChange.bind(this);
     }
+
     changeTab = (event) =>{
         //console.log(event.target.dataset.id);
         if(event.target.dataset.id=="vendor"){
@@ -31,71 +73,178 @@ class Career extends Component{
         }
        
     }
+    
+    handleVendorChange(event){
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+           vendor: {
+               ...this.state.vendor,
+               [name]: value
+           }
+        })
+    }
+
+    handleDistributorChange(event){
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            distributor:{
+                ...this.state.distributor,
+                [name]:value
+            }
+        })
+    }
+
+    handlejobSeekerChange(event){
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            jobSeeker:{
+                ...this.state.jobSeeker,
+                [name]:value
+            }
+        })
+    }
+
+    _validate(){
+        var errors = {}
+        if(this.state.vendor.fullName == ""){
+           errors.fullName = "please enter full name";
+        }
+        return errors;
+    }
+
+    handleSubmit = (e) => {
+      e.preventDefault();
+      var errors = this._validate();
+      if(Object.keys(errors).length != 0){
+          this.setState({
+            errors:errors
+          })
+      }else{
+        Axios.post("https://fablasnode.herokuapp.com/send/vendor",{
+        ...this.state.vendor
+      })
+      .then(res=>{
+          if(res.data){
+            this.setState({
+                vendorMsg:"Thank you for submitting your query.We will get back to you in two business days."
+            })
+          }
+      })
+      }
+    }
+
+    handleDistributorSubmit = (e) =>{
+        e.preventDefault();
+        var errors = this._validate();
+        // if(Object.keys(errors).length != 0){
+        //     this.setState({
+        //       errors:errors
+        //     })
+        // }else{
+         
+        // }
+        Axios.post("https://fablasnode.herokuapp.com/send/distributor",{
+            ...this.state.distributor
+          })
+          .then(res=>{
+              if(res.data){
+                this.setState({
+                    distributorMsg:"Thank you for submitting your query.We will get back to you in two business days."
+                })
+              }
+          })
+    }
+
+    handleJobSeekerSubmit = (e) =>{
+        e.preventDefault();
+        var errors = this._validate();
+
+        Axios.post("https://fablasnode.herokuapp.com/send/jobSeeker",{
+          ...this.state.jobSeeker
+        })
+        .then(res=>{
+            if(res.data){
+              this.setState({
+                jobSeekerMsg:"Thank you for submitting your query.We will get back to you in two business days."
+              })
+            }
+        })
+        // if(Object.keys(errors).length != 0){
+        //     this.setState({
+        //       errors:errors
+        //     })
+        // }else{
+          
+        // }
+    }
 
     render(){
-        const RenderDistributor = <div className="row vendor-form justify-content-center">
+        console.log(this.state);
+        const RenderDistributor = this.state.distributorMsg?<p>{this.state.distributorMsg}</p>:<form onSubmit={this.handleDistributorSubmit}><div className="row vendor-form justify-content-center">
                                     <div className="col-lg-6">
-                                        <input type="text" placeholder="Full Name" className="form-control"/>
+                                        <input type="text" onChange={this.handleDistributorChange} name="fullName"  placeholder="Full Name" className="form-control"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Company Name"/>
+                                        <input type="text"  onChange={this.handleDistributorChange} name="companyName" className="form-control" placeholder="Company Name"/>
                                     </div>
                                     <div className="col-lg-12">
-                                        <textarea placeholder="Company Address" className="form-control"></textarea>
+                                        <textarea placeholder="Company Address" onChange={this.handleDistributorChange} name="companyAddres" className="form-control"></textarea>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Phone"/>
+                                        <input type="text" className="form-control" onChange={this.handleDistributorChange} name="mobile" placeholder="Phone"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Email"/>
+                                        <input type="text" className="form-control" onChange={this.handleDistributorChange} name="email" placeholder="Email"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="City"/>
+                                        <input type="text" className="form-control" name="city" onChange={this.handleDistributorChange} placeholder="City"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Country"/>
+                                        <input type="text" className="form-control" name="country" onChange={this.handleDistributorChange} placeholder="Country"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Invetment Range"/>
+                                        <input type="text" className="form-control" onChange={this.handleDistributorChange} name="investmentRange" placeholder="Invetment Range"/>
                                     </div>
                                     <div className="col-lg-6">
-                                        <input type="text" className="form-control" placeholder="Website"/>
+                                        <input type="text" className="form-control" onChange={this.handleDistributorChange} name="website" placeholder="Website"/>
                                     </div>
-                                   
                                     <div className="col-lg-12">
-                                        <textarea placeholder="Please let us know about you" className="form-control"></textarea>
+                                        <textarea placeholder="Please let us know about you" onChange={this.handleDistributorChange} name="aboutYou" className="form-control"></textarea>
                                     </div>
                                     <div className="col-lg-3">
                                         <input type="submit" className="btn btn-danger w-100"/>
                                     </div>
-                                </div>;
-        const RenderVendor =  <div className="row vendor-form justify-content-center">
+                                </div></form>;
+        const RenderVendor =  this.state.vendorMsg?<p>{this.state.vendorMsg}</p>:<form onSubmit={this.handleSubmit}><div className="row vendor-form justify-content-center">
         <div className="col-lg-6">
-            <input type="text" placeholder="Full Name" className="form-control"/>
+            <input type="text"  onChange={this.handleVendorChange} name="fullName" placeholder={this.state.vendor.errors.fullName?"Please Enter your Name":"Full Name"} className={this.state.vendor.errors.fullName?"form-control error":"form-control"}/>
         </div>
         <div className="col-lg-6">
-            <input type="text" className="form-control" placeholder="Business Name"/>
+            <input type="text" onChange={this.handleVendorChange} name="businessName" className="form-control" placeholder="Business Name"/>
         </div>
         <div className="col-lg-12">
-            <textarea placeholder="Business Address" className="form-control"></textarea>
+            <textarea onChange={this.handleVendorChange} name="businessAddress" placeholder="Business Address" className="form-control"></textarea>
         </div>
         <div className="col-lg-6">
-            <input type="text" className="form-control" placeholder="City"/>
+            <input type="text" onChange={this.handleVendorChange} name="city" className="form-control" placeholder="City"/>
         </div>
         <div className="col-lg-6">
-            <input type="text" className="form-control" placeholder="Country"/>
+            <input type="text" onChange={this.handleVendorChange} name="country" className="form-control" placeholder="Country"/>
         </div>
         <div className="col-lg-6">
-            <input type="text" className="form-control" placeholder="Primary Business Type"/>
+            <input type="text" onChange={this.handleVendorChange} name="permanentBusinessType" className="form-control" placeholder="Primary Business Type"/>
         </div>
         <div className="col-lg-6">
-            <input type="text" className="form-control" placeholder="Website"/>
+            <input type="text" onChange={this.handleVendorChange} name="website" className="form-control" placeholder="Website"/>
         </div>
         <div className="col-lg-3">
             <input type="submit" className="btn btn-danger w-100"/>
         </div>
-    </div>;   
-        const RenderJobSeeker = <div className="row">
+    </div></form>;   
+        const RenderJobSeeker = this.state.jobSeekerMsg?<p>{this.state.jobSeekerMsg}</p>:<form onSubmit={this.handleJobSeekerSubmit}><div className="row">
         <div className="col-lg-8">
             <h3>Current Openings</h3>
             <div className="row">
@@ -136,29 +285,29 @@ class Career extends Component{
                 </div>
                 <div className="form-section">
                     <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Your Name"/>
+                        <input type="text" onChange={this.handlejobSeekerChange} name="fullName" className="form-control" placeholder="Your Name"/>
                     </div>
                     <div className="form-group">
-                        <input type="text" className="email form-control" placeholder="Your Email"/>
+                        <input type="text" onChange={this.handlejobSeekerChange} name="email" className="email form-control" placeholder="Your Email"/>
                     </div>
                     <div className="form-group">
-                        <input type="text" className="phone col-lg-12 form-control" placeholder="Phone" />
+                        <input type="text" onChange={this.handlejobSeekerChange} name="mobile" className="phone col-lg-12 form-control" placeholder="Phone" />
                     </div>
                     <div className="form-group">
-                        <input type="text" className="phone form-control" placeholder="Position Applying For" />
+                        <input type="text" onChange={this.handlejobSeekerChange} name="applyingFor" className="phone form-control" placeholder="Position Applying For" />
                     </div>
                     <div className="form-group">
-                        <textarea className="form-control" placeholder="Message"></textarea>
+                        <textarea className="form-control" name={this.handlejobSeekerChange} name="message" placeholder="Message"></textarea>
                     </div>
                     <div className="form-group">
-                        <button className="col-lg-12 btn btn-danger">Submit</button>
+                        <input type="submit" name="submit" className="btn btn-danger"/ >
                     </div>
                 </div>
                
             </div>
         </div>
-    </div>;
-         
+    </div></form>;
+
         const showrecentTab = this.state.showTab?this.state.showTab:"";
         return(
             <div className="career-tile">
@@ -184,7 +333,9 @@ class Career extends Component{
                     </div>
                 </div>
                 <div className="container pt-5 pb-5">
-                {showrecentTab =="job"? RenderJobSeeker :showrecentTab=="distributor"? RenderDistributor:RenderVendor}
+                    
+                        {showrecentTab =="job"? RenderJobSeeker :showrecentTab=="distributor"? RenderDistributor:RenderVendor}
+                    
                 </div>
                 <Footer/>
             </div>
