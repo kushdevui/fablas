@@ -24,7 +24,7 @@ const FunFacts = () =>{
                             <span className="min-heading">PRODUCTS</span>
                         </div>
                         <div className="">
-                            <span className="d-block number">500<span className="ml-1">+</span></span>
+                            <span className="d-block number">2000<span className="ml-1">+</span></span>
                             <span className="min-heading">CLIENTS</span>
                         </div>
                         <div className="">

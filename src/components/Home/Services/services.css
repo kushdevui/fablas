@@ -33,11 +33,11 @@
 }
 
 .services-section .service-item:hover svg path {
-  fill: #dc3545;
+  fill: #00296d;
 }
 
 .services-section .service-item:hover svg .cls-1 {
-  fill: #dc3545;
+  fill: #00296d;
 }
 
 .services-section .service-item .heading {

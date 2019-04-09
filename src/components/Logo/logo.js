@@ -9,7 +9,8 @@ import { Picture } from 'react-responsive-picture';
 
 const Logo = (props) =>{
     return(
-        <Picture
+        <div>
+            <Picture
         sources = {[
             {
                 srcSet: "./assets/images/Logo.png 2x",
@@ -25,6 +26,11 @@ const Logo = (props) =>{
             }
         ]}
     />
+    <div className="small font-weight-light font-italic">Pioneers in Cleaning Accessory</div>
+        </div>
+
+        
+    
     )
 };
 

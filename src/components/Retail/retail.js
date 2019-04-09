@@ -23,7 +23,7 @@ class Retail extends Component {
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-12">
-                        <h2>WE HOLD A prominent place IN THE <strong>Indian Traditional Retail, Modern Trade Export Markets</strong></h2>
+                        <h2 className="text-uppercase">WE HOLD A prominent place IN THE <strong>Indian Traditional Retail, Modern Trade Export Markets</strong></h2>
                         <p>We are also preferred suppliers to HORECA, Beauty and SPA, Car Care Business and in B2B sector.Nevertheless the knowledge & experience of our management & skilled personnel committed to deliver consistently the best quality products & services to our customers.
 We also have the sole exclusive distribution rights in India for SPONTEX Brand. (A leading Brand in Europe)
 </p>

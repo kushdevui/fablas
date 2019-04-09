@@ -133,9 +133,6 @@ class  NavigationBar extends Component {
                 <NavLink href={`/Products/`}>Products</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#/shop">Shop</NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink href="#/News">News</NavLink>
               </NavItem>
               <NavItem>
@@ -149,8 +146,7 @@ class  NavigationBar extends Component {
           </Collapse>
                 </Navbar>
                 </div>
-                <div className="col-lg-3 pt-3 text-center icon-palat">
-                    <span><FontAwesomeIcon icon={faShoppingCart } style={{color:'red'}} size="sm" /></span>
+                <div className="col-lg-3 pt-4 text-center icon-palat">
                     <span className="navbar-search">
                         <input type="text" name="search-box" value=""/>
                         <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
