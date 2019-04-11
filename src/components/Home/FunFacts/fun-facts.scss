@@ -1,4 +1,13 @@
 .tile-fun-facts{
+    .latest-news{
+        max-height:327px;
+        overflow: scroll;
+    }
+    .news-list {
+        .item{
+            flex-basis: 100% !important;
+        }
+    } 
     padding-top:5rem;
     padding-bottom:5rem;
     .heading{
@@ -52,7 +61,7 @@
             margin-top:2rem;
             margin-bottom:3rem;
             font-size:14px;
-            color:#3333;
+            color:#000;
         }
     }
     .news-list{

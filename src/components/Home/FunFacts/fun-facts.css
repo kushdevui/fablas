@@ -3,6 +3,16 @@
   padding-bottom: 5rem;
 }
 
+.tile-fun-facts .latest-news {
+  max-height: 327px;
+  overflow: scroll;
+}
+
+.tile-fun-facts .news-list .item {
+  -ms-flex-preferred-size: 100% !important;
+      flex-basis: 100% !important;
+}
+
 .tile-fun-facts .heading {
   border-bottom: 2px solid #dddddd;
 }

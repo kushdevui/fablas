@@ -13,6 +13,10 @@
   color: white;
 }
 
+.tile-bulk-orders .form p {
+  color: white;
+}
+
 .tile-bulk-orders .form-control {
   color: #aaaaaa;
   border-radius: 0px;

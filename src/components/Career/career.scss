@@ -48,6 +48,22 @@
                 }
             }
         }
+        &:active{
+            background-color:#282676;
+            transform: scale(1.1);
+            z-index: 2000;
+            transition: all .2s ease-in-out;
+            h3,p{
+                color:#ffffff;
+            }
+            svg{
+                background-color: #282676;
+                border-color:white;
+                .icon{
+                    fill:#ffffff;
+                }
+            }
+        }
         svg{
             background-color:#f4f4f4;
             position: absolute;
