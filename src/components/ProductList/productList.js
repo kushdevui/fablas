@@ -45,6 +45,7 @@ class ProductsList extends Component{
 
 
     render(){
+        console.log(this.state.productListBySubCat);
         if( this.state.productListBySubCat){
             var productsData = this.state.productListBySubCat.map(product => {
                 return (

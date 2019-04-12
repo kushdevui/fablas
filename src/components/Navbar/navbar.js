@@ -49,11 +49,10 @@ class  NavigationBar extends Component {
         super(props);
         this.props = props;
 
-        this.toggle = this.toggle.bind(this);
+        this.toggleNavbar = this.toggleNavbar.bind(this);
         this.getProductByCat = this.getProductByCat.bind(this);
-
         this.state={
-            isOpen:false,
+            isOpenNav:false,
             subMenu: []
         };
     }
@@ -67,7 +66,7 @@ class  NavigationBar extends Component {
         }
         axios.post('https://fablasnode.herokuapp.com/products/getSubcategory',
         {
-            "cat_name": "Home Care"
+            "cat_name": "Homecare"
         },
         {"headers": headers}
         ).then(res=>{
@@ -75,13 +74,12 @@ class  NavigationBar extends Component {
                 subMenu:res.data
             })
         })
-
     }
 
-    toggle(event){
+    toggleNavbar(event){
         event.preventDefault(); 
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpenNav: !this.state.isOpenNav
         });
     }
 
@@ -102,6 +100,7 @@ class  NavigationBar extends Component {
     }
 
     render(){
+        
         const CagegoryList = this.props.productList.map(item=>{
             return(
                 <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
@@ -130,7 +129,7 @@ class  NavigationBar extends Component {
                 <NavLink href="#/Services">Services</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href={`/Products/`}>Products</NavLink>
+                <NavLink onClick={this.toggleNavbar} href={`/Products/`}>Products</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#/News">News</NavLink>
@@ -141,10 +140,34 @@ class  NavigationBar extends Component {
               <NavItem>
                 <NavLink href="#/Contact">Contact Us</NavLink>
               </NavItem>
-              
             </Nav>
           </Collapse>
                 </Navbar>
+                {this.state.isOpenNav ?   <div className="products-dropdown">
+                                    <div className="row">
+                                        <div className="col-lg-4">
+                                            <ul>
+                                            {CagegoryList}
+                                            </ul>
+                                        </div>
+                                        <div className="col-lg-8 sub-cat mt-1">
+                                            {this.state.subMenu.map(item=>
+                                            {
+                                            return( <div>
+                                                <Link  to={`/Products/${item.id}`} >{item.name}</Link>
+                                                        {/* <ul>
+                                                            {item.productsList.map(productItem=>{
+                                                                return(
+                                                                    <li>{productItem.name}</li>
+                                                                )
+                                                            })}
+                                                        </ul> */}
+                                                </div>)
+                                            })}
+                                            </div>
+                                        </div>
+                                    </div>
+                            : ""}
                 </div>
                 <div className="col-lg-3 pt-4 text-center icon-palat">
                     <span className="navbar-search">

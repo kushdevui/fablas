@@ -17,6 +17,7 @@ import Cart from "./components/Cart/cart";
 import store from "./redux/store";
 import ProductDetail from "./container/ProductDetails/productDetails";
 import News from "./components/News/News";
+import AddProducts from "./components/Admin/AddProduct";
 const App = ()=> {
     return(
         <div className="container-fluid">
@@ -32,6 +33,7 @@ const App = ()=> {
                         <Route path="/Products/:ProductSubCategory" exact  component={ProductsList}/>
                         <Route path="/Cart/" exact  component={Cart}/>
                         <Route path="/News/" exact  component={News}/>
+                        <Route path="/Admin/AddProduct" exact  component={AddProducts}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
                     </Switch>

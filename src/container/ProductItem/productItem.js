@@ -61,12 +61,10 @@ class ProductItem extends Component{
     }
 
     render(){
-
         return(
-            
             <div className="sub-cat-card-section position-relative pr-2 pl-2 mb-5">
                 {this.RenderItem(this.state.type)}
-                <p className="pt-2 pb-2 mb-0">{this.props.name}<span>&#8377;{this.props.price}</span></p>
+                <p className="pt-2 pb-2 mb-0">{this.props.name}<span>&#8377;</span></p>
             </div>
            
         )
