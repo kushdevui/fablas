@@ -53,9 +53,10 @@ class ProductsList extends Component{
                             <ProductItem type="show"
                                 key={product.id}
                                 price={product.price}
-                                name={product.name}
+                                name={product.productName}
                                 image={product.imagepath}
                                 id={product.id}
+                                categoryName = "Homecare"
                                 images={product.images}
                             />
                          

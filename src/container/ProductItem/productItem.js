@@ -27,8 +27,9 @@ class ProductItem extends Component{
 
     RenderItem =(type) =>{
         if(this.props.images){
-            var showImg = this.props.images[0]['thumbnails'][0]
+            var showImg = `./assets/images/products/`+this.props.categoryName + `/`+this.props.name + "-1.jpg";
         }
+        //console.log(showImg);
        
         switch(this.state.type){
             case "show":
@@ -64,7 +65,7 @@ class ProductItem extends Component{
         return(
             <div className="sub-cat-card-section position-relative pr-2 pl-2 mb-5">
                 {this.RenderItem(this.state.type)}
-                <p className="pt-2 pb-2 mb-0">{this.props.name}<span>&#8377;</span></p>
+                <p className="pt-2 pb-2 mb-0">{this.props.name}<span></span></p>
             </div>
            
         )
