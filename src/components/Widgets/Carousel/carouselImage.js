@@ -56,12 +56,8 @@ class Example extends Component {
       const items = [
         {
           name:"‎image1",
-          desc:"./assets/images/Image-1.JPG"
+          desc:"./assets/images/About-Us-Banner-1.jpg"
           
-        },
-        {
-          name:"Rekha Rana",
-          desc:"./assets/images/Image-2.JPG"
         }
       ];
 

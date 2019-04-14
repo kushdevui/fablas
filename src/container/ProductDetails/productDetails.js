@@ -16,17 +16,31 @@ import FilterColors from "../FilterColors/filterColors"
 
 class Product extends Component{
     constructor(props){
-        super(props)
-        this.state={
-            ProductData : [],
+        super(props);
+        //console.log(this.props.location.state.category)
+        this.state = {
+            ProductData : {},
             mainImage:"",
-            showDetail:false,
-            type:this.props.location.state.type
+            showDetail:false
         }
         this.gotoCart = this.gotoCart.bind(this);
         this.renderProduct = this.renderProduct.bind(this);
     }
 
+    componentDidMount(){
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+       axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
+        "id":this.props.match.params.product_id,
+        "sId":this.props.match.params.product_subCat
+       }, {"headers": headers}).then(item=>{
+            this.setState({
+                ProductData : item.data
+            })
+       })
+    }
+   
     handleClick = (id)=>{
         this.props.addToCart(id); 
     }
@@ -37,7 +51,6 @@ class Product extends Component{
         })
     }
     toggleDescription = (event) =>{
-        //console.log(event.currentTarget);
         event.currentTarget.classList.toggle('expand');
     }
 
@@ -105,38 +118,24 @@ class Product extends Component{
             return(
                 <div className="other-details">
                     <ul className="">
-                        {this.state.ProductData.details?this.state.ProductData.details.map((item)=>{
-                             return(<li className="mt-5">
+                        <li className="mt-5">
                                 <h4 onClick={(e)=>this.toggleDescription(e)}>
                                     <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
                                     {item.title}</span>
                                     <span className="inner">{item.desc}</span>
                                 </h4>
-                            </li>)
-                        }):""}
+                            </li>
                     </ul>
                 </div>
             )
         }
     }
 
-    componentWillMount(){
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-       axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
-        "id":this.props.match.params.product_id
-       }, {"headers": headers}).then(product=>{
-           this.setState({
-            ProductData : product.data,
-            mainImage:product.data.images[0]['largeImages'][0]
-           })
-       })
-    }
 
     render(){
-        //console.log(this.state.ProductData);
-        var MainImage = this.state.mainImage;
+   // console.log(this.props.location.state.category);
+   //console.log(this.state.ProductData);
+        const categoryName = this.props.location.state.category;
         var settings = {
             className: "slick-cente",
             variableWidth: true,
@@ -146,6 +145,11 @@ class Product extends Component{
             slidesToShow: 2,
             speed: 600
         };
+        const productName = this.state.ProductData[0]?this.state.ProductData[0].productName:"";
+        const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
+        const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
+        var MainImage = `./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg";
+        var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-3.jpg"];
         return(
             <div>
                 <Header/>
@@ -159,10 +163,10 @@ class Product extends Component{
                                 isFluidWidth: true,
                                 src: {MainImage},
                                 srcSet: [
-                                    `${MainImage} 687w`,
-                                    `${MainImage} 770w`,
-                                    `${MainImage} 861w`,
-                                    `${MainImage} 955w`
+                                    `${MainImage} `,
+                                    `${MainImage} `,
+                                    `${MainImage} `,
+                                    `${MainImage} `
                                 ].join(', '),
                                 sizes: '(min-width: 480px) 30vw, 80vw'
                             },
@@ -175,7 +179,7 @@ class Product extends Component{
                             }} />
                             <Slider  className="d-flex product-thumb" {...settings}>
                                 {
-                                    this.state.ProductData.images? this.state.ProductData.images[0]['thumbnails'].map(item=>{
+                                    slides? slides.map(item=>{
                                         return (
                                             <div key={item} onClick={()=>this.handleMainImage(item)}>
                                                 <img src={item} />
@@ -186,17 +190,26 @@ class Product extends Component{
                             </Slider>
                         </div>
                         <div className="col-lg-7 product-details reduce-zindex">
-                            <h4>{this.state.ProductData.name}</h4>
-                            <span>&#8377;{this.state.ProductData.price}</span>
-                            <p className="pt-2 pb-2">{this.state.ProductData.shortDesc}</p>
-                            <h5>Other Details :</h5>
-                            <div className="list pb-2 border-bottom">
-                                <span>Category : Homecare</span>
-                                <span>Code : #21457</span>
-                                <span>Availabiltity : In Stock</span>
-                            </div>
-                            {this.renderProduct(this.state.type)}
-                           
+                            <h4>{productName}</h4>
+                            <span>{this.state.ProductData.price}</span>
+                            <div className="other-details">
+                                <ul className="">
+                                    <li className="mt-5">
+                                        <h4 onClick={(e)=>this.toggleDescription(e)}>
+                                            <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
+                                            Usage</span>
+                                            <span className="inner">{productUsage}</span>
+                                        </h4>
+                                    </li>
+                                    <li className="mt-5">
+                                        <h4 onClick={(e)=>this.toggleDescription(e)}>
+                                            <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
+                                            Features</span>
+                                            <span className="inner">{productFeature}</span>
+                                        </h4>
+                                    </li>
+                                </ul>
+                        </div>
                         </div>
                     </div>
                     {
@@ -222,7 +235,7 @@ class Product extends Component{
                     </div>:""
                     }
                 </div>
-                <div className="container related-products mb-5">
+                {/* <div className="container related-products mb-5">
                     <div className="row mb-5 text-center">
                         <div className="col-lg-12">
                             <h3>Related Products</h3>
@@ -244,7 +257,7 @@ class Product extends Component{
                         </div>
                     </div>
 
-                </div>
+                </div> */}
                 <Footer/>
             </div>
         )

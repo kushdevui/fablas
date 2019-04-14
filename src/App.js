@@ -35,7 +35,7 @@ const App = ()=> {
                         <Route path="/News/" exact  component={News}/>
                         <Route path="/Admin/AddProduct" exact  component={AddProducts}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
-                        <Route path='/Product/ProductList/ProductDetail/:product_id' exact component={ProductDetail}/>
+                        <Route path='/Product/ProductList/ProductDetail/:product_id/:product_subCat' exact component={ProductDetail}/>
                     </Switch>
                 </HashRouter>
             </Provider>

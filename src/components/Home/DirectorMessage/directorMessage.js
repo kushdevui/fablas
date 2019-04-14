@@ -9,7 +9,7 @@ const DirectorMessage = () =>{
             <div className="row">
                 <div className="col-lg-12 message ">
                     <div className="row">
-                        <div className="d-flex col-lg-8 message-window">
+                        <div className="d-flex col-lg-7 message-window">
                             {/* <div className="image pt-3 pb-3">
                                 <img src="./assets/images/men-standing.png" className="img-fluid"/>
                             </div> */}
@@ -31,11 +31,11 @@ I therefore, seek continued patronage of our valued customers, cooperation of ou
  
 </p>
                                 <div className="l-signature">Seraj Akhtar Siddiqui</div>
-                                <div className="l-signature"> Fablas Founder & Managing Director</div>
+                                <div className="l-signature"> Founder and Managing Director</div>
                             </div>
                         </div>
-                        <div className="col-lg-4 d-none d-flex director-person">
-                            <img src="./assets/images/directors-banner.png"/>
+                        <div className="col-lg-4 d-none d-flex director-person ">
+                        <img src="./assets/directors-banner1.png" className="img-fluid"/>
                         </div>
                     </div>
                 </div>

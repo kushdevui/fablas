@@ -27,7 +27,8 @@ class ProductItem extends Component{
 
     RenderItem =(type) =>{
         if(this.props.images){
-            var showImg = `./assets/images/products/`+this.props.categoryName + `/`+this.props.name + "-1.jpg";
+            var proName = this.props.name.split(" ").join("_");
+            var showImg = `./assets/images/products/`+this.props.categoryName + `/`+proName + "-1.jpg";
         }
         //console.log(showImg);
        
@@ -35,7 +36,9 @@ class ProductItem extends Component{
             case "show":
             return (
                 <div className="border">
-                    <Link to={{pathname:`/Product/ProductList/ProductDetail/${this.props.id}`, state: { type: 'show'}}} query="show">
+                    <Link to={{pathname:`/Product/ProductList/ProductDetail/${this.props.id}/${this.props.subCat}`, state: {
+    category: this.props.categoryName
+  }}} query="show">
                         <img src={showImg} className="img-fluid"/>
                     </Link>
                 </div>

@@ -56,6 +56,7 @@ class ProductsList extends Component{
                                 name={product.productName}
                                 image={product.imagepath}
                                 id={product.id}
+                                subCat={this.props.match.params.ProductSubCategory}
                                 categoryName = "Homecare"
                                 images={product.images}
                             />

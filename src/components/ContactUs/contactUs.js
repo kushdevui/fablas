@@ -7,8 +7,8 @@ import ContactInformation from "../../container/ContactInformation/contactInform
 import GoogleMap from '../../container/FooterMap/footerMap';
 import Footer from "../Footer/footer";
 const ContactUs = () =>{
-    const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw'
-    let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.709498,77.184029`
+    const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw';
+    let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.648430,77.164330`
     return(
         <div>
             <Header/>

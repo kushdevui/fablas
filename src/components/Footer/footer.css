@@ -5,6 +5,12 @@
   color: #cccccc;
 }
 
+.footer svg {
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
+  width: 25px;
+}
+
 .footer p {
   font-size: 0.75rem;
 }

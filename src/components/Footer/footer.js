@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import "./footer.scss";
-import { faShoppingCart,faAddressCard,faPhone,faMailBulk  } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt,faPhone,faEnvelope  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Footer extends Component{
@@ -40,9 +40,9 @@ class Footer extends Component{
                         <p className="pt-5">
                         Fablas Impex Pvt. Ltd. is one of India’s largest & most prominent FMCG companies, with a rich history of expertise in manufacturing & packaging. With a legacy of over four decades of providing winning solutions to Traditional as well as Modern Trade Markets, Fablas has been the supplier of choice for HORECA, B2B & Organised retail sectors for Bulk & Raw material supplies with 3rdparty  label arrangements.
                         </p>
-                        <span className="d-block"><FontAwesomeIcon icon={faAddressCard } style={{color:'white'}} size="md" />  2151/3D, New Patel Nagar, Delhi- 08</span>
-                        <span className="d-block"><FontAwesomeIcon icon={faPhone } style={{color:'white'}} size="md" />  +91-11-25891350,  25892350 </span>
-                        <span className="d-block"><FontAwesomeIcon icon={faMailBulk } style={{color:'white'}} size="md" /> info@fablas.com</span>
+                        <span className="d-block"><FontAwesomeIcon icon={faMapMarkerAlt} style={{color:'#ccc'}} size="lg" />  2151/3D, New Patel Nagar, Delhi- 08</span>
+                        <span className="d-block"><FontAwesomeIcon icon={faPhone } style={{color:'#ccc'}} size="md" />  +91-11-25891350,  25892350 </span>
+                        <span className="d-block"><FontAwesomeIcon icon={faEnvelope } style={{color:'#ccc'}} size="md" /> info@fablas.com</span>
                     </div>
                     <div className="col-lg-5">
                         <h3>USEFULL LINKS</h3>

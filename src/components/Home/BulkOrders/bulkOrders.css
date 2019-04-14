@@ -5,6 +5,10 @@
   padding: 2rem 2rem;
 }
 
+.tile-bulk-orders .error {
+  border-color: red;
+}
+
 .tile-bulk-orders .form {
   margin-top: 1rem;
 }

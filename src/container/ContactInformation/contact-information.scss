@@ -1,6 +1,19 @@
 .contact-information{
+    svg{
+        padding-right:5px;
+        border-right:1px solid #ccc;
+        width:20px !important;
+    }
     .contact-item{
         margin-bottom:1rem;
+    }
+    .clock{
+        svg{
+            width:25px !important;
+            height:25px !important;
+            border-right:0px;
+            padding-right:5px;
+        }
     }
     text-align: left;
     h5{

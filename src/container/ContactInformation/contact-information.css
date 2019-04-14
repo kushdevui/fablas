@@ -2,8 +2,21 @@
   text-align: left;
 }
 
+.contact-information svg {
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
+  width: 20px !important;
+}
+
 .contact-information .contact-item {
   margin-bottom: 1rem;
+}
+
+.contact-information .clock svg {
+  width: 25px !important;
+  height: 25px !important;
+  border-right: 0px;
+  padding-right: 5px;
 }
 
 .contact-information h5 {

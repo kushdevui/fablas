@@ -1,5 +1,7 @@
 .director-tile .director-person {
-  margin-top: 1rem;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .director-tile .message-window {

@@ -3,7 +3,9 @@
     background-image: url("../../../assets/images/Bulk-Order-BG.jpg");
     background-size: cover;
     padding:2rem 2rem;
-    
+    .error{
+        border-color:red;
+    }
     .form{
         margin-top:1rem;
         .btn{

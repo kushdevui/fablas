@@ -4,6 +4,7 @@ import InnerHeader from "../../container/InnerHeader/innerHeader";
 import SectionHeading from "../../container/SectionHeading/sectionHeading"
 import ServiceItem from "../../components/Services/ServicesItem/servicesItem";
 import Modal from 'react-responsive-modal';
+import Footer from "../Footer/footer";
 
 
 import './services.scss';
@@ -120,6 +121,7 @@ class Services extends Component{
                 {renderServices()}
                 </div>
             </div>
+            <Footer/>
         </div>
         )
     }
