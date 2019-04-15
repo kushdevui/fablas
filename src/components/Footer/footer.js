@@ -47,19 +47,20 @@ class Footer extends Component{
                     <div className="col-lg-5">
                         <h3>USEFULL LINKS</h3>
                         <ul>
-                            <li>Homecare</li>
-                            <li>About us</li>
-                            <li>Job Seeker</li>
+                            <li><a href="#/About">About us</a></li>
+                            <li><a href="#/Career">Job Seeker</a></li>
                             <li>Privacy Policy</li>
                             <li>Terms and Condition</li>
-                            <li>Contact Us</li>
+                            <li><a href="#/News">News</a></li>
+                            <li><a href="#/Contact">Contact Us</a></li>
                         </ul>
                         <ul>
-                            <li>Personal Care</li>
-                            <li>Industrial Care</li>
-                            <li>Salon Care</li>
-                            <li>Bulk</li>
-                            <li>Professional</li>
+                            <li><a href="/#/Products/5c8b541c53cf7b1590e77c28">Homecare</a></li>
+                            <li><a href="/#/Products/5cb187e8531998001706f6f5">Personal Care</a></li>
+                            <li><a href="/#/Products/5c8b560453cf7b1590e77c44">Industrial Care</a></li>
+                            <li><a href="/#/Products/5c8b56b853cf7b1590e77c4a">Salon Care</a></li>
+                            <li><a href="/#/Products/5cb1a1035319980017072bbc">Bulk</a></li>
+                            <li><a href="/#/Products/5c8b553f53cf7b1590e77c3a">Professional</a></li>
                         </ul>
                     </div>
                     <div className="col-lg-3">
