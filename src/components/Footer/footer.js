@@ -47,6 +47,7 @@ class Footer extends Component{
                     <div className="col-lg-5">
                         <h3>USEFULL LINKS</h3>
                         <ul>
+                            <li>Homecare</li>
                             <li>About us</li>
                             <li>Job Seeker</li>
                             <li>Privacy Policy</li>

@@ -17,13 +17,15 @@ class BulkOrders extends Component{
                 category:"",
                 quantity:"",
                 comments:"",
-            },
+			},
+			showotherCat:false,
             message:"",
             errors:{}
         }
     }
 
     handleChange = (event) =>{
+		
         var name = event.target.name;
         var value = event.target.value;
         this.setState({
@@ -31,8 +33,19 @@ class BulkOrders extends Component{
                 ...this.state.bulkOrder,
                 [name]:value
             }
-            
-        })
+		})
+		if(name=="category"){
+			if(value=="Other"){
+				this.setState({
+					showotherCat:!this.state.showotherCat
+				})
+			}
+			else{
+				this.setState({
+					showotherCat:false
+				})
+			}
+		}
        // console.log(this.state.bulkOrder)
     }
 
@@ -391,9 +404,12 @@ class BulkOrders extends Component{
                                     <option>Professional Care</option>
                                     <option>Bulk</option>
                                     <option>Other</option>
-
                                 </select>
+								{this.state.showotherCat?<input className="form-control mt-3" placeholder="Please Specify" type="text"/>:""}
+								
                             </div>
+							
+
                             <div className="col-lg-6 form-group">
                                 <input type="text" name="quantity" onChange={this.handleChange} placeholder="Quantity" className={this.state.errors.quantity?"form-control error":"form-control"}/>
                             </div>

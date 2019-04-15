@@ -8,7 +8,8 @@ import GoogleMap from '../../container/FooterMap/footerMap';
 import Footer from "../Footer/footer";
 const ContactUs = () =>{
     const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw';
-    let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.648430,77.164330`
+    let _url = ` https://www.google.com/maps/embed/v1/place?q=Fablas%20Impex%20Pvt%20Ltd&key=${MY_API}`
+   
     return(
         <div>
             <Header/>
