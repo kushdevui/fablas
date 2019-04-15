@@ -391,5 +391,11 @@
     top: 20rem;
   }
   }
-   
+   @media only screen and(min-width:1599px) {
+    .choose-use-section{
+      .globe{
+        top:40px;
+      }
+    }
+   }
 }
