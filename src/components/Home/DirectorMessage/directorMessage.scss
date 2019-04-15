@@ -3,6 +3,7 @@
 @import "../../../global/styles/base_variables.scss";
 
 .director-tile{
+    border-top:1px solid #f1f1f1;
     .director-person{
         align-items: flex-end;
     }
@@ -13,11 +14,11 @@
         .content{
             padding:2rem 0 2rem 2rem;
         }
-        background-color: $dark-blue;
+       // background-color: $dark-blue;
         h4{
             font-size:2.1875rem;
             font-weight: 100;
-            color:$white;
+            color:$dark-blue;
             .bold{
                 font-weight: 700;
             }
@@ -36,7 +37,7 @@
             font-style: italic;
         }
         .l-signature{
-            color:$white;
+            color:$dark-blue;
             span{
                 color:$red;
             }
