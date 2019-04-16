@@ -823,7 +823,8 @@ class Career extends Component{
                     <div className="carrer-item">
                         <img src="./assets/images/career.png" className="img-fluid"/>
                         <p className="pt-4 text-center">
-                            Need an experienced Digital Marketer
+                            Sales officer U.P. West & U.P. East 
+                            (Digital Marketing Executive)
                         </p>
                         <button className="btn form-control">Apply</button>
                     </div>

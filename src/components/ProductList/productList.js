@@ -8,7 +8,7 @@ import Footer from "../Footer/footer";
 import axios from "Axios";
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
-import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart,faArrowRight, faArrowDown, faLessThanEqual  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./product-list.scss"
 
@@ -17,12 +17,27 @@ class ProductsList extends Component{
         super(props);
         this.state = {
             isFilterOpen:false,
-            productListByCat :[],
+            productListByCat :[]
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
     }
 
-    componentDidMount(){
+    componentWillReceiveProps(nextProps){
+       var nextParams = nextProps.match.params.ProductSubCategory;
+       const headers = {
+        'Content-Type': 'application/json'
+        }
+        axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
+            "id":nextParams
+        }, {"headers": headers}).then(list=>{
+            this.setState({
+                 productListBySubCat : list.data
+            })
+        })
+    }
+   
+
+    componentWillMount(){
         this.props.onAddToDo();
         const headers = {
             'Content-Type': 'application/json'
@@ -35,6 +50,8 @@ class ProductsList extends Component{
            })
        })
     }
+
+
 
     toggleAnimation(event){
         event.target.classList.toggle('expand');
