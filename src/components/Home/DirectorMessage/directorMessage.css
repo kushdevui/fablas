@@ -1,3 +1,7 @@
+.director-tile {
+  border-top: 1px solid #f1f1f1;
+}
+
 .director-tile .director-person {
   -webkit-box-align: end;
       -ms-flex-align: end;
@@ -10,10 +14,6 @@
           align-items: center;
 }
 
-.director-tile .message {
-  background-color: #00296d;
-}
-
 .director-tile .message .content {
   padding: 2rem 0 2rem 2rem;
 }
@@ -21,7 +21,7 @@
 .director-tile .message h4 {
   font-size: 2.1875rem;
   font-weight: 100;
-  color: #fff;
+  color: #00296d;
 }
 
 .director-tile .message h4 .bold {
@@ -46,7 +46,7 @@
 }
 
 .director-tile .message .l-signature {
-  color: #fff;
+  color: #00296d;
 }
 
 .director-tile .message .l-signature span {

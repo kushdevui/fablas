@@ -61,6 +61,28 @@
   fill: #ffffff;
 }
 
+.career-tile .career-category:active {
+  background-color: #282676;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  z-index: 2000;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.career-tile .career-category:active h3, .career-tile .career-category:active p {
+  color: #ffffff;
+}
+
+.career-tile .career-category:active svg {
+  background-color: #282676;
+  border-color: white;
+}
+
+.career-tile .career-category:active svg .icon {
+  fill: #ffffff;
+}
+
 .career-tile .career-category svg {
   background-color: #f4f4f4;
   position: absolute;
@@ -93,7 +115,7 @@
 }
 
 .career-tile .carrer-item p {
-  font-size: 14px;
+  font-size: 12px;
   color: #000000;
 }
 

@@ -12,8 +12,8 @@ class Retail extends Component {
         }
         return(
             <section>
-            <div className="retail-section-new">
-                <div className="row">
+            <div className="">
+                <div className="row retail-section-new">
                     <div className="col-lg-6 d-none d-lg-block p-0 p-lg-1 col-sm-12">
                         <div id="cf4" className="hover">
                             <img className="top shadow img-fluid" src="./assets/images/products/featured-1.jpg"/>

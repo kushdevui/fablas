@@ -48,7 +48,8 @@ class Career extends Component{
             errors:{},
             vendorMsg:"",
             jobSeekerMsg:"",
-            distributorMsg:""
+			distributorMsg:"",
+			appliedPos:""
         }
         this.handleVendorChange = this.handleVendorChange.bind(this);
         this.handleDistributorChange = this.handleDistributorChange.bind(this);
@@ -250,10 +251,16 @@ class Career extends Component{
                   }
               })
         }
-    }
+	}
+	
+	hanldeApplyClick = (e) =>{
+		this.setState({
+			appliedPos:e.currentTarget.dataset.id
+		})
+	}
 
     render(){
-        console.log(this.state);
+		console.log(this.state.appliedPos);
         const RenderDistributor = this.state.distributorMsg?<p>{this.state.distributorMsg}</p>:<form onSubmit={this.handleDistributorSubmit}><div className="row vendor-form justify-content-center">
                                   
                                     <div className="col-lg-6">
@@ -821,30 +828,29 @@ class Career extends Component{
             <div className="row">
                 <div className="col-lg-4 ">
                     <div className="carrer-item">
-                        <img src="./assets/images/career.png" className="img-fluid"/>
+                        <img src="./assets/images/DigitalMarketingExecutive.jpg" className="img-fluid"/>
                         <p className="pt-4 text-center">
-                            Sales officer U.P. West & U.P. East 
-                            (Digital Marketing Executive)
+							Digital Marketing Executive
                         </p>
-                        <button className="btn form-control">Apply</button>
+                        <button data-id="Digital Marketing Executive" onClick={this.hanldeApplyClick} className="btn form-control">Apply</button>
                     </div>
                 </div>
                 <div className="col-lg-4 ">
                     <div className="carrer-item">
-                        <img src="./assets/images/career.png" className="img-fluid"/>
+                        <img src="./assets/images/SalesOfficer.jpg" className="img-fluid"/>
                         <p className="pt-4 text-center">
-                            Need an experienced Digital Marketer
+							Sales officer U.P. West & U.P. East
                         </p>
-                        <button className="btn form-control">Apply</button>
+                        <button data-id="Sales officer U.P. West & U.P. East" onClick={this.hanldeApplyClick} className="btn form-control">Apply</button>
                     </div>
                 </div>
                 <div className="col-lg-4 ">
                     <div className="carrer-item">
-                        <img src="./assets/images/career.png" className="img-fluid"/>
+                        <img src="./assets/images/WarehouseManager.jpg" className="img-fluid"/>
                         <p className="pt-4 text-center">
-                            Need an experienced Digital Marketer
+						Warehouse Manager in U.P. & DELHI
                         </p>
-                        <button className="btn form-control">Apply</button>
+                        <button data-id="Warehouse Manager in U.P. & DELHI" onClick={this.hanldeApplyClick} className="btn form-control">Apply</button>
                     </div>
                 </div>
                 
@@ -866,7 +872,7 @@ class Career extends Component{
                         <input type="text" onChange={this.handlejobSeekerChange} name="seekerMobile" className={this.state.errors.seekerMobile?"form-control error":"form-control"} placeholder="Phone" />
                     </div>
                     <div className="form-group">
-                        <input type="text" onChange={this.handlejobSeekerChange} name="applyingFor" className={this.state.errors.applyingFor?"form-control error":"form-control"} placeholder="Position Applying For" />
+                        <input type="text" onChange={this.handlejobSeekerChange} name="applyingFor" className={this.state.errors.applyingFor?"form-control error":"form-control"} value={this.state.appliedPos} placeholder="Position Applying For" />
                     </div>
                     <div className="form-group">
                         <textarea className={this.state.errors.message?"form-control error":"form-control"} name={this.handlejobSeekerChange} name="message" placeholder="Message"></textarea>

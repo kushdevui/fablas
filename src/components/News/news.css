@@ -30,4 +30,21 @@
   color: #00a3d9;
   font-size: 12px;
 }
+
+.news-details p {
+  font-size: 14px;
+}
+
+.news-details h5 {
+  font-size: 18px;
+}
+
+.news-date {
+  color: #ccc;
+}
+
+.news-date .date {
+  font-size: 32px;
+  font-weight: bold;
+}
 /*# sourceMappingURL=news.css.map */
