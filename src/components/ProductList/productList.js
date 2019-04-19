@@ -17,7 +17,8 @@ class ProductsList extends Component{
         super(props);
         this.state = {
             isFilterOpen:false,
-            productListByCat :[]
+            productListByCat :[],
+            productCategory:""
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
     }
@@ -31,7 +32,8 @@ class ProductsList extends Component{
             "id":nextParams
         }, {"headers": headers}).then(list=>{
             this.setState({
-                 productListBySubCat : list.data
+                 productListBySubCat : list.data[0].productsList,
+                 productCategory:list.data[1]
             })
         })
     }
@@ -45,8 +47,11 @@ class ProductsList extends Component{
        axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
         "id":this.props.match.params.ProductSubCategory
        }, {"headers": headers}).then(list=>{
+           console.log(list);
            this.setState({
-                productListBySubCat : list.data
+                productListBySubCat : list.data[0].productsList,
+                productCategory:list.data[1]
+
            })
        })
     }
@@ -62,7 +67,8 @@ class ProductsList extends Component{
 
 
     render(){
-        console.log(this.state.productListBySubCat);
+        //console.log(this.state.productListBySubCat);
+        //console.log(this.state.productCategory);
         if( this.state.productListBySubCat){
             var productsData = this.state.productListBySubCat.map(product => {
                 return (
@@ -74,7 +80,7 @@ class ProductsList extends Component{
                                 image={product.imagepath}
                                 id={product.id}
                                 subCat={this.props.match.params.ProductSubCategory}
-                                categoryName = "Homecare"
+                                categoryName = {this.state.productCategory}
                                 images={product.images}
                             />
                          

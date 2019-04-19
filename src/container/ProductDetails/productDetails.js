@@ -133,7 +133,7 @@ class Product extends Component{
 
 
     render(){
-   // console.log(this.props.location.state.category);
+    //console.log(this.props.location.state.category);
    //console.log(this.state.ProductData);
         const categoryName = this.props.location.state.category;
         var settings = {
@@ -149,6 +149,7 @@ class Product extends Component{
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
         var MainImage = `./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg";
+        
         var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-3.jpg"];
         return(
             <div>
