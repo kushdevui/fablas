@@ -42,3 +42,32 @@
         font-weight: bold;
     }
 }
+.news-callendar-tile{
+    border:1px solid #ccc;
+    padding:1rem;
+    border-radius: 5px;
+    background-color:#f1f1f1;
+    h4{
+        color:#dc3545;
+        font-size:1rem;
+        font-weight: bold;
+    }
+    .arch{
+        border-radius:5px;
+        padding:0.3rem;
+        margin-right:10px;
+    }
+    ul{
+        padding-left:0px;
+        list-style:none;
+        li{
+            justify-content: space-between;
+            display:flex;
+            padding:10px 0px;
+            cursor: pointer;
+            &:not(:last-child){
+                border-bottom:1px solid #ccc;
+            }
+        }
+    }
+}

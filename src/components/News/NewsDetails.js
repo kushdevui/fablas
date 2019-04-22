@@ -62,6 +62,15 @@ class NewsDetails extends Component{
                 "Year":"2013",
                 "Day":"27",
                 "Month":"January"
+            },
+            {
+                "id":"5",
+                "title":"Clean India Show, Mumbai",
+                "description":"Clean India Show is Asia’s leading & forerunning B2B event, promoting cleaning as a sustainable business & providing a platform to companies to showcase their cleaning technologies & solutions. A flagship event for the Indian cleaning & hygiene Industry, showcasing the latest products and trends, and technological refinements from India and other global players, Clean India Show generates a wide range of opportunities for everyone connected to cleaning & hygiene and its business and economy.",
+                "image":"./assets/images/NewsEvents/CleanIndia-2013.JPG",
+                "Year":"2013",
+                "Day":"27",
+                "Month":"January"
             }
         
         ]
@@ -96,6 +105,7 @@ class NewsDetails extends Component{
                            
                         </div>
                         <div className="col-lg-5">
+                       
                         <div className="col-12 mt-5">
                             <div className="heading">
                                 <h3>LATEST <span>NEWS & EVENTS</span></h3>

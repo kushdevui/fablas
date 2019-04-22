@@ -7,7 +7,7 @@ import {
   } from 'react-router-dom';
 
 const NewsItem = (props) =>{
-    console.log(props.data);
+   // console.log(props.data);
     return(
         <div className="news-item">
             <img src={props.data.image} className="img-fluid"/>
