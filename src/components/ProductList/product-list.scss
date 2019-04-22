@@ -14,11 +14,17 @@
             color:#dc3545;
             font-size:0.80rem;
         }
+        li{
+            a{
+                color:#dc3545;
+            }
+        }
     }
     .expand{
         transition: all .5s ease-in-out;
         .submenu{
             height: auto;
+            
         }
     }
     .category-item{

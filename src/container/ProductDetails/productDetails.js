@@ -55,6 +55,7 @@ class Product extends Component{
     }
 
     handleMainImage = (item) => {
+        console.log(item);
         this.setState({
             mainImage:item
         })
@@ -133,16 +134,17 @@ class Product extends Component{
 
 
     render(){
+        console.log(this.state.mainImage);
     //console.log(this.props.location.state.category);
    //console.log(this.state.ProductData);
         const categoryName = this.props.location.state.category;
         var settings = {
-            className: "slick-cente",
+            className: "slick-center",
             variableWidth: true,
             centerMode: true,
             infinite: true,
             centerPadding: "30",
-            slidesToShow: 2,
+            slidesToShow: 3,
             speed: 600
         };
         const productName = this.state.ProductData[0]?this.state.ProductData[0].productName.split(" ").join("_"):"";
@@ -150,8 +152,8 @@ class Product extends Component{
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
         var MainImage = `./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg";
-        console.log(MainImage);
-        var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-3.jpg"];
+        var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
+        const showImage = this.state.mainImage?this.state.mainImage:MainImage;
         return(
             <div>
                 <Header/>
@@ -163,12 +165,12 @@ class Product extends Component{
                             smallImage: {
                                 alt: '',
                                 isFluidWidth: true,
-                                src: {MainImage},
+                                src: {showImage},
                                 srcSet: [
-                                    `${MainImage} `,
-                                    `${MainImage} `,
-                                    `${MainImage} `,
-                                    `${MainImage} `
+                                    `${showImage} `,
+                                    `${showImage} `,
+                                    `${showImage} `,
+                                    `${showImage} `
                                 ].join(', '),
                                 sizes: '(min-width: 480px) 30vw, 80vw'
                             },

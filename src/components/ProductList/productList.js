@@ -10,6 +10,12 @@ import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown, faLessThanEqual  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+  } from 'react-router-dom';
+
 import "./product-list.scss"
 
 class ProductsList extends Component{
@@ -107,7 +113,7 @@ class ProductsList extends Component{
                                     <ul className="submenu pl-1">
                                         {item.subCategory.map(subcat=>{
                                             return(<li class="second-menu-item pt-2">
-                                                - {subcat.name}
+                                                <Link  to={`/Products/${subcat.id}`} >- {subcat.name}</Link> 
                                             </li>)
                                         })}
                                     </ul>
