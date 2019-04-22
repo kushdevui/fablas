@@ -145,11 +145,12 @@ class Product extends Component{
             slidesToShow: 2,
             speed: 600
         };
-        const productName = this.state.ProductData[0]?this.state.ProductData[0].productName:"";
+        const productName = this.state.ProductData[0]?this.state.ProductData[0].productName.split(" ").join("_"):"";
+
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
         var MainImage = `./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg";
-        
+        console.log(MainImage);
         var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ `Britex_Non_Scratch_Cleaner` + "-3.jpg"];
         return(
             <div>

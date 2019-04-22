@@ -33,7 +33,7 @@ class ProductsList extends Component{
         }, {"headers": headers}).then(list=>{
             this.setState({
                  productListBySubCat : list.data[0].productsList,
-                 productCategory:list.data[1]
+                 productCategory:list.data[1].split(" ").join("_")
             })
         })
     }
@@ -50,7 +50,7 @@ class ProductsList extends Component{
            console.log(list);
            this.setState({
                 productListBySubCat : list.data[0].productsList,
-                productCategory:list.data[1]
+                productCategory:list.data[1].split(" ").join("_")
 
            })
        })
