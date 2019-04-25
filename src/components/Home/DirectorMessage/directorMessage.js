@@ -6,10 +6,10 @@ import "./directorMEssage.scss";
 const DirectorMessage = () =>{
     return(
         <div className="director-tile">
-            <div className="row">
+            <div className="row justify-content-center">
                 <div className="col-lg-12 message ">
                     <div className="row">
-                        <div className="d-flex col-lg-7 message-window">
+                        <div className="d-flex col-lg-8 message-window">
                             {/* <div className="image pt-3 pb-3">
                                 <img src="./assets/images/men-standing.png" className="img-fluid"/>
                             </div> */}

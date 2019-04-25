@@ -113,9 +113,12 @@ class  NavigationBar extends Component {
         });
         return(
             <div className="row">
-                <div className="col-lg-9 navbar-section">
-                <Navbar  light expand="md">
+                <div className="col-lg-2">
                     <NavbarBrand href="#/"><Logo/></NavbarBrand>
+                </div>
+                <div className="col-lg-7 navbar-section">
+                <Navbar  light expand="md">
+                    
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -169,7 +172,7 @@ class  NavigationBar extends Component {
                                     </div>
                             : ""}
                 </div>
-                <div className="col-lg-3 pt-4 text-center icon-palat">
+                <div className="col-lg-3 pt-3 text-center icon-palat">
                     <span className="navbar-search">
                         <input type="text" name="search-box" value=""/>
                         <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
