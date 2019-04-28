@@ -59,6 +59,16 @@ class  NavigationBar extends Component {
     
 
     componentDidMount(){
+    
+        (function() {
+          var cx = '003011340800377285919:rjpldrombgs';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
         this.props.onAddTodo();
 
         const headers = {
@@ -174,8 +184,16 @@ class  NavigationBar extends Component {
                 </div>
                 <div className="col-lg-3 pt-3 text-center icon-palat">
                     <span className="navbar-search">
-                        <input type="text" name="search-box" value=""/>
-                        <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
+                    <form method = "get" title = "Search Form" action="https://cse.google.co.in/cse?cx=003011340800377285919:rjpldrombgs">
+ <div>
+     <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
+    <input type="text" id="q" name="q" title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
+    <input type="hidden" id="cx" name="cx" value="003011340800377285919:rjpldrombgs" />
+   {/* <input type="image" id="searchSubmit" name="submit" src="https://www.flaticon.com/free-icon/active-search-symbol_34148" alt="Go" title="Submit Search Query" /> */}
+ </div>
+</form>
+                        {/* <input type="text" name="search-box" value=""/> */}
+                        
                     </span>
                     <span><a target="_blank" href="https://www.facebook.com/fablasimpexpvtltd/"><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></a></span>
                     <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
