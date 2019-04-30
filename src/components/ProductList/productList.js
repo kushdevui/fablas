@@ -53,7 +53,7 @@ class ProductsList extends Component{
        axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
         "id":this.props.match.params.ProductSubCategory
        }, {"headers": headers}).then(list=>{
-           console.log(list);
+         //  console.log(list);
            this.setState({
                 productListBySubCat : list.data[0].productsList,
                 productCategory:list.data[1].split(" ").join("_")
@@ -83,7 +83,7 @@ class ProductsList extends Component{
                                 key={product.id}
                                 price={product.price}
                                 name={product.productName}
-                                image={product.imagepath}
+                                image={product.images}
                                 id={product.id}
                                 subCat={this.props.match.params.ProductSubCategory}
                                 categoryName = {this.state.productCategory}

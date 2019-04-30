@@ -26,11 +26,11 @@ class ProductItem extends Component{
     }
 
     RenderItem =(type) =>{
-        if(this.props.images){
-            var proName = this.props.name.split(" ").join("_");
-            var showImg = `./assets/images/products/`+this.props.categoryName + `/`+proName + "-1.jpg";
+        //console.log(this.props.image[0]['path'][0])
+        if(this.props.image[0]){
+            var imgPath = `./assets/images/products/`+this.props.categoryName;
+            var showImg = imgPath + "/" +this.props.image[0]['path'][0];
         }
-        //console.log(showImg);
        
         switch(this.state.type){
             case "show":

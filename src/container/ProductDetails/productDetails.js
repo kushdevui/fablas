@@ -134,9 +134,9 @@ class Product extends Component{
 
 
     render(){
-        console.log(this.state.mainImage);
+
     //console.log(this.props.location.state.category);
-   //console.log(this.state.ProductData);
+   //console.log(this.state.ProductData[0]['images'][0]['path']);
         const categoryName = this.props.location.state.category;
         var settings = {
             className: "slick-center",
@@ -147,11 +147,14 @@ class Product extends Component{
             slidesToShow: 3,
             speed: 600
         };
-        const productName = this.state.ProductData[0]?this.state.ProductData[0].productName.split(" ").join("_"):"";
-
+        const productName = this.state.ProductData[0]?this.state.ProductData[0].productName:"";
+        const imagePath =this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path'][0]:""
+        console.log(imagePath);
+        const ImagesArr = this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path']:"";
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
-        var MainImage = `./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg";
+        var MainImage = `./assets/images/products/`+ categoryName+ `/`+ imagePath ;
+        console.log(MainImage);
         var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
         const showImage = this.state.mainImage?this.state.mainImage:MainImage;
         return(
@@ -183,10 +186,10 @@ class Product extends Component{
                             }} />
                             <Slider  className="d-flex product-thumb" {...settings}>
                                 {
-                                    slides? slides.map(item=>{
+                                    ImagesArr? ImagesArr.map(item=>{
                                         return (
                                             <div key={item} onClick={()=>this.handleMainImage(item)}>
-                                                <img src={item} />
+                                                <img src={`./assets/images/products/`+ categoryName+ `/`+ item} />
                                             </div>
                                             )
                                     }):""
