@@ -124,7 +124,7 @@ class  NavigationBar extends Component {
         return(
             <div className="row">
                 <div className="col-lg-2">
-                    <NavbarBrand href="#/"><Logo/></NavbarBrand>
+                    <NavbarBrand ><Logo/></NavbarBrand>
                 </div>
                 <div className="col-lg-7 navbar-section">
                 <Navbar  light expand="md">
