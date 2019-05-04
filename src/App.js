@@ -17,8 +17,11 @@ import Cart from "./components/Cart/cart";
 import store from "./redux/store";
 import ProductDetail from "./container/ProductDetails/productDetails";
 import News from "./components/News/News";
-import AddProducts from "./components/Admin/AddProduct";
 import NewsDetails from "./components/News/NewsDetails";
+import Dashboard from "./components/Admin/Dashboard";
+import UpdateProduct from "./components/Admin/UpdateProduct/updateProduct";
+
+
 const App = ()=> {
     return(
         <div className="container-fluid">
@@ -26,7 +29,9 @@ const App = ()=> {
                 <HashRouter>
                     <Switch>
                         <Route path="/" exact  component={Home}/>
+                        <Route path="/updateProduct" exact component={UpdateProduct}/>
                         <Route path="/About" exact component={About}/>
+                        <Route path="/Dashboard" exact component={Dashboard}/>
                         <Route path="/Services" exact  component={Services}/>
                         <Route path="/Career" exact component={Career}/>
                         <Route path="/Contact" exact component={ContactUs}/>
@@ -35,7 +40,6 @@ const App = ()=> {
                         <Route path="/Cart/" exact  component={Cart}/>
                         <Route path="/News/" exact  component={News}/>
                         <Route path="/NewsDetails/:id" exact  component={NewsDetails}/>
-                        <Route path="/Admin/AddProduct" exact  component={AddProducts}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
                         <Route path='/Product/ProductList/ProductDetail/:product_id/:product_subCat' exact component={ProductDetail}/>
                     </Switch>

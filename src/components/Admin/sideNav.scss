@@ -1,0 +1,15 @@
+.side-nav{
+    background-color: #dc3545;
+    height:100vh;
+    ul{
+        list-style: none;
+        padding-left:0px;
+        li{
+            background-color: #282676;
+            margin-bottom:0.5rem;
+            padding:0.5rem 0.5rem;
+            color:white;
+            cursor:pointer;
+        }
+    }
+}

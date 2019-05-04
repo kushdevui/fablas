@@ -1,0 +1,17 @@
+.listing-wrapper{
+    list-style: none;
+    padding-left:0px;
+    li{
+        background-color:#f1f1f1;
+        padding:0.5rem;
+        color:#000;
+        font-weight: 300;
+        margin-bottom:0.2rem;
+        cursor:pointer;
+        border-bottom:1px solid #f2f2f2;
+        .inner-list{
+            border-right:1px solid #ccc;
+        }    
+    }
+
+}
