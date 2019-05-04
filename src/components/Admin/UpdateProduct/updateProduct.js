@@ -51,7 +51,7 @@ class UpdateProduct extends Component{
         const headers = {
             'Content-Type': 'application/json'
         }
-        axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
+        axios.put("https://fablasnode.herokuapp.com/products/updateProduct",{
            data:this.state
         },{"headers":headers}).then(res=>{
             
