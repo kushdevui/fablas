@@ -10,6 +10,8 @@ class UpdateProduct extends Component{
         super(props);
         this.props = props;
         this.state={
+            productSubCatId:this.props.location.query.subCatId,
+            productId:"",
             productName:"",
             productFeature:"",
             productUsage:"",
@@ -67,6 +69,7 @@ class UpdateProduct extends Component{
             }, {"headers": headers}).then(item=>{
                // console.log(item);
                 this.setState({
+                    productId:item.data[0].id,
                     productName:item.data[0].productName,
                     productFeature:item.data[0].productFeature,
                     productUsage:item.data[0].productUsage,
