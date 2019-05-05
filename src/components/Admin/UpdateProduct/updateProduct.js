@@ -4,6 +4,8 @@ import "./update-form.scss";
 import { faArrowLeft,faLongArrowAltLeft,faSearch  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import header from '../../Header/header';
+import CKEditor from 'ckeditor4-react';
+
 
 class UpdateProduct extends Component{
     constructor(props){
@@ -16,6 +18,8 @@ class UpdateProduct extends Component{
             productFeature:"",
             productUsage:"",
             productStock:"",
+            productPrice:"",
+            productSize:"",
             productImages:[]
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -97,20 +101,27 @@ class UpdateProduct extends Component{
                             <input type="text" onChange={this.handleInputChange} name="productName"  value={this.state.productName} className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <textarea name="productFeature" onChange={this.handleInputChange} className="form-control" value={this.state.productFeature}></textarea>
+                            <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.productPrice} className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <textarea name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}></textarea>
+                            <input type="text" onChange={this.handleInputChange} name="productSize"  value={this.state.productSize} className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                        <CKEditor onChange={this.handleInputChange} name="productFeature" className="form-control" value={this.state.productFeature}
+                                data={this.state.productFeature}/>
+                        </div>
+                      
+                    </div>
+                    <div className="col-lg-5 images-panel">
+                    <div className="form-group">
+                        <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}
+                                data={this.state.productUsage}/>
                         </div>
                         <div className="form-group">
                             <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
                         </div>
-                        <div className="form-group">
-                            <button className="btn btn-danger" onClick={this.UpdateProductItem}>Update</button>
-                        </div>
-                    </div>
-                    <div className="col-lg-5 images-panel">
-                        <ul>
+                       <div className="form-group">
+                       <ul className="col-lg-12">
                             {
                                 this.state.productImages?this.state.productImages.map((item,index)=>{
                                     return(
@@ -122,6 +133,10 @@ class UpdateProduct extends Component{
                                 }):""
                             }
                         </ul>
+                       </div>                      
+                        <div className="form-group">
+                            <button className="btn btn-danger" onClick={this.UpdateProductItem}>Update</button>
+                        </div>
                     </div>
                 </form>
             </div>
