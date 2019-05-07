@@ -10,6 +10,7 @@ import { Picture } from 'react-responsive-picture';
 const Logo = (props) =>{
     return(
         <div>
+             <a href="/" className="logo font-weight-light d-block text-dark">
             <Picture
         sources = {[
             {
@@ -26,7 +27,7 @@ const Logo = (props) =>{
             }
         ]}
     />
-    <div className="logo font-weight-light">Pioneers in Cleaning Accessories </div>
+        <div>Pioneers in Cleaning Accessories</div> </a>
         </div>
 
         
