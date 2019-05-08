@@ -110,11 +110,10 @@ class  NavigationBar extends Component {
         })
     }
     searchOnWeb(event){
-        setTimeout(function(){
+        if (event.key === 'Enter') {
             window.location = 'https://fablas.co.in/#/' + document.getElementById('search').value;
             return false;
-        },1000)
-        
+        }
     }
 
     render(){
@@ -195,7 +194,7 @@ class  NavigationBar extends Component {
                     <form method = "get" title = "Search Form" action="https://cse.google.co.in/cse?cx=003011340800377285919:rjpldrombgs">
  <div>
      <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
-     <input type="text" id="search" name="search" onChange={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
+     <input type="text" id="search" name="search" onKeyDown={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
     
    {/* <input type="image" id="searchSubmit" name="submit" src="https://www.flaticon.com/free-icon/active-search-symbol_34148" alt="Go" title="Submit Search Query" /> */}
  </div>

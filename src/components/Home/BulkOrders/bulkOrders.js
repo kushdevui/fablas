@@ -100,9 +100,9 @@ class BulkOrders extends Component{
     }
 
     render(){
-        console.log(this.state);
+        //console.log(this.state);
         return(
-            <div className="row">
+            <div className="row" id="bulk">
                 <div className="tile-bulk-orders col-lg-12 ">
                 <div className="row text-left">
                     <div className="col-lg-12 heading ">
