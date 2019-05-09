@@ -61,15 +61,7 @@ class  NavigationBar extends Component {
 
     componentDidMount(){
     
-        (function() {
-          var cx = '003011340800377285919:rjpldrombgs';
-          var gcse = document.createElement('script');
-          gcse.type = 'text/javascript';
-          gcse.async = true;
-          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(gcse, s);
-        })();
+      
         this.props.onAddTodo();
 
         const headers = {
@@ -109,9 +101,11 @@ class  NavigationBar extends Component {
             })
         })
     }
+
     searchOnWeb(event){
+        //console.log(event.target.value);
         if (event.key === 'Enter') {
-            window.location = 'https://fablas.co.in/#/' + document.getElementById('search').value;
+            window.location = 'https://fablas.co.in/#/' + event.target.value;
             return false;
         }
     }
@@ -191,14 +185,14 @@ class  NavigationBar extends Component {
                 </div>
                 <div className="col-lg-3 pt-3 text-center icon-palat">
                     <span className="navbar-search">
-                    <form method = "get" title = "Search Form" action="https://cse.google.co.in/cse?cx=003011340800377285919:rjpldrombgs">
+                    
  <div>
      <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
      <input type="text" id="search" name="search" onKeyDown={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
     
    {/* <input type="image" id="searchSubmit" name="submit" src="https://www.flaticon.com/free-icon/active-search-symbol_34148" alt="Go" title="Submit Search Query" /> */}
  </div>
-</form>
+
                         {/* <input type="text" name="search-box" value=""/> */}
                         
                     </span>

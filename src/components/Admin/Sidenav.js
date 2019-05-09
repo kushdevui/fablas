@@ -8,10 +8,14 @@ const Sidenav = () =>{
 
             <ul>
                 <li>
-                    Dashboard
+                    <a href="#/dashboard">
+                        Dashboard
+                    </a>
                 </li>
                 <li>
-                    News List
+                    <a href="#/Dashboard/News">
+                        News List
+                    </a>
                 </li>
                 <li>
                     Products List

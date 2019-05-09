@@ -19,6 +19,7 @@ import ProductDetail from "./container/ProductDetails/productDetails";
 import News from "./components/News/News";
 import NewsDetails from "./components/News/NewsDetails";
 import Dashboard from "./components/Admin/Dashboard";
+import NewsList from "./components/Admin/NewsList/News";
 import UpdateProduct from "./components/Admin/UpdateProduct/updateProduct";
 
 
@@ -32,6 +33,7 @@ const App = ()=> {
                         <Route path="/updateProduct" exact component={UpdateProduct}/>
                         <Route path="/About" exact component={About}/>
                         <Route path="/Dashboard" exact component={Dashboard}/>
+                        <Route path="/Dashboard/News" exact component={NewsList}/>
                         <Route path="/Services" exact  component={Services}/>
                         <Route path="/Career" exact component={Career}/>
                         <Route path="/Contact" exact component={ContactUs}/>
