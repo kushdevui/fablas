@@ -14,6 +14,8 @@ import { addToCart } from '../../redux/actions/cartActions';
 import {getSingleProduct} from '../../redux/actions/getProductAction';
 import Slider from "react-slick";
 import FilterColors from "../FilterColors/filterColors"
+import Modal from 'react-responsive-modal';
+
 
 class Product extends Component{
     constructor(props){
@@ -22,11 +24,22 @@ class Product extends Component{
         this.state = {
             ProductData : {},
             mainImage:"",
-            showDetail:false
+            showDetail:false,
+            open:false,
+            modalTitle:"",
+            modalDesc:""
         }
         this.gotoCart = this.gotoCart.bind(this);
         this.renderProduct = this.renderProduct.bind(this);
     }
+
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
+    
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
 
     componentDidMount(){
         //const {id,subCat,catName} = this.props.getSingleProduct;
@@ -69,6 +82,7 @@ class Product extends Component{
             case "sell":
             return(
                 <div className="row pt-3">
+                
                     <div className="product-controls d-flex col-lg-12">
                         <div className="col-lg-2 p-0">
                             <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
@@ -257,7 +271,17 @@ class Product extends Component{
                                     </li>
                                 </ul>
                         </div>
-                            <button className="btn btn-danger">Get Quote</button>
+                        <Modal  open={open} onClose={this.onCloseModal} center>
+                            <div className="modal-body-full">
+                            <div className="icon">
+                              asdfasfd
+                            </div>
+                            <h4 className="pt-2 pb-2">asdf</h4>    
+                          asdf
+                            </div>
+                   
+                        </Modal>
+                            <div onClick={this.onOpenModal} className="btn btn-danger" >Get Quote</div>
                         </div>
                     </div>
                     <div className="row mt-3">
