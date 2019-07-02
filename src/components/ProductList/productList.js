@@ -29,6 +29,7 @@ class ProductsList extends Component{
         this.toggleAnimation = this.toggleAnimation.bind(this);
     }
 
+
     componentWillReceiveProps(nextProps){
        var nextParams = nextProps.match.params.ProductSubCategory;
        const headers = {
@@ -121,7 +122,7 @@ class ProductsList extends Component{
                             })}
                         </ul>
                     </div>
-                    <div className="col-lg-9">
+                    <div className="col-lg-9 product-list">
                         <div className="row">
                             {productsData}
                         </div>
@@ -136,9 +137,7 @@ class ProductsList extends Component{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        onAddToDo:()=>{
-            dispatch(addToDo());
-        }
+        onAddToDo:()=>{dispatch(addToDo())},
     }
 }
 
