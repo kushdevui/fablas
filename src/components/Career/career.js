@@ -5,6 +5,7 @@ import InnerHeader from "../../container/InnerHeader/innerHeader";
 import Footer from "../Footer/footer";
 import './career.scss';
 import Axios from 'axios';
+import {Helmet} from "react-helmet";
 
 class Career extends Component{
     constructor(props){
@@ -260,6 +261,7 @@ class Career extends Component{
 	}
 
     render(){
+
 		console.log(this.state.appliedPos);
         const RenderDistributor = this.state.distributorMsg?<p>{this.state.distributorMsg}</p>:<form onSubmit={this.handleDistributorSubmit}><div className="row vendor-form justify-content-center">
                                   
@@ -824,6 +826,13 @@ class Career extends Component{
     </div></form>;   
         const RenderJobSeeker = this.state.jobSeekerMsg?<p>{this.state.jobSeekerMsg}</p>:<form onSubmit={this.handleJobSeekerSubmit}><div className="row">
         <div className="col-lg-8">
+		<Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <meta name="description" content="Nested component" />
+
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h3>Current Openings</h3>
             <div className="row">
                 <div className="col-lg-4 ">

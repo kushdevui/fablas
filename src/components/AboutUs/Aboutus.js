@@ -10,6 +10,8 @@ import Carousel from "../../components/Widgets/Carousel/carouselImage";
 import { withRouter } from "react-router-dom";
 import "./about-us.scss";
 import Slider from "react-slick";
+import {Helmet} from "react-helmet";
+
 
 
 const AboutUs = () =>{
@@ -92,6 +94,13 @@ const AboutUs = () =>{
     let _url = `https://www.google.com/maps/embed/v1/place?key=${MY_API}&q=28.709498,77.184029`
     return(
         <div className="about-us-section">
+             <Helmet>
+                <meta charSet="utf-8" />
+                <meta name="description" content="Nested component" />
+
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <Header/>
             <InnerHeader title="About Us" subTitle="Who We Are"/>
             <div className="container">

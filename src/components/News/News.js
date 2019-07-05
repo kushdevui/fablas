@@ -5,6 +5,7 @@ import NewsItems from "./NewsItem/newsItem";
 import NewsItemSide from "./NewsItem/newsItemSide";
 import Footer from "../Footer/footer";
 import NewsCallendar from "../News/NewsCallendar";
+import {Helmet} from "react-helmet";
 
 import "./news.scss";
 
@@ -117,6 +118,13 @@ class News extends Component{
         })
         return(
             <div className="news-component">
+             <Helmet>
+                <meta charSet="utf-8" />
+                <meta name="description" content="Nested component" />
+
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
                 <Header/>
                 <InnerHeader title="News" subTitle="Our News and Events"/>
                 <div className="container mb-5">
