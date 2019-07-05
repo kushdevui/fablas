@@ -1,13 +1,28 @@
 
 export const initialState = {
-    singleSelectedProduct:"",
-    selectedSubCategory:"",
-    selectedCategory:"Homecare"
+    selectedProductCategory:"Homecare",
+    selectedProductSubCategory:"",
+    selectedProductId:""
 }
 
 const getProductReducer = (state = initialState, action) => {
-   console.log("reducer",action);
     switch (action.type){
+        case "SELECTED_PRODUCT_CATEGORY":
+            return{
+            ...state,
+            selectedProductCategory:action.payload.category
+            }
+        case "SELECTED_PRODUCT_SUB_CATEGORY":
+            return{
+            ...state,
+            selectedProductSubCategory:action.payload,
+
+        }
+        case "SELECTED_PRODUCT_PRODUCTID":
+            return{
+            ...state,
+            selectedProductId:action.payload.productId
+        }        
         case "GET_SINGLE_PRODUCT":
         return{
             ...state,

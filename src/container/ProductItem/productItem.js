@@ -3,6 +3,7 @@ import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-sol
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from 'react-redux'
 import { addToCart } from '../../redux/actions/cartActions';
+import {selectedProductProductId} from "../../redux/actions/getProductAction";
 import { Link } from 'react-router-dom';
 import FilterColors from "../FilterColors/filterColors";
 
@@ -35,10 +36,8 @@ class ProductItem extends Component{
         switch(this.state.type){
             case "show":
             return (
-                <div className="border">
-                    <Link to={{pathname:`/Product/ProductList/ProductDetail/${this.props.id}/${this.props.subCat}`, state: {
-    category: this.props.categoryName
-  }}} query="show">
+                <div onClick={()=>this.props.selectedProductProductId(this.props.id)} className="border">
+                    <Link to={{pathname:`/ProductDetail/${this.props.categoryName}/${this.props.subCatName}/${this.props.name}`}} query="show">
                         <img src={showImg} className="img-fluid"/>
                     </Link>
                 </div>
@@ -83,7 +82,8 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps= (dispatch)=>{
   return{
-      addToCart: (id)=>{dispatch(addToCart(id))}
+      addToCart: (id)=>{dispatch(addToCart(id))},
+      selectedProductProductId : (productId) => {dispatch(selectedProductProductId(productId))}
   }
 }
 

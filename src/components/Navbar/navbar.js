@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import {selectedProductCategory,selectedProductSubCategory} from '../../redux/actions/getProductAction';
 import {
     BrowserRouter as Router,
     Route,
@@ -52,16 +53,19 @@ class  NavigationBar extends Component {
         this.toggleNavbar = this.toggleNavbar.bind(this);
         this.getProductByCat = this.getProductByCat.bind(this);
         this.searchOnWeb = this.searchOnWeb.bind(this);
+        this.handleSelectedProductFlow = this.handleSelectedProductFlow.bind(this);
         this.state={
             isOpenNav:false,
             subMenu: []
         };
     }
     
+    handleSelectedProductFlow(subCat,subCatName){
+        this.props.selectedProductSubCategory(subCat,subCatName)
+    }
 
     componentDidMount(){
-    
-      
+
         this.props.onAddTodo();
 
         const headers = {
@@ -87,6 +91,7 @@ class  NavigationBar extends Component {
     }
 
     getProductByCat(event){
+        this.props.selectedProductCategory(event.target.dataset.id)
         const headers = {
             'Content-Type': 'application/json'
         }
@@ -111,7 +116,7 @@ class  NavigationBar extends Component {
     }
 
     render(){
-        
+        console.log(this.props);
         const CagegoryList = this.props.productList.map(item=>{
             return(
                 <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
@@ -167,8 +172,8 @@ class  NavigationBar extends Component {
                                         <div className="col-lg-8 sub-cat mt-1">
                                             {this.state.subMenu.map(item=>
                                             {
-                                            return( <div>
-                                                <Link  to={`/Products/${item.id}`} >{item.name}</Link>
+                                            return( <div onClick={()=>this.handleSelectedProductFlow(item.id,item.name)}>
+                                                <Link  to={`/Products/${item.name}`} >{item.name}</Link>
                                                         {/* <ul>
                                                             {item.productsList.map(productItem=>{
                                                                 return(
@@ -218,13 +223,19 @@ const mapDispatchToProps = dispatch => {
     return {
       onAddTodo: () => {
         dispatch(addToDo());
-      }
+      },
+      selectedProductCategory : (category) =>{
+          dispatch(selectedProductCategory(category));
+      },
+      selectedProductSubCategory : (subCat,subCatName) => {
+          dispatch(selectedProductSubCategory(subCat,subCatName));
+      }    
     };
 };   
 
 const mapStateToProps = state =>{
     return {
-        productList : state.productReducer.productList
+        productList : state.productReducer.productList,
     }
 }
 

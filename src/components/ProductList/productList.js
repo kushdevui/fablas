@@ -31,7 +31,7 @@ class ProductsList extends Component{
 
 
     componentWillReceiveProps(nextProps){
-       var nextParams = nextProps.match.params.ProductSubCategory;
+       var nextParams = this.props.selectedProductSubCategory.subCategory
        const headers = {
         'Content-Type': 'application/json'
         }
@@ -52,13 +52,12 @@ class ProductsList extends Component{
             'Content-Type': 'application/json'
         }
        axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
-        "id":this.props.match.params.ProductSubCategory
+        "id":this.props.selectedProductSubCategory.subCategory
        }, {"headers": headers}).then(list=>{
          //  console.log(list);
            this.setState({
                 productListBySubCat : list.data[0].productsList,
                 productCategory:list.data[1].split(" ").join("_")
-
            })
        })
     }
@@ -86,7 +85,8 @@ class ProductsList extends Component{
                                 name={product.productName}
                                 image={product.images}
                                 id={product.id}
-                                subCat={this.props.match.params.ProductSubCategory}
+                                subCat={this.props.selectedProductSubCategory.subCategory}
+                                subCatName={this.props.selectedProductSubCategory.subCategoryName}
                                 categoryName = {this.state.productCategory}
                                 images={product.images}
                             />
@@ -143,6 +143,7 @@ const mapDispatchToProps = dispatch =>{
 
 const mapStateToProps = state =>{
     return {
+        selectedProductSubCategory : state.getProductReducer.selectedProductSubCategory,
         productList : state.productReducer.productList
     }
 }

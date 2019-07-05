@@ -13,6 +13,7 @@ import thunk from "redux-thunk";
 import resizeReducer from "./reducers/resizeReducer";
 import productReducer from "./reducers/productReducer";
 import cartReducer from "./reducers/cartReducer";
+import getProductReducer from "./reducers/getProductReducer";
 import { reducer as formReducer } from "redux-form";
 
 
@@ -35,6 +36,7 @@ export default createStore(
     combineReducers({
         resizeReducer  : resizeReducer,
         form : formReducer,
+        getProductReducer:getProductReducer,
         productReducer : productReducer,
         cartReducer:cartReducer
     }),

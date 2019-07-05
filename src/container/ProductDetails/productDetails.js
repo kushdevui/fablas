@@ -57,14 +57,15 @@ class Product extends Component{
     };
 
     componentDidMount(){
+        //console.log(this.props)
         //const {id,subCat,catName} = this.props.getSingleProduct;
         //this.props.getSingleProduct(id,subCat,catName)
         const headers = {
             'Content-Type': 'application/json'
         }
        axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
-        "id":this.props.location.product_id,
-        "sId":this.props.location.product_subCat
+        "id":this.props.selectedProductProductId,
+        "sId":this.props.selectedProductSubCategory.subCategory
        }, {"headers": headers}).then(item=>{
             this.setState({
                 ProductData : item.data
@@ -168,7 +169,7 @@ class Product extends Component{
    // console.log(this.props);
     //console.log(this.props.location.state.category);
    //console.log(this.state.ProductData[0]['images'][0]['path']);
-        const categoryName = this.props.location.state.category
+        const categoryName = this.props.selectedProductCategory
         var settings = {
             className: "slick-center",
             variableWidth: true,
@@ -191,7 +192,7 @@ class Product extends Component{
         return(
             <div>
                 <Header/>
-                <InnerHeader  title="Product" subTitle="Product Details" subCatId={this.props.location.product_subCat} catName={this.props.location.state.categoryName}  pName={productName}/>
+                <InnerHeader  title="Product" subTitle="Product Details" subCatId={this.props.selectedProductSubCategory} catName={this.props.selectedProductCategory}  pName={productName}/>
                 <div className="container mt-5 mb-5 product-details">
                     <div className="row mt-5">
                         <div className="col-lg-5">
@@ -663,6 +664,9 @@ class Product extends Component{
 const mapStateToProps = state =>{
     return {
         cartLength:state.cartReducer.addedItems.length,
+        selectedProductCategory:state.getProductReducer.selectedProductCategory,
+        selectedProductSubCategory:state.getProductReducer.selectedProductSubCategory,
+        selectedProductProductId:state.getProductReducer.selectedProductId,
         items: state.items
     }
 }

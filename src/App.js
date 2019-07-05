@@ -38,12 +38,12 @@ const App = ()=> {
                         <Route path="/Career" exact component={Career}/>
                         <Route path="/Contact" exact component={ContactUs}/>
                         <Route path="/shop/" exact component={Shop}/>
-                        <Route path="/Products/:ProductSubCategory" exact  component={ProductsList}/>
+                        <Route path="/Products/:ProductSubCategoryName" exact  component={ProductsList}/>
                         <Route path="/Cart/" exact  component={Cart}/>
                         <Route path="/News/" exact  component={News}/>
                         <Route path="/NewsDetails/:id" exact  component={NewsDetails}/>
                         <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
-                        <Route path='/Product/ProductList/ProductDetail/:product_id/:product_subCat' exact component={ProductDetail}/>
+                        <Route path='/ProductDetail/:productCategory/:productSubCategory/:productName' exact component={ProductDetail}/>
                     </Switch>
                 </HashRouter>
             </Provider>
