@@ -5,6 +5,7 @@ import SectionHeading from "../../container/SectionHeading/sectionHeading"
 import ServiceItem from "../../components/Services/ServicesItem/servicesItem";
 import Modal from 'react-responsive-modal';
 import Footer from "../Footer/footer";
+import {Helmet} from "react-helmet";
 
 
 import './services.scss';
@@ -75,6 +76,13 @@ class Services extends Component{
     }
     return(
         <div className="tile-services">
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <meta name="description" content="Nested component" />
+
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <Header/>
             <InnerHeader title="Our Services" subTitle="What We Do !"/>
             <SectionHeading title="OUR SERVICES" subTitle="We work across varied verticals and industries "/>

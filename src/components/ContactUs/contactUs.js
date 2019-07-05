@@ -6,12 +6,21 @@ import EnquiryForm from "../../container/EnquiryForm/enquiryForm";
 import ContactInformation from "../../container/ContactInformation/contactInformation";
 import GoogleMap from '../../container/FooterMap/footerMap';
 import Footer from "../Footer/footer";
+import {Helmet} from "react-helmet";
+
 const ContactUs = () =>{
     const MY_API = 'AIzaSyCk_0Vw_pTXFOYQLAcujSJ8hNxyyzb25iw';
     let _url = ` https://www.google.com/maps/embed/v1/place?q=Fablas%20Impex%20Pvt%20Ltd&key=${MY_API}`
    
     return(
         <div>
+                 <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <meta name="description" content="Nested component" />
+
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <Header/>
             <InnnerHeader title="Contact Us" subTitle="We Want to Hear From You.."/>
             <SectionHeading title="CONTACT US" subTitle="Give us a miss call or simply drop us a message"/>

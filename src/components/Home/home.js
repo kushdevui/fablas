@@ -16,6 +16,8 @@ import BulkOrders from "./BulkOrders/bulkOrders";
 import Associations from "./Association/association";
 import FunFacts from "./FunFacts/funFacts";
 import Footer from "../Footer/footer";
+import {Helmet} from "react-helmet";
+
 
 
 // import SignUpForm from "../SignUpForm/signupform";
@@ -29,6 +31,12 @@ import "./home.scss";
 const Home = () =>{
     return(
         <div>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <meta name="description" content="Nested component" />
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <Header/>
             <Hero/>
             <Products/>
