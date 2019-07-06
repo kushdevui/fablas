@@ -192,7 +192,7 @@ class Product extends Component{
         return(
             <div>
                 <Header/>
-                <InnerHeader  title="Product" subTitle="Product Details" subCatId={this.props.selectedProductSubCategory} catName={this.props.selectedProductCategory}  pName={productName}/>
+                <InnerHeader  title="Product" subTitle="Product Details" category={this.props.selectedProductCategory} subCategory={this.props.selectedProductSubCategory.subCategoryName} />
                 <div className="container mt-5 mb-5 product-details">
                     <div className="row mt-5">
                         <div className="col-lg-5">

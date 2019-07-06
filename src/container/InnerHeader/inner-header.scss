@@ -1,4 +1,17 @@
 .inner-header-tile{
+    .breadcrums{
+        list-style: none;
+        padding-left:0px;
+        li{
+            display:inline;
+            margin-right:8px;
+            &:not(:last-child){
+                &:after{
+                    content: " - "
+                }
+            }
+        }
+    }
     padding:2rem 0;
     background-color: #f4f4f4;
     h1{
