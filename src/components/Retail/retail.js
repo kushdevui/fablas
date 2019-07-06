@@ -7,9 +7,7 @@ import "./retail.scss";
 
 class Retail extends Component {
     render(){
-        const playSlider = (event) =>{
-            
-        }
+        
         return(
             <section>
             <div className="">

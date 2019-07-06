@@ -99,7 +99,7 @@ class ProductsList extends Component{
         return(
             <div>
                 <Header/>
-                <InnerHeader title="Product" subTitle="A wide variety of product showcase"/>
+                <InnerHeader title="Product" subTitle="A wide variety of product showcase" category={this.state.productCategory} subCategory={this.props.selectedProductSubCategory.subCategoryName}/>
                 <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-3 filters">
