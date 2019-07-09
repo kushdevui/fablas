@@ -2,26 +2,90 @@ import React,{Component} from "react";
 import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import axios from "axios";
+import Notifications, { notify,toastColor } from 'react-notify-toast'
+import CKEditor from 'ckeditor4-react';
+
 
 class AddProduct extends Component{
     constructor(props){
         super(props);
         this.props = props;
         this.HandleCategoryChange = this.HandleCategoryChange.bind(this);
+        this.HandleEditorChange = this.HandleEditorChange.bind(this);
         this.AddNewProduct = this.AddNewProduct.bind(this);
         this.HandleChange = this.HandleChange.bind(this);
         this.state = {
             subCat : [],
+            loading: true,
+            uploading: false,
             product:{},
             message:""
         }
     }
+    
 
-
+    
     componentDidMount(){
         this.props.onAddTodo();
     }
+
+    onChange = e => {
+        const errs = [] ;
+        const files = Array.from(e.target.files)
+        if (files.length > 3) {
+            const msg = 'Only 3 images can be uploaded at a time'
+            return this.toast(msg, 'custom', 2000, toastColor)  
+        }
+        const formData = new FormData()
+        const types = ['image/png', 'image/jpeg', 'image/gif'];
+        var filesName = [];
+        files.forEach((file, i) => {
+            if (types.every(type => file.type !== type)) {
+              errs.push(`'${file.type}' is not a supported format`)
+            }
+      
+            if (file.size > 150000) {
+              errs.push(`'${file.name}' is too large, please pick a smaller file`)
+            }
+            filesName.push(file.name);
+            formData.append(i, file)
+        })
+        this.setState({ uploading: true });
+
+        this.setState({
+            product:{
+                ...this.state.product,
+                "images":filesName,
+            }
+        })
+    }
+
+
     
+    HandleEditorChange(event){
+        const data = event.editor.getData();
+        var name = event.editor.name;
+        if(name=="editor1"){
+            name="description"
+        }
+        if(name=="editor2"){
+            name="otherDetails"
+        }
+        if(name=="editor3"){
+            name="usage"
+        }
+        if(name=="editor4"){
+            name="featrues"
+        }
+
+        this.setState({
+            product:{
+               ...this.state.product,
+               [name]:data
+            }
+        })
+    }
+
     HandleChange(event){
         const name = event.target.name;
         const value = event.target.value;
@@ -69,7 +133,7 @@ class AddProduct extends Component{
     }
 
     render(){
-        console.log(this.state);
+        console.log(this.state.product);
         const CagegoryList = this.props.productList.map(item=>{
             return(
                 <option data-id={item.categoryName}>
@@ -88,72 +152,84 @@ class AddProduct extends Component{
         return(
             <div>
                 <h4 className="mt-3">Add New Product</h4>
-                <p>{this.state.message}</p>
+                {/* <p>{this.state.message}</p> */}
                 <form method="post" onSubmit={this.AddNewProduct}>
-                <div className="row form-group">
+                    <div className="row form-group">
+                        <div className="col-lg-6">
+                            <select name="category"  onChange={this.HandleCategoryChange} className="form-control">
+                                <option>Select Product Category</option>
+                                {CagegoryList}
+                            </select>
+                        </div>
+                        <div className="col-lg-6">
+                            <select onChange={this.HandleChange} name="subCategory" className="form-control">
+                                <option>Select Product Sub-Category</option>
+                                {subCatlist}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-6">
+                            <input type="text" value={this.state.metaDescription}  onChange={this.HandleChange} name="metaDescription" placeholder="Meta Description" className="form-control"/>
+                        </div>
+                        <div className="col-lg-6">
+                            <input type="text" value={this.state.metaTitle}  onChange={this.HandleChange} name="metaTitle" placeholder="Title" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-6">
+                            <input type="text" value={this.state.metaClonical}  onChange={this.HandleChange} name="metaClonical" placeholder=" clonical link" className="form-control"/>
+                        </div>
+                        <div className="col-lg-6">
+                            <input type="text" value={this.state.productName}  onChange={this.HandleChange} name="productName" placeholder="Product Name" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-12">
+                        <label>Product Description</label>
+                        <CKEditor onChange={this.HandleEditorChange} name="description" className="form-control" 
+                                    data={this.state.product.description}/>
+                        </div>
+                        
+                    </div>
+                    <div className="row form-group">
+                            <div className="col-lg-12">
+                            <label>other Details</label>
+                            <CKEditor onChange={this.HandleEditorChange} name="otherDetails" className="form-control"
+                                        data={this.state.otherDetails}/>
+                            </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-6">
+                            <input name="stock"  onChange={this.HandleChange} type="text" placeholder="stock" className="form-control"/>
+                        </div>
+                        <div className="col-lg-3">
+                            <input name="price"  onChange={this.HandleChange} type="text" placeholder="price" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-6">
+                            <label>Product Usage</label>
+                            <CKEditor onChange={this.HandleEditorChange} name="usage" className="form-control" 
+                                        data={this.state.usage}/>
+                        </div>
+                        <div className="col-lg-6">
+                            <label>Product Features</label>
+                         <CKEditor onChange={this.HandleEditorChange} name="features" className="form-control" data={this.state.features}/>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                        <label>Upload maximum 5 images in resolution(550X550)</label>
+                         <input type='file' id='multi' onChange={this.onChange} multiple />
+                        </div>
+                    </div>
+
+                    <div className="row text-right form-group">
                     <div className="col-lg-6">
-                        <select name="category"  onChange={this.HandleCategoryChange} className="form-control">
-                            <option>Select Product Category</option>
-                            {CagegoryList}
-                        </select>
-                    </div>
-                    <div className="col-lg-6">
-                        <select onChange={this.HandleChange} name="subCategory" className="form-control">
-                            <option>Select Product Sub-Category</option>
-                            {subCatlist}
-                        </select>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Meta Description" className="form-control"/>
-                    </div>
-                    <div className="col-lg-6">
-                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Title" className="form-control"/>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder=" clonical link" className="form-control"/>
-                    </div>
-                    <div className="col-lg-6">
-                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Product name" className="form-control"/>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                       <textarea  onChange={this.HandleChange} name="productUsage" placeholder="Description" className="form-control"></textarea>
-                    </div>
-                    <div className="col-lg-6">
-                       <textarea  onChange={this.HandleChange} name="brand" placeholder="Other Details" className="form-control"></textarea>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                        <input name="stock"  onChange={this.HandleChange} type="text" placeholder="stock" className="form-control"/>
-                    </div>
-                    <div className="col-lg-3">
-                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="price" className="form-control"/>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Usage" className="form-control"/>
-                    </div>
-                    <div className="col-lg-6">
-                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Features" className="form-control"/>
-                    </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-6">
-                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Colors" className="form-control"/>
-                    </div>
-                </div>
-                <div className="row text-right form-group">
-                    <div className="col-lg-4">
                       <input  type="submit" name="submit" value="Add Product" className="btn btn-danger"/>
                     </div>
-                </div>
+                 </div>
                 </form>
             </div>
         )
