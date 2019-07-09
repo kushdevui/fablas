@@ -91,15 +91,13 @@ class AddProduct extends Component{
                 <p>{this.state.message}</p>
                 <form method="post" onSubmit={this.AddNewProduct}>
                 <div className="row form-group">
-                    <div className="col-lg-4 ">
+                    <div className="col-lg-6">
                         <select name="category"  onChange={this.HandleCategoryChange} className="form-control">
                             <option>Select Product Category</option>
                             {CagegoryList}
                         </select>
                     </div>
-                </div>
-                <div className="row form-group">
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <select onChange={this.HandleChange} name="subCategory" className="form-control">
                             <option>Select Product Sub-Category</option>
                             {subCatlist}
@@ -107,35 +105,48 @@ class AddProduct extends Component{
                     </div>
                 </div>
                 <div className="row form-group">
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
+                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Meta Description" className="form-control"/>
+                    </div>
+                    <div className="col-lg-6">
+                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Title" className="form-control"/>
+                    </div>
+                </div>
+                <div className="row form-group">
+                    <div className="col-lg-6">
+                        <input type="text"  onChange={this.HandleChange} name="productName" placeholder=" clonical link" className="form-control"/>
+                    </div>
+                    <div className="col-lg-6">
                         <input type="text"  onChange={this.HandleChange} name="productName" placeholder="Product name" className="form-control"/>
                     </div>
                 </div>
                 <div className="row form-group">
-                    <div className="col-lg-4">
-                       <textarea  onChange={this.HandleChange} name="productFeature" placeholder="Product Features" className="form-control"></textarea>
+                    <div className="col-lg-6">
+                       <textarea  onChange={this.HandleChange} name="productUsage" placeholder="Description" className="form-control"></textarea>
+                    </div>
+                    <div className="col-lg-6">
+                       <textarea  onChange={this.HandleChange} name="brand" placeholder="Other Details" className="form-control"></textarea>
                     </div>
                 </div>
                 <div className="row form-group">
-                    <div className="col-lg-4">
-                       <textarea  onChange={this.HandleChange} name="productUsage" placeholder="Product Usage" className="form-control"></textarea>
-                    </div>
-                </div>
-                
-                <div className="row form-group">
-                    <div className="col-lg-4">
-                       <textarea  onChange={this.HandleChange} name="brand" placeholder="Product brand" className="form-control"></textarea>
-                    </div>
-                </div>
-
-                <div className="row form-group">
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <input name="stock"  onChange={this.HandleChange} type="text" placeholder="stock" className="form-control"/>
                     </div>
+                    <div className="col-lg-3">
+                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="price" className="form-control"/>
+                    </div>
                 </div>
                 <div className="row form-group">
-                    <div className="col-lg-2">
-                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="price" className="form-control"/>
+                    <div className="col-lg-6">
+                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Usage" className="form-control"/>
+                    </div>
+                    <div className="col-lg-6">
+                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Features" className="form-control"/>
+                    </div>
+                </div>
+                <div className="row form-group">
+                    <div className="col-lg-6">
+                        <input name="price"  onChange={this.HandleChange} type="text" placeholder="Colors" className="form-control"/>
                     </div>
                 </div>
                 <div className="row text-right form-group">

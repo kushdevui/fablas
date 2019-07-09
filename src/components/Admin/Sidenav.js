@@ -5,7 +5,6 @@ import "./sideNav.scss";
 const Sidenav = () =>{
     return(
         <div className="side-nav">
-
             <ul>
                 <li>
                     <a href="#/dashboard">
@@ -19,6 +18,11 @@ const Sidenav = () =>{
                 </li>
                 <li>
                     Products List
+                </li>
+                <li>
+                    <a href="#/Dashboard/AddProduct">
+                        Add New Product
+                    </a>
                 </li>
                 <li>
                     Services
