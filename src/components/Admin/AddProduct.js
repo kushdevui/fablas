@@ -18,8 +18,11 @@ class AddProduct extends Component{
             subCat : [],
             loading: true,
             uploading: false,
-            product:{},
-            message:""
+            product:{
+                images:{}
+            },
+            message:"",
+            
         }
     }
     
@@ -55,7 +58,11 @@ class AddProduct extends Component{
         this.setState({
             product:{
                 ...this.state.product,
-                "images":filesName,
+                images :[
+                    {
+                        "path":filesName
+                    }
+                ]
             }
         })
     }
@@ -69,13 +76,13 @@ class AddProduct extends Component{
             name="description"
         }
         if(name=="editor2"){
-            name="otherDetails"
+            name="details"
         }
         if(name=="editor3"){
-            name="usage"
+            name="productUsage"
         }
         if(name=="editor4"){
-            name="featrues"
+            name="productFeature"
         }
 
         this.setState({
@@ -195,8 +202,8 @@ class AddProduct extends Component{
                     <div className="row form-group">
                             <div className="col-lg-12">
                             <label>other Details</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="otherDetails" className="form-control"
-                                        data={this.state.otherDetails}/>
+                            <CKEditor onChange={this.HandleEditorChange} name="details" className="form-control"
+                                        data={this.state.details}/>
                             </div>
                     </div>
                     <div className="row form-group">
@@ -210,12 +217,12 @@ class AddProduct extends Component{
                     <div className="row form-group">
                         <div className="col-lg-6">
                             <label>Product Usage</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="usage" className="form-control" 
-                                        data={this.state.usage}/>
+                            <CKEditor onChange={this.HandleEditorChange} name="productUsage" className="form-control" 
+                                        data={this.state.productUsage}/>
                         </div>
                         <div className="col-lg-6">
                             <label>Product Features</label>
-                         <CKEditor onChange={this.HandleEditorChange} name="features" className="form-control" data={this.state.features}/>
+                         <CKEditor onChange={this.HandleEditorChange} name="productFeature" className="form-control" data={this.state.productFeature}/>
                         </div>
                     </div>
                     <div className="row form-group">
