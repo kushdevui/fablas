@@ -33,34 +33,45 @@ class AddProduct extends Component{
     }
 
     onChange = e => {
-        const errs = [] ;
-        const files = Array.from(e.target.files)
-        if (files.length > 3) {
-            const msg = 'Only 3 images can be uploaded at a time'
-            return this.toast(msg, 'custom', 2000, toastColor)  
-        }
-        const formData = new FormData()
-        const types = ['image/png', 'image/jpeg', 'image/gif'];
-        var filesName = [];
-        files.forEach((file, i) => {
-            if (types.every(type => file.type !== type)) {
-              errs.push(`'${file.type}' is not a supported format`)
-            }
+        // const errs = [] ;
+        // const files = Array.from(e.target.files)
+        // if (files.length > 3) {
+        //     const msg = 'Only 3 images can be uploaded at a time'
+        //     return this.toast(msg, 'custom', 2000, toastColor)  
+        // }
+        // const formData = new FormData()
+        // const types = ['image/png', 'image/jpeg', 'image/gif'];
+        // var filesName = [];
+        // files.forEach((file, i) => {
+        //     if (types.every(type => file.type !== type)) {
+        //       errs.push(`'${file.type}' is not a supported format`)
+        //     }
       
-            if (file.size > 150000) {
-              errs.push(`'${file.name}' is too large, please pick a smaller file`)
-            }
-            filesName.push(file.name);
-            formData.append(i, file)
-        })
-        this.setState({ uploading: true });
+        //     if (file.size > 150000) {
+        //       errs.push(`'${file.name}' is too large, please pick a smaller file`)
+        //     }
+        //     filesName.push(file.name);
+        //     formData.append(i, file)
+        // })
+        // this.setState({ uploading: true });
 
+        // this.setState({
+        //     product:{
+        //         ...this.state.product,
+        //         images :[
+        //             {
+        //                 "path":filesName
+        //             }
+        //         ]
+        //     }
+        // })
+        //console.log(e.target.files[0]);
         this.setState({
             product:{
                 ...this.state.product,
-                images :[
+                images:[
                     {
-                        "path":filesName
+                        path:e.target.files[0]
                     }
                 ]
             }
@@ -119,6 +130,20 @@ class AddProduct extends Component{
                 message:"Product Added Successfuly"
             })
         })
+
+      //  let res = await this.uploadFile(this.state.product.images.path);
+        
+        const formData = new FormData();
+        formData.append('avatar',this.state.product.images[0].path);
+         axios.post("http://fablas.com/uploadImage.php", formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+
+        
+
+
     }
     
 
@@ -228,7 +253,7 @@ class AddProduct extends Component{
                     <div className="row form-group">
                         <div className="col-lg-3">
                         <label>Upload maximum 5 images in resolution(550X550)</label>
-                         <input type='file' id='multi' onChange={this.onChange} multiple />
+                         <input type='file'  onChange={this.onChange} />
                         </div>
                     </div>
 
