@@ -27,10 +27,13 @@ class ProductItem extends Component{
     }
 
     RenderItem =(type) =>{
-        //console.log(this.props.image[0]['path'][0])
+       // console.log(this.props.image[0]['path'])
         if(this.props.image[0]){
             var imgPath = `./assets/images/products/`+this.props.categoryName;
-            var showImg = imgPath + "/" +this.props.image[0]['path'][0];
+            if(this.props.image[0]['path']){
+                var showImg = imgPath + "/" +this.props.image[0]['path'][0];
+            }
+            
         }
        
         switch(this.state.type){
@@ -64,6 +67,7 @@ class ProductItem extends Component{
     }
 
     render(){
+       // console.log(this.props)
         return(
             <div className="sub-cat-card-section position-relative pr-2 pl-2 mb-5">
                 {this.RenderItem(this.state.type)}

@@ -149,7 +149,10 @@
                     font-weight: bold;
                     cursor: pointer;
                     .inner{
-                        display: none;
+                        padding-top:20px;
+                        display: block;
+                        font-weight: 300;
+                        color:#999;
                     }
                     .icon-palet{
                         border-bottom:1px solid #ccc;

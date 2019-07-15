@@ -289,7 +289,7 @@ class Product extends Component{
                         </div>
                         <Modal  open={this.state.open} onClose={this.onCloseModal} center>
                             <div className="modal-body-full">
-                            <h4 className="pt-2 pb-2">Bulk Orders</h4>    
+                            <h4 className="pt-2 pb-2">Fill in the details to Get the Product Quote</h4>    
                             <div className="row">
                                 <div className="col-lg-12">
                    {this.state.message?<p>{this.state.message}</p>:<form onSubmit={this.handleSubmitForm}>

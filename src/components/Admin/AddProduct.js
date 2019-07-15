@@ -4,6 +4,7 @@ import {addToDo} from '../../redux/actions/globalActions';
 import axios from "axios";
 import Notifications, { notify,toastColor } from 'react-notify-toast'
 import CKEditor from 'ckeditor4-react';
+import { dirname } from "path";
 
 
 class AddProduct extends Component{
@@ -14,12 +15,18 @@ class AddProduct extends Component{
         this.HandleEditorChange = this.HandleEditorChange.bind(this);
         this.AddNewProduct = this.AddNewProduct.bind(this);
         this.HandleChange = this.HandleChange.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
         this.state = {
+           
             subCat : [],
             loading: true,
             uploading: false,
-            product:{},
-            message:""
+            product:{
+                images:{}
+            },
+            message:"",
+            imageUploadStatus:""
+            
         }
     }
     
@@ -30,32 +37,58 @@ class AddProduct extends Component{
     }
 
     onChange = e => {
-        const errs = [] ;
-        const files = Array.from(e.target.files)
-        if (files.length > 3) {
-            const msg = 'Only 3 images can be uploaded at a time'
-            return this.toast(msg, 'custom', 2000, toastColor)  
-        }
-        const formData = new FormData()
-        const types = ['image/png', 'image/jpeg', 'image/gif'];
-        var filesName = [];
-        files.forEach((file, i) => {
-            if (types.every(type => file.type !== type)) {
-              errs.push(`'${file.type}' is not a supported format`)
-            }
+        console.log(e.target.files[0])
+        // const errs = [] ;
+        // const files = Array.from(e.target.files)
+        // if (files.length > 3) {
+        //     const msg = 'Only 3 images can be uploaded at a time'
+        //     return this.toast(msg, 'custom', 2000, toastColor)  
+        // }
+        // const formData = new FormData()
+        // const types = ['image/png', 'image/jpeg', 'image/gif'];
+        // var filesName = [];
+        // files.forEach((file, i) => {
+        //     if (types.every(type => file.type !== type)) {
+        //       errs.push(`'${file.type}' is not a supported format`)
+        //     }
       
-            if (file.size > 150000) {
-              errs.push(`'${file.name}' is too large, please pick a smaller file`)
-            }
-            filesName.push(file.name);
-            formData.append(i, file)
-        })
-        this.setState({ uploading: true });
+        //     if (file.size > 150000) {
+        //       errs.push(`'${file.name}' is too large, please pick a smaller file`)
+        //     }
+        //     filesName.push(file.name);
+        //     formData.append(i, file)
+        // })
+        // this.setState({ uploading: true });
 
+        // this.setState({
+        //     product:{
+        //         ...this.state.product,
+        //         images :[
+        //             {
+        //                 "path":filesName
+        //             }
+        //         ]
+        //     }
+        // })
+        //console.log(e.target.files[0]);
+        var filesName;
+        if(this.state.product.images){
+        
+            filesName = [];
+        }
+        else{
+            filesName.push(e.target.files[0]['name']);
+        }
+       
         this.setState({
             product:{
                 ...this.state.product,
-                "images":filesName,
+                images:[
+                    {
+                        file:e.target.files[0],
+                        path:filesName
+                    }
+                ]
             }
         })
     }
@@ -69,13 +102,13 @@ class AddProduct extends Component{
             name="description"
         }
         if(name=="editor2"){
-            name="otherDetails"
+            name="details"
         }
         if(name=="editor3"){
-            name="usage"
+            name="productUsage"
         }
         if(name=="editor4"){
-            name="featrues"
+            name="productFeature"
         }
 
         this.setState({
@@ -111,6 +144,22 @@ class AddProduct extends Component{
             this.setState({
                 message:"Product Added Successfuly"
             })
+        })
+
+      //  let res = await this.uploadFile(this.state.product.images.path);
+
+    }
+
+    uploadImage(e){
+        const formData = new FormData();
+        formData.append('avatar',this.state.product.images[0].file);
+         axios.post("http://fablas.com/uploadImage.php", formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+        this.setState({
+            imageUploadStatus:"Image Uploaded",  
         })
     }
     
@@ -195,8 +244,8 @@ class AddProduct extends Component{
                     <div className="row form-group">
                             <div className="col-lg-12">
                             <label>other Details</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="otherDetails" className="form-control"
-                                        data={this.state.otherDetails}/>
+                            <CKEditor onChange={this.HandleEditorChange} name="details" className="form-control"
+                                        data={this.state.details}/>
                             </div>
                     </div>
                     <div className="row form-group">
@@ -210,18 +259,57 @@ class AddProduct extends Component{
                     <div className="row form-group">
                         <div className="col-lg-6">
                             <label>Product Usage</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="usage" className="form-control" 
-                                        data={this.state.usage}/>
+                            <CKEditor onChange={this.HandleEditorChange} name="productUsage" className="form-control" 
+                                        data={this.state.productUsage}/>
                         </div>
                         <div className="col-lg-6">
                             <label>Product Features</label>
-                         <CKEditor onChange={this.HandleEditorChange} name="features" className="form-control" data={this.state.features}/>
+                         <CKEditor onChange={this.HandleEditorChange} name="productFeature" className="form-control" data={this.state.productFeature}/>
                         </div>
                     </div>
                     <div className="row form-group">
                         <div className="col-lg-3">
-                        <label>Upload maximum 5 images in resolution(550X550)</label>
-                         <input type='file' id='multi' onChange={this.onChange} multiple />
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
 
