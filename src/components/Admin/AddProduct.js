@@ -4,6 +4,7 @@ import {addToDo} from '../../redux/actions/globalActions';
 import axios from "axios";
 import Notifications, { notify,toastColor } from 'react-notify-toast'
 import CKEditor from 'ckeditor4-react';
+import { dirname } from "path";
 
 
 class AddProduct extends Component{
@@ -14,7 +15,9 @@ class AddProduct extends Component{
         this.HandleEditorChange = this.HandleEditorChange.bind(this);
         this.AddNewProduct = this.AddNewProduct.bind(this);
         this.HandleChange = this.HandleChange.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
         this.state = {
+           
             subCat : [],
             loading: true,
             uploading: false,
@@ -22,6 +25,7 @@ class AddProduct extends Component{
                 images:{}
             },
             message:"",
+            imageUploadStatus:""
             
         }
     }
@@ -143,7 +147,10 @@ class AddProduct extends Component{
         })
 
       //  let res = await this.uploadFile(this.state.product.images.path);
-        
+
+    }
+
+    uploadImage(e){
         const formData = new FormData();
         formData.append('avatar',this.state.product.images[0].file);
          axios.post("http://fablas.com/uploadImage.php", formData,{
@@ -151,10 +158,9 @@ class AddProduct extends Component{
                 'content-type': 'multipart/form-data'
             }
         });
-
-        
-
-
+        this.setState({
+            imageUploadStatus:"Image Uploaded",  
+        })
     }
     
 
@@ -263,8 +269,47 @@ class AddProduct extends Component{
                     </div>
                     <div className="row form-group">
                         <div className="col-lg-3">
-                        <label>Upload maximum 5 images in resolution(550X550)</label>
                          <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                         <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
 
