@@ -53,37 +53,86 @@ class Example extends Component {
 
     render() {
       const { activeIndex } = this.state;
-      const items = [
+     
+      const aboutItems = [
         {
           name:"‎image1",
           desc:"./assets/images/About-Us-Banner-1.jpg"
           
-        }
+        },
+        {
+          name:"‎image2",
+          desc:"./assets/images/About-Us-Banner-1.jpg"
+          
+        },
       ];
+      
+      const HomeItems =[
+        {
+          name:"‎image1",
+          desc:"./assets/images/homebanners/1.jpg"
+        },
+        {
+          name:"‎image2",
+          desc:"./assets/images/homebanners/2.jpg"
+        },
+        {
+          name:"‎image3",
+          desc:"./assets/images/homebanners/3.jpg"
+        },
+        {
+          name:"‎image4",
+          desc:"./assets/images/homebanners/4.jpg"
+        },
+        {
+          name:"‎image5",
+          desc:"./assets/images/homebanners/5.jpg"
+        },
+        {
+          name:"‎image6",
+          desc:"./assets/images/homebanners/6.jpg"
+        }
+      ]
 
-      const slides = items.map((item) => {
-        return (<CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        >
-           <div className="caraousel">
-             <img src={item.desc} className="img-fluid"/>
-          </div>
-        </CarouselItem>
-        );
-      });
+      if(this.props.page=="home"){
+        var slides = HomeItems.map((item) => {
+          return (<CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={item.src}
+          >
+             <div className="caraousel">
+               <img src={item.desc} className="img-fluid"/>
+            </div>
+          </CarouselItem>
+          );
+        });
+      }
+      else{
+        var slides = aboutItems.map((item) => {
+          return (<CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={item.src}
+          >
+             <div className="caraousel">
+               <img src={item.desc} className="img-fluid"/>
+            </div>
+          </CarouselItem>
+          );
+        });
+      }
 
+
+      
       return (
         <Carousel
           activeIndex={activeIndex}
           next={this.next}
           previous={this.previous}
         >
-          
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-          {slides}
-         
+          <CarouselIndicators items={this.props.page=="home"?HomeItems:aboutItems} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+           {slides}
         </Carousel>
       );
     }

@@ -33,6 +33,7 @@ class AddProduct extends Component{
     }
 
     onChange = e => {
+        console.log(e.target.files[0])
         // const errs = [] ;
         // const files = Array.from(e.target.files)
         // if (files.length > 3) {
@@ -66,12 +67,22 @@ class AddProduct extends Component{
         //     }
         // })
         //console.log(e.target.files[0]);
+        var filesName;
+        if(this.state.product.images){
+        
+            filesName = [];
+        }
+        else{
+            filesName.push(e.target.files[0]['name']);
+        }
+       
         this.setState({
             product:{
                 ...this.state.product,
                 images:[
                     {
-                        path:e.target.files[0]
+                        file:e.target.files[0],
+                        path:filesName
                     }
                 ]
             }
@@ -134,7 +145,7 @@ class AddProduct extends Component{
       //  let res = await this.uploadFile(this.state.product.images.path);
         
         const formData = new FormData();
-        formData.append('avatar',this.state.product.images[0].path);
+        formData.append('avatar',this.state.product.images[0].file);
          axios.post("http://fablas.com/uploadImage.php", formData,{
             headers: {
                 'content-type': 'multipart/form-data'

@@ -185,9 +185,6 @@ class Career extends Component{
         if(this.state.jobSeeker.applyingFor == ""){
             errors.applyingFor = "Please fill in the required fields";
         }
-        if(this.state.jobSeeker.message == ""){
-            errors.message = "Please fill in the required fields";
-        }
         return errors;
     }
 
@@ -200,7 +197,7 @@ class Career extends Component{
           })
       }else{
         Axios.post("https://fablasnode.herokuapp.com/send/vendor",{
-        ...this.state.vendor
+		...this.state.vendor
       })
       .then(res=>{
           if(res.data){
@@ -217,9 +214,12 @@ class Career extends Component{
         var errors = this._validate_distributor();
         if(Object.keys(errors).length != 0){
             this.setState({
-              errors:errors
-            })
+			  errors:errors
+			})
         }else{
+			this.setState({
+				distributorMsg:"Thank you for submitting your query.We will get back to you in two business days."
+			})
             Axios.post("https://fablasnode.herokuapp.com/send/distributor",{
                 ...this.state.distributor
               })
@@ -241,6 +241,9 @@ class Career extends Component{
               errors:errors
             })
         }else{
+			this.setState({
+				jobSeekerMsg:"Thank you for submitting your query.We will get back to you in two business days."
+			  })
             Axios.post("https://fablasnode.herokuapp.com/send/jobSeeker",{
                 ...this.state.jobSeeker
               })
