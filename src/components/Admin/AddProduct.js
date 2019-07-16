@@ -17,16 +17,16 @@ class AddProduct extends Component{
         this.HandleChange = this.HandleChange.bind(this);
         this.uploadImage = this.uploadImage.bind(this);
         this.state = {
-           
+            currDirectory:"Homecare",
             subCat : [],
             loading: true,
             uploading: false,
+            filesName:[],
             product:{
                 images:{}
             },
             message:"",
             imageUploadStatus:""
-            
         }
     }
     
@@ -71,14 +71,9 @@ class AddProduct extends Component{
         //     }
         // })
         //console.log(e.target.files[0]);
-        var filesName;
-        if(this.state.product.images){
+       
         
-            filesName = [];
-        }
-        else{
-            filesName.push(e.target.files[0]['name']);
-        }
+       this.state.filesName.push(e.target.files[0]['name']);
        
         this.setState({
             product:{
@@ -86,7 +81,7 @@ class AddProduct extends Component{
                 images:[
                     {
                         file:e.target.files[0],
-                        path:filesName
+                        path:this.state.filesName
                     }
                 ]
             }
@@ -153,7 +148,7 @@ class AddProduct extends Component{
     uploadImage(e){
         const formData = new FormData();
         formData.append('avatar',this.state.product.images[0].file);
-         axios.post("http://fablas.com/uploadImage.php", formData,{
+         axios.post(`http://127.0.0.1/uploadImage.php?category=${this.state.currDirectory}`, formData,{
             headers: {
                 'content-type': 'multipart/form-data'
             }
@@ -176,7 +171,8 @@ class AddProduct extends Component{
         {"headers": headers}
         ).then(res=>{
             this.setState({
-                subCat:res.data
+                subCat:res.data,
+                currDirectory:selectedCat
             })
         })
     }
@@ -227,7 +223,7 @@ class AddProduct extends Component{
                     </div>
                     <div className="row form-group">
                         <div className="col-lg-6">
-                            <input type="text" value={this.state.metaClonical}  onChange={this.HandleChange} name="metaClonical" placeholder=" clonical link" className="form-control"/>
+                            <input type="text" value={this.state.metaClonical}  onChange={this.HandleChange} name="metaClonical" placeholder="clonical link" className="form-control"/>
                         </div>
                         <div className="col-lg-6">
                             <input type="text" value={this.state.productName}  onChange={this.HandleChange} name="productName" placeholder="Product Name" className="form-control"/>
@@ -272,7 +268,7 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                       
                          <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
@@ -281,7 +277,7 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                        
                          <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
@@ -290,7 +286,7 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                       
                          <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
@@ -299,7 +295,7 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                       
                          <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
@@ -308,7 +304,7 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        <span>{this.state.imageUploadStatus?this.state.imageUploadStatus:""}</span>
+                       
                          <button onClick={this.uploadImage}>Upload</button>
                         </div>
                     </div>
