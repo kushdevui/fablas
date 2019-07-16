@@ -138,7 +138,7 @@ class Dashboard extends Component{
                                                     }
                                                 </div>
                                                 <div className="col-lg-2">
-                                                    <Link to={{ pathname: '/updateProduct', query: { productId: item.id , subCatId:this.state.selectedSubCat , catName:this.state.selectedCat} }}>
+                                                    <Link to={{ pathname: '/Dashboard/updateProduct', query: { productId: item.id , subCatId:this.state.selectedSubCat , catName:this.state.selectedCat} }}>
                                                         Update
                                                     </Link>
                                                     {/* <Link to={"/updateProduct"} params={{ testvalue: "hello" }}>Update</Link> | Delete  */}

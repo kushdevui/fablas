@@ -15,14 +15,16 @@ class UpdateProduct extends Component{
             productSubCatId:this.props.location.query.subCatId,
             productId:"",
             productName:"",
-            productFeature:"",
+            description:"",
+            details:"",
+            stock:"",
+            price:"",
             productUsage:"",
-            productDescription:"",
-            productColours:[],
-            productStock:"",
-            productPrice:"",
-            productSize:"",
-            productImages:[]
+            productFeature:"",
+            metaDescription:"",
+            metaTitle:"",
+            images:[],
+            metaClonical:"",
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.UpdateProductItem = this.UpdateProductItem.bind(this);
@@ -93,23 +95,26 @@ class UpdateProduct extends Component{
              "id":this.props.location.query.productId,
              "sId":this.props.location.query.subCatId
             }, {"headers": headers}).then(item=>{
-               // console.log(item);
+                console.log(item);
                 this.setState({
                     productId:item.data[0].id,
                     productName:item.data[0].productName,
                     productFeature:item.data[0].productFeature,
+                    productSize:item.data[0].productSize,
+                    description:item.data[0].description,
+                    images:item.data[0].images[0].path,
+                    details:item.data[0].details,
                     productUsage:item.data[0].productUsage,
-                    productStock:item.data[0].stock,
-                    productPrice:item.data[0].price,
-                    productSize:item.data[0].productSize,                    
-                    productColours:item.data[0].colours,
-                    productImages:item.data[0].images[0]['path']
+                    stock:item.data[0].stock,
+                    price:item.data[0].price,
+                    metaDescription:item.data[0].metaDescription,
+                    metaTitle:item.data[0].metaTitle,
+                    metaClonical:item.data[0].metaClonical,
                 })
             })
     }
 
     render(){
-        console.log(this.state);
         return(
             <div className="update-form">
                 <div className="admin-header row">
@@ -118,57 +123,85 @@ class UpdateProduct extends Component{
                     </div>
                 </div>
                 <form className="row pt-5">
-                    <div className="col-lg-10">
-                        <div className="form-group">
-                            <label>
-                                Category
-                            </label>
-                            <input type="text"  name="productSubCat" className="form-control" value={this.props.location.query.subCatId} readOnly/>
+                    <div className="col-lg-12">
+                        <div className="row form-group">
+                            <div className="col-lg-3">
+                                <label>
+                                    Category
+                                </label>
+                                <input type="text"  name="productSubCat" className="form-control" value={this.props.location.query.subCatId} readOnly/>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label>
-                                Product Name
-                            </label>
-                            <input type="text" onChange={this.handleInputChange} name="productName"  value={this.state.productName} className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label>
-                                Product Price
-                            </label>
-                            <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.productPrice} className="form-control"/>
-                        </div>
-                        <div className="form-group">
+                        <div className="row form-group">
+                            <div className="col-lg-5">
+                                <label>
+                                    Product Name
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="productName"  value={this.state.productName} className="form-control"/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                    Product Price
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.price} className="form-control"/>
+                            </div>
+                            <div className="col-lg-4">
                             <label>
                                 Product Size
                             </label>
                             <input type="text" onChange={this.handleInputChange} name="productSize"  value={this.state.productSize} className="form-control"/>
+                            </div>
                         </div>
-                        <div className="form-group">
-                        <label>
-                            Product Features
-                        </label>
-                        <CKEditor onChange={this.handleInputChange} name="productFeature" className="form-control" value={this.state.productFeature}
-                                data={this.state.productFeature}/>
-                        </div>
-                        <div className="form-group">
-                        <label>
-                            Product Description
-                        </label>
-                        <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productDescription}
-                                data={this.state.productDescription}/>
-                        </div>
-                        <div className="form-group">
-                        <label>
-                            Product Usage
-                        </label>
-                        <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}
-                                data={this.state.productUsage}/>
-                        </div>
-                        <div className="form-group">
+                        <div className="row form-group">
+                            <div className="col-lg-5">
+                                <label>
+                                   Meta Title
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="metaTitle"  value={this.state.metaTitle} className="form-control"/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                   Meta Description
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="metaDescription"  value={this.state.metaDescription} className="form-control"/>
+                            </div>
+                            <div className="col-lg-4">
                             <label>
-                                Product Stock
+                               Meta Clonical
                             </label>
-                            <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
+                            <input type="text" onChange={this.handleInputChange} name="metaClonical"  value={this.state.metaClonical} className="form-control"/>
+                            </div>
+                        </div>
+                        <div className="row form-group">
+                            <div className="col-lg-6">
+                                <label>
+                                    Product Features
+                                </label>
+                                <CKEditor onChange={this.handleInputChange} name="productFeature" className="form-control" value={this.state.productFeature}
+                                data={this.state.productFeature}/>
+                            </div>
+                            <div className="col-lg-6">
+                                <label>
+                                Product Description
+                                </label>
+                                <CKEditor  name="description" onChange={this.handleInputChange} className="form-control" value={this.state.description}
+                                data={this.state.description}/>
+                            </div>
+                        </div>
+                        <div className="row form-group">
+                            <div className="col-lg-6">
+                                <label>
+                                    Product Usage
+                                </label>
+                                <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}
+                                data={this.state.productUsage}/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                    Product Stock
+                                </label>
+                                <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
+                            </div>
                         </div>
                         <div className="form-group col-lg-12 mb-4 p-0">
                             <div>
@@ -198,7 +231,7 @@ class UpdateProduct extends Component{
                         <div className="form-group images-panel pt-5">
                        <ul className="col-lg-12">
                             {
-                                this.state.productImages?this.state.productImages.map((item,index)=>{
+                                this.state.images?this.state.images.map((item,index)=>{
                                     return(
                                         <li>
                                              <img className="thumbnail"  src={"./assets/images/products/"+this.props.location.query.catName+"/"+ item}/>
