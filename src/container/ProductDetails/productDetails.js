@@ -181,6 +181,7 @@ class Product extends Component{
         };
         const productName = this.state.ProductData[0]?this.state.ProductData[0].productName:"";
         const imagePath =this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path'][0]:""
+        const productDescription = this.state.ProductData[0]?this.state.ProductData[0].description:"";
         //console.log(imagePath);
         const ImagesArr = this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path']:"";
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
@@ -230,9 +231,7 @@ class Product extends Component{
                         </div>
                         <div className="col-lg-7 product-details reduce-zindex">
                             <h4>{productName}</h4>
-                            <div>
-                                For cleaning pots, pans, ovens, Bar-be-que, grills, dishes, sinks
-                                tiles, bath tubs, machine parts, tools, tyers, mettalic equipments etc.
+                            <div  dangerouslySetInnerHTML={{__html: productDescription}}>
                             </div>
                             {/* <span>{this.state.ProductData.price}</span> */}
                             <div className="text-red">Other Details</div>
@@ -275,14 +274,14 @@ class Product extends Component{
                                         <h4 onClick={(e)=>this.toggleDescription(e)}>
                                             <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
                                             Usage</span>
-                                            <span className="inner">{productUsage}</span>
+                                            <span className="inner" dangerouslySetInnerHTML={{__html: productUsage}}></span>
                                         </h4>
                                     </li>
                                     <li className="mt-4">
                                         <h4 onClick={(e)=>this.toggleDescription(e)}>
                                             <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
                                             Features</span>
-                                            <span className="inner">{productFeature}</span>
+                                            <span className="inner"  dangerouslySetInnerHTML={{__html: productFeature}}></span>
                                         </h4>
                                     </li>
                                 </ul>

@@ -28,7 +28,7 @@ class ProductItem extends Component{
 
     RenderItem =(type) =>{
        // console.log(this.props.image[0]['path'])
-        if(this.props.image[0]){
+        if(this.props.image){
             var imgPath = `./assets/images/products/`+this.props.categoryName;
             if(this.props.image[0]['path']){
                 var showImg = imgPath + "/" +this.props.image[0]['path'][0];

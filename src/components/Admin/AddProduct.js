@@ -30,8 +30,6 @@ class AddProduct extends Component{
         }
     }
     
-
-    
     componentDidMount(){
         this.props.onAddTodo();
     }
@@ -136,23 +134,25 @@ class AddProduct extends Component{
         },
         {"headers": headers}
         ).then(res=>{
+            alert("Product Added successfullly");
             this.setState({
                 message:"Product Added Successfuly"
             })
+            window.location = "fablas.com/#/Dashboard";
         })
-
-      //  let res = await this.uploadFile(this.state.product.images.path);
-
     }
 
     uploadImage(e){
         const formData = new FormData();
         formData.append('avatar',this.state.product.images[0].file);
-         axios.post(`http://127.0.0.1/uploadImage.php?category=${this.state.currDirectory}`, formData,{
+         axios.post(`http://fablas.com/uploadImage.php?category=${this.state.currDirectory}`, formData,{
             headers: {
                 'content-type': 'multipart/form-data'
             }
-        });
+        }).then(res=>{
+            alert("Image Uploaded");
+        })
+        ;
         this.setState({
             imageUploadStatus:"Image Uploaded",  
         })
@@ -198,7 +198,7 @@ class AddProduct extends Component{
             <div>
                 <h4 className="mt-3">Add New Product</h4>
                 {/* <p>{this.state.message}</p> */}
-                <form method="post" onSubmit={this.AddNewProduct}>
+                <form method="post" >
                     <div className="row form-group">
                         <div className="col-lg-6">
                             <select name="category"  onChange={this.HandleCategoryChange} className="form-control">
@@ -269,7 +269,7 @@ class AddProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                         <button onClick={this.uploadImage}>Upload</button>
+                         <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
                         </div>
                     </div>
                     <div className="row form-group">
@@ -278,7 +278,7 @@ class AddProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                         
-                         <button onClick={this.uploadImage}>Upload</button>
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
                         </div>
                     </div>
                     <div className="row form-group">
@@ -287,7 +287,7 @@ class AddProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                         <button onClick={this.uploadImage}>Upload</button>
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
                         </div>
                     </div>
                     <div className="row form-group">
@@ -296,7 +296,7 @@ class AddProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                         <button onClick={this.uploadImage}>Upload</button>
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
                         </div>
                     </div>
                     <div className="row form-group">
@@ -305,13 +305,13 @@ class AddProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                         <button onClick={this.uploadImage}>Upload</button>
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
                         </div>
                     </div>
 
                     <div className="row text-right form-group">
                     <div className="col-lg-6">
-                      <input  type="submit" name="submit" value="Add Product" className="btn btn-danger"/>
+                      <input  type="button" onClick={this.AddNewProduct} name="submit" value="Add Product" className="btn btn-danger"/>
                     </div>
                  </div>
                 </form>

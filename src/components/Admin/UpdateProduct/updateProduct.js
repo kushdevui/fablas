@@ -15,10 +15,11 @@ class UpdateProduct extends Component{
             productSubCatId:this.props.location.query.subCatId,
             productId:"",
             productName:"",
-            description:"",
+            productDescription:"",
             details:"",
             stock:"",
-            price:"",
+            filesName:[],
+            productPrice:"",
             productUsage:"",
             productFeature:"",
             metaDescription:"",
@@ -30,27 +31,65 @@ class UpdateProduct extends Component{
         this.UpdateProductItem = this.UpdateProductItem.bind(this);
         this.removeImage = this.removeImage.bind(this);
         this.updateColor = this.updateColor.bind(this);
+        this.HandleEditorChange = this.HandleEditorChange.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
     }
 
 
     handleInputChange(event){
         const target = event.target;
-        const value =  target.value;
+        const value =  event.target.value;
         const name = target.name;
         this.setState({
             [name]:value
         })
     }
 
+
+    onChange = e => {
+
+        this.state.filesName.push(e.target.files[0]['name']);
+        this.setState({
+                ...this.state.product,
+                images:[
+                    {
+                        file:e.target.files[0],
+                        path:this.state.filesName
+                    }
+                ]
+        })
+    }
+
+
+    HandleEditorChange(event){
+        const data = event.editor.getData();
+        var name = event.editor.name;
+        if(name=="editor1"){
+            name="productFeature"
+        }
+        if(name=="editor2"){
+            name="productDescription"
+        }
+        if(name=="editor3"){
+            name="productUsage"
+        }
+        
+
+        this.setState({
+               ...this.state,
+               [name]:data
+        })
+    }
+
     removeImage(event){
-        var array = this.state.productImages;
+        var array = this.state.images;
         var image = event.target.dataset.id;
         //console.log(image);
         var index = array.indexOf(image);
         if(index !== -1){
             array.splice(index,1);
             this.setState({
-                productImages:array
+                images:array
             })
         }
     }
@@ -82,7 +121,24 @@ class UpdateProduct extends Component{
         axios.put("https://fablasnode.herokuapp.com/products/updateProduct",{
            data:this.state
         },{"headers":headers}).then(res=>{
-            
+            alert("Updated Product!");
+        })
+    }
+
+    uploadImage(e){
+        const formData = new FormData();
+        const catName = this.props.location.query.catName;
+        console.log(catName);
+        formData.append('avatar',this.state.images[0].file);
+         axios.post(`http://fablas.com/uploadImage.php?category=${catName}`, formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }).then(res=>{
+            alert("Image Uploaded Successfully");
+        });
+        this.setState({
+            imageUploadStatus:"Image Uploaded",  
         })
     }
 
@@ -95,18 +151,18 @@ class UpdateProduct extends Component{
              "id":this.props.location.query.productId,
              "sId":this.props.location.query.subCatId
             }, {"headers": headers}).then(item=>{
-                console.log(item);
+                console.log(item)
                 this.setState({
                     productId:item.data[0].id,
                     productName:item.data[0].productName,
                     productFeature:item.data[0].productFeature,
                     productSize:item.data[0].productSize,
-                    description:item.data[0].description,
-                    images:item.data[0].images[0].path,
+                    productDescription:item.data[0].description,
+                    images:item.data[0].images,
                     details:item.data[0].details,
                     productUsage:item.data[0].productUsage,
                     stock:item.data[0].stock,
-                    price:item.data[0].price,
+                    productPrice:item.data[0].price,
                     metaDescription:item.data[0].metaDescription,
                     metaTitle:item.data[0].metaTitle,
                     metaClonical:item.data[0].metaClonical,
@@ -115,6 +171,7 @@ class UpdateProduct extends Component{
     }
 
     render(){
+        console.log(this.state);
         return(
             <div className="update-form">
                 <div className="admin-header row">
@@ -143,7 +200,7 @@ class UpdateProduct extends Component{
                                 <label>
                                     Product Price
                                 </label>
-                                <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.price} className="form-control"/>
+                                <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.productPrice} className="form-control"/>
                             </div>
                             <div className="col-lg-4">
                             <label>
@@ -177,15 +234,15 @@ class UpdateProduct extends Component{
                                 <label>
                                     Product Features
                                 </label>
-                                <CKEditor onChange={this.handleInputChange} name="productFeature" className="form-control" value={this.state.productFeature}
+                                <CKEditor onChange={this.HandleEditorChange} name="productFeature" className="form-control" value={this.state.productFeature}
                                 data={this.state.productFeature}/>
                             </div>
                             <div className="col-lg-6">
                                 <label>
                                 Product Description
                                 </label>
-                                <CKEditor  name="description" onChange={this.handleInputChange} className="form-control" value={this.state.description}
-                                data={this.state.description}/>
+                                <CKEditor  name="productDescription" onChange={this.HandleEditorChange} className="form-control" value={this.state.productDescription}
+                                data={this.state.productDescription}/>
                             </div>
                         </div>
                         <div className="row form-group">
@@ -193,7 +250,7 @@ class UpdateProduct extends Component{
                                 <label>
                                     Product Usage
                                 </label>
-                                <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}
+                                <CKEditor  name="productUsage" onChange={this.HandleEditorChange} className="form-control" value={this.state.productUsage}
                                 data={this.state.productUsage}/>
                             </div>
                             <div className="col-lg-3">
@@ -203,7 +260,7 @@ class UpdateProduct extends Component{
                                 <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
                             </div>
                         </div>
-                        <div className="form-group col-lg-12 mb-4 p-0">
+                        {/* <div className="form-group col-lg-12 mb-4 p-0">
                             <div>
                                 Select Colors 
                             </div>
@@ -227,7 +284,7 @@ class UpdateProduct extends Component{
                                 <input type="checkbox" value="yellow" onChange={this.updateColor}/>
                                 <span className="checkmark yellow" ></span>
                             </label>
-                        </div>
+                        </div> */}
                         <div className="form-group images-panel pt-5">
                        <ul className="col-lg-12">
                             {
@@ -242,7 +299,50 @@ class UpdateProduct extends Component{
                             }
                         </ul>
                        </div>   
-
+                       <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                         <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        </div>
+                    </div>
                        <div className="form-group">
                             <button className="btn btn-danger" onClick={this.UpdateProductItem}>Update</button>
                         </div>

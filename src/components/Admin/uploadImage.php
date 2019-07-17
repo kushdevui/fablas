@@ -1,14 +1,12 @@
 <?php 
-// header('Content-Type: application/json; charset=utf-8');
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Methods: PUT, GET, POST");
+header('Content-Type: application/json; charset=utf-8');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
  $category =  $_GET['category'];  
 $response = array();
-$upload_dir = 'uploads/';
-$server_url = 'http://127.0.0.1';
-$target_dir = "assets/images/products/$category";
+$target_dir = "assets/images/products/Homecare/";
 
-$target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+echo $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
