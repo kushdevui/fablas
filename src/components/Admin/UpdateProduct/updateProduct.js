@@ -82,14 +82,15 @@ class UpdateProduct extends Component{
     }
 
     removeImage(event){
-        var array = this.state.images;
+        var array = this.state.images[0].path;
         var image = event.target.dataset.id;
-        //console.log(image);
         var index = array.indexOf(image);
         if(index !== -1){
             array.splice(index,1);
+            this.state.images[0].path = array
+            console.log(array)
             this.setState({
-                images:array
+                images:this.state.images
             })
         }
     }
@@ -288,7 +289,7 @@ class UpdateProduct extends Component{
                         <div className="form-group images-panel pt-5">
                        <ul className="col-lg-12">
                             {
-                                this.state.images?this.state.images.map((item,index)=>{
+                                this.state.images[0]?this.state.images[0]['path'].map((item,index)=>{
                                     return(
                                         <li>
                                              <img className="thumbnail"  src={"./assets/images/products/"+this.props.location.query.catName+"/"+ item}/>
