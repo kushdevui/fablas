@@ -12,15 +12,20 @@ class AddProduct extends Component{
         super(props);
         this.props = props;
         this.HandleCategoryChange = this.HandleCategoryChange.bind(this);
-        this.HandleEditorChange = this.HandleEditorChange.bind(this);
+        this.HandleEditorChangeDescription = this.HandleEditorChangeDescription.bind(this);
+      //  this.HandleEditorChangeOtherDetails = this.HandleEditorChangeOtherDetails.bind(this);
+        this.HandleEditorChangeFeature = this.HandleEditorChangeFeature.bind(this);
+        this.HandleEditorChangeUsage = this.HandleEditorChangeUsage.bind(this);
+
         this.AddNewProduct = this.AddNewProduct.bind(this);
         this.HandleChange = this.HandleChange.bind(this);
-        this.uploadImage = this.uploadImage.bind(this);
+      //  this.uploadImage = this.uploadImage.bind(this);
         this.state = {
             currDirectory:"Homecare",
             subCat : [],
             loading: true,
             uploading: false,
+            selectedCategory:"",
             filesName:[],
             product:{
                 images:{}
@@ -35,44 +40,7 @@ class AddProduct extends Component{
     }
 
     onChange = e => {
-        console.log(e.target.files[0])
-        // const errs = [] ;
-        // const files = Array.from(e.target.files)
-        // if (files.length > 3) {
-        //     const msg = 'Only 3 images can be uploaded at a time'
-        //     return this.toast(msg, 'custom', 2000, toastColor)  
-        // }
-        // const formData = new FormData()
-        // const types = ['image/png', 'image/jpeg', 'image/gif'];
-        // var filesName = [];
-        // files.forEach((file, i) => {
-        //     if (types.every(type => file.type !== type)) {
-        //       errs.push(`'${file.type}' is not a supported format`)
-        //     }
-      
-        //     if (file.size > 150000) {
-        //       errs.push(`'${file.name}' is too large, please pick a smaller file`)
-        //     }
-        //     filesName.push(file.name);
-        //     formData.append(i, file)
-        // })
-        // this.setState({ uploading: true });
-
-        // this.setState({
-        //     product:{
-        //         ...this.state.product,
-        //         images :[
-        //             {
-        //                 "path":filesName
-        //             }
-        //         ]
-        //     }
-        // })
-        //console.log(e.target.files[0]);
-       
-        
        this.state.filesName.push(e.target.files[0]['name']);
-       
         this.setState({
             product:{
                 ...this.state.product,
@@ -84,33 +52,78 @@ class AddProduct extends Component{
                 ]
             }
         })
+        if(this.state.product){
+           // console.log(this.state.product.image[0].file);
+            const formData = new FormData();
+            formData.append('avatar',e.target.files[0]);
+            axios.post(`http://fablas.com/uploadImage.php?category=${this.state.currDirectory}`, formData,{
+               headers: {
+                   'content-type': 'multipart/form-data'
+               }
+            }).then(res=>{
+               alert("Image Uploaded");
+            });
+           this.setState({
+               imageUploadStatus:"Image Uploaded",  
+           })
+        }
     }
 
-
-    
-    HandleEditorChange(event){
+    HandleEditorChangeDescription(event){
         const data = event.editor.getData();
-        var name = event.editor.name;
-        if(name=="editor1"){
-            name="description"
-        }
-        if(name=="editor2"){
-            name="details"
-        }
-        if(name=="editor3"){
-            name="productUsage"
-        }
-        if(name=="editor4"){
-            name="productFeature"
-        }
-
-        this.setState({
+         this.setState({
             product:{
                ...this.state.product,
-               [name]:data
+               'description':data
             }
         })
     }
+
+    HandleEditorChangeFeature(event){
+        const data = event.editor.getData();
+         this.setState({
+            product:{
+               ...this.state.product,
+               'productFeature':data
+            }
+        })
+    }
+
+    HandleEditorChangeUsage(event){
+        const data = event.editor.getData();
+         this.setState({
+            product:{
+               ...this.state.product,
+               'productUsage':data
+            }
+        })
+    }
+    
+    // HandleEditorChange(event){
+    //     const data = event.editor.getData();
+    //    console.log("ckEditoName",event.editor);
+    //     // var name = event.editor.name;
+    //     // if(name=="editor13"){
+    //     //     name="productDescription"
+    //     // }
+    //     // if(name=="editor14"){
+    //     //     name="details"
+    //     // }
+    //     // if(name=="editor15"){
+    //     //     name="productUsage"
+    //     // }
+    //     // if(name=="editor16"){
+    //     //     name="productFeature"
+    //     // }
+
+    //     // this.setState({
+    //     //     product:{
+    //     //        ...this.state.product,
+    //     //        [name]:data
+    //     //     }
+    //     // })
+    //     // console.log(this.state.product)
+    // }
 
     HandleChange(event){
         const name = event.target.name;
@@ -138,25 +151,13 @@ class AddProduct extends Component{
             this.setState({
                 message:"Product Added Successfuly"
             })
-            window.location = "fablas.com/#/Dashboard";
+            window.location = "#/Dashboard";
         })
     }
 
-    uploadImage(e){
-        const formData = new FormData();
-        formData.append('avatar',this.state.product.images[0].file);
-         axios.post(`http://fablas.com/uploadImage.php?category=${this.state.currDirectory}`, formData,{
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }).then(res=>{
-            alert("Image Uploaded");
-        })
-        ;
-        this.setState({
-            imageUploadStatus:"Image Uploaded",  
-        })
-    }
+    // uploadImage(e){
+      
+    // }
     
 
     HandleCategoryChange(event){
@@ -194,7 +195,23 @@ class AddProduct extends Component{
                 </option>
             )
         })
+        const imgPath = `./assets/images/products/` + this.state.currDirectory;
+        const imgURL1 =  this.state.product.images[0]?this.state.product.images[0].path[0]:"";
+        const showImage1 = imgPath + "/" + imgURL1;
+
+        const imgURL2 =  this.state.product.images[0]?this.state.product.images[0].path[1]:"";
+        const showImage2 = imgPath + "/" + imgURL1;
+
+        const imgURL3 =  this.state.product.images[0]?this.state.product.images[0].path[2]:"";
+        const showImage3 = imgPath + "/" + imgURL1;
+
+        const imgURL4 =  this.state.product.images[0]?this.state.product.images[0].path[3]:"";
+        const showImage4 = imgPath + "/" + imgURL1;
+
+        const imgURL5 =  this.state.product.images[0]?this.state.product.images[0].path[4]:"";
+        const showImage5 = imgPath + "/" + imgURL1;
         return(
+           
             <div>
                 <h4 className="mt-3">Add New Product</h4>
                 {/* <p>{this.state.message}</p> */}
@@ -232,18 +249,19 @@ class AddProduct extends Component{
                     <div className="row form-group">
                         <div className="col-lg-12">
                         <label>Product Description</label>
-                        <CKEditor onChange={this.HandleEditorChange} name="description" className="form-control" 
-                                    data={this.state.product.description}/>
+                        <CKEditor id="productDescription" name="editor1" onChange={this.HandleEditorChangeDescription} className="form-control" 
+                                    data={this.state.product.productDescription}/>
                         </div>
                         
                     </div>
-                    <div className="row form-group">
+                    {/* <div className="row form-group">
                             <div className="col-lg-12">
                             <label>other Details</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="details" className="form-control"
+                            <CKEditor onChange={this.HandleEditorChangeOtherDetails} name="details" className="form-control"
                                         data={this.state.details}/>
+                          
                             </div>
-                    </div>
+                    </div> */}
                     <div className="row form-group">
                         <div className="col-lg-6">
                             <input name="stock"  onChange={this.HandleChange} type="text" placeholder="stock" className="form-control"/>
@@ -255,12 +273,12 @@ class AddProduct extends Component{
                     <div className="row form-group">
                         <div className="col-lg-6">
                             <label>Product Usage</label>
-                            <CKEditor onChange={this.HandleEditorChange} name="productUsage" className="form-control" 
+                            <CKEditor onChange={this.HandleEditorChangeUsage} name="productUsage" className="form-control" 
                                         data={this.state.productUsage}/>
                         </div>
                         <div className="col-lg-6">
                             <label>Product Features</label>
-                         <CKEditor onChange={this.HandleEditorChange} name="productFeature" className="form-control" data={this.state.productFeature}/>
+                         <CKEditor onChange={this.HandleEditorChangeFeature} name="productFeature" className="form-control" data={this.state.productFeature}/>
                         </div>
                     </div>
                     <div className="row form-group">
@@ -268,8 +286,9 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                       
-                         <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                            
+                        <img src={showImage1} width="50" height="50"/>
+                         {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -277,8 +296,8 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                        
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        <img src={showImage2} width="50" height="50"/>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -286,8 +305,8 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                       
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        <img src={showImage3} width="50" height="50"/>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -295,8 +314,8 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                       
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        <img src={showImage4} width="50" height="50"/>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -304,8 +323,8 @@ class AddProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                       
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        <img src={showImage5} width="50" height="50"/>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
 

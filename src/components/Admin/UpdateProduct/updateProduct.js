@@ -11,8 +11,17 @@ class UpdateProduct extends Component{
     constructor(props){
         super(props);
         this.props = props;
+        this.subCatId = this.props.location.query?this.props.location.query.subCatId:"";
+        this.productId = this.props.location.query?this.props.location.query.productId:"";
+        this.catName = this.props.location.query?this.props.location.query.catName:"";
+        if(this.subCatId && this.productId && this.catName){
+            localStorage.setItem("catName",this.catName);
+            localStorage.setItem("subCatId",this.subCatId);
+            localStorage.setItem("productId",this.productId);
+        }
+
         this.state={
-            productSubCatId:this.props.location.query.subCatId,
+            productSubCatId:localStorage.getItem("subCatId"),
             productId:"",
             productName:"",
             productDescription:"",
@@ -32,7 +41,6 @@ class UpdateProduct extends Component{
         this.removeImage = this.removeImage.bind(this);
         this.updateColor = this.updateColor.bind(this);
         this.HandleEditorChange = this.HandleEditorChange.bind(this);
-        this.uploadImage = this.uploadImage.bind(this);
     }
 
 
@@ -47,7 +55,6 @@ class UpdateProduct extends Component{
 
 
     onChange = e => {
-
         this.state.filesName.push(e.target.files[0]['name']);
         this.setState({
                 ...this.state.product,
@@ -58,11 +65,29 @@ class UpdateProduct extends Component{
                     }
                 ]
         })
+        
+        const formData = new FormData();
+        const catName = this.props.location.query.catName;
+
+        formData.append('avatar',e.target.files[0]);
+         axios.post(`http://fablas.com/uploadImage.php?category=${catName}`, formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }).then(res=>{
+            alert("Image Uploaded Successfully");
+        });
+
+
+        this.setState({
+            imageUploadStatus:"Image Uploaded",  
+        })
     }
 
 
     HandleEditorChange(event){
         const data = event.editor.getData();
+      //  console.log("editordata",data);
         var name = event.editor.name;
         if(name=="editor1"){
             name="productFeature"
@@ -73,12 +98,12 @@ class UpdateProduct extends Component{
         if(name=="editor3"){
             name="productUsage"
         }
-        
 
         this.setState({
                ...this.state,
                [name]:data
         })
+      // console.log("productDescription",this.state.productDescription);
     }
 
     removeImage(event){
@@ -115,6 +140,7 @@ class UpdateProduct extends Component{
     }
 
     UpdateProductItem(e){
+      //  console.log(this.state);
         e.preventDefault();
         const headers = {
             'Content-Type': 'application/json'
@@ -123,36 +149,21 @@ class UpdateProduct extends Component{
            data:this.state
         },{"headers":headers}).then(res=>{
             alert("Updated Product!");
+            window.location.href = "http://fablas.com/#/dashboard";
         })
     }
 
-    uploadImage(e){
-        const formData = new FormData();
-        const catName = this.props.location.query.catName;
-        console.log(catName);
-        formData.append('avatar',this.state.images[0].file);
-         axios.post(`http://fablas.com/uploadImage.php?category=${catName}`, formData,{
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }).then(res=>{
-            alert("Image Uploaded Successfully");
-        });
-        this.setState({
-            imageUploadStatus:"Image Uploaded",  
-        })
-    }
 
     componentDidMount(){
+        //console.log(this.productId,this.subCatId);
         const headers = {
             'Content-Type': 'application/json'
         }
 
         axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
-             "id":this.props.location.query.productId,
-             "sId":this.props.location.query.subCatId
+             "id":localStorage.getItem("productId"),
+             "sId":localStorage.getItem("subCatId") 
             }, {"headers": headers}).then(item=>{
-                console.log(item)
                 this.setState({
                     productId:item.data[0].id,
                     productName:item.data[0].productName,
@@ -171,13 +182,19 @@ class UpdateProduct extends Component{
             })
     }
 
+
+
+
+
     render(){
-        console.log(this.state);
+        //console.log(this.state);
         return(
             <div className="update-form">
                 <div className="admin-header row">
                     <div className="col-lg-12">
-                    <FontAwesomeIcon icon={faLongArrowAltLeft } style={{color:'white'}} size="lg mr-3" /> {this.state.productName}
+                    <a href="/#Dashboard" >
+                    <FontAwesomeIcon icon={faLongArrowAltLeft } style={{color:'white'}} size="lg mr-3" />       {this.state.productName}
+                    </a>
                     </div>
                 </div>
                 <form className="row pt-5">
@@ -187,7 +204,7 @@ class UpdateProduct extends Component{
                                 <label>
                                     Category
                                 </label>
-                                <input type="text"  name="productSubCat" className="form-control" value={this.props.location.query.subCatId} readOnly/>
+                                <input type="text"  name="productSubCat" className="form-control" value={localStorage.getItem("subCatId")} readOnly/>
                             </div>
                         </div>
                         <div className="row form-group">
@@ -240,7 +257,7 @@ class UpdateProduct extends Component{
                             </div>
                             <div className="col-lg-6">
                                 <label>
-                                Product Description
+                                Product Description(Other Details)
                                 </label>
                                 <CKEditor  name="productDescription" onChange={this.HandleEditorChange} className="form-control" value={this.state.productDescription}
                                 data={this.state.productDescription}/>
@@ -292,7 +309,7 @@ class UpdateProduct extends Component{
                                 this.state.images[0]?this.state.images[0]['path'].map((item,index)=>{
                                     return(
                                         <li>
-                                             <img className="thumbnail"  src={"./assets/images/products/"+this.props.location.query.catName+"/"+ item}/>
+                                             <img className="thumbnail"  src={"./assets/images/products/"+localStorage.getItem('catName')+"/"+ item}/>
                                              <span className="btn-remove btn-danger" data-id={item} onClick={this.removeImage}>Remove</span>   
                                         </li>
                                     )
@@ -305,7 +322,7 @@ class UpdateProduct extends Component{
                          <input type='file'  onChange={this.onChange} />
                         </div>
                         <div className="col-lg-1">
-                         <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                         {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -314,7 +331,7 @@ class UpdateProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                         
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -323,7 +340,7 @@ class UpdateProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -332,7 +349,7 @@ class UpdateProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                     <div className="row form-group">
@@ -341,7 +358,7 @@ class UpdateProduct extends Component{
                         </div>
                         <div className="col-lg-1">
                        
-                        <div className="btn btn-success" onClick={this.uploadImage}>Upload</div>
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
                         </div>
                     </div>
                        <div className="form-group">

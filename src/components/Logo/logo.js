@@ -9,8 +9,8 @@ import { Picture } from 'react-responsive-picture';
 
 const Logo = (props) =>{
     return(
-        <div>
-             <a href="/" className="logo font-weight-light d-block text-dark">
+        <React.Fragment>
+            <a href="/">
             <Picture
         sources = {[
             {
@@ -27,8 +27,9 @@ const Logo = (props) =>{
             }
         ]}
     />
-        <div>Pioneers in Cleaning Accessories</div> </a>
-        </div>
+        <div className="sm-font">Pioneers in Cleaning Accessories</div>
+        </a>
+        </React.Fragment>
 
         
     

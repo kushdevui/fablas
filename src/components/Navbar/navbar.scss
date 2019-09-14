@@ -1,6 +1,7 @@
 @import "../../global/styles/_fonts.scss";
 @import "../../global/styles/base_colors.scss";
 @import "../../global/styles/base_variables.scss";
+
 .is-hidden{
     display: none;
 }
@@ -20,6 +21,43 @@
     position: relative;
 }
 .navbar-section{
+    .navbar-nav{
+        justify-content: flex-end;
+        .nav-link{
+            padding-right:1rem;
+        }
+    }
+
+
+    .dropdown-item{
+        font-size:0.90rem;
+    }
+    .btn-secondary{
+        background-color: transparent;
+        font-size:0.90rem;
+        color:#4c4c4c;
+        padding:0.5rem 0rem;
+        border:none;
+        &:hover{
+            background-color: transparent;
+            color:#4c4c4c;
+            border:none;
+        }
+        &:focus{
+            background-color: transparent;
+            color:#4c4c4c;
+            border:none;
+        }
+        &:active{
+            background-color: transparent;
+            color:#4c4c4c;
+            border:none;
+        }
+    }
+   
+
+
+
     .navbar-toggler-icon{
         width: 1em;
         height: 1em;
@@ -32,8 +70,7 @@
         .navbar-nav{
             .nav-link{
                 font-size:0.90rem;
-                color:#000;
-                padding:1rem;
+                color: rgba(0,0,0,.5);
             }
         }
     }
@@ -65,16 +102,21 @@ margin-top: -1px;
     }
 
 }
+@media only screen and (max-width:600px){
+    .icon-palat{
+        justify-content:center;
+    }
+}
 
 .products-dropdown{
     padding:1rem;
     position: absolute;
     border:1px solid #f4f4f4;
     z-index: 1000;
-    left:50%;
+    left:45%;
     background-color:white;
     width:700px;
-    margin-top:1rem;
+    margin-top:4rem;
     ul{
         list-style:none;
         margin-left:0rem;
@@ -98,6 +140,7 @@ margin-top: -1px;
             font-size:0.80rem;
             padding:1rem 0;
             color:#000;
+            line-height: 28px;
 
             
         }
