@@ -3,8 +3,11 @@
 @import "../../global/styles/base_variables.scss";
 
 .static-header {
-    padding:1rem;
+    // padding:1rem;
     border-bottom: $border-rgb-grey;
+    position: fixed;
+    width: 100%;
+    z-index: 5000;
 }
 .header{
     padding:1rem;

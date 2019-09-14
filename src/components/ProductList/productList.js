@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import {addToDo} from '../../redux/actions/globalActions';
 import { faShoppingCart,faArrowRight, faArrowDown, faLessThanEqual  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideNav from "./sideNav";
 import {
     BrowserRouter as Router,
     Route,
@@ -78,7 +79,7 @@ class ProductsList extends Component{
         if( this.state.productListBySubCat){
             var productsData = this.state.productListBySubCat.map(product => {
                 return (
-                     <div className="col-lg-4 ">
+                     <div className="col-lg-4 text-center">
                             <ProductItem type="show"
                                 key={product.id}
                                 price={product.price}
@@ -90,7 +91,7 @@ class ProductsList extends Component{
                                 categoryName = {this.state.productCategory}
                                 images={product.images}
                             />
-                         
+                            <p>{product.productName}</p>
                      </div>
                    );
             });
@@ -103,24 +104,7 @@ class ProductsList extends Component{
                 <div className="container">
                 <div className="row mt-5">
                     <div className="col-lg-3 filters">
-                        <h6 className="mb-4">CATEGORIES</h6>
-                        <ul className="col-lg-9">
-                            {this.props.productList.map((item)=>{
-                                 return(<li  className="category-item pb-3" onClick={this.toggleAnimation}>
-                                    {item.categoryName}
-                                    <span className="float-right" > 
-                                        <FontAwesomeIcon icon={faArrowDown } style={{color:'black'}} size="sm" />
-                                    </span>
-                                    <ul className="submenu pl-1">
-                                        {item.subCategory.map(subcat=>{
-                                            return(<li class="second-menu-item pt-2">
-                                                <Link  to={`/Products/${subcat.id}`} >- {subcat.name}</Link> 
-                                            </li>)
-                                        })}
-                                    </ul>
-                                 </li>)
-                            })}
-                        </ul>
+                        <SideNav toggleAnimation={this.toggleAnimation} productList={this.props.productList}/>
                     </div>
                     <div className="col-lg-9 product-list">
                         <div className="row">

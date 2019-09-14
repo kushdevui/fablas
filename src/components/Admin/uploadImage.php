@@ -2,24 +2,22 @@
 header('Content-Type: application/json; charset=utf-8');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
-
+ $category =  $_GET['category'];  
 $response = array();
-$upload_dir = 'uploads/';
-$server_url = 'http://fablas.com';
+$target_dir = "assets/images/products/Homecare/";
 
+echo $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 
-$target_dir = "upload/";
-$target_file = $target_dir . basename($_FILES["avatar"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-
+//Check if image file is a actual image or fake image
     $check = getimagesize($_FILES["avatar"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
         if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
-            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+           // echo $target_dir;
+            echo "The file ".  basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }

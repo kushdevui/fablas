@@ -32,6 +32,7 @@ import {
     NavItem,
     NavLink,
     UncontrolledDropdown,
+    Dropdown ,
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
@@ -51,11 +52,14 @@ class  NavigationBar extends Component {
         this.props = props;
 
         this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.toggleRightNav = this.toggleRightNav.bind(this);
         this.getProductByCat = this.getProductByCat.bind(this);
         this.searchOnWeb = this.searchOnWeb.bind(this);
         this.handleSelectedProductFlow = this.handleSelectedProductFlow.bind(this);
         this.state={
+            isOpen:false,
             isOpenNav:false,
+            btnDropright:false,
             subMenu: []
         };
     }
@@ -89,6 +93,12 @@ class  NavigationBar extends Component {
             isOpenNav: !this.state.isOpenNav
         });
     }
+    toggleRightNav(event){
+        event.preventDefault();
+        this.setState({
+            btnDropright:!this.state.btnDropright
+        })
+    }
 
     getProductByCat(event){
         this.props.selectedProductCategory(event.target.dataset.id)
@@ -116,7 +126,6 @@ class  NavigationBar extends Component {
     }
 
     render(){
-        console.log(this.props);
         const CagegoryList = this.props.productList.map(item=>{
             return(
                 <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
@@ -127,88 +136,145 @@ class  NavigationBar extends Component {
                 </li>
             )
         });
+        
         return(
-            <div className="row">
-                <div className="col-lg-2">
-                    <NavbarBrand ><Logo/></NavbarBrand>
-                </div>
-                <div className="col-lg-7 navbar-section">
-                <Navbar  light expand="md">
-                    
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#/About">About Us</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#/Services">Services</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink onClick={this.toggleNavbar} href={`/Products/`}>Products</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#/News">News</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#/Career">Career</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#/Contact">Contact Us</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+            <React.Fragment>
+                 <Navbar color="light" light expand="md" className="col-lg-12 d-none d-lg-flex">
+                    <div className="col-lg-2">
+                        <NavbarBrand ><Logo/></NavbarBrand>
+                    </div>
+                    <div className="col-lg-7 navbar-section">
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink href="/">Home</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#/About">About Us</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#/Services">Services</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                    <NavLink onClick={this.toggleNavbar} href={`/Products/`}>Products</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#/News">News</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#/Career">Career</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="#/Contact">Contact Us</NavLink>
+                            </NavItem>
+                        </Nav>
+                    </div>
+                    <div className="col-lg-3 pt-3 text-center icon-palat">
+                        <span className="navbar-search">
+                            <div>
+                                <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
+                                <input type="text" id="search" name="search" onKeyDown={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
+                            </div>
+                        </span>
+                        <span><a target="_blank" href="https://www.facebook.com/fablasimpexpvtltd/"><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
+                        <span><a target="_blank" href="https://twitter.com/fablas6"><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><a target="_blank" href="https://www.instagram.com/fablasimpex/"><FontAwesomeIcon icon={['fab', 'instagram']}   style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
+                    </div>  
                 </Navbar>
-                {this.state.isOpenNav ?   <div className="products-dropdown">
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <ul>
-                                            {CagegoryList}
-                                            </ul>
-                                        </div>
-                                        <div className="col-lg-8 sub-cat mt-1">
-                                            {this.state.subMenu.map(item=>
-                                            {
-                                            return( <div onClick={()=>this.handleSelectedProductFlow(item.id,item.name)}>
-                                                <Link  to={`/Products/${item.name}`} >{item.name}</Link>
-                                                        {/* <ul>
-                                                            {item.productsList.map(productItem=>{
-                                                                return(
-                                                                    <li>{productItem.name}</li>
-                                                                )
-                                                            })}
-                                                        </ul> */}
-                                                </div>)
-                                            })}
+                {this.state.isOpenNav ?   <div className="products-dropdown d-none d-lg-block">
+                                        <div className="row">
+                                            <div className="col-lg-4">
+                                                <ul>
+                                                {CagegoryList}
+                                                </ul>
+                                            </div>
+                                            <div className="col-lg-8 sub-cat mt-1">
+                                                {this.state.subMenu.map(item=>
+                                                {
+                                                return( <div onClick={()=>this.handleSelectedProductFlow(item.id,item.name)}>
+                                                    <Link  to={`/Products/${item.name}`} >{item.name}</Link>
+                                                            {/* <ul>
+                                                                {item.productsList.map(productItem=>{
+                                                                    return(
+                                                                        <li>{productItem.name}</li>
+                                                                    )
+                                                                })}
+                                                            </ul> */}
+                                                    </div>)
+                                                })}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                            : ""}
-                </div>
-                <div className="col-lg-3 pt-3 text-center icon-palat">
-                    <span className="navbar-search">
-                    
- <div>
-     <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
-     <input type="text" id="search" name="search" onKeyDown={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
-    
-   {/* <input type="image" id="searchSubmit" name="submit" src="https://www.flaticon.com/free-icon/active-search-symbol_34148" alt="Go" title="Submit Search Query" /> */}
- </div>
+                        : ""}
 
-                        {/* <input type="text" name="search-box" value=""/> */}
-                        
-                    </span>
-                    <span><a target="_blank" href="https://www.facebook.com/fablasimpexpvtltd/"><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></a></span>
-                    <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
-                    <span><a target="_blank" href="https://twitter.com/fablas6"><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></a></span>
-                    <span><a target="_blank" href="https://www.instagram.com/fablasimpex/"><FontAwesomeIcon icon={['fab', 'instagram']}   style={{ color: 'red' }} size="sm"/></a></span>
-                    <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
-                </div>
-        
-      </div>
+                        <Navbar color="light" light expand="md" className="col-lg-12 d-lg-none col-xs-12 navbar-section">
+                            <NavbarBrand className="logo col-xs-10 font-weight-light d-block text-dark">
+                                <Logo/>
+                            </NavbarBrand>
+                            <NavbarToggler className="col-xs-2" onClick={this.toggleNavbar} />
+                            <Collapse isOpen={this.state.isOpenNav} navbar>
+                                <Nav className="ml-auto" navbar>
+                                    <NavItem>
+                                        <NavLink href="">Home</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#/About">About Us</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#/Services">Services</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <Dropdown direction="right" isOpen={this.state.btnDropright} toggle={() => { this.setState({ btnDropright: !this.state.btnDropright }); }} >
+                                            <DropdownToggle caret>
+                                                Products
+                                            </DropdownToggle>
+                                            <DropdownMenu>
+                                            {
+                                                this.props.productList.map(item=>{
+                                                        return(
+                                                            <DropdownItem>
+                                                                {item.categoryName}
+                                                            </DropdownItem>
+                                                            // <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
+                                                            // {item.categoryName}
+                                                            //     <span class="float-right pr-4">
+                                                            //         <FontAwesomeIcon icon={faArrowRight } style={{color:'red'}} size="sm" />
+                                                            //     </span>
+                                                            // </li>
+                                                        )
+                                                    })
+                                            }     
+                                            </DropdownMenu>
+                                        </Dropdown>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#/News">News</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#/Career">Career</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#/Contact">Contact Us</NavLink>
+                                    </NavItem>
+                                </Nav>
+                            </Collapse>
+                        </Navbar>
+                     
+                        <div className="col-lg-3 pt-3 text-center icon-palat d-lg-none"> 
+                        <span className="navbar-search">
+                            <div>
+                                <FontAwesomeIcon className="search-icon" icon={faSearch}  style={{ color: 'white' }} size="sm"/>
+                                <input type="text" id="search" name="search" onKeyDown={this.searchOnWeb} title="Search this site" alt="Search Text" className="inputSearch" maxlength="256" />
+                            </div>
+                        </span>
+                        <span><a target="_blank" href="https://www.facebook.com/fablasimpexpvtltd/"><FontAwesomeIcon icon={['fab', 'facebook-f']}  style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><FontAwesomeIcon icon={['fab', 'google']}  style={{ color: 'red' }} size="sm"/></span>
+                        <span><a target="_blank" href="https://twitter.com/fablas6"><FontAwesomeIcon icon={['fab', 'twitter']}  style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><a target="_blank" href="https://www.instagram.com/fablasimpex/"><FontAwesomeIcon icon={['fab', 'instagram']}   style={{ color: 'red' }} size="sm"/></a></span>
+                        <span><FontAwesomeIcon icon={['fab', 'linkedin-in']}   style={{ color: 'red' }} size="sm"/></span>
+                    </div>  
+            </React.Fragment>
         );
     }
 }

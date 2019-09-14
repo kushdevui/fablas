@@ -13,6 +13,18 @@ import Footer from "../../components/Footer/footer";
 import { addToCart } from '../../redux/actions/cartActions';
 import {getSingleProduct} from '../../redux/actions/getProductAction';
 import Slider from "react-slick";
+import {Helmet} from "react-helmet";
+import {
+    FacebookShareButton,
+    FacebookShareCount,
+    FacebookIcon,
+    LinkedinShareButton,
+    LinkedinIcon,
+    TwitterIcon,
+    TwitterShareButton
+}  
+from 'react-share';
+
 import FilterColors from "../FilterColors/filterColors"
 import Modal from 'react-responsive-modal';
 
@@ -26,6 +38,7 @@ class Product extends Component{
             mainImage:"",
             showDetail:false,
             open:false,
+            relatedProductList:[],
             modalTitle:"",
             modalDesc:"",
             bulkOrder:{
@@ -56,8 +69,37 @@ class Product extends Component{
         this.setState({ open: false });
     };
 
+
+  
+
+    getRendomSubCat=()=>{
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        axios.post('https://fablasnode.herokuapp.com/products/getSubcategory',
+        {
+            "cat_name": this.props.selectedProductCategory
+        },
+        {"headers": headers}
+        ).then(res=>{
+            var number= Math.floor(Math.random() * res.data.length);
+            console.log("send rendom suat",res.data[number]['id']);
+            axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
+                "id":res.data[number]['id']
+            }, {"headers": headers}).then(list=>{
+                console.log(list);
+                    this.setState({
+                        relatedProductList:list.data[0].productsList
+                    })
+            })
+        })
+       
+    }
+
+
     componentDidMount(){
-        //console.log(this.props)
+       // console.log("product Details",this.props)
+        this.getRendomSubCat();
         //const {id,subCat,catName} = this.props.getSingleProduct;
         //this.props.getSingleProduct(id,subCat,catName)
         const headers = {
@@ -71,6 +113,7 @@ class Product extends Component{
                 ProductData : item.data
             })
        })
+
     }
    
     handleClick = (id)=>{
@@ -87,7 +130,7 @@ class Product extends Component{
     }
 
     handleMainImage = (item) => {
-        console.log(item);
+        //console.log(item);
         this.setState({
             mainImage:item
         })
@@ -166,10 +209,17 @@ class Product extends Component{
 
 
     render(){
-   // console.log(this.props);
+        <Helmet>
+                <meta property="og:url" content="http://www.fablas.com" />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="http://fablas.com/assets/images/Logo.png" />
+        </Helmet>
+   // console.log(this.state);
     //console.log(this.props.location.state.category);
    //console.log(this.state.ProductData[0]['images'][0]['path']);
-        const categoryName = this.props.selectedProductCategory
+        const categoryName = this.props.selectedProductCategory.split(" ").join("_");
+        
+         console.log(categoryName);
         var settings = {
             className: "slick-center",
             variableWidth: true,
@@ -180,15 +230,22 @@ class Product extends Component{
             speed: 600
         };
         const productName = this.state.ProductData[0]?this.state.ProductData[0].productName:"";
+        const fbShareUrl = "http://fablas.com/#/ProductDetail/" + categoryName + "/" + this.props.selectedProductSubCategory.subCategoryName + "/" + productName;
         const imagePath =this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path'][0]:""
-        //console.log(imagePath);
+        const productDescription = this.state.ProductData[0]?this.state.ProductData[0].description:"";
+       // console.log(imagePath);
         const ImagesArr = this.state.ProductData[0]?this.state.ProductData[0]['images'][0]['path']:"";
         const productUsage = this.state.ProductData[0]?this.state.ProductData[0].productUsage:"";
+       
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
+        //console.log("productUsage",productFeature);
         var MainImage = `./assets/images/products/`+ categoryName+ `/`+ imagePath ;
-       // console.log(MainImage);
+      // console.log(ImagesArr);
         var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
-        const showImage = this.state.mainImage?this.state.mainImage:MainImage;
+       // console.log("MainImage",this.state.mainImage);
+        const showImage = this.state.mainImage?`./assets/images/products/`+ categoryName+ `/`+this.state.mainImage:MainImage;
+       console.log(showImage);
+        //console.log()
         return(
             <div>
                 <Header/>
@@ -211,13 +268,14 @@ class Product extends Component{
                             },
                             largeImage: {
                                 alt: '',
-                                src: MainImage,
+                                src: showImage,
                                 width: 1200,
                                 height: 1800
                             }
                             }} />
                             <Slider  className="d-flex product-thumb" {...settings}>
                                 {
+                            
                                     ImagesArr? ImagesArr.map(item=>{
                                         return (
                                             <div key={item} onClick={()=>this.handleMainImage(item)}>
@@ -230,43 +288,10 @@ class Product extends Component{
                         </div>
                         <div className="col-lg-7 product-details reduce-zindex">
                             <h4>{productName}</h4>
-                            <div>
-                                For cleaning pots, pans, ovens, Bar-be-que, grills, dishes, sinks
-                                tiles, bath tubs, machine parts, tools, tyers, mettalic equipments etc.
-                            </div>
                             {/* <span>{this.state.ProductData.price}</span> */}
                             <div className="text-red">Other Details</div>
-                            <ul className="other-details-extra">
-                                <li>
-                                    <div className="d-flex">
-                                        <span className="heading1">Length</span>
-                                        <span>10 CM</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="d-flex">
-                                        <span className="heading1">Breadth</span>
-                                        <span>10 CM</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="d-flex">
-                                        <span className="heading1">Weight</span>
-                                        <span>20 GM</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="d-flex">
-                                        <span className="heading1">Code</span>
-                                        <span>200CU</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="d-flex">
-                                        <span className="heading1">Material Used</span>
-                                        <span>Stain Less Steel</span>
-                                    </div>
-                                </li>
+                            <ul className="other-details-extra"  dangerouslySetInnerHTML={{__html: productDescription}}>
+                               
                             </ul>
                             <div>{this.state.ProductData.description}</div>
                             <div className="other-details">
@@ -275,14 +300,14 @@ class Product extends Component{
                                         <h4 onClick={(e)=>this.toggleDescription(e)}>
                                             <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
                                             Usage</span>
-                                            <span className="inner">{productUsage}</span>
+                                            <span className="inner" dangerouslySetInnerHTML={{__html: productUsage}}></span>
                                         </h4>
                                     </li>
                                     <li className="mt-4">
                                         <h4 onClick={(e)=>this.toggleDescription(e)}>
                                             <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
                                             Features</span>
-                                            <span className="inner">{productFeature}</span>
+                                            <span className="inner"  dangerouslySetInnerHTML={{__html: productFeature}}></span>
                                         </h4>
                                     </li>
                                 </ul>
@@ -609,8 +634,22 @@ class Product extends Component{
                                 </div>
                             </div>
                         </Modal>
-                            <div onClick={this.onOpenModal} className="btn btn-danger" >Get Quote</div>
+                        <div onClick={this.onOpenModal} className="btn btn-danger d-inline-block" >Get Quote</div>
+                        <div className="mt-3">
+                            <FacebookShareButton className="d-inline-block" url={fbShareUrl}>
+                                <FacebookIcon size={32} round={true} />
+                            </FacebookShareButton>
+                            <LinkedinShareButton className="d-inline-block ml-2" url={fbShareUrl}>
+                                <LinkedinIcon size={32} round={true}/>
+                            </LinkedinShareButton>
+                            <TwitterShareButton className="d-inline-block ml-2" url={fbShareUrl}>
+                                <TwitterIcon size={32} round={true}/>
+                            </TwitterShareButton>
                         </div>
+                           
+
+                        </div>
+                        
                     </div>
                     <div className="row mt-3">
                         <div className="col-lg-12 mt-3">
@@ -641,18 +680,28 @@ class Product extends Component{
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-3">
-                            {/* <ProductItem/> */}
-                        </div>
-                        <div className="col-lg-3">
-                            {/* <ProductItem/> */}
-                        </div>
-                        <div className="col-lg-3">
-                            {/* <ProductItem/> */}
-                        </div>
-                        <div className="col-lg-3">
-                            {/* <ProductItem/> */}
-                        </div>
+                        {
+                            this.state.relatedProductList.map((product,index)=>{
+                                if(index<4){
+                                    return(
+                                        <div className="col-lg-3">
+                                            <ProductItem
+                                                 type="show"
+                                                 key={product.id}
+                                                 price={product.price}
+                                                 name={product.productName}
+                                                 image={product.images}
+                                                 id={product.id}
+                                                 subCat={this.props.selectedProductSubCategory.subCategory}
+                                                 subCatName={this.props.selectedProductSubCategory.subCategoryName}
+                                                 categoryName = {categoryName}
+                                                 images={product.images}
+                                            />
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
                     </div>
 
                 </div>

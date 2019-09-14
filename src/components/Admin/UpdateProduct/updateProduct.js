@@ -11,44 +11,111 @@ class UpdateProduct extends Component{
     constructor(props){
         super(props);
         this.props = props;
+        this.subCatId = this.props.location.query?this.props.location.query.subCatId:"";
+        this.productId = this.props.location.query?this.props.location.query.productId:"";
+        this.catName = this.props.location.query?this.props.location.query.catName:"";
+        if(this.subCatId && this.productId && this.catName){
+            localStorage.setItem("catName",this.catName);
+            localStorage.setItem("subCatId",this.subCatId);
+            localStorage.setItem("productId",this.productId);
+        }
+
         this.state={
-            productSubCatId:this.props.location.query.subCatId,
+            productSubCatId:localStorage.getItem("subCatId"),
             productId:"",
             productName:"",
-            productFeature:"",
-            productUsage:"",
             productDescription:"",
-            productColours:[],
-            productStock:"",
+            details:"",
+            stock:"",
+            filesName:[],
             productPrice:"",
-            productSize:"",
-            productImages:[]
+            productUsage:"",
+            productFeature:"",
+            metaDescription:"",
+            metaTitle:"",
+            images:[],
+            metaClonical:"",
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.UpdateProductItem = this.UpdateProductItem.bind(this);
         this.removeImage = this.removeImage.bind(this);
         this.updateColor = this.updateColor.bind(this);
+        this.HandleEditorChange = this.HandleEditorChange.bind(this);
     }
 
 
     handleInputChange(event){
         const target = event.target;
-        const value =  target.value;
+        const value =  event.target.value;
         const name = target.name;
         this.setState({
             [name]:value
         })
     }
 
+
+    onChange = e => {
+        this.state.filesName.push(e.target.files[0]['name']);
+        this.setState({
+                ...this.state.product,
+                images:[
+                    {
+                        file:e.target.files[0],
+                        path:this.state.filesName
+                    }
+                ]
+        })
+        
+        const formData = new FormData();
+        const catName = this.props.location.query.catName;
+
+        formData.append('avatar',e.target.files[0]);
+         axios.post(`http://fablas.com/uploadImage.php?category=${catName}`, formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }).then(res=>{
+            alert("Image Uploaded Successfully");
+        });
+
+
+        this.setState({
+            imageUploadStatus:"Image Uploaded",  
+        })
+    }
+
+
+    HandleEditorChange(event){
+        const data = event.editor.getData();
+      //  console.log("editordata",data);
+        var name = event.editor.name;
+        if(name=="editor1"){
+            name="productFeature"
+        }
+        if(name=="editor2"){
+            name="productDescription"
+        }
+        if(name=="editor3"){
+            name="productUsage"
+        }
+
+        this.setState({
+               ...this.state,
+               [name]:data
+        })
+      // console.log("productDescription",this.state.productDescription);
+    }
+
     removeImage(event){
-        var array = this.state.productImages;
+        var array = this.state.images[0].path;
         var image = event.target.dataset.id;
-        //console.log(image);
         var index = array.indexOf(image);
         if(index !== -1){
             array.splice(index,1);
+            this.state.images[0].path = array
+            console.log(array)
             this.setState({
-                productImages:array
+                images:this.state.images
             })
         }
     }
@@ -73,6 +140,7 @@ class UpdateProduct extends Component{
     }
 
     UpdateProductItem(e){
+      //  console.log(this.state);
         e.preventDefault();
         const headers = {
             'Content-Type': 'application/json'
@@ -80,97 +148,137 @@ class UpdateProduct extends Component{
         axios.put("https://fablasnode.herokuapp.com/products/updateProduct",{
            data:this.state
         },{"headers":headers}).then(res=>{
-            
+            alert("Updated Product!");
+            window.location.href = "http://fablas.com/#/dashboard";
         })
     }
 
+
     componentDidMount(){
+        //console.log(this.productId,this.subCatId);
         const headers = {
             'Content-Type': 'application/json'
         }
 
         axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
-             "id":this.props.location.query.productId,
-             "sId":this.props.location.query.subCatId
+             "id":localStorage.getItem("productId"),
+             "sId":localStorage.getItem("subCatId") 
             }, {"headers": headers}).then(item=>{
-               // console.log(item);
                 this.setState({
                     productId:item.data[0].id,
                     productName:item.data[0].productName,
                     productFeature:item.data[0].productFeature,
+                    productSize:item.data[0].productSize,
+                    productDescription:item.data[0].description,
+                    images:item.data[0].images,
+                    details:item.data[0].details,
                     productUsage:item.data[0].productUsage,
-                    productStock:item.data[0].stock,
+                    stock:item.data[0].stock,
                     productPrice:item.data[0].price,
-                    productSize:item.data[0].productSize,                    
-                    productColours:item.data[0].colours,
-                    productImages:item.data[0].images[0]['path']
+                    metaDescription:item.data[0].metaDescription,
+                    metaTitle:item.data[0].metaTitle,
+                    metaClonical:item.data[0].metaClonical,
                 })
             })
     }
 
+
+
+
+
     render(){
-        console.log(this.state);
+        //console.log(this.state);
         return(
             <div className="update-form">
                 <div className="admin-header row">
                     <div className="col-lg-12">
-                    <FontAwesomeIcon icon={faLongArrowAltLeft } style={{color:'white'}} size="lg mr-3" /> {this.state.productName}
+                    <a href="/#Dashboard" >
+                    <FontAwesomeIcon icon={faLongArrowAltLeft } style={{color:'white'}} size="lg mr-3" />       {this.state.productName}
+                    </a>
                     </div>
                 </div>
                 <form className="row pt-5">
-                    <div className="col-lg-10">
-                        <div className="form-group">
-                            <label>
-                                Category
-                            </label>
-                            <input type="text"  name="productSubCat" className="form-control" value={this.props.location.query.subCatId} readOnly/>
+                    <div className="col-lg-12">
+                        <div className="row form-group">
+                            <div className="col-lg-3">
+                                <label>
+                                    Category
+                                </label>
+                                <input type="text"  name="productSubCat" className="form-control" value={localStorage.getItem("subCatId")} readOnly/>
+                            </div>
                         </div>
-                        <div className="form-group">
-                            <label>
-                                Product Name
-                            </label>
-                            <input type="text" onChange={this.handleInputChange} name="productName"  value={this.state.productName} className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <label>
-                                Product Price
-                            </label>
-                            <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.productPrice} className="form-control"/>
-                        </div>
-                        <div className="form-group">
+                        <div className="row form-group">
+                            <div className="col-lg-5">
+                                <label>
+                                    Product Name
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="productName"  value={this.state.productName} className="form-control"/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                    Product Price
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="productPrice"  value={this.state.productPrice} className="form-control"/>
+                            </div>
+                            <div className="col-lg-4">
                             <label>
                                 Product Size
                             </label>
                             <input type="text" onChange={this.handleInputChange} name="productSize"  value={this.state.productSize} className="form-control"/>
+                            </div>
                         </div>
-                        <div className="form-group">
-                        <label>
-                            Product Features
-                        </label>
-                        <CKEditor onChange={this.handleInputChange} name="productFeature" className="form-control" value={this.state.productFeature}
-                                data={this.state.productFeature}/>
-                        </div>
-                        <div className="form-group">
-                        <label>
-                            Product Description
-                        </label>
-                        <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productDescription}
-                                data={this.state.productDescription}/>
-                        </div>
-                        <div className="form-group">
-                        <label>
-                            Product Usage
-                        </label>
-                        <CKEditor  name="productUsage" onChange={this.handleInputChange} className="form-control" value={this.state.productUsage}
-                                data={this.state.productUsage}/>
-                        </div>
-                        <div className="form-group">
+                        <div className="row form-group">
+                            <div className="col-lg-5">
+                                <label>
+                                   Meta Title
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="metaTitle"  value={this.state.metaTitle} className="form-control"/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                   Meta Description
+                                </label>
+                                <input type="text" onChange={this.handleInputChange} name="metaDescription"  value={this.state.metaDescription} className="form-control"/>
+                            </div>
+                            <div className="col-lg-4">
                             <label>
-                                Product Stock
+                               Meta Clonical
                             </label>
-                            <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
+                            <input type="text" onChange={this.handleInputChange} name="metaClonical"  value={this.state.metaClonical} className="form-control"/>
+                            </div>
                         </div>
-                        <div className="form-group col-lg-12 mb-4 p-0">
+                        <div className="row form-group">
+                            <div className="col-lg-6">
+                                <label>
+                                    Product Features
+                                </label>
+                                <CKEditor onChange={this.HandleEditorChange} name="productFeature" className="form-control" value={this.state.productFeature}
+                                data={this.state.productFeature}/>
+                            </div>
+                            <div className="col-lg-6">
+                                <label>
+                                Product Description(Other Details)
+                                </label>
+                                <CKEditor  name="productDescription" onChange={this.HandleEditorChange} className="form-control" value={this.state.productDescription}
+                                data={this.state.productDescription}/>
+                            </div>
+                        </div>
+                        <div className="row form-group">
+                            <div className="col-lg-6">
+                                <label>
+                                    Product Usage
+                                </label>
+                                <CKEditor  name="productUsage" onChange={this.HandleEditorChange} className="form-control" value={this.state.productUsage}
+                                data={this.state.productUsage}/>
+                            </div>
+                            <div className="col-lg-3">
+                                <label>
+                                    Product Stock
+                                </label>
+                                <input name="productStock" onChange={this.handleInputChange} type="text" placeholder="stock" value={this.state.stock} className="form-control"/>
+                            </div>
+                        </div>
+                        {/* <div className="form-group col-lg-12 mb-4 p-0">
                             <div>
                                 Select Colors 
                             </div>
@@ -194,14 +302,14 @@ class UpdateProduct extends Component{
                                 <input type="checkbox" value="yellow" onChange={this.updateColor}/>
                                 <span className="checkmark yellow" ></span>
                             </label>
-                        </div>
+                        </div> */}
                         <div className="form-group images-panel pt-5">
                        <ul className="col-lg-12">
                             {
-                                this.state.productImages?this.state.productImages.map((item,index)=>{
+                                this.state.images[0]?this.state.images[0]['path'].map((item,index)=>{
                                     return(
                                         <li>
-                                             <img className="thumbnail"  src={"./assets/images/products/"+this.props.location.query.catName+"/"+ item}/>
+                                             <img className="thumbnail"  src={"./assets/images/products/"+localStorage.getItem('catName')+"/"+ item}/>
                                              <span className="btn-remove btn-danger" data-id={item} onClick={this.removeImage}>Remove</span>   
                                         </li>
                                     )
@@ -209,7 +317,50 @@ class UpdateProduct extends Component{
                             }
                         </ul>
                        </div>   
-
+                       <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                         {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                        
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
+                        </div>
+                    </div>
+                    <div className="row form-group">
+                        <div className="col-lg-3">
+                         <input type='file'  onChange={this.onChange} />
+                        </div>
+                        <div className="col-lg-1">
+                       
+                        {/* <div className="btn btn-success" onClick={this.uploadImage}>Upload</div> */}
+                        </div>
+                    </div>
                        <div className="form-group">
                             <button className="btn btn-danger" onClick={this.UpdateProductItem}>Update</button>
                         </div>

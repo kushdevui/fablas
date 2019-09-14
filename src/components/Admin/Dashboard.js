@@ -29,6 +29,24 @@ class Dashboard extends Component{
         this.props.onAddToDo();
     }
 
+    HandleDeleteProduct = (productId,SubCatId) =>{
+        const headers = {
+            'Content-Type':'application/json'
+        }
+        axios.post('https://fablasnode.herokuapp.com/products/deleteProduct',
+        {
+            data:{
+                "subCategoryId" : SubCatId,
+                "productId":productId
+            }
+        },
+        {"headers":headers}
+        ).then(res=>{
+           alert("Product Delelted Successfully!");
+           window.location.href = "http://fablas.com/#/dashboard";
+        })
+    }
+
     renderSubCategories(event){
         const catName = event.target.dataset.id;
         const headers = {
@@ -63,7 +81,6 @@ class Dashboard extends Component{
     }
 
     render(){
-        console.log(this.state);
         return(
             <div className="dashboard-tile row">
                 <div className="col-lg-2 p-0">
@@ -138,9 +155,12 @@ class Dashboard extends Component{
                                                     }
                                                 </div>
                                                 <div className="col-lg-2">
-                                                    <Link to={{ pathname: '/updateProduct', query: { productId: item.id , subCatId:this.state.selectedSubCat , catName:this.state.selectedCat} }}>
+                                                    <Link to={{ pathname: '/Dashboard/updateProduct', query: { productId: item.id , subCatId:this.state.selectedSubCat , catName:this.state.selectedCat} }}>
                                                         Update
                                                     </Link>
+                                                    <div onClick={()=>this.HandleDeleteProduct(item.id,this.state.selectedSubCat)}>
+                                                        Delete
+                                                    </div>
                                                     {/* <Link to={"/updateProduct"} params={{ testvalue: "hello" }}>Update</Link> | Delete  */}
                                                 </div>
                                             </div>

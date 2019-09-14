@@ -36,7 +36,7 @@ class Header extends Component  {
 
     render(){
         return(
-            <header className="static-header col-lg-12 col-sm-12">
+            <header className="static-header row">
                 <NavigationBar navbarTemplate="black"/>
             </header>
         );

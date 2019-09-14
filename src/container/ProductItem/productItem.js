@@ -28,10 +28,11 @@ class ProductItem extends Component{
 
     RenderItem =(type) =>{
        // console.log(this.props.image[0]['path'])
-        if(this.props.image[0]){
+        if(this.props.image){
             var imgPath = `./assets/images/products/`+this.props.categoryName;
-            if(this.props.image[0]['path']){
-                var showImg = imgPath + "/" +this.props.image[0]['path'][0];
+            if(this.props.image[0]){
+                var imgUrl = this.props.image[0]['path']?this.props.image[0]['path'][0]:"";
+                var showImg = imgPath + "/" + imgUrl;
             }
             
         }
@@ -50,6 +51,7 @@ class ProductItem extends Component{
                 <div className="border">
                 <Link to={{ pathname: `/Product/ProductList/ProductDetail/${this.props.id}`, state: { type: 'sell'} }}>
                     <img src={showImg} className="img-fluid"/>
+                    <p className="pt-2 pb-2 mb-0">{this.props.name}<span></span></p>
                 </Link>
                 <div
                     //className={!this.state.isAdded ? "" : "added"}
@@ -69,9 +71,9 @@ class ProductItem extends Component{
     render(){
        // console.log(this.props)
         return(
-            <div className="sub-cat-card-section position-relative pr-2 pl-2 mb-5">
+            <div className="sub-cat-card-section position-relative pr-2 pl-2 mb-2">
                 {this.RenderItem(this.state.type)}
-                <p className="pt-2 pb-2 mb-0">{this.props.name}<span></span></p>
+              
             </div>
            
         )
