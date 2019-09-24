@@ -53,13 +53,16 @@ class  NavigationBar extends Component {
 
         this.toggleNavbar = this.toggleNavbar.bind(this);
         this.toggleRightNav = this.toggleRightNav.bind(this);
+        this.toggleRightNavInner = this.toggleRightNavInner.bind(this);
         this.getProductByCat = this.getProductByCat.bind(this);
         this.searchOnWeb = this.searchOnWeb.bind(this);
         this.handleSelectedProductFlow = this.handleSelectedProductFlow.bind(this);
         this.state={
+            isOpenInner:false,
             isOpen:false,
             isOpenNav:false,
             btnDropright:false,
+            btnDropRightInner:false,
             subMenu: []
         };
     }
@@ -96,8 +99,12 @@ class  NavigationBar extends Component {
     toggleRightNav(event){
         event.preventDefault();
         this.setState({
-            btnDropright:!this.state.btnDropright
+            isOpen:!this.state.isOpen
         })
+    }
+    toggleRightNavInner(event){
+        event.preventDefault();
+        this.setState({isOpenInner: !this.state.isOpenInner})
     }
 
     getProductByCat(event){
@@ -232,10 +239,29 @@ class  NavigationBar extends Component {
                                             <DropdownMenu>
                                             {
                                                 this.props.productList.map(item=>{
+                                                    console.log(this.state.btnDropRightInner)
                                                         return(
-                                                            <DropdownItem>
-                                                                {item.categoryName}
-                                                            </DropdownItem>
+                                                                  <Dropdown direction="right" isOpen={this.state.isOpenInner} toggle={this.toggleRightNavInner} >
+                                                                      <DropdownToggle caret>
+                                                                         {item.categoryName}
+                                                                      </DropdownToggle>
+                                                                        {/* <DropdownMenu>
+                                                                            {
+
+                                                                                item.subCategory.map(subCatItem=>{
+                                                                                    return(
+                                                                                        <DropdownItem>
+                                                                                            {subCatItem.name}
+                                                                                        </DropdownItem>
+                                                                                    )
+                                                                                })
+                                                                            }
+                                                                        </DropdownMenu> */}
+                                                                    </Dropdown>
+                                                           
+
+                                                          
+                                                            
                                                             // <li data-id={item.categoryName} class="flyout-alt" onClick={this.getProductByCat}>
                                                             // {item.categoryName}
                                                             //     <span class="float-right pr-4">

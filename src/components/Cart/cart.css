@@ -3,7 +3,8 @@
 }
 
 .cart-tiles .heading {
-  background-color: #f4f4f4;
+  background-color: #fff;
+  border: none;
   font-size: 0.80rem;
   text-align: center;
   color: #000;

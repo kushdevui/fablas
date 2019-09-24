@@ -1,6 +1,12 @@
 .retail-section-new {
+  margin-top: 1rem;
   padding-top: 2rem;
+  background-color: #bbbbbb;
   padding-bottom: 2rem;
+}
+
+.retail-section-new .carousel-indicators {
+  bottom: -30px;
 }
 
 .retail-section-new .fa-arrow-right {
@@ -104,6 +110,12 @@
   }
   .retail-section-new {
     padding: 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 1599px) {
+  .retail-section-new #cf4 {
+    width: 533px;
   }
 }
 /*# sourceMappingURL=retail.css.map */

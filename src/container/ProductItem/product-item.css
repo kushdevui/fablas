@@ -2,17 +2,6 @@
   min-height: 240px;
 }
 
-.sub-cat-card-section .btn {
-  background-color: #000;
-  color: white;
-  font-size: 12px;
-  border: none;
-  border-radius: 4px;
-  padding: 0.3rem 0.8rem;
-  left: 20px;
-  bottom: 50px;
-}
-
 .sub-cat-card-section p {
   font-size: 0.80rem;
   font-weight: bold;
@@ -23,5 +12,18 @@
   color: #000;
   float: right;
   font-size: 1rem;
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  background-color: #000;
+  color: white;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  left: 20px;
+  bottom: 50px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=product-item.css.map */

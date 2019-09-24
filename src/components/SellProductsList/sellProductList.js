@@ -31,17 +31,21 @@ class SellProductList extends Component{
     
 
     componentDidMount(){
-        this.props.onAddToDo();
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-       axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
-        "id":this.props.match.params.ProductSubCategory
-       }, {"headers": headers}).then(list=>{
-           this.setState({
-                productListByCat : list.data
-           })
-       })
+    
+    this.props.onAddToDo();
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
+    "id":"5c8b541c53cf7b1590e77c28"
+    }, {"headers": headers}).then(list=>{
+        //  console.log(list);
+        this.setState({
+            productListByCat : list.data[0].productsList,
+            productCategory:list.data[1].split(" ").join("_")
+        })
+    })
+
     }
 
     
@@ -64,20 +68,20 @@ class SellProductList extends Component{
         ]
         const defaultOption = options[0];
 
-        const productsData = this.state.productListByCat.map(product => {
-            return (
-                 <div className="col-lg-4 ">
-                        <ProductItem type="sell"
-                        key={product.id}
-                        price={product.price}
-                        name={product.name}
-                        image={product.imagepath}
-                        id={product.id}
-                        images={product.images}
-                        />
-                 </div>
-               );
-        });
+        // const productsData = this.state.productListByCat.map(product => {
+        //     return (
+        //          <div className="col-lg-4 ">
+        //                 <ProductItem type="sell"
+        //                 key={product.id}
+        //                 price={product.price}
+        //                 name={product.name}
+        //                 image={product.imagepath}
+        //                 id={product.id}
+        //                 images={product.images}
+        //                 />
+        //          </div>
+        //        );
+        // });
         
         return(
             <div>
@@ -151,7 +155,25 @@ class SellProductList extends Component{
                     </div>
                     <div className="col-lg-9">
                         <div className="row">
-                            {productsData}
+                            {
+                                this.state.productListByCat.map((product)=>{
+                                    return(
+                                        <div className="col-lg-4 ">
+                                            <ProductItem type="sell"
+                                            key={product.id}
+                                            price={product.price}
+                                            name={product.productName}
+                                            image={product.images}
+                                            subCat={this.props.selectedProductSubCategory.subCategory}
+                                            subCatName={this.props.selectedProductSubCategory.subCategoryName}
+                                            categoryName = {this.state.productCategory}
+                                            id={product.id}
+                                            images={product.images}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -162,24 +184,38 @@ class SellProductList extends Component{
     }
 }
 
+// const mapDispatchToProps = dispatch =>{
+//     return{
+//         onAddToDo:()=>{
+//             dispatch(addToDo());
+//         },
+//         
+//     }
+// }
+
+// const mapStateToProps = state =>{
+//     return {
+//         productList : state.productReducer.productList,
+//         cartLength:state.cartReducer.addedItems.length,
+//         items: state.items
+//     }
+// }
+
 const mapDispatchToProps = dispatch =>{
     return{
-        onAddToDo:()=>{
-            dispatch(addToDo());
-        },
+        onAddToDo:()=>{dispatch(addToDo())},
         addToCart: (id)=>{
-            dispatch(addToCart(id))
+                        dispatch(addToCart(id))
         }
     }
 }
 
 const mapStateToProps = state =>{
     return {
-        productList : state.productReducer.productList,
         cartLength:state.cartReducer.addedItems.length,
-        items: state.items
+        selectedProductSubCategory : state.getProductReducer.selectedProductSubCategory,
+        productList : state.productReducer.productList
     }
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(SellProductList);

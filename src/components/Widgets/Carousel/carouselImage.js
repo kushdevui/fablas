@@ -35,16 +35,69 @@ class Example extends Component {
   
     next() {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+      const HomeItems =[
+        {
+          name:"‎image1",
+          desc:"./assets/images/homebanners/1.jpg"
+        },
+        {
+          name:"‎image2",
+          desc:"./assets/images/homebanners/2.jpg"
+        },
+        {
+          name:"‎image3",
+          desc:"./assets/images/homebanners/3.jpg"
+        },
+        {
+          name:"‎image4",
+          desc:"./assets/images/homebanners/4.jpg"
+        },
+        {
+          name:"‎image5",
+          desc:"./assets/images/homebanners/5.jpg"
+        },
+        {
+          name:"‎image6",
+          desc:"./assets/images/homebanners/6.jpg"
+        }
+      ]
+      const nextIndex = this.state.activeIndex === HomeItems.length - 1 ? 0 : this.state.activeIndex + 1;
       this.setState({ activeIndex: nextIndex });
     }
   
     previous() {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+      const HomeItems =[
+        {
+          name:"‎image1",
+          desc:"./assets/images/homebanners/1.jpg"
+        },
+        {
+          name:"‎image2",
+          desc:"./assets/images/homebanners/2.jpg"
+        },
+        {
+          name:"‎image3",
+          desc:"./assets/images/homebanners/3.jpg"
+        },
+        {
+          name:"‎image4",
+          desc:"./assets/images/homebanners/4.jpg"
+        },
+        {
+          name:"‎image5",
+          desc:"./assets/images/homebanners/5.jpg"
+        },
+        {
+          name:"‎image6",
+          desc:"./assets/images/homebanners/6.jpg"
+        }
+      ]
+      const nextIndex = this.state.activeIndex === 0 ? HomeItems.length - 1 : this.state.activeIndex - 1;
       this.setState({ activeIndex: nextIndex });
     }
-  
+
+
     goToIndex(newIndex) {
       if (this.animating) return;
       this.setState({ activeIndex: newIndex });
@@ -133,6 +186,8 @@ class Example extends Component {
         >
           <CarouselIndicators items={this.props.page=="home"?HomeItems:aboutItems} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
            {slides}
+           <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
       );
     }

@@ -49,14 +49,13 @@ class ProductItem extends Component{
             default:
             return (
                 <div className="border">
-                <Link to={{ pathname: `/Product/ProductList/ProductDetail/${this.props.id}`, state: { type: 'sell'} }}>
+                <Link to={{ pathname: `/ProductDetail/${this.props.categoryName}/${this.props.subCatName}/${this.props.name}`, state: { type: 'sell'} }}>
                     <img src={showImg} className="img-fluid"/>
-                    <p className="pt-2 pb-2 mb-0">{this.props.name}<span></span></p>
+                    <p className="pt-2 pb-2 pl-3 mb-0">{this.props.name}<span></span></p>
                 </Link>
                 <div
                     //className={!this.state.isAdded ? "" : "added"}
-                    className="btn position-absolute"
-                    type="button"
+                    className="add-to-cart-btn " 
                     onClick={()=>{this.handleClick(this.props)}}
                 >
                 

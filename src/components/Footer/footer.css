@@ -5,6 +5,10 @@
   color: #cccccc;
 }
 
+.footer a {
+  color: #cccccc;
+}
+
 .footer svg {
   padding-right: 5px;
   border-right: 1px solid #ccc;

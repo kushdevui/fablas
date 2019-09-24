@@ -137,11 +137,10 @@ class Product extends Component{
     }
 
     renderProduct = (type) =>{
-        switch(this.state.type){
+        switch(type){
             case "sell":
             return(
                 <div className="row pt-3">
-                
                     <div className="product-controls d-flex col-lg-12">
                         <div className="col-lg-2 p-0">
                             <FontAwesomeIcon className="mr-1" onClick={()=>{this.handleAddQuantity(item)}} icon={faArrowCircleUp } style={{color:'#999'}} size="sm" />
@@ -167,20 +166,18 @@ class Product extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-3 text-center">
                             <div 
                             className="btnaddtoCart"
-                                type="button"
                             onClick={()=>{this.handleClick(this.state.ProductData)}}
                             >
                             <FontAwesomeIcon className="mr-1" icon={faShoppingCart }    style={{color:'white'}} size="sm" />
                             Add To Cart
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-3 text-center">
                             <div 
                             className="btnGoToCart"
-                                type="button"
                             onClick={this.gotoCart}    
                             >
                             {this.props.cartLength} Go to Cart
@@ -192,17 +189,18 @@ class Product extends Component{
             )
             default:
             return(
-                <div className="other-details">
-                    <ul className="">
-                        <li className="mt-3">
-                                <h4 onClick={(e)=>this.toggleDescription(e)}>
-                                    <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
-                                    {item.title}</span>
-                                    <span className="inner">{item.desc}</span>
-                                </h4>
-                            </li>
-                    </ul>
-                </div>
+                "adfasdf"
+                // <div className="other-details">
+                //     <ul className="">
+                //         <li className="mt-3">
+                //                 <h4 onClick={(e)=>this.toggleDescription(e)}>
+                //                     <span className="pb-2 icon-palet"> <FontAwesomeIcon className="mr-1 p-1" icon={faShoppingCart }  style={{color:'white', background: 'black'}} size="lg" /> 
+                //                     {item.title}</span>
+                //                     <span className="inner">{item.desc}</span>
+                //                 </h4>
+                //             </li>
+                //     </ul>
+                // </div>
             )
         }
     }
@@ -635,6 +633,7 @@ class Product extends Component{
                             </div>
                         </Modal>
                         <div onClick={this.onOpenModal} className="btn btn-danger d-inline-block" >Get Quote</div>
+                        {this.renderProduct(this.props.history.location.state.type)}
                         <div className="mt-3">
                             <FacebookShareButton className="d-inline-block" url={fbShareUrl}>
                                 <FacebookIcon size={32} round={true} />
