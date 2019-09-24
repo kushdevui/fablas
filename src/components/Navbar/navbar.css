@@ -2,6 +2,10 @@
   display: none;
 }
 
+.inputSearch {
+  padding-left: 20px !important;
+}
+
 .logo {
   font-size: 0.60rem;
 }
@@ -17,6 +21,46 @@
   position: relative;
 }
 
+.navbar-section .navbar-nav {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.navbar-section .navbar-nav .nav-link {
+  padding-right: 1rem;
+}
+
+.navbar-section .dropdown-item {
+  font-size: 0.90rem;
+}
+
+.navbar-section .btn-secondary {
+  background-color: transparent;
+  font-size: 0.90rem;
+  color: #4c4c4c;
+  padding: 0.5rem 0rem;
+  border: none;
+}
+
+.navbar-section .btn-secondary:hover {
+  background-color: transparent;
+  color: #4c4c4c;
+  border: none;
+}
+
+.navbar-section .btn-secondary:focus {
+  background-color: transparent;
+  color: #4c4c4c;
+  border: none;
+}
+
+.navbar-section .btn-secondary:active {
+  background-color: transparent;
+  color: #4c4c4c;
+  border: none;
+}
+
 .navbar-section .navbar-toggler-icon {
   width: 1em;
   height: 1em;
@@ -29,8 +73,7 @@
 
 .navbar-section .navbar-light .navbar-nav .nav-link {
   font-size: 0.90rem;
-  color: #000;
-  padding: 1rem;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-submenu .dropdown-menu {
@@ -43,6 +86,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .icon-palat span {
@@ -63,15 +109,24 @@
   font-size: 0.75rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .icon-palat {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: none;
+  }
+}
+
 .products-dropdown {
   padding: 1rem;
   position: absolute;
   border: 1px solid #f4f4f4;
   z-index: 1000;
-  left: -100px;
+  left: 45%;
   background-color: white;
   width: 700px;
-  margin-top: 1rem;
+  margin-top: 4rem;
 }
 
 .products-dropdown ul {
@@ -96,8 +151,9 @@
 
 .products-dropdown .sub-cat a {
   font-weight: bold;
-  padding-bottom: 0rem;
-  padding-left: 0rem;
+  font-size: 0.80rem;
+  padding: 1rem 0;
+  color: #000;
   line-height: 28px;
 }
 

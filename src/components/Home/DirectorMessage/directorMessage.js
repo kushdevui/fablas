@@ -14,14 +14,14 @@ const DirectorMessage = () =>{
                                 <img src="./assets/images/men-standing.png" className="img-fluid"/>
                             </div> */}
                             <div className="content">
-                                <h4>Director’s <span className="bold">Message</span></h4>
+                                <h4>Director&#39;s <span className="bold">Message</span></h4>
                                 <span className="sub-head">FABLAS IMPEX PVT. LTD.</span>
                                 <p className="pt-3 mt-0">I take this opportunity to thank our valued customers, whose continued patronage and confidence in our products inspires us to extend the best of services and enables us to provide value for their money. 
 </p>
 <p className="mt-0">
-Being dedicated to India’s Household product and Personal care product Industry for more than 4 decades. We have seen the transition of the product ranges from low technology products to high technology products during this period.
+Being dedicated to India&#39;s Household product and Personal care product Industry for more than 4 decades. We have seen the transition of the product ranges from low technology products to high technology products during this period.
 </p>
-<p className="mt-0">During year 2011 we have joined hands with Spontex S.A.S. of France (Europe’s leading brand for smart household cleaning products & largest producer of Natural cellulose in the world) as an exclusive distributor for India to bring the futuristic highly technological, natural cellulose, bio-degradable & eco-friendly products.
+<p className="mt-0">During year 2011 we have joined hands with Spontex S.A.S. of France (Europe&#39;s leading brand for smart household cleaning products & largest producer of Natural cellulose in the world) as an exclusive distributor for India to bring the futuristic highly technological, natural cellulose, bio-degradable & eco-friendly products.
 
 </p>
 <p className="mt-0">We believe that technology holds the key to the home cleaning FMCG industries and access to information & economic freedom has given our customers right to buy our value for money products.</p>

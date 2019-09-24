@@ -1,0 +1,119 @@
+.update-form {
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+
+.update-form .red {
+  background-color: red !important;
+}
+
+.update-form .yellow {
+  background-color: yellow !important;
+}
+
+.update-form .blue {
+  background-color: blue !important;
+}
+
+.update-form .green {
+  background-color: green !important;
+}
+
+.update-form .pink {
+  background-color: pink !important;
+}
+
+.update-form .container1 {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.update-form .container1 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.update-form .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.update-form .container1:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.update-form .container1 input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.update-form .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.update-form .container1 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.update-form .container1 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.update-form .admin-header {
+  background-color: #282676;
+  padding: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.update-form .thumbnail {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: block;
+}
+
+.update-form .images-panel ul {
+  list-style: none;
+}
+
+.update-form .images-panel ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.update-form .images-panel ul li span {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+/*# sourceMappingURL=update-form.css.map */

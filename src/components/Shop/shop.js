@@ -6,12 +6,25 @@ import InnerHeader from "../../container/InnerHeader/innerHeader";
 import ProductCard from "./ProductCard/productCard";
 import Footer from "../Footer/footer";
 import "./shop.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart,faArrowRight, faArrowDown  } from "@fortawesome/free-solid-svg-icons";
+
+import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom'
 
 class Shop extends Component{
     constructor(props){
         super();
+        this.gotoCart = this.gotoCart.bind(this);
+
        // this.redirectToProduct = this.redirectToProduct.bind(this);
+    }
+
+    gotoCart(){
+        this.props.history.push({
+            pathname: '/Cart',
+        })
     }
 
     // redirectToProduct(){
@@ -25,7 +38,21 @@ class Shop extends Component{
         return(
             <div>
                 <Header/>
-                <InnerHeader title="Category" subTitle="Shop" />
+                <div className="row inner-header-tile">
+                    <div className="col-lg-12 pl-5">
+                        <ul className="breadcrums">
+                            <li>Shop</li>
+                        </ul>
+                        <div className="">
+                            <div className="row cart-tile">
+                                <div className="col-lg-11 mb-2 text-right">
+                                    <span onClick={this.gotoCart}><FontAwesomeIcon icon={faShoppingCart} style={{color:"#999"}} size="sm" /> Cart</span>
+                                    <span className="count">{this.props.cartLength}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-lg-8 product-offers text-center">
                         <div className="sale">
@@ -113,4 +140,15 @@ class Shop extends Component{
         )
     }
 }
-export default Shop;
+
+const mapStateToProps = state =>{
+    return {
+        cartLength:state.cartReducer.addedItems.length,
+        selectedProductSubCategory : state.getProductReducer.selectedProductSubCategory,
+        productList : state.productReducer.productList
+    }
+}
+
+
+
+export default connect(mapStateToProps,null)(Shop);

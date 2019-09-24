@@ -37,12 +37,12 @@ class Cart extends Component{
 
 
     render(){
+        console.log(this.props.item);
        const cartItem = this.props.items.map(item=>{
            return(
                 <div className="row item-list pt-3 pb-3 text-center">
                     <div className="col-lg-4 item">
-                        <img src={item.images[0]['thumbnails'][0]} alt="Product image" width="50" height="50"/>
-                        <span className="red pl-2">{item.name}</span>
+                        <span className=" pl-2">{item.name}</span>
                         <FontAwesomeIcon className="mr-1 float-right remove"  onClick={()=>{this.handleRemove(item.id)}} icon={faTimes} style={{color:'#000'}} size="md" />
                     </div>
                     <div className="col-lg-2 item  pl-1">
@@ -86,7 +86,6 @@ class Cart extends Component{
                 <div className="container  mt-3">
                     <div className="row text-center proceed">
                         <div className="col-lg-3 btnGoToCart  ml-3"
-                        type="button"
                         >
                         Proceed to checkout
                         </div>

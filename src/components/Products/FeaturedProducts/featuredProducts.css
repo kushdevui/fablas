@@ -27,4 +27,10 @@
     margin-top: 1rem;
   }
 }
+
+@media only screen and (min-width: 1599px) {
+  .featured-products-section {
+    margin-top: -2rem;
+  }
+}
 /*# sourceMappingURL=featuredProducts.css.map */

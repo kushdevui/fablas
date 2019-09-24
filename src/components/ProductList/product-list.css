@@ -1,3 +1,8 @@
+.side-nav-title {
+  background-color: #102a83;
+  color: white;
+}
+
 .filters ul {
   list-style: none;
   padding-left: 0rem;
@@ -16,6 +21,10 @@
 .filters .submenu .second-menu-item {
   color: #dc3545;
   font-size: 0.80rem;
+}
+
+.filters .submenu li a {
+  color: #dc3545;
 }
 
 .filters .expand {

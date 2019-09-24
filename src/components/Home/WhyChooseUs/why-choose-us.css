@@ -471,4 +471,10 @@
   left: 5rem;
   top: 20rem;
 }
+
+@media only screen and (min-width: 1599px) {
+  .tile-choose-us .choose-use-section .globe {
+    top: 40px;
+  }
+}
 /*# sourceMappingURL=why-choose-us.css.map */
