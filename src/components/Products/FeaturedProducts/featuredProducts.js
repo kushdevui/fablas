@@ -13,7 +13,7 @@ const FeaturedProducts = (props) =>{
                             <img src={item.categoryImage} className="img-fluid"/>     
                             <div className="item-content pl-3 pt-3 pb-4 col-md-12">
                                 <p className="pt-1 m-0">{item.categoryName}</p>
-                                <div class="sub">{item.categoryDescription}</div>
+                                <div class="sub d-none d-lg-block">{item.categoryDescription}</div>
                             </div>
                         </div>
                     </Link>
@@ -35,7 +35,7 @@ const FeaturedProducts = (props) =>{
                         <img src="./assets/images/products/featured-6.jpg" className="img-fluid"/>     
                         <div className="item-content pl-3 pt-3 pb-4 col-md-12">
                             <p className="pt-1 m-0">Bulk</p>
-                            <div class="sub">We put quantity in quality. Get B2B/bulk products with a 3 rd party label option.</div>
+                            <div class="sub d-none d-lg-block">We put quantity in quality. Get B2B/bulk products with a 3 rd party label option.</div>
                         </div>
                     </div>
                 </div>
