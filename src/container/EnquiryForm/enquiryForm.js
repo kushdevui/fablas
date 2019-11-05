@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
+var Recaptcha = require('react-recaptcha');
 
 class EnquiryForm extends Component{
+    
     constructor(props){
         super(props);
         this.state = {
@@ -115,7 +117,12 @@ class EnquiryForm extends Component{
                             <div className="form-group">
                                 <textarea onChange={this.handleChangeForm} name="message" className="form-control" placeholder="Message"></textarea>
                             </div>
-
+                            <div>
+                            <Recaptcha
+                                render="explicit"
+                                sitekey="6LfID8EUAAAAAFtiARiTu1jjor4LwmBabbItpJjN"
+                            />
+                            </div>
                             <button className="btn btn-danger form-control ">Send Your Message</button>
                         </div>
                     </div>

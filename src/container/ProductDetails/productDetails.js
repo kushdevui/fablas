@@ -237,11 +237,11 @@ class Product extends Component{
        
         const productFeature = this.state.ProductData[0]?this.state.ProductData[0].productFeature:"";
         //console.log("productUsage",productFeature);
-        var MainImage = `./assets/images/products/`+ categoryName+ `/`+ imagePath ;
+        var MainImage = `/assets/images/products/`+ categoryName+ `/`+ imagePath ;
       // console.log(ImagesArr);
-        var slides = [`./assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`./assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
+        var slides = [`/assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`/assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`/assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
        // console.log("MainImage",this.state.mainImage);
-        const showImage = this.state.mainImage?`./assets/images/products/`+ categoryName+ `/`+this.state.mainImage:MainImage;
+        const showImage = this.state.mainImage?`/assets/images/products/`+ categoryName+ `/`+this.state.mainImage:MainImage;
        console.log(showImage);
         //console.log()
         return(
@@ -277,7 +277,7 @@ class Product extends Component{
                                     ImagesArr? ImagesArr.map(item=>{
                                         return (
                                             <div key={item} onClick={()=>this.handleMainImage(item)}>
-                                                <img src={`./assets/images/products/`+ categoryName+ `/`+ item} />
+                                                <img src={`/assets/images/products/`+ categoryName+ `/`+ item} />
                                             </div>
                                             )
                                     }):""
@@ -633,7 +633,7 @@ class Product extends Component{
                             </div>
                         </Modal>
                         <div onClick={this.onOpenModal} className="btn btn-danger d-inline-block" >Get Quote</div>
-                        {this.renderProduct(this.props.history.location.state.type)}
+                        {/* {this.renderProduct(this.props.history.location.state.type)} */}
                         <div className="mt-3">
                             <FacebookShareButton className="d-inline-block" url={fbShareUrl}>
                                 <FacebookIcon size={32} round={true} />

@@ -9,10 +9,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import path from 'path';
-import Routes from './fetch_routes';
-import errorHandler from './bone_helpers/bone.error_handler';
-import jwt from './bone_helpers/bone.jwt';
-const DEV_LOCALHOST_PORT = 8080;
+const DEV_LOCALHOST_PORT = 7070;
 
 
 // Express app
@@ -21,14 +18,23 @@ var app = express();
 
 // Middlewares
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-app.use(cors());
+// app.use(cors());
 
 // API end points
-app.use( '/' , Routes);
+// app.use( '*' , Routes);
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Home Page Route
+app.use( '*' , ( req , res , next ) => {
+    console.log('Hello Fetch');
+    //res.send('Hello');
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
 
 // use JWT auth to secure the api
 //app.use(jwt());

@@ -6,8 +6,8 @@ import store from "./redux/store";
 
 
 ReactDOM.render(
-    <Provider store = {store}>
+    <React.Fragment>
         <App/>
-    </Provider>,
+    </React.Fragment>,
     document.getElementById("root")
 );

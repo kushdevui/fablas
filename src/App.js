@@ -3,10 +3,9 @@ import "./app.scss";
 import { hot } from "react-hot-loader";
 import { BrowserRouter,HashRouter,Route,Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import { Router } from 'react-router';
-import { browserHistory} from "react-router";
+import { Router,browserHistory } from 'react-router';
 import Home from "./components/Home/home";
-import About from "./components/AboutUs/Aboutus";
+import AboutUs from "./components/AboutUs/Aboutus";
 import Services from "./components/Services/services";
 import Career from "./components/Career/career";
 import ContactUs from "./components/ContactUs/contactUs";
@@ -33,26 +32,30 @@ const App = ()=> {
         <div className="container-fluid">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <HashRouter>
+                    <BrowserRouter>
                         <Switch>
-                            <Route path="/" exact  component={Home}/>
-                            <Route path="/Dashboard/updateProduct" exact component={UpdateProduct}/>
-                            <Route path="/About" exact component={About}/>
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/About"  component={AboutUs}/>
+                           
+                            <Route path="/Services" exact render={(props) => (<Services {...props} />)}/>
+                            <Route path="/Products/:ProductSubCategoryName" exact  render={(props)=><ProductsList {...props}/>}/>
+                            <Route path="/Career" exact render={(props) => (<Career {...props} />)}/>
+                            <Route path="/Contact" exact render={(props) => (<ContactUs {...props} />)}/>
+
+                            <Route path="/Shop" exact render={(props) => (<Shop {...props} />)}/>
+                            <Route path="/Dashboard/News" exact render={(props) => (<NewsList {...props} />)}/>
+                            <Route path="/Cart/" exact render={(props) => (<Cart {...props} />)}/>    
+                            <Route path="/News/" exact render={(props) => (<News {...props} />)}/>          
+                            <Route path="/NewsDetails/:id" exact render={(props) => (<NewsDetails {...props} />)}/>   
+                            <Route path="/ProductList/:productCategory/:ProductSubCategory" exact render={(props) => (<SellProductsList {...props} />)}/> 
+                            <Route path="/ProductDetail/:productCategory/:productSubCategory/:productName" exact render={(props) => (<ProductDetail {...props} />)}/>   
+
+                            <Route path="/Dashboard/updateProduct" exact render={(props)=>(<UpdateProduct {...props}/>)}/>
                             <Route path="/Dashboard" exact component={Dashboard}/>
                             <Route path="/Dashboard/AddProduct" exact component={AddProduct}/>
-                            <Route path="/Dashboard/News" exact component={NewsList}/>
-                            <Route path="/Services" exact  component={Services}/>
-                            <Route path="/Career" exact component={Career}/>
-                            <Route path="/Contact" exact component={ContactUs}/>
-                            <Route path="/shop/" exact component={Shop}/>
-                            <Route path="/Products/:ProductSubCategoryName" exact  component={ProductsList}/>
-                            <Route path="/Cart/" exact  component={Cart}/>
-                            <Route path="/News/" exact  component={News}/>
-                            <Route path="/NewsDetails/:id" exact  component={NewsDetails}/>
-                            <Route path='/ProductList/:productCategory/:ProductSubCategory' exact component={SellProductsList}/>
-                            <Route path='/ProductDetail/:productCategory/:productSubCategory/:productName' exact component={ProductDetail}/>
+                            
                         </Switch>
-                    </HashRouter>
+                    </BrowserRouter>
                 </PersistGate>
             </Provider>
         </div>

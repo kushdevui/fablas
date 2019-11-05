@@ -50,17 +50,17 @@ const teamItems = [
 
 const items = [
   {
-    name:"‎Col Pradeep Gupta‎",
+    name:"Col Pradeep Gupta",
     desc:"Great Company. Very good service, prepared to go the extra mile for customer satisfaction"
     
   },
   {
     name:"Rekha Rana",
-    desc:"I would recommend Fablas’ products to all my family and friends because of their quality and affordability"
+    desc:"I would recommend Fablas products to all my family and friends because of their quality and affordability"
   },
   {
    name:"Sunil Agrawal",
-   desc:"Fablas’ products work better than I expected, better than the regular name brands. Will surely purchase again."
+   desc:"Fablas products work better than I expected, better than the regular name brands. Will surely purchase again."
   }
 ];
 
