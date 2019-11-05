@@ -23,7 +23,7 @@ const ContactInformation = () =>{
             <div className="contact-item clock d-flex ">
                 <div className="p-2"><FontAwesomeIcon  icon={faClock} style={{color:'#bd2130'}}/></div>
                 <div className="p-2">
-                    <span>Monday – Saturday</span>
+                    <span>Monday to Saturday</span>
                     <span>9:30 am to 6:30 pm</span>
                 </div>
             </div>

@@ -51,11 +51,11 @@ class Home extends Component{
     render(){
         return(
             <React.Fragment>
-                  {/* <Modal classNames="col-lg-6" onClick={this.redirectPage}  open={this.state.modalState} onClose={this.closeModal} center>
+                  <Modal classNames="col-lg-6" onClick={this.redirectPage}  open={this.state.modalState} onClose={this.closeModal} center>
                        <a href="https://www.facebook.com/events/899601267080077/">
                        <img src="./assets/popUpBanner.jpg" className="img-fluid"/>
                            </a>
-                  </Modal> */}
+                  </Modal>
                  <Helmet>
                  <meta http-equiv="Content-Type" content="text/html; charset= UTF-8"/>
                 <meta charset="utf-8"/>

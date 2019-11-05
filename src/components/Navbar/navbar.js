@@ -104,7 +104,11 @@ class  NavigationBar extends Component {
     }
     toggleRightNavInner(event){
         event.preventDefault();
-        this.setState({isOpenInner: !this.state.isOpenInner})
+        // this.setState({isOpenInner: !this.state.isOpenInner})
+
+        this.setState({
+            isActive: event.target.id == menu.id
+        })
     }
 
     getProductByCat(event){
@@ -156,22 +160,22 @@ class  NavigationBar extends Component {
                                 <NavLink href="/">Home</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#/About">About Us</NavLink>
+                                <NavLink href="/About">About Us</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#/Services">Services</NavLink>
+                                <NavLink href="/Services">Services</NavLink>
                             </NavItem>
                             <NavItem>
                                     <NavLink onClick={this.toggleNavbar} href={`/Products/`}>Products</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#/News">News</NavLink>
+                                <NavLink href="/News">News</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#/Career">Career</NavLink>
+                                <NavLink href="/Career">Career</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#/Contact">Contact Us</NavLink>
+                                <NavLink href="/Contact">Contact Us</NavLink>
                             </NavItem>
                         </Nav>
                     </div>
@@ -226,7 +230,7 @@ class  NavigationBar extends Component {
                                         <NavLink href="">Home</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink href="#/About">About Us</NavLink>
+                                        <NavLink href="/About">About Us</NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink href="#/Services">Services</NavLink>
@@ -241,13 +245,10 @@ class  NavigationBar extends Component {
                                                 this.props.productList.map(item=>{
                                                     console.log(this.state.btnDropRightInner)
                                                         return(
-                                                                  <Dropdown direction="right" isOpen={this.state.isOpenInner} toggle={this.toggleRightNavInner} >
-                                                                      <DropdownToggle caret>
-                                                                         {item.categoryName}
-                                                                      </DropdownToggle>
-                                                                        {/* <DropdownMenu>
-                                                                            {
-
+                                                                <DropdownItem onClick={this.toggleRightNavInner}> 
+                                                                     {item.categoryName}
+                                                                     <div id={item.categoryName} className="d-none">
+                                                                     {
                                                                                 item.subCategory.map(subCatItem=>{
                                                                                     return(
                                                                                         <DropdownItem>
@@ -256,8 +257,9 @@ class  NavigationBar extends Component {
                                                                                     )
                                                                                 })
                                                                             }
-                                                                        </DropdownMenu> */}
-                                                                    </Dropdown>
+                                                                     </div>
+                                                                </DropdownItem>
+                                                                 
                                                            
 
                                                           

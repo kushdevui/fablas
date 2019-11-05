@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import "./BulkOrders.scss";
 import Bounce from 'react-reveal/Bounce';
+var Recaptcha = require('react-recaptcha');
+
 
 class BulkOrders extends Component{
     constructor(props){
@@ -419,6 +421,14 @@ class BulkOrders extends Component{
                                <textarea onChange={this.handleChange} name="comments" placeholder="Comments" className={this.state.errors.comments?"form-control error":"form-control"}></textarea>
                             </div>
                         </div>
+						<div className="row">
+							<div className="col-lg-12 form-group">
+							<Recaptcha
+                                render="explicit"
+                                sitekey="6LfID8EUAAAAAFtiARiTu1jjor4LwmBabbItpJjN"
+                            />
+							</div>
+						</div>
                         <div className="row">
                             <div className="col-lg-3 form-group">
                                 <input type="submit" className="w-100 btn btn-danger"/>

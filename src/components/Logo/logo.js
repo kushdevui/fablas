@@ -14,15 +14,15 @@ const Logo = (props) =>{
             <Picture
         sources = {[
             {
-                srcSet: "./assets/images/Logo.png 2x",
+                srcSet: "/assets/images/Logo.png 2x",
                 media: "(max-width: 1024px)",
             },
             {
-                srcSet: "./assets/images/Logo.png",
+                srcSet: "/assets/images/Logo.png",
                   media: "(max-width: 1440px)",
             },
             {
-                srcSet: "./assets/images/Logo.png",
+                srcSet: "/assets/images/Logo.png",
                 type: "image/webp"
             }
         ]}

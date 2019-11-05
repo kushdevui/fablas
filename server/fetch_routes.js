@@ -1,23 +1,25 @@
 
 //  Dependencies
 import express from 'express';
-import usersController from './users/users.controller';
-import productController from './product/product.controller'
-import router from './users/users.controller';
+const path = require('path');
+
 
 
 
 const fetch_router = express.Router();
 
+app.use(express.static(path.join(__dirname, '../dist')));
+
 // Home Page Route
-fetch_router.get( '/' , ( req , res , next ) => {
+fetch_router.get( '*' , ( req , res , next ) => {
     console.log('Hello Fetch');
-    res.send('Hello');
+    //res.send('Hello');
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
-// Product Endpoint
-fetch_router.use('/products',productController);
-// Users Endpoint
-fetch_router.use( '/users' , usersController);
+// // Product Endpoint
+// fetch_router.use('/products',productController);
+// // Users Endpoint
+// fetch_router.use( '/users' , usersController);
 
 
 

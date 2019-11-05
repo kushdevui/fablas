@@ -6,6 +6,7 @@ import Footer from "../Footer/footer";
 import './career.scss';
 import Axios from 'axios';
 import {Helmet} from "react-helmet";
+var Recaptcha = require('react-recaptcha');
 
 class Career extends Component{
     constructor(props){
@@ -548,6 +549,12 @@ class Career extends Component{
                                     <div className="col-lg-12">
                                         <textarea placeholder="Please let us know about you" onChange={this.handleDistributorChange} name="aboutYou" className={this.state.errors.aboutYou?"form-control error":"form-control"}></textarea>
                                     </div>
+									<div className="col-lg-12">
+									<Recaptcha
+                                    render="explicit"
+                                    sitekey="6LfID8EUAAAAAFtiARiTu1jjor4LwmBabbItpJjN"
+                                />
+									</div>
                                     <div className="col-lg-3">
                                         <input type="submit" className="btn btn-danger w-100"/>
                                     </div>
@@ -823,6 +830,12 @@ class Career extends Component{
         <div className="col-lg-6">
             <input type="text" onChange={this.handleVendorChange} name="website" className={this.state.errors.website?"form-control error":"form-control"} placeholder="Website"/>
         </div>
+		<div className="col-lg-12">
+		<Recaptcha
+			render="explicit"
+			sitekey="6LfID8EUAAAAAFtiARiTu1jjor4LwmBabbItpJjN"
+		/>
+		</div>
         <div className="col-lg-3">
             <input type="submit" className="btn btn-danger w-100"/>
         </div>
@@ -889,6 +902,12 @@ class Career extends Component{
                     <div className="form-group">
                         <textarea className={this.state.errors.message?"form-control error":"form-control"} name={this.handlejobSeekerChange} name="message" placeholder="Message"></textarea>
                     </div>
+					<div className="form-group">
+					<Recaptcha
+						render="explicit"
+						sitekey="6LfID8EUAAAAAFtiARiTu1jjor4LwmBabbItpJjN"
+					/>
+					</div>
                     <div className="form-group">
                         <input type="submit" name="submit" className="btn btn-danger"/ >
                     </div>

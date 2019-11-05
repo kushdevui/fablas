@@ -5,10 +5,10 @@ import "./featuredProducts.scss";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
 const FeaturedProducts = (props) =>{
-   const ShowProducts = props.productList.map(item=>{
+   const ShowProducts = props.productList.map((item,i)=>{
        return(
                 <div className="col-6 col-md-2 mb-2 mb-lg-0 ">
-                    <Link to={`/Products/${item.subCategory[0].id}`} params={{ testvalue: "hello" }}>
+                    <Link to={`/Products/${item.subCategory[0].name}`} params={{ testvalue: "hello" }}>
                         <div className="l-item">
                             <img src={item.categoryImage} className="img-fluid"/>     
                             <div className="item-content pl-3 pt-3 pb-4 col-md-12">
