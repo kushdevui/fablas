@@ -37,7 +37,7 @@ class Footer extends Component{
             <div className="container">
                 <div className="row">
                     <div className="col-lg-4 pr-5">
-                        <img src="./assets/images/logo-footer.png"/>
+                        <img src="/assets/images/logo-footer.png"/>
                         <span className="d-block">Pioneers in Cleaning Accessories</span>
                         <p className="pt-5">
                         Fablas Impex Pvt. Ltd. is one of India&#39;s largest & most prominent FMCG companies, with a rich history of expertise in manufacturing & packaging. With a legacy of over four decades of providing winning solutions to Traditional as well as Modern Trade Markets, Fablas has been the supplier of choice for HORECA, B2B & Organised retail sectors for Bulk & Raw material supplies with 3rdparty  label arrangements.
@@ -47,7 +47,7 @@ class Footer extends Component{
                         <span className="d-block"><FontAwesomeIcon icon={faEnvelope } style={{color:'#ccc'}} size="md" /> info@fablas.com</span>
                     </div>
                     <div className="col-lg-5">
-                        <h3>USEFULL LINKS</h3>
+                        <h3>USEFUL LINKS</h3>
                         <ul>
                             <li><a href="/About">About us</a></li>
                             <li><a href="/Career">Job Seeker</a></li>
@@ -61,7 +61,7 @@ class Footer extends Component{
                             <li><a href="/Products/Personal Care">Personal Care</a></li>
                             <li><a href="/Products/Industrial Care">Industrial Care</a></li>
                             <li><a href="/Products/Salon Professionals">Salon Care</a></li>
-                            <li><a href="/Products/Automobile">Professional</a></li>
+                            <li><a href="/Products/Horeca">Professional</a></li>
                         </ul>
                     </div>
                     <div className="col-lg-3">
