@@ -25,19 +25,28 @@ class ProductsList extends Component{
         this.state = {
             isFilterOpen:false,
             productListByCat :[],
-            productCategory:""
+            productCategory:"",
+            selectedProductSubCategory:""
         }
         this.toggleAnimation = this.toggleAnimation.bind(this);
     }
 
 
     componentWillReceiveProps(nextProps){
-       var nextParams = this.props.selectedProductSubCategory.subCategory
+       var prevPropsSubCatId = this.props.selectedProductSubCategory.subCategory
+       var nextPropsSubCatId = nextProps.selectedProductSubCategory.subCategory
+       if(nextPropsSubCatId != prevPropsSubCatId){
+           var passedCatId = nextPropsSubCatId
+       }
+       else{
+        passedCatId = prevPropsSubCatId
+       }
+       console.log("passecId",passedCatId);
        const headers = {
         'Content-Type': 'application/json'
         }
         axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
-            "id":nextParams
+            "id":passedCatId
         }, {"headers": headers}).then(list=>{
             this.setState({
                  productListBySubCat : list.data[0].productsList,
@@ -47,7 +56,7 @@ class ProductsList extends Component{
     }
    
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.onAddToDo();
         const headers = {
             'Content-Type': 'application/json'
@@ -62,6 +71,8 @@ class ProductsList extends Component{
            })
        })
     }
+    
+
 
 
 

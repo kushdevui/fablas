@@ -83,7 +83,7 @@ class Product extends Component{
         {"headers": headers}
         ).then(res=>{
             var number= Math.floor(Math.random() * res.data.length);
-            console.log("send rendom suat",res.data[number]['id']);
+           // console.log("send rendom suat",res.data[number]['id']);
             axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
                 "id":res.data[number]['id']
             }, {"headers": headers}).then(list=>{
@@ -217,7 +217,7 @@ class Product extends Component{
    //console.log(this.state.ProductData[0]['images'][0]['path']);
         const categoryName = this.props.selectedProductCategory.split(" ").join("_");
         
-         console.log(categoryName);
+         console.log("catName",categoryName);
         var settings = {
             className: "slick-center",
             variableWidth: true,
@@ -242,7 +242,6 @@ class Product extends Component{
         var slides = [`/assets/images/products/`+ categoryName+ `/`+ productName + "-1.jpg",`/assets/images/products/`+ categoryName+ `/`+ productName + "-2.jpg",`/assets/images/products/`+ categoryName+ `/`+ productName + "-3.jpg"];
        // console.log("MainImage",this.state.mainImage);
         const showImage = this.state.mainImage?`/assets/images/products/`+ categoryName+ `/`+this.state.mainImage:MainImage;
-       console.log(showImage);
         //console.log()
         return(
             <div>
@@ -696,6 +695,7 @@ class Product extends Component{
                                                  categoryName = {categoryName}
                                                  images={product.images}
                                             />
+                                            <p>{product.productName}</p>
                                         </div>
                                     )
                                 }
