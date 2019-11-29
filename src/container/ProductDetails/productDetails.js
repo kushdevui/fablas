@@ -215,7 +215,8 @@ class Product extends Component{
    // console.log(this.state);
     //console.log(this.props.location.state.category);
    //console.log(this.state.ProductData[0]['images'][0]['path']);
-        const categoryName = this.props.selectedProductCategory.split(" ").join("_");
+        // const categoryName = this.props.selectedProductCategory.split(" ").join("_");
+        const categoryName=this.props.match.params.productCategory
         
          console.log("catName",categoryName);
         var settings = {
