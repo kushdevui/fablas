@@ -65,6 +65,8 @@ class  NavigationBar extends Component {
             btnDropRightInner:false,
             subMenu: []
         };
+        this.textInput = React.createRef();
+
     }
     
     handleSelectedProductFlow(subCat,subCatName){
@@ -104,6 +106,8 @@ class  NavigationBar extends Component {
     }
     toggleRightNavInner(event){
         event.preventDefault();
+        this.textInput.current.focus();
+       document.getElementById("Homecare").current.className.add('d-block');
         // this.setState({isOpenInner: !this.state.isOpenInner})
 
         this.setState({
@@ -203,6 +207,7 @@ class  NavigationBar extends Component {
                                             <div className="col-lg-8 sub-cat mt-1">
                                                 {this.state.subMenu.map(item=>
                                                 {
+                                                    console.log("subitem",item)
                                                 return( <div onClick={()=>this.handleSelectedProductFlow(item.id,item.name)}>
                                                     <Link  to={`/Products/${item.name}`} >{item.name}</Link>
                                                             {/* <ul>
@@ -243,11 +248,11 @@ class  NavigationBar extends Component {
                                             <DropdownMenu>
                                             {
                                                 this.props.productList.map(item=>{
-                                                    console.log(this.state.btnDropRightInner)
+                                                    console.log(this.state.btnDropRightInner,"aaaaa")
                                                         return(
                                                                 <DropdownItem onClick={this.toggleRightNavInner}> 
-                                                                     {item.categoryName}
-                                                                     <div id={item.categoryName} className="d-none">
+                                                                {item.categoryName}
+                                                                     <div id={item.categoryName} className="d-none" ref={this.textInput} >
                                                                      {
                                                                                 item.subCategory.map(subCatItem=>{
                                                                                     return(

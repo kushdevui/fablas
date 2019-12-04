@@ -58,7 +58,6 @@ class ProductItem extends Component{
                     className="add-to-cart-btn " 
                     onClick={()=>{this.handleClick(this.props)}}
                 >
-                
                     <FontAwesomeIcon className="mr-1" icon={faShoppingCart } style={{color:'white'}} size="sm" />
                     {!this.state.isAdded ? "Add to Cart" : "Added in Cart"}
                 </div>

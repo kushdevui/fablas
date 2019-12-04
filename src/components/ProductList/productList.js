@@ -41,7 +41,6 @@ class ProductsList extends Component{
        else{
         passedCatId = prevPropsSubCatId
        }
-       console.log("passecId",passedCatId);
        const headers = {
         'Content-Type': 'application/json'
         }

@@ -40,6 +40,7 @@ class Product extends Component{
             open:false,
             relatedProductList:[],
             modalTitle:"",
+            rendomProductCat:"",
             modalDesc:"",
             bulkOrder:{
                 fullName:"",
@@ -59,6 +60,26 @@ class Product extends Component{
         this.gotoCart = this.gotoCart.bind(this);
         this.renderProduct = this.renderProduct.bind(this);
     
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps){
+            var _self = this;
+            console.log(nextProps);
+            const headers = {
+                'Content-Type': 'application/json'
+            }
+           axios.post("https://fablasnode.herokuapp.com/products/getProductById",{
+            "id":nextProps.selectedProductProductId,
+            "sId":_self.state.rendomProductCat
+           }, {"headers": headers}).then(item=>{
+              // console.log("get",item);
+                this.setState({
+                    ProductData : item.data
+                })
+           })
+        }
+        
     }
 
     onOpenModal = () => {
@@ -82,13 +103,13 @@ class Product extends Component{
         },
         {"headers": headers}
         ).then(res=>{
+            console.log("response",res)
             var number= Math.floor(Math.random() * res.data.length);
-           // console.log("send rendom suat",res.data[number]['id']);
             axios.post("https://fablasnode.herokuapp.com/products/getProductBySubcategory",{
                 "id":res.data[number]['id']
             }, {"headers": headers}).then(list=>{
-                console.log(list);
                     this.setState({
+                        rendomProductCat:res.data[number]['id'],
                         relatedProductList:list.data[0].productsList
                     })
             })
